@@ -5,7 +5,7 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import type { CSSProperties, MouseEvent as ReactMouseEvent } from 'react';
 
-const ABOUT_BANNER_SRC = '/uploads/sorgfaltbau_about_banner.webp';
+const ABOUT_BANNER_SRC = '/uploads/logo-sb.webp';
 
 export default function About() {
   const t = useTranslations('about');
@@ -99,10 +99,10 @@ export default function About() {
             >
               <motion.img
                 src={ABOUT_BANNER_SRC}
-                alt="SorgfaltBau Banner"
-                className="h-72 w-full object-cover will-change-transform sm:h-80 lg:h-96"
-                whileHover={{ scale: 1.09, filter: 'saturate(1.08) brightness(1.03)' }}
-                whileTap={{ scale: 1.09, filter: 'saturate(1.08) brightness(1.03)' }}
+                alt="SorgfaltBau Logo"
+                className="h-72 w-full bg-white object-contain p-6 will-change-transform sm:h-80 sm:p-8 lg:h-96 lg:p-10"
+                whileHover={{ scale: 1.04, filter: 'saturate(1.05) brightness(1.02)' }}
+                whileTap={{ scale: 1.04, filter: 'saturate(1.05) brightness(1.02)' }}
                 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
               />
 
@@ -122,7 +122,7 @@ export default function About() {
                 style={{ x: shineX }}
               />
 
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-anthracite-950/25 via-transparent to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-anthracite-950/5 via-transparent to-transparent" />
               <div className="pointer-events-none absolute inset-0 ring-1 ring-white/20 ring-inset" />
               {/* Orange accent corner */}
               <div className="absolute top-0 right-0 w-20 h-20 bg-brand-orange/20 rounded-bl-3xl" />
