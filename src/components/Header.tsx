@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone } from 'lucide-react';
 
@@ -54,7 +55,7 @@ export default function Header() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           useSolidHeader
             ? 'bg-white/95 backdrop-blur-md shadow-lg shadow-black/5'
-            : 'bg-transparent'
+            : 'bg-gradient-to-b from-anthracite-950/58 via-anthracite-950/24 to-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,13 +63,21 @@ export default function Header() {
             {/* Logo */}
             <a
               href={`/${locale}`}
-              className="group"
+              className="group inline-flex items-center"
+              aria-label="SorgfaltBau"
             >
-              <span className={`text-2xl sm:text-[28px] font-heading tracking-tight transition-colors ${
-                useSolidHeader ? 'text-brand-orange' : 'text-white'
-              }`}>One</span><span className={`text-2xl sm:text-[28px] font-heading tracking-tight transition-colors ${
-                useSolidHeader ? 'text-anthracite-800' : 'text-white'
-              }`}>bbau</span>
+              <span className={`rounded-md px-2 py-1 shadow-lg transition-colors ${
+                useSolidHeader ? 'bg-white' : 'bg-white/90 shadow-black/20'
+              }`}>
+                <Image
+                  src="/uploads/logo-sb-header.webp"
+                  alt="SorgfaltBau"
+                  width={156}
+                  height={83}
+                  priority
+                  className="h-11 w-auto sm:h-12"
+                />
+              </span>
             </a>
 
             {/* Desktop Nav */}
@@ -80,7 +89,7 @@ export default function Header() {
                   className={`px-3 xl:px-4 py-2 text-sm font-medium rounded-lg transition-all ${
                     useSolidHeader
                       ? 'text-anthracite-600 hover:text-anthracite-900 hover:bg-anthracite-50'
-                      : 'text-white/80 hover:text-white hover:bg-white/10'
+                        : 'text-white font-semibold drop-shadow-[0_1px_8px_rgba(0,0,0,0.75)] hover:text-white hover:bg-white/12'
                   }`}
                 >
                   {t(item)}
@@ -153,7 +162,13 @@ export default function Header() {
             className="fixed inset-0 z-[60] bg-white lg:hidden"
           >
             <div className="flex items-center justify-between h-16 px-4 border-b border-anthracite-100">
-              <span className="text-2xl font-heading"><span className="text-brand-orange">One</span><span className="text-anthracite-800">bbau</span></span>
+              <Image
+                src="/uploads/logo-sb-header.webp"
+                alt="SorgfaltBau"
+                width={150}
+                height={79}
+                className="h-11 w-auto"
+              />
               <button
                 onClick={() => setIsMobileOpen(false)}
                 className="p-2 text-anthracite-700"
@@ -295,9 +310,9 @@ export default function Header() {
 //             >
 //               <span className={`text-2xl sm:text-[28px] font-heading tracking-tight transition-colors ${
 //                 isScrolled ? 'text-brand-orange' : 'text-white'
-//               }`}>One</span><span className={`text-2xl sm:text-[28px] font-heading tracking-tight transition-colors ${
+//               }`}>Sorgfalt</span><span className={`text-2xl sm:text-[28px] font-heading tracking-tight transition-colors ${
 //                 isScrolled ? 'text-anthracite-800' : 'text-white'
-//               }`}>bbau</span>
+//               }`}>Bau</span>
 //             </a>
 
 //             {/* Desktop Nav */}
@@ -400,7 +415,7 @@ export default function Header() {
 //             className="fixed inset-0 z-[60] bg-white lg:hidden"
 //           >
 //             <div className="flex items-center justify-between h-16 px-4 border-b border-anthracite-100">
-//               <span className="text-2xl font-heading"><span className="text-brand-orange">One</span><span className="text-anthracite-800">bbau</span></span>
+//               <span className="text-2xl font-heading"><span className="text-brand-orange">Sorgfalt</span><span className="text-anthracite-800">Bau</span></span>
 //               <button
 //                 onClick={() => setIsMobileOpen(false)}
 //                 className="p-2 text-anthracite-700"

@@ -7,16 +7,16 @@ import Footer from '@/components/Footer';
 type Params = Promise<{ locale: string }>;
 
 const metaDescriptions: Record<string, string> = {
-  de: 'Datenschutzerklärung von Onebbau nach DSGVO und TDDDG.',
-  ru: 'Политика конфиденциальности Onebbau в соответствии с DSGVO и TDDDG.',
+  de: 'Datenschutzerklärung von SorgfaltBau nach DSGVO und TDDDG.',
+  ru: 'Политика конфиденциальности SorgfaltBau в соответствии с DSGVO и TDDDG.',
 };
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale } = await params;
   const lang = locale === 'ru' ? 'ru' : 'de';
   const title = lang === 'ru'
-    ? 'Datenschutz / Политика конфиденциальности — Onebbau'
-    : 'Datenschutzerklärung — Onebbau';
+    ? 'Datenschutz / Политика конфиденциальности — SorgfaltBau'
+    : 'Datenschutzerklärung — SorgfaltBau';
   const description = metaDescriptions[lang];
 
   return {
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 export default function Datenschutz() {
   const t = useTranslations('datenschutz');
   const phone = process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659';
-  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@onebbau.de';
+  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau-halle.de';
   const siteUrl = getSiteUrl();
   const content = t('content', { phone, email, siteUrl });
 

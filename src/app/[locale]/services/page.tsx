@@ -36,8 +36,8 @@ const focusIcons = [Home, Paintbrush, Hammer];
 const executionIcons = [ClipboardList, Hammer, CheckCircle2];
 
 const metaTitles: Record<string, string> = {
-  de: 'Leistungen von Onebbau | Bau, Renovierung und Außenarbeiten',
-  ru: 'Услуги Onebbau | Строительство, ремонт и наружные работы',
+  de: 'Leistungen von SorgfaltBau | Bau, Renovierung und Außenarbeiten',
+  ru: 'Услуги SorgfaltBau | Строительство, ремонт и наружные работы',
 };
 
 const metaDescriptions: Record<string, string> = {
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const lang = locale === 'ru' ? 'ru' : 'de';
   const title = metaTitles[lang];
   const description = metaDescriptions[lang];
-  const image = '/uploads/onebbau_banner_desktop_1800x2100.webp';
+  const image = '/uploads/sorgfaltbau_banner_desktop_1800x2100.webp';
 
   return {
     title,
@@ -68,7 +68,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       type: 'website',
       locale: lang === 'de' ? 'de_DE' : 'ru_RU',
       url: `/${lang}/services`,
-      siteName: 'Onebbau',
+      siteName: 'SorgfaltBau',
       images: [
         {
           url: image,
@@ -118,7 +118,7 @@ export default async function ServicesPage({ params }: { params: Params }) {
       inLanguage: lang,
       isPartOf: {
         '@type': 'WebSite',
-        name: 'Onebbau',
+        name: 'SorgfaltBau',
         url: siteUrl,
       },
     },
@@ -155,7 +155,7 @@ export default async function ServicesPage({ params }: { params: Params }) {
     {
       '@context': 'https://schema.org',
       '@type': 'HomeAndConstructionBusiness',
-      name: 'Onebbau',
+      name: 'SorgfaltBau',
       url: siteUrl,
       areaServed: locations,
       description: metaDescriptions[lang],
@@ -257,7 +257,7 @@ export default async function ServicesPage({ params }: { params: Params }) {
                 <div className="relative overflow-hidden rounded-[2.2rem] border border-white/[0.12] bg-white/[0.04] shadow-[0_30px_80px_rgba(0,0,0,0.35)]">
                   <div className="relative aspect-[4/5] sm:aspect-[16/10] xl:aspect-[6/7]">
                     <Image
-                      src="/uploads/onebbau_banner_mobile_1440x1800.webp"
+                      src="/uploads/sorgfaltbau_banner_mobile_1440x1800.webp"
                       alt={t('hero.imageAlt')}
                       fill
                       priority
@@ -265,7 +265,7 @@ export default async function ServicesPage({ params }: { params: Params }) {
                       className="object-cover sm:hidden"
                     />
                     <Image
-                      src="/uploads/onebbau_banner_desktop_1800x2100.webp"
+                      src="/uploads/sorgfaltbau_banner_desktop_1800x2100.webp"
                       alt={t('hero.imageAlt')}
                       fill
                       priority

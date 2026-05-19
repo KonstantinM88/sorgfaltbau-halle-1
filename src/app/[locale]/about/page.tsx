@@ -47,13 +47,13 @@ const valueIcons = [ShieldCheck, ClipboardCheck, MessageSquareMore];
 const audienceIcons = [Home, Hammer, CheckCircle2];
 
 const metaTitles: Record<string, string> = {
-  de: 'Über Onebbau | Bauunternehmen in Halle (Saale)',
-  ru: 'О компании Onebbau | Строительные работы в Halle (Saale)',
+  de: 'Über SorgfaltBau | Bauunternehmen in Halle (Saale)',
+  ru: 'О компании SorgfaltBau | Строительные работы в Halle (Saale)',
 };
 
 const metaDescriptions: Record<string, string> = {
-  de: 'Lernen Sie Onebbau kennen: Bau-, Renovierungs- und Handwerksarbeiten in Halle (Saale), klare Abläufe, persönliche Beratung und saubere Ausführung.',
-  ru: 'Узнайте больше о Onebbau: строительные и ремонтные работы в Halle (Saale), понятный процесс, личная консультация и аккуратное исполнение.',
+  de: 'Lernen Sie SorgfaltBau kennen: Bau-, Renovierungs- und Handwerksarbeiten in Halle (Saale), klare Abläufe, persönliche Beratung und saubere Ausführung.',
+  ru: 'Узнайте больше о SorgfaltBau: строительные и ремонтные работы в Halle (Saale), понятный процесс, личная консультация и аккуратное исполнение.',
 };
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const lang = locale === 'ru' ? 'ru' : 'de';
   const title = metaTitles[lang];
   const description = metaDescriptions[lang];
-  const aboutImage = '/uploads/onebbau_about_banner_desktop_1800x2100.webp';
+  const aboutImage = '/uploads/sorgfaltbau_about_banner_desktop_1800x2100.webp';
 
   return {
     title,
@@ -79,7 +79,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       type: 'website',
       locale: lang === 'de' ? 'de_DE' : 'ru_RU',
       url: `/${lang}/about`,
-      siteName: 'Onebbau',
+      siteName: 'SorgfaltBau',
       images: [
         {
           url: aboutImage,
@@ -110,7 +110,7 @@ export default async function AboutPage({ params }: { params: Params }) {
   const siteUrl = getSiteUrl();
   const pageUrl = `${siteUrl}/${lang}/about`;
   const phone = process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659';
-  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@onebbau.de';
+  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau-halle.de';
   const values = t.raw('values') as AboutPageSectionItem[];
   const processSteps = t.raw('process') as AboutPageProcess[];
   const audiences = t.raw('audiences') as AboutPageAudience[];
@@ -128,12 +128,12 @@ export default async function AboutPage({ params }: { params: Params }) {
       inLanguage: lang,
       isPartOf: {
         '@type': 'WebSite',
-        name: 'Onebbau',
+        name: 'SorgfaltBau',
         url: siteUrl,
       },
       about: {
         '@type': 'HomeAndConstructionBusiness',
-        name: 'Onebbau',
+        name: 'SorgfaltBau',
         url: siteUrl,
       },
     },
@@ -170,11 +170,11 @@ export default async function AboutPage({ params }: { params: Params }) {
     {
       '@context': 'https://schema.org',
       '@type': 'HomeAndConstructionBusiness',
-      name: 'Onebbau',
+      name: 'SorgfaltBau',
       url: siteUrl,
       email,
       telephone: phone,
-      image: `${siteUrl}/uploads/onebbau_about_banner_desktop_1800x2100.webp`,
+      image: `${siteUrl}/uploads/sorgfaltbau_about_banner_desktop_1800x2100.webp`,
       areaServed: [
         'Halle (Saale)',
         'Merseburg',
@@ -271,7 +271,7 @@ export default async function AboutPage({ params }: { params: Params }) {
                 <div className="relative overflow-hidden rounded-[2.2rem] border border-white/[0.12] bg-white/[0.04] shadow-[0_30px_80px_rgba(0,0,0,0.35)]">
                   <div className="relative aspect-[4/5] sm:aspect-[16/11] xl:aspect-[6/7]">
                     <Image
-                      src="/uploads/onebbau_about_banner_mobile_1440x1800.webp"
+                      src="/uploads/sorgfaltbau_about_banner_mobile_1440x1800.webp"
                       alt={t('hero.imageAlt')}
                       fill
                       priority
@@ -279,7 +279,7 @@ export default async function AboutPage({ params }: { params: Params }) {
                       className="object-cover object-center sm:hidden"
                     />
                     <Image
-                      src="/uploads/onebbau_about_banner_desktop_1800x2100.webp"
+                      src="/uploads/sorgfaltbau_about_banner_desktop_1800x2100.webp"
                       alt={t('hero.imageAlt')}
                       fill
                       priority

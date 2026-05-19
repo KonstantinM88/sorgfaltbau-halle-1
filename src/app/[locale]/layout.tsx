@@ -35,7 +35,7 @@ export async function generateMetadata({params}: {params: Params}): Promise<Meta
   const {locale} = await params;
   const t = await getTranslations({locale, namespace: 'metadata'});
   const baseUrl = getSiteUrl();
-  const heroImage = '/images/hero-main.webp';
+  const heroImage = '/uploads/hero-sb.webp';
 
   return {
     metadataBase: new URL(baseUrl),
@@ -50,14 +50,14 @@ export async function generateMetadata({params}: {params: Params}): Promise<Meta
       description: t('description'),
       locale: locale === 'de' ? 'de_DE' : 'ru_RU',
       type: 'website',
-      siteName: 'Onebbau',
+      siteName: 'SorgfaltBau',
       url: `/${locale}`,
       images: [
         {
           url: heroImage,
           width: 1200,
           height: 630,
-          alt: 'Onebbau'
+          alt: 'SorgfaltBau'
         }
       ]
     },

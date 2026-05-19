@@ -11,6 +11,9 @@ const IMAGE_SIZE = BMP_INFO_HEADER_SIZE + PIXEL_SIZE + MASK_SIZE;
 const FILE_SIZE = HEADER_SIZE + ENTRY_SIZE + IMAGE_SIZE;
 const ICON_OFFSET = HEADER_SIZE + ENTRY_SIZE;
 
+type Point = [number, number];
+type Rgba = [number, number, number, number];
+
 let cachedIcon: Buffer | null = null;
 
 function clamp(value: number, min = 0, max = 1) {
@@ -26,43 +29,16 @@ function smoothstep(edge0: number, edge1: number, x: number) {
   return t * t * (3 - 2 * t);
 }
 
-function sdRoundRect(
-  px: number,
-  py: number,
-  cx: number,
-  cy: number,
-  halfW: number,
-  halfH: number,
-  radius: number
-) {
+function sdRoundRect(px: number, py: number, cx: number, cy: number, halfW: number, halfH: number, radius: number) {
   const dx = Math.abs(px - cx) - (halfW - radius);
   const dy = Math.abs(py - cy) - (halfH - radius);
   const ox = Math.max(dx, 0);
   const oy = Math.max(dy, 0);
-  const outside = Math.hypot(ox, oy);
-  const inside = Math.min(Math.max(dx, dy), 0);
-  return outside + inside - radius;
+  return Math.hypot(ox, oy) + Math.min(Math.max(dx, dy), 0) - radius;
 }
 
-function sdBox(px: number, py: number, cx: number, cy: number, halfW: number, halfH: number) {
-  const dx = Math.abs(px - cx) - halfW;
-  const dy = Math.abs(py - cy) - halfH;
-  const ox = Math.max(dx, 0);
-  const oy = Math.max(dy, 0);
-  const outside = Math.hypot(ox, oy);
-  const inside = Math.min(Math.max(dx, dy), 0);
-  return outside + inside;
-}
-
-function blendPixel(
-  pixels: Uint8ClampedArray,
-  x: number,
-  y: number,
-  r: number,
-  g: number,
-  b: number,
-  a: number
-) {
+function blendPixel(pixels: Uint8ClampedArray, x: number, y: number, color: Rgba) {
+  const [r, g, b, a] = color;
   if (x < 0 || y < 0 || x >= SIZE || y >= SIZE || a <= 0) return;
 
   const idx = (y * SIZE + x) * 4;
@@ -71,14 +47,42 @@ function blendPixel(
   const outA = srcA + dstA * (1 - srcA);
   if (outA <= 0) return;
 
-  const outR = (r * srcA + pixels[idx] * dstA * (1 - srcA)) / outA;
-  const outG = (g * srcA + pixels[idx + 1] * dstA * (1 - srcA)) / outA;
-  const outB = (b * srcA + pixels[idx + 2] * dstA * (1 - srcA)) / outA;
-
-  pixels[idx] = Math.round(outR);
-  pixels[idx + 1] = Math.round(outG);
-  pixels[idx + 2] = Math.round(outB);
+  pixels[idx] = Math.round((r * srcA + pixels[idx] * dstA * (1 - srcA)) / outA);
+  pixels[idx + 1] = Math.round((g * srcA + pixels[idx + 1] * dstA * (1 - srcA)) / outA);
+  pixels[idx + 2] = Math.round((b * srcA + pixels[idx + 2] * dstA * (1 - srcA)) / outA);
   pixels[idx + 3] = Math.round(outA * 255);
+}
+
+function pointInPolygon(px: number, py: number, polygon: Point[]) {
+  let inside = false;
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const [xi, yi] = polygon[i];
+    const [xj, yj] = polygon[j];
+    const intersects = yi > py !== yj > py && px < ((xj - xi) * (py - yi)) / (yj - yi) + xi;
+    if (intersects) inside = !inside;
+  }
+  return inside;
+}
+
+function drawPolygon(pixels: Uint8ClampedArray, polygon: Point[], color: Rgba) {
+  const minX = Math.max(0, Math.floor(Math.min(...polygon.map(([x]) => x)) - 1));
+  const maxX = Math.min(SIZE - 1, Math.ceil(Math.max(...polygon.map(([x]) => x)) + 1));
+  const minY = Math.max(0, Math.floor(Math.min(...polygon.map(([, y]) => y)) - 1));
+  const maxY = Math.min(SIZE - 1, Math.ceil(Math.max(...polygon.map(([, y]) => y)) + 1));
+
+  for (let y = minY; y <= maxY; y++) {
+    for (let x = minX; x <= maxX; x++) {
+      let coverage = 0;
+      for (const [ox, oy] of [[0.25, 0.25], [0.75, 0.25], [0.25, 0.75], [0.75, 0.75]] as Point[]) {
+        if (pointInPolygon(x + ox, y + oy, polygon)) coverage += 0.25;
+      }
+      if (coverage > 0) blendPixel(pixels, x, y, [color[0], color[1], color[2], color[3] * coverage]);
+    }
+  }
+}
+
+function drawRect(pixels: Uint8ClampedArray, x0: number, y0: number, x1: number, y1: number, color: Rgba) {
+  drawPolygon(pixels, [[x0, y0], [x1, y0], [x1, y1], [x0, y1]], color);
 }
 
 function drawBackground(pixels: Uint8ClampedArray) {
@@ -86,88 +90,40 @@ function drawBackground(pixels: Uint8ClampedArray) {
     for (let x = 0; x < SIZE; x++) {
       const px = x + 0.5;
       const py = y + 0.5;
-
-      const d = sdRoundRect(px, py, 16, 16, 15, 15, 6.2);
-      const fillAlpha = 1 - smoothstep(-0.8, 0.8, d);
-      if (fillAlpha <= 0) continue;
+      const d = sdRoundRect(px, py, 16, 16, 15, 15, 7);
+      const fill = 1 - smoothstep(-0.7, 0.8, d);
+      if (fill <= 0) continue;
 
       const t = (x + y) / (2 * (SIZE - 1));
-      let r = mix(12, 28, t);
-      let g = mix(18, 33, t);
-      let b = mix(30, 46, t);
+      const glow = Math.exp(-((px - 8) ** 2 + (py - 8) ** 2) / 65);
+      blendPixel(pixels, x, y, [
+        mix(4, 14, t) + glow * 18,
+        mix(22, 42, t) + glow * 14,
+        mix(39, 67, t) + glow * 10,
+        fill,
+      ]);
 
-      const glow = Math.exp(-((px - 8) ** 2 + (py - 7) ** 2) / 58);
-      r += glow * 20;
-      g += glow * 10;
-      b += glow * 3;
-      blendPixel(pixels, x, y, r, g, b, fillAlpha);
-
-      const borderOuter = 1 - smoothstep(-1.6, 0.9, d);
-      const borderInner = 1 - smoothstep(-3.6, -1.0, d);
-      const border = clamp(borderOuter - borderInner);
-      if (border > 0) {
-        blendPixel(pixels, x, y, 234, 97, 26, border * 0.95);
-      }
+      const border = clamp((1 - smoothstep(-1.5, 0.7, d)) - (1 - smoothstep(-3.4, -1.0, d)));
+      if (border > 0) blendPixel(pixels, x, y, [242, 100, 34, border * 0.9]);
     }
   }
 }
 
 function drawLogo(pixels: Uint8ClampedArray) {
-  for (let y = 0; y < SIZE; y++) {
-    for (let x = 0; x < SIZE; x++) {
-      const px = x + 0.5;
-      const py = y + 0.5;
+  const white: Rgba = [248, 250, 252, 0.98];
+  const grey: Rgba = [154, 162, 164, 0.95];
+  const sand: Rgba = [217, 188, 162, 0.96];
+  const orange: Rgba = [242, 100, 34, 0.98];
 
-      // O ring (left)
-      const oDist = Math.hypot(px - 10.2, py - 16);
-      const oOuter = 1 - smoothstep(4.7, 6.0, oDist);
-      const oInner = smoothstep(2.8, 3.9, oDist);
-      const oRing = oOuter * oInner;
-      if (oRing > 0) {
-        blendPixel(pixels, x, y, 255, 133, 52, oRing * 0.98);
-        const angle = Math.atan2(py - 16, px - 10.2);
-        if (angle > -0.9 && angle < 0.25) {
-          blendPixel(pixels, x, y, 255, 244, 236, oRing * 0.3);
-        }
-      }
+  drawPolygon(pixels, [[7, 24], [7, 12], [16, 5], [16, 9], [10.5, 13.2], [10.5, 24]], white);
+  drawPolygon(pixels, [[14.2, 5.8], [28, 14], [28, 18.6], [16, 11.5], [16, 24], [12.2, 24], [12.2, 9.3]], white);
 
-      // B stem (right)
-      const stemD = sdBox(px, py, 17.1, 16, 1.25, 7.2);
-      const stem = 1 - smoothstep(-0.7, 0.7, stemD);
-      if (stem > 0) {
-        blendPixel(pixels, x, y, 246, 248, 251, stem * 0.96);
-      }
+  drawPolygon(pixels, [[5.2, 24], [5.2, 16.2], [9, 14.2], [9, 24]], grey);
+  drawPolygon(pixels, [[15.2, 24], [15.2, 13.2], [19.2, 15.6], [19.2, 24]], sand);
 
-      // B upper bowl
-      const tDist = Math.hypot(px - 19.5, py - 12.4);
-      const tOuter = 1 - smoothstep(3.0, 4.0, tDist);
-      const tInner = smoothstep(1.2, 2.2, tDist);
-      const tHalf = smoothstep(16.9, 17.9, px);
-      const tBowl = tOuter * tInner * tHalf;
-      if (tBowl > 0) {
-        blendPixel(pixels, x, y, 247, 249, 252, tBowl * 0.95);
-        if (py < 12.7) {
-          blendPixel(pixels, x, y, 255, 138, 60, tBowl * 0.35);
-        }
-      }
-
-      // B lower bowl
-      const bDist = Math.hypot(px - 19.5, py - 19.4);
-      const bOuter = 1 - smoothstep(3.0, 4.0, bDist);
-      const bInner = smoothstep(1.2, 2.2, bDist);
-      const bHalf = smoothstep(16.9, 17.9, px);
-      const bBowl = bOuter * bInner * bHalf;
-      if (bBowl > 0) {
-        blendPixel(pixels, x, y, 247, 249, 252, bBowl * 0.95);
-      }
-
-      // Accent dot
-      const dot = 1 - smoothstep(0.25, 1.35, Math.hypot(px - 23.8, py - 8.8));
-      if (dot > 0) {
-        blendPixel(pixels, x, y, 255, 132, 49, dot * 0.95);
-      }
-    }
-  }
+  drawRect(pixels, 22.0, 17.0, 23.2, 24.0, orange);
+  drawRect(pixels, 24.0, 17.9, 25.2, 24.0, orange);
+  drawRect(pixels, 26.0, 18.8, 27.2, 24.0, orange);
 }
 
 function createRgbaPixels() {
@@ -180,35 +136,30 @@ function createRgbaPixels() {
 function encodeIco(rgba: Uint8ClampedArray) {
   const out = Buffer.alloc(FILE_SIZE);
 
-  // ICONDIR
-  out.writeUInt16LE(0, 0); // reserved
-  out.writeUInt16LE(1, 2); // icon type
-  out.writeUInt16LE(1, 4); // image count
+  out.writeUInt16LE(0, 0);
+  out.writeUInt16LE(1, 2);
+  out.writeUInt16LE(1, 4);
+  out[6] = SIZE;
+  out[7] = SIZE;
+  out[8] = 0;
+  out[9] = 0;
+  out.writeUInt16LE(1, 10);
+  out.writeUInt16LE(32, 12);
+  out.writeUInt32LE(IMAGE_SIZE, 14);
+  out.writeUInt32LE(ICON_OFFSET, 18);
 
-  // ICONDIRENTRY
-  out[6] = SIZE; // width
-  out[7] = SIZE; // height
-  out[8] = 0; // palette colors
-  out[9] = 0; // reserved
-  out.writeUInt16LE(1, 10); // planes
-  out.writeUInt16LE(32, 12); // bit count
-  out.writeUInt32LE(IMAGE_SIZE, 14); // resource size
-  out.writeUInt32LE(ICON_OFFSET, 18); // resource offset
-
-  // BITMAPINFOHEADER
-  out.writeUInt32LE(BMP_INFO_HEADER_SIZE, ICON_OFFSET + 0);
+  out.writeUInt32LE(BMP_INFO_HEADER_SIZE, ICON_OFFSET);
   out.writeInt32LE(SIZE, ICON_OFFSET + 4);
-  out.writeInt32LE(SIZE * 2, ICON_OFFSET + 8); // color + mask height
-  out.writeUInt16LE(1, ICON_OFFSET + 12); // planes
-  out.writeUInt16LE(32, ICON_OFFSET + 14); // bpp
-  out.writeUInt32LE(0, ICON_OFFSET + 16); // BI_RGB
+  out.writeInt32LE(SIZE * 2, ICON_OFFSET + 8);
+  out.writeUInt16LE(1, ICON_OFFSET + 12);
+  out.writeUInt16LE(32, ICON_OFFSET + 14);
+  out.writeUInt32LE(0, ICON_OFFSET + 16);
   out.writeUInt32LE(PIXEL_SIZE, ICON_OFFSET + 20);
   out.writeInt32LE(0, ICON_OFFSET + 24);
   out.writeInt32LE(0, ICON_OFFSET + 28);
   out.writeUInt32LE(0, ICON_OFFSET + 32);
   out.writeUInt32LE(0, ICON_OFFSET + 36);
 
-  // BGRA pixels, bottom-up
   const pixelOffset = ICON_OFFSET + BMP_INFO_HEADER_SIZE;
   for (let y = 0; y < SIZE; y++) {
     const srcY = SIZE - 1 - y;
@@ -222,7 +173,6 @@ function encodeIco(rgba: Uint8ClampedArray) {
     }
   }
 
-  // AND mask stays zeroed in Buffer.alloc (fully opaque where alpha > 0)
   return out;
 }
 

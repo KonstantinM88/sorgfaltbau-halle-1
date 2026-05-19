@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const description = isRu
     ? (article.metaDescRu || article.excerptRu || article.excerpt)
     : (article.metaDesc || article.excerpt);
-  const fullTitle = `${title} — Onebbau`;
+  const fullTitle = `${title} — SorgfaltBau`;
 
   return {
     title: fullTitle,
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       type: 'article',
       locale: isRu ? 'ru_RU' : 'de_DE',
       url: `${siteUrl}/${locale}/news/${slug}`,
-      siteName: 'Onebbau',
+      siteName: 'SorgfaltBau',
       ...(article.coverUrl
         ? {
             images: [
@@ -124,12 +124,12 @@ export default async function ArticlePage({ params }: { params: Params }) {
       : {}),
     author: {
       '@type': 'Organization',
-      name: 'Onebbau',
+      name: 'SorgfaltBau',
       url: siteUrl,
     },
     publisher: {
       '@type': 'HomeAndConstructionBusiness',
-      name: 'Onebbau',
+      name: 'SorgfaltBau',
       address: {
         '@type': 'PostalAddress',
         streetAddress: COMPANY_STREET_ADDRESS,

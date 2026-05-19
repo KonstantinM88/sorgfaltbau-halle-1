@@ -9,8 +9,8 @@ import GalerieClient from './GalerieClient';
 type Params = Promise<{ locale: string }>;
 
 const metaTitles: Record<string, string> = {
-  de: 'Galerie — Onebbau | Bau- und Renovierungsprojekte in Halle (Saale)',
-  ru: 'Галерея — Onebbau | Строительные и ремонтные проекты в Галле (Заале)',
+  de: 'Galerie — SorgfaltBau | Bau- und Renovierungsprojekte in Halle (Saale)',
+  ru: 'Галерея — SorgfaltBau | Строительные и ремонтные проекты в Галле (Заале)',
 };
 
 const metaDescriptions: Record<string, string> = {
@@ -69,7 +69,7 @@ export default async function GaleriePage({ params }: { params: Params }) {
     numberOfItems: images.length,
     provider: {
       '@type': 'HomeAndConstructionBusiness',
-      name: 'Onebbau',
+      name: 'SorgfaltBau',
       address: {
         '@type': 'PostalAddress',
         streetAddress: COMPANY_STREET_ADDRESS,
@@ -113,8 +113,8 @@ export default async function GaleriePage({ params }: { params: Params }) {
 
 //   return {
 //     title: isRu
-//       ? 'Галерея — Onebbau | Наши проекты в Halle (Saale)'
-//       : 'Galerie — Onebbau | Unsere Projekte in Halle (Saale)',
+//       ? 'Галерея — SorgfaltBau | Наши проекты в Halle (Saale)'
+//       : 'Galerie — SorgfaltBau | Unsere Projekte in Halle (Saale)',
 //     description: isRu
 //       ? 'Посмотрите наши строительные и ремонтные проекты в Галле (Заале) и окрестностях.'
 //       : 'Entdecken Sie unsere Bau- und Renovierungsprojekte in Halle (Saale) und Umgebung.',

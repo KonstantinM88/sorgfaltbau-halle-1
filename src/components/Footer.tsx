@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
+import Image from 'next/image';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { COMPANY_MAP_URL, COMPANY_POSTAL_CITY, COMPANY_STREET_ADDRESS } from '@/lib/contact';
 
@@ -15,7 +16,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="mb-4">
-              <span className="text-2xl font-heading"><span className="text-brand-orange">One</span><span className="text-white">bbau</span></span>
+              <Image
+                src="/uploads/logo-sb-footer.webp"
+                alt="SorgfaltBau"
+                width={172}
+                height={119}
+                className="h-auto w-44 rounded-md"
+              />
             </div>
             <p className="text-sm leading-relaxed text-anthracite-400">
               {t('footer.description')}
@@ -72,9 +79,9 @@ export default function Footer() {
                 <Phone size={15} className="text-brand-orange flex-shrink-0" />
                 {process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659'}
               </a>
-              <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL || 'info@onebbau.de'}`} className="flex items-center gap-3 text-sm text-anthracite-400 hover:text-brand-orange transition-colors">
+              <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL || 'info@sorgfaltbau-halle.de'}`} className="flex items-center gap-3 text-sm text-anthracite-400 hover:text-brand-orange transition-colors">
                 <Mail size={15} className="text-brand-orange flex-shrink-0" />
-                {process.env.NEXT_PUBLIC_EMAIL || 'service@onebbau.de'}
+                {process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau-halle.de'}
               </a>
               <a
                 href={COMPANY_MAP_URL}
@@ -104,7 +111,7 @@ export default function Footer() {
       <div className="border-t border-anthracite-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <p className="text-center text-xs text-anthracite-500">
-            © {new Date().getFullYear()} Onebbau. {t('footer.rights')}
+            © {new Date().getFullYear()} SorgfaltBau. {t('footer.rights')}
           </p>
         </div>
       </div>
@@ -136,8 +143,8 @@ export default function Footer() {
 //           <div className="sm:col-span-2 lg:col-span-1">
 //             <div className="mb-4">
 //               <span className="text-2xl font-heading">
-//                 <span className="text-brand-orange">One</span>
-//                 <span className="text-white">bbau</span>
+//                 <span className="text-brand-orange">Sorgfalt</span>
+//                 <span className="text-white">Bau</span>
 //               </span>
 //             </div>
 //             <p className="text-sm leading-relaxed text-anthracite-400">
@@ -195,9 +202,9 @@ export default function Footer() {
 //                 <Phone size={15} className="text-brand-orange flex-shrink-0" />
 //                 {process.env.NEXT_PUBLIC_PHONE || '+49 123 456789'}
 //               </a>
-//               <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL || 'info@onebbau.de'}`} className="flex items-center gap-3 text-sm text-anthracite-400 hover:text-brand-orange transition-colors">
+//               <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL || 'info@sorgfaltbau-halle.de'}`} className="flex items-center gap-3 text-sm text-anthracite-400 hover:text-brand-orange transition-colors">
 //                 <Mail size={15} className="text-brand-orange flex-shrink-0" />
-//                 {process.env.NEXT_PUBLIC_EMAIL || 'info@onebbau.de'}
+//                 {process.env.NEXT_PUBLIC_EMAIL || 'info@sorgfaltbau-halle.de'}
 //               </a>
 //               <div className="flex items-center gap-3 text-sm text-anthracite-400">
 //                 <MapPin size={15} className="text-brand-orange flex-shrink-0" />
@@ -222,7 +229,7 @@ export default function Footer() {
 //       <div className="border-t border-anthracite-800">
 //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
 //           <p className="text-center text-xs text-anthracite-500">
-//             © {new Date().getFullYear()} Onebbau. {t('footer.rights')}
+//             © {new Date().getFullYear()} SorgfaltBau. {t('footer.rights')}
 //           </p>
 //         </div>
 //       </div>

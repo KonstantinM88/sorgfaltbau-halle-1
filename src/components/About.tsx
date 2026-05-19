@@ -5,7 +5,7 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import type { CSSProperties, MouseEvent as ReactMouseEvent } from 'react';
 
-const ABOUT_BANNER_SRC = '/uploads/onebbau_about_banner.webp';
+const ABOUT_BANNER_SRC = '/uploads/sorgfaltbau_about_banner.webp';
 
 export default function About() {
   const t = useTranslations('about');
@@ -99,7 +99,7 @@ export default function About() {
             >
               <motion.img
                 src={ABOUT_BANNER_SRC}
-                alt="Onebbau Banner"
+                alt="SorgfaltBau Banner"
                 className="h-72 w-full object-cover will-change-transform sm:h-80 lg:h-96"
                 whileHover={{ scale: 1.09, filter: 'saturate(1.08) brightness(1.03)' }}
                 whileTap={{ scale: 1.09, filter: 'saturate(1.08) brightness(1.03)' }}

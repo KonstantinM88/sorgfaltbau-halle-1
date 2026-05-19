@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Onebbau – Bau- und Handwerksleistungen in Halle (Saale)",
+    "title": "SorgfaltBau – Bau- und Handwerksleistungen in Halle (Saale)",
     "description": "Zuverlässige Bau-, Renovierungs- und Gartenarbeiten in Halle (Saale). Qualität, Termintreue und faire Preise."
   },
   "nav": {
@@ -13,10 +13,10 @@
     "news": "Neuigkeiten"
   },
   "hero": {
-    "title": "Onebbau – Bau- und Handwerks­leistungen",
+    "title": "SorgfaltBau – Bau- und Handwerks­leistungen",
     "titleHighlight": "in Halle (Saale)",
     "subtitle": "Zuverlässige Bau-, Renovierungs- und Gartenarbeiten aus einer Hand",
-    "description": "Onebbau ist Ihr kompetenter Partner für Bau-, Renovierungs- und Handwerksarbeiten in Halle (Saale) und Umgebung. Wir stehen für saubere Arbeit, Termintreue und faire Preise.",
+    "description": "SorgfaltBau ist Ihr kompetenter Partner für Bau-, Renovierungs- und Handwerksarbeiten in Halle (Saale) und Umgebung. Wir stehen für saubere Arbeit, Termintreue und faire Preise.",
     "cta": "Kostenlose Beratung anfragen",
     "badge1": "Zuverlässig",
     "badge2": "Sauber",
@@ -24,8 +24,8 @@
   },
   "about": {
     "sectionLabel": "Über uns",
-    "title": "Über Onebbau",
-    "text1": "Onebbau ist ein zuverlässiges Bau- und Handwerksunternehmen mit Sitz in Halle (Saale). Wir arbeiten für Privatkunden, Vermieter und kleine Unternehmen und bieten ein breites Spektrum an Bau-, Renovierungs- und Außenarbeiten.",
+    "title": "Über SorgfaltBau",
+    "text1": "SorgfaltBau ist ein zuverlässiges Bau- und Handwerksunternehmen mit Sitz in Halle (Saale). Wir arbeiten für Privatkunden, Vermieter und kleine Unternehmen und bieten ein breites Spektrum an Bau-, Renovierungs- und Außenarbeiten.",
     "text2": "Unser Anspruch ist es, jedes Projekt sorgfältig, sauber und termingerecht auszuführen. Persönliche Beratung, individuelle Lösungen und transparente Preise stehen bei uns im Mittelpunkt.",
     "stat1Value": "10+",
     "stat1Label": "Jahre Erfahrung",
@@ -65,7 +65,7 @@
   },
   "advantages": {
     "sectionLabel": "Vorteile",
-    "title": "Warum Onebbau?",
+    "title": "Warum SorgfaltBau?",
     "subtitle": "Was uns von anderen unterscheidet",
     "experience": "Erfahrung & Fachkompetenz",
     "experienceDesc": "Langjährige Erfahrung in Bau und Handwerk – für Ergebnisse, die überzeugen.",
@@ -117,7 +117,7 @@
     }
   },
   "footer": {
-    "description": "Onebbau – Bau- und Handwerksleistungen in Halle (Saale). Qualität, Zuverlässigkeit und saubere Arbeit.",
+    "description": "SorgfaltBau – Bau- und Handwerksleistungen in Halle (Saale). Qualität, Zuverlässigkeit und saubere Arbeit.",
     "quickLinks": "Schnellzugriff",
     "contactInfo": "Kontaktdaten",
     "legal": "Rechtliches",

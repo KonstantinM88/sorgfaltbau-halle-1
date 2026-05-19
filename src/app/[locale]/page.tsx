@@ -36,13 +36,13 @@ export async function generateMetadata({params}: {params: Params}): Promise<Meta
       locale: locale === 'de' ? 'de_DE' : 'ru_RU',
       type: 'website',
       url: `/${locale}`,
-      siteName: 'Onebbau',
+      siteName: 'SorgfaltBau',
       images: [
         {
-          url: '/images/hero-main.webp',
+          url: '/uploads/hero-sb.webp',
           width: 1200,
           height: 630,
-          alt: 'Onebbau',
+          alt: 'SorgfaltBau',
         },
       ],
     },
@@ -50,7 +50,7 @@ export async function generateMetadata({params}: {params: Params}): Promise<Meta
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
-      images: ['/images/hero-main.webp'],
+      images: ['/uploads/hero-sb.webp'],
     },
     robots: {
       index: true,
@@ -63,12 +63,12 @@ export default async function Home({params}: {params: Params}) {
   const {locale} = await params;
   const baseUrl = getSiteUrl();
   const phone = process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659';
-  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@onebbau.de';
+  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau-halle.de';
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'HomeAndConstructionBusiness',
-    name: 'Onebbau',
+    name: 'SorgfaltBau',
     url: `${baseUrl}/${locale}`,
     telephone: phone,
     email,
@@ -81,7 +81,7 @@ export default async function Home({params}: {params: Params}) {
       addressRegion: 'Sachsen-Anhalt',
       addressCountry: 'DE',
     },
-    image: `${baseUrl}/images/hero-main.webp`,
+    image: `${baseUrl}/uploads/hero-sb.webp`,
   };
 
   return (

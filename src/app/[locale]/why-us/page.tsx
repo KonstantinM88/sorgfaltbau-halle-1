@@ -39,13 +39,13 @@ const reasonIcons = [Award, Clock, Sparkles, Banknote, Users];
 const proofIcons = [ShieldCheck, MessageSquareMore, Home];
 
 const metaTitles: Record<string, string> = {
-  de: 'Warum Onebbau | Vorteile, Ablauf und Arbeitsweise',
-  ru: 'Почему Onebbau | Преимущества, подход и организация работ',
+  de: 'Warum SorgfaltBau | Vorteile, Ablauf und Arbeitsweise',
+  ru: 'Почему SorgfaltBau | Преимущества, подход и организация работ',
 };
 
 const metaDescriptions: Record<string, string> = {
-  de: 'Warum Kunden Onebbau wählen: klare Kommunikation, saubere Ausführung, realistische Preise und verlässliche Abläufe bei Bau- und Renovierungsarbeiten in Halle (Saale).',
-  ru: 'Почему клиенты выбирают Onebbau: понятная коммуникация, аккуратное исполнение, реалистичная цена и надёжная организация строительных и ремонтных работ в Halle (Saale).',
+  de: 'Warum Kunden SorgfaltBau wählen: klare Kommunikation, saubere Ausführung, realistische Preise und verlässliche Abläufe bei Bau- und Renovierungsarbeiten in Halle (Saale).',
+  ru: 'Почему клиенты выбирают SorgfaltBau: понятная коммуникация, аккуратное исполнение, реалистичная цена и надёжная организация строительных и ремонтных работ в Halle (Saale).',
 };
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const lang = locale === 'ru' ? 'ru' : 'de';
   const title = metaTitles[lang];
   const description = metaDescriptions[lang];
-  const image = '/uploads/onebbau_logo_banner_desktop_1800x2100.webp';
+  const image = '/uploads/sorgfaltbau_logo_banner_desktop_1800x2100.webp';
 
   return {
     title,
@@ -71,7 +71,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       type: 'website',
       locale: lang === 'de' ? 'de_DE' : 'ru_RU',
       url: `/${lang}/why-us`,
-      siteName: 'Onebbau',
+      siteName: 'SorgfaltBau',
       images: [
         {
           url: image,
@@ -119,7 +119,7 @@ export default async function WhyUsPage({ params }: { params: Params }) {
       inLanguage: lang,
       isPartOf: {
         '@type': 'WebSite',
-        name: 'Onebbau',
+        name: 'SorgfaltBau',
         url: siteUrl,
       },
     },
@@ -156,7 +156,7 @@ export default async function WhyUsPage({ params }: { params: Params }) {
     {
       '@context': 'https://schema.org',
       '@type': 'HomeAndConstructionBusiness',
-      name: 'Onebbau',
+      name: 'SorgfaltBau',
       url: siteUrl,
       description: metaDescriptions[lang],
       knowsAbout: [
@@ -237,7 +237,7 @@ export default async function WhyUsPage({ params }: { params: Params }) {
                 <div className="relative overflow-hidden rounded-[2.2rem] border border-white/[0.12] bg-white/[0.04] shadow-[0_30px_80px_rgba(0,0,0,0.35)]">
                   <div className="relative aspect-[4/5] sm:aspect-[16/10] xl:aspect-[6/7]">
                     <Image
-                      src="/uploads/onebbau_logo_banner_mobile_1440x1800.webp"
+                      src="/uploads/sorgfaltbau_logo_banner_mobile_1440x1800.webp"
                       alt={t('hero.imageAlt')}
                       fill
                       priority
@@ -245,7 +245,7 @@ export default async function WhyUsPage({ params }: { params: Params }) {
                       className="object-cover sm:hidden"
                     />
                     <Image
-                      src="/uploads/onebbau_logo_banner_desktop_1800x2100.webp"
+                      src="/uploads/sorgfaltbau_logo_banner_desktop_1800x2100.webp"
                       alt={t('hero.imageAlt')}
                       fill
                       priority

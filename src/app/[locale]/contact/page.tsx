@@ -29,13 +29,13 @@ type ContactPageCard = {
 const channelIcons = [PhoneCall, Mail, MessageCircle];
 
 const metaTitles: Record<string, string> = {
-  de: 'Kontakt zu Onebbau | Anfrage für Bau- und Renovierungsarbeiten',
-  ru: 'Контакт с Onebbau | Запрос на строительные и ремонтные работы',
+  de: 'Kontakt zu SorgfaltBau | Anfrage für Bau- und Renovierungsarbeiten',
+  ru: 'Контакт с SorgfaltBau | Запрос на строительные и ремонтные работы',
 };
 
 const metaDescriptions: Record<string, string> = {
-  de: 'Kontaktieren Sie Onebbau für Bau-, Renovierungs- und Außenarbeiten in Halle (Saale) und Umgebung. Telefon, E-Mail, WhatsApp und unverbindliche Projektanfrage.',
-  ru: 'Свяжитесь с Onebbau по строительным, ремонтным и наружным работам в Halle (Saale) и окрестностях. Телефон, e-mail, WhatsApp и форма запроса проекта.',
+  de: 'Kontaktieren Sie SorgfaltBau für Bau-, Renovierungs- und Außenarbeiten in Halle (Saale) und Umgebung. Telefon, E-Mail, WhatsApp und unverbindliche Projektanfrage.',
+  ru: 'Свяжитесь с SorgfaltBau по строительным, ремонтным и наружным работам в Halle (Saale) и окрестностях. Телефон, e-mail, WhatsApp и форма запроса проекта.',
 };
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const lang = locale === 'ru' ? 'ru' : 'de';
   const title = metaTitles[lang];
   const description = metaDescriptions[lang];
-  const image = '/uploads/onebbau_contact_banner_desktop_1800x2100.webp';
+  const image = '/uploads/sorgfaltbau_contact_banner_desktop_1800x2100.webp';
 
   return {
     title,
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       type: 'website',
       locale: lang === 'de' ? 'de_DE' : 'ru_RU',
       url: `/${lang}/contact`,
-      siteName: 'Onebbau',
+      siteName: 'SorgfaltBau',
       images: [
         {
           url: image,
@@ -93,7 +93,7 @@ export default async function ContactPage({ params }: { params: Params }) {
   const pageUrl = `${siteUrl}/${lang}/contact`;
   const phone = process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659';
   const secondaryPhone = '+49 177 33077538';
-  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@onebbau.de';
+  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau-halle.de';
   const phoneToTel = (value: string) => value.replace(/\s+/g, '');
   const phoneToWhatsApp = (value: string) => value.replace(/\D/g, '');
   const channels = t.raw('channels') as ContactPageCard[];
@@ -112,7 +112,7 @@ export default async function ContactPage({ params }: { params: Params }) {
       inLanguage: lang,
       isPartOf: {
         '@type': 'WebSite',
-        name: 'Onebbau',
+        name: 'SorgfaltBau',
         url: siteUrl,
       },
     },
@@ -149,7 +149,7 @@ export default async function ContactPage({ params }: { params: Params }) {
     {
       '@context': 'https://schema.org',
       '@type': 'HomeAndConstructionBusiness',
-      name: 'Onebbau',
+      name: 'SorgfaltBau',
       url: siteUrl,
       email,
       telephone: phone,
@@ -242,7 +242,7 @@ export default async function ContactPage({ params }: { params: Params }) {
                 <div className="relative overflow-hidden rounded-[2.2rem] border border-white/[0.12] bg-white/[0.04] shadow-[0_30px_80px_rgba(0,0,0,0.35)]">
                   <div className="relative aspect-[4/5] sm:aspect-[16/10] xl:aspect-[6/7]">
                     <Image
-                      src="/uploads/onebbau_contact_banner_mobile_1440x1800.webp"
+                      src="/uploads/sorgfaltbau_contact_banner_mobile_1440x1800.webp"
                       alt={t('hero.imageAlt')}
                       fill
                       priority
@@ -250,7 +250,7 @@ export default async function ContactPage({ params }: { params: Params }) {
                       className="object-cover sm:hidden"
                     />
                     <Image
-                      src="/uploads/onebbau_contact_banner_desktop_1800x2100.webp"
+                      src="/uploads/sorgfaltbau_contact_banner_desktop_1800x2100.webp"
                       alt={t('hero.imageAlt')}
                       fill
                       priority

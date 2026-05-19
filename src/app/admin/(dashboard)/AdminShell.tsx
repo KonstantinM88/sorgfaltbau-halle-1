@@ -129,8 +129,8 @@ export default function AdminShell({ children, username }: AdminShellProps) {
       <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 flex-col border-r border-white/10 bg-[#0f141f]/95 px-4 py-5 text-white shadow-[0_25px_80px_rgba(8,12,20,0.45)] backdrop-blur-xl lg:flex xl:w-72">
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
               <div className="flex items-center gap-2 text-xl font-bold">
-                <span className="text-brand-orange">One</span>
-                <span>bbau</span>
+                <span className="text-brand-orange">Sorgfalt</span>
+                <span>Bau</span>
               </div>
               <p className="mt-1 text-xs text-slate-400">Admin Workspace</p>
             </div>
@@ -182,7 +182,7 @@ export default function AdminShell({ children, username }: AdminShellProps) {
 
               <div className="text-center">
                 <p className="text-sm font-bold text-slate-900">
-                  <span className="text-brand-orange">One</span>bbau
+                  SorgfaltBau
                 </p>
                 <p className="text-[11px] text-slate-500">Admin</p>
               </div>
@@ -213,7 +213,7 @@ export default function AdminShell({ children, username }: AdminShellProps) {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-lg font-bold">
-                  <span className="text-brand-orange">One</span>bbau
+                  SorgfaltBau
                 </p>
                 <p className="text-xs text-slate-400">Navigation</p>
               </div>
@@ -367,8 +367,8 @@ export default function AdminShell({ children, username }: AdminShellProps) {
 //       <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 flex-col border-r border-white/10 bg-[#0f141f]/95 px-4 py-5 text-white shadow-[0_25px_80px_rgba(8,12,20,0.45)] backdrop-blur-xl lg:flex xl:w-72">
 //             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
 //               <div className="flex items-center gap-2 text-xl font-bold">
-//                 <span className="text-brand-orange">One</span>
-//                 <span>bbau</span>
+//                 <span className="text-brand-orange">Sorgfalt</span>
+//                 <span>Bau</span>
 //               </div>
 //               <p className="mt-1 text-xs text-slate-400">Admin Workspace</p>
 //             </div>
@@ -420,7 +420,7 @@ export default function AdminShell({ children, username }: AdminShellProps) {
 
 //               <div className="text-center">
 //                 <p className="text-sm font-bold text-slate-900">
-//                   <span className="text-brand-orange">One</span>bbau
+//                   SorgfaltBau
 //                 </p>
 //                 <p className="text-[11px] text-slate-500">Admin</p>
 //               </div>
@@ -451,7 +451,7 @@ export default function AdminShell({ children, username }: AdminShellProps) {
 //             <div className="flex items-center justify-between">
 //               <div>
 //                 <p className="text-lg font-bold">
-//                   <span className="text-brand-orange">One</span>bbau
+//                   SorgfaltBau
 //                 </p>
 //                 <p className="text-xs text-slate-400">Navigation</p>
 //               </div>

@@ -10,13 +10,13 @@ import NewsListClient from './NewsListClient';
 type Params = Promise<{ locale: string }>;
 
 const metaTitles: Record<string, string> = {
-  de: 'Neuigkeiten — Onebbau | Aktuelles aus Bau und Renovierung',
-  ru: 'Новости — Onebbau | Актуальное из строительства и ремонта',
+  de: 'Neuigkeiten — SorgfaltBau | Aktuelles aus Bau und Renovierung',
+  ru: 'Новости — SorgfaltBau | Актуальное из строительства и ремонта',
 };
 
 const metaDescriptions: Record<string, string> = {
-  de: 'Aktuelle Nachrichten, Tipps und Projektberichte von Onebbau – Ihrem Bauunternehmen in Halle (Saale).',
-  ru: 'Актуальные новости, советы и отчёты о проектах от Onebbau – вашей строительной компании в Галле (Заале).',
+  de: 'Aktuelle Nachrichten, Tipps und Projektberichte von SorgfaltBau – Ihrem Bauunternehmen in Halle (Saale).',
+  ru: 'Актуальные новости, советы и отчёты о проектах от SorgfaltBau – вашей строительной компании в Галле (Заале).',
 };
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
@@ -72,7 +72,7 @@ export default async function NewsPage({ params }: { params: Params }) {
     url: `${siteUrl}/${lang}/news`,
     publisher: {
       '@type': 'HomeAndConstructionBusiness',
-      name: 'Onebbau',
+      name: 'SorgfaltBau',
       address: {
         '@type': 'PostalAddress',
         streetAddress: COMPANY_STREET_ADDRESS,

@@ -28,14 +28,14 @@ async function sendContactEmail(params: {
     throw new Error('RESEND_API_KEY is not configured');
   }
 
-  const to = process.env.CONTACT_TO_EMAIL || 'service@onnebau.de';
-  const from = process.env.CONTACT_FROM_EMAIL || 'Onebbau <onboarding@resend.dev>';
+  const to = process.env.CONTACT_TO_EMAIL || 'service@sorgfaltbau-halle.de';
+  const from = process.env.CONTACT_FROM_EMAIL || 'SorgfaltBau <onboarding@resend.dev>';
   const localeLabel = params.locale === 'ru' ? 'RU' : 'DE';
   const phoneValue = params.phone || '—';
 
   const subject = `Neue Anfrage (${localeLabel}) — ${params.name}`;
   const text = [
-    'Neue Kontaktanfrage von onebbau.de',
+    'Neue Kontaktanfrage von sorgfaltbau-halle.de',
     '',
     `Name: ${params.name}`,
     `E-Mail: ${params.email}`,
@@ -47,7 +47,7 @@ async function sendContactEmail(params: {
   ].join('\n');
 
   const html = `
-    <h2>Neue Kontaktanfrage von onebbau.de</h2>
+    <h2>Neue Kontaktanfrage von sorgfaltbau-halle.de</h2>
     <p><strong>Name:</strong> ${escapeHtml(params.name)}</p>
     <p><strong>E-Mail:</strong> ${escapeHtml(params.email)}</p>
     <p><strong>Telefon:</strong> ${escapeHtml(phoneValue)}</p>

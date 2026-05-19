@@ -6,14 +6,14 @@ import Footer from '@/components/Footer';
 type Params = Promise<{ locale: string }>;
 
 const metaDescriptions: Record<string, string> = {
-  de: 'Rechtliche Anbieterkennzeichnung (Impressum) von Onebbau.',
-  ru: 'Юридическая информация (Impressum) компании Onebbau.',
+  de: 'Rechtliche Anbieterkennzeichnung (Impressum) von SorgfaltBau.',
+  ru: 'Юридическая информация (Impressum) компании SorgfaltBau.',
 };
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale } = await params;
   const lang = locale === 'ru' ? 'ru' : 'de';
-  const title = 'Impressum — Onebbau';
+  const title = 'Impressum — SorgfaltBau';
   const description = metaDescriptions[lang];
 
   return {
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 export default function Impressum() {
   const t = useTranslations('impressum');
   const phone = process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659';
-  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@onebbau.de';
+  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau-halle.de';
   const content = t('content', { phone, email });
 
   return (

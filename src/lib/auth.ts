@@ -2,7 +2,7 @@ import { SignJWT, jwtVerify } from 'jose';
 import { cookies } from 'next/headers';
 
 const SECRET = new TextEncoder().encode(
-  process.env.ADMIN_JWT_SECRET || 'onebbau-default-secret-change-me-2024'
+  process.env.ADMIN_JWT_SECRET || 'sorgfaltbau-default-secret-change-me-2024'
 );
 
 const COOKIE_NAME = 'admin-token';
@@ -33,6 +33,6 @@ export async function getSession() {
 
 export function validateCredentials(username: string, password: string) {
   const adminUser = process.env.ADMIN_USERNAME || 'admin';
-  const adminPass = process.env.ADMIN_PASSWORD || 'onebbau2024';
+  const adminPass = process.env.ADMIN_PASSWORD || 'sorgfaltbau2024';
   return username === adminUser && password === adminPass;
 }

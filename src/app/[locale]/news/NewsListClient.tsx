@@ -34,7 +34,7 @@ type Props = {
 const t = {
   de: {
     title: 'Neuigkeiten',
-    subtitle: 'Aktuelles von Onebbau',
+    subtitle: 'Aktuelles von SorgfaltBau',
     description: 'Tipps, Projektberichte und News aus der Welt des Bauens und Renovierens.',
     back: 'Startseite',
     readMore: 'Weiterlesen',
@@ -45,7 +45,7 @@ const t = {
   },
   ru: {
     title: 'Новости',
-    subtitle: 'Актуальное от Onebbau',
+    subtitle: 'Актуальное от SorgfaltBau',
     description: 'Советы, отчёты о проектах и новости из мира строительства и ремонта.',
     back: 'Главная',
     readMore: 'Подробнее',

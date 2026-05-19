@@ -123,7 +123,7 @@ export default function Contact() {
               </div>
 
               <a
-                href={`mailto:${process.env.NEXT_PUBLIC_EMAIL || 'info@onebbau.de'}`}
+                href={`mailto:${process.env.NEXT_PUBLIC_EMAIL || 'info@sorgfaltbau-halle.de'}`}
                 className="flex items-center gap-4 group"
               >
                 <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center group-hover:bg-brand-orange transition-colors">
@@ -132,7 +132,7 @@ export default function Contact() {
                 <div>
                   <p className="text-xs text-anthracite-400 uppercase tracking-wider font-medium">{t('email')}</p>
                   <p className="text-anthracite-800 font-medium">
-                    {process.env.NEXT_PUBLIC_EMAIL || 'info@onebbau.de'}
+                    {process.env.NEXT_PUBLIC_EMAIL || 'info@sorgfaltbau-halle.de'}
                   </p>
                 </div>
               </a>

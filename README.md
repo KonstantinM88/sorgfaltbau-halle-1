@@ -1,6 +1,6 @@
-# Onebbau – Bau- und Handwerksleistungen
+# SorgfaltBau – Bau- und Handwerksleistungen
 
-Moderne, professionelle Website für Onebbau – Bau- und Handwerksunternehmen in Halle (Saale).
+Moderne, professionelle Website für SorgfaltBau – Bau- und Handwerksunternehmen in Halle (Saale).
 
 ## Tech Stack
 
