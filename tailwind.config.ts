@@ -10,9 +10,10 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          orange: '#E8611A',
-          'orange-dark': '#C8510F',
-          'orange-light': '#FF7A33',
+          orange: '#071F35',
+          'orange-dark': '#041524',
+          'orange-light': '#123A5A',
+          accent: '#F26422',
         },
         anthracite: {
           50: '#f6f6f7',

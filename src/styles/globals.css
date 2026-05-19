@@ -7,7 +7,7 @@
 :root {
   --font-heading: 'DM Serif Display', serif;
   --font-body: 'DM Sans', sans-serif;
-  --brand-orange: #E8622C;
+  --brand-orange: #071F35;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -15,7 +15,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 body { font-family: var(--font-body); color: #2D2D2D; background: #FFFFFF; -webkit-font-smoothing: antialiased; }
 h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
 
-::selection { background: rgba(232, 98, 44, 0.2); color: #1A1A2E; }
+::selection { background: rgba(7, 31, 53, 0.18); color: #1A1A2E; }
 *:focus-visible { outline: 2px solid var(--brand-orange); outline-offset: 2px; }
 
 ::-webkit-scrollbar { width: 8px; }

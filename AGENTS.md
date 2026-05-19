@@ -76,6 +76,12 @@ Current SorgfaltBau assets:
 
 Old `onebbau_*` assets were removed from `public/uploads`.
 
+## Brand Colors
+
+- Primary interactive color uses the logo navy blue `#071F35`.
+- Existing Tailwind class names still use `brand-orange` for compatibility, but the token now maps to navy blue.
+- Orange from the logo is preserved as `brand-accent` / `#F26422` for small accents if needed.
+
 ## Environment
 
 `.env` is ignored and contains secrets. Do not print secret values in chat.
@@ -133,6 +139,20 @@ After changing `ADMIN_JWT_SECRET`, old admin cookies become invalid. Clear brows
 - Removed stale `.next` cache when it caused type/cache errors.
 - Disabled webpack filesystem cache in `next.config.mjs` due memory allocation failures.
 - Scripts use webpack mode and `--max-old-space-size=4096`.
+
+### Brand Color Update
+
+- Switched CTA/buttons/active interactive states from orange to logo navy blue via Tailwind brand tokens.
+- Updated global focus and selection color to the same navy blue.
+
+### Testimonials Visual Update
+
+- Restyled the testimonials/reviews section with a branded navy gradient background.
+- Improved text/card contrast for readability.
+- Added a subtle animated light-wave sweep when the section enters the viewport.
+- Light-wave sweep repeats every 3 seconds while the reviews section remains in view.
+- Testimonial service badges use fixed grid sizing so two-line labels align with other cards.
+- Fixed broken mojibake quote characters in testimonial text rendering.
 
 ## Known Notes
 
