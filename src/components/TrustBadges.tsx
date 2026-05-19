@@ -16,24 +16,32 @@ export default function TrustBadges() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
-    <section ref={ref} className="relative -mt-16 z-20 pb-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+    <section ref={ref} className="relative z-20 -mt-16 pb-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-3">
           {badges.map(({ key, Icon }, i) => (
             <motion.div
               key={key}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl shadow-black/5 hover:shadow-2xl hover:shadow-black/10 transition-all duration-300 border border-anthracite-100/50 text-center group"
+              className="group relative min-h-[13.5rem] overflow-hidden rounded-2xl border border-white/70 bg-white p-6 text-center shadow-2xl shadow-[#071f35]/10 transition-all duration-300 hover:-translate-y-1 hover:border-brand-orange/35 hover:shadow-[#071f35]/20 sm:p-8"
             >
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-brand-orange/10 text-brand-orange mb-4 group-hover:bg-brand-orange group-hover:text-white transition-all duration-300">
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-orange via-brand-light to-brand-accent" />
+              <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full border border-brand-orange/10 bg-brand-orange/[0.04]" />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(145deg,rgba(7,31,53,0.08)_0%,transparent_46%,rgba(242,100,34,0.06)_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+              <div className="relative mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-orange text-white shadow-lg shadow-[#071f35]/20 ring-8 ring-brand-orange/10 transition-all duration-300 group-hover:scale-105 group-hover:bg-brand-light">
                 <Icon size={26} strokeWidth={1.5} />
               </div>
-              <h3 className="font-heading text-lg sm:text-xl text-anthracite-800 mb-2">
+              <span className="absolute left-6 top-6 font-heading text-4xl leading-none text-brand-orange/[0.08] transition-colors duration-300 group-hover:text-brand-orange/[0.13]">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+
+              <h3 className="relative mb-2 font-heading text-lg text-anthracite-900 sm:text-xl">
                 {t(`${key}.title`)}
               </h3>
-              <p className="text-sm sm:text-base text-anthracite-500 leading-relaxed">
+              <p className="relative mx-auto max-w-[18rem] text-sm leading-relaxed text-anthracite-600 sm:text-base">
                 {t(`${key}.text`)}
               </p>
             </motion.div>

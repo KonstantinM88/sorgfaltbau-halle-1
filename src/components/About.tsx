@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { CheckCircle2, ShieldCheck } from 'lucide-react';
 import type { CSSProperties, MouseEvent as ReactMouseEvent } from 'react';
 
 const ABOUT_BANNER_SRC = '/uploads/logo-sb.webp';
@@ -65,14 +66,45 @@ export default function About() {
             <p className="text-base sm:text-lg text-anthracite-600 leading-relaxed">
               {t('text2')}
             </p>
-            {/* Decorative accent */}
-            <div className="mt-8 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center">
-                <span className="text-brand-orange font-heading text-xl">10+</span>
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-anthracite-800">Jahre Erfahrung</p>
-                <p className="text-xs text-anthracite-500">im Bau- und Handwerksbereich</p>
+            <div className="mt-8 overflow-hidden rounded-2xl border border-brand-orange/15 bg-white shadow-xl shadow-brand-orange/10">
+              <div className="relative p-5 sm:p-6">
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-orange via-brand-light to-brand-accent" />
+                <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-brand-orange/[0.06]" />
+
+                <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center">
+                  <div className="relative flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-brand-orange text-white shadow-lg shadow-brand-orange/25">
+                    <span className="font-heading text-3xl leading-none">
+                      {t('experience.value')}
+                    </span>
+                    <ShieldCheck
+                      className="absolute -bottom-2 -right-2 h-9 w-9 rounded-full bg-white p-1.5 text-brand-orange shadow-md"
+                      strokeWidth={1.7}
+                    />
+                  </div>
+
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-orange">
+                      {t('experience.eyebrow')}
+                    </p>
+                    <p className="mt-1 font-heading text-2xl text-anthracite-900">
+                      {t('experience.title')}
+                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-anthracite-600 sm:text-base">
+                      {t('experience.subtitle')}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="relative mt-5 grid gap-2 sm:grid-cols-2">
+                  <div className="flex items-start gap-2 rounded-xl bg-anthracite-50 px-3 py-2.5 text-sm text-anthracite-700">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" />
+                    <span>{t('experience.proof1')}</span>
+                  </div>
+                  <div className="flex items-start gap-2 rounded-xl bg-anthracite-50 px-3 py-2.5 text-sm text-anthracite-700">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" />
+                    <span>{t('experience.proof2')}</span>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>

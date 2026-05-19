@@ -37,7 +37,7 @@ export default function Testimonials() {
       />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 xl:grid-cols-[0.8fr_1.2fr] xl:items-start xl:gap-12">
+        <div className="grid grid-cols-1 gap-10 xl:grid-cols-[minmax(20rem,0.82fr)_minmax(0,1.18fr)] xl:items-start xl:gap-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -74,15 +74,15 @@ export default function Testimonials() {
             </div>
           </motion.div>
 
-          <div className="grid min-w-0 grid-cols-1 gap-4 md:grid-cols-2 2xl:grid-cols-3">
+          <div className="grid min-w-0 grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2">
             {items.map((item, index) => (
               <motion.article
                 key={item.name + item.service}
                 initial={{ opacity: 0, y: 28 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.08 + index * 0.08 }}
-                className={`group relative min-w-0 overflow-hidden rounded-[1.75rem] border border-white/18 bg-white/[0.095] p-6 shadow-xl shadow-black/[0.22] backdrop-blur-md transition-colors duration-300 hover:border-white/30 hover:bg-white/[0.13] ${
-                  index === items.length - 1 ? 'md:col-span-2 2xl:col-span-1' : ''
+                className={`group relative flex min-w-0 flex-col overflow-hidden rounded-[1.75rem] border border-white/18 bg-white/[0.095] p-5 shadow-xl shadow-black/[0.22] backdrop-blur-md transition-colors duration-300 hover:border-white/30 hover:bg-white/[0.13] sm:p-6 ${
+                  index === items.length - 1 ? 'md:col-span-2 lg:col-span-1 xl:col-span-2' : ''
                 }`}
               >
                 <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent opacity-70" />
@@ -102,8 +102,8 @@ export default function Testimonials() {
                   &ldquo;{item.text}&rdquo;
                 </p>
 
-                <div className="mt-6 border-t border-white/15 pt-5">
-                  <div className="flex items-center justify-between gap-4">
+                <div className="mt-auto border-t border-white/15 pt-5">
+                  <div className="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-end sm:gap-4">
                     <div>
                       <p className="font-semibold text-white">{item.name}</p>
                       <div className="mt-1 flex items-center gap-1.5 text-sm text-slate-200/80">
@@ -111,7 +111,7 @@ export default function Testimonials() {
                         <span>{item.location}</span>
                       </div>
                     </div>
-                    <span className="max-w-[9rem] text-right text-xs leading-5 text-slate-200/70">
+                    <span className="max-w-[10rem] text-left text-xs leading-5 text-slate-200/70 sm:text-right">
                       {item.scope}
                     </span>
                   </div>

@@ -38,8 +38,16 @@
   "about": {
     "sectionTitle": "Über uns",
     "title": "Über SorgfaltBau",
-    "text1": "SorgfaltBau ist ein zuverlässiges Bau- und Handwerksunternehmen mit Sitz in Halle (Saale). Wir arbeiten für Privatkunden, Vermieter und kleine Unternehmen und bieten ein breites Spektrum an Bau-, Renovierungs- und Außenarbeiten.",
-    "text2": "Unser Anspruch ist es, jedes Projekt sorgfältig, sauber und termingerecht auszuführen. Persönliche Beratung, individuelle Lösungen und transparente Preise stehen bei uns im Mittelpunkt."
+    "text1": "SorgfaltBau ist ein Bau- und Renovierungsunternehmen aus Halle (Saale), auf das Sie sich vom ersten Gespräch bis zur Übergabe verlassen können. Wir arbeiten für Privatkunden, Vermieter und kleine Unternehmen und übernehmen Renovierung, Ausbau, Montage sowie Außenarbeiten.",
+    "text2": "Zuverlässigkeit bedeutet für uns: klare Angebote, saubere Organisation, Ordnung auf der Baustelle und verbindliche Termine. Wir besprechen Details im Voraus, empfehlen praktikable Lösungen und führen die Arbeiten so aus, dass das Ergebnis langlebig, nachvollziehbar und sauber bleibt.",
+    "experience": {
+      "value": "10+",
+      "eyebrow": "Erfahrung, die Vertrauen schafft",
+      "title": "Jahre praktische Arbeit",
+      "subtitle": "im Bau-, Renovierungs-, Ausbau- und Handwerksbereich.",
+      "proof1": "Klare Abläufe ohne unnötige Überraschungen",
+      "proof2": "Saubere Ausführung mit Verantwortung fürs Ergebnis"
+    }
   },
   "aboutPage": {
     "hero": {
@@ -345,6 +353,7 @@
   },
   "services": {
     "sectionTitle": "Unsere Leistungen",
+    "itemsCount": "{count} Leistungen",
     "construction": {
       "title": "Bau & Renovierung",
       "items": [
@@ -372,57 +381,59 @@
   },
   "whyUs": {
     "sectionTitle": "Warum SorgfaltBau?",
+    "intro": "Bei Bau- und Renovierungsarbeiten zählt nicht nur das sichtbare Ergebnis. Entscheidend sind verlässliche Absprachen, saubere Abläufe und ein Partner, der Verantwortung übernimmt.",
+    "cardProof": "Verlässlich geplant",
     "items": [
       {
-        "title": "Erfahrung & Fachkompetenz",
-        "text": "Langjährige Erfahrung in Bau und Handwerk – für Ergebnisse, die überzeugen."
+        "title": "Erfahrung, die Sicherheit gibt",
+        "text": "Praxis aus Bau, Renovierung und Handwerk hilft uns, typische Risiken früh zu erkennen und die Umsetzung realistisch zu planen."
       },
       {
-        "title": "Zuverlässigkeit & Termintreue",
-        "text": "Wir halten Absprachen ein und arbeiten stets termingerecht."
+        "title": "Verlässliche Termine",
+        "text": "Absprachen, Zeitfenster und Arbeitsschritte werden klar kommuniziert, damit Sie Planungssicherheit haben."
       },
       {
-        "title": "Saubere Arbeitsweise",
-        "text": "Nach getaner Arbeit hinterlassen wir Ihre Räume sauber und ordentlich."
+        "title": "Sauberkeit auf der Baustelle",
+        "text": "Wir schützen bewohnte Räume, arbeiten ordentlich und verlassen den Bereich so, dass er schnell wieder nutzbar ist."
       },
       {
-        "title": "Faire & transparente Preise",
-        "text": "Keine versteckten Kosten – Sie wissen vorher, was es kostet."
+        "title": "Transparente Kosten",
+        "text": "Sie erhalten nachvollziehbare Einschätzungen statt vager Versprechen. Material, Aufwand und mögliche Zusatzarbeiten werden offen besprochen."
       },
       {
         "title": "Persönliche Beratung vor Ort",
-        "text": "Wir beraten Sie direkt bei Ihnen in Halle (Saale) und Umgebung."
+        "text": "Wir schauen uns Ihr Projekt in Halle (Saale) und Umgebung an, beantworten Fragen direkt und empfehlen eine Lösung, die zur Situation passt."
       }
     ]
   },
   "testimonials": {
     "eyebrow": "Kundenstimmen",
     "sectionTitle": "Wie unsere Arbeit nach Projektende bewertet wird",
-    "intro": "Gerade bei Renovierungen im bewohnten Zuhause oder bei Arbeiten zwischen zwei Mietern zählen Zuverlässigkeit, saubere Abläufe und eine klare Kommunikation. Genau darauf beziehen sich diese Rückmeldungen.",
+    "intro": "Unsere Kunden achten nicht nur auf das fertige Ergebnis, sondern auch auf den Weg dorthin: klare Absprachen, verlässliche Termine, Rücksicht auf die Räume und eine ehrliche Kommunikation während der Ausführung.",
     "highlightKicker": "Aus der Praxis",
     "highlightTitle": "Viele Aufträge kommen über Empfehlungen",
-    "highlightText": "Besonders bei Badezimmern, Mietwohnungen und Außenarbeiten werden wir oft weiterempfohlen, weil Ablauf, Sauberkeit und Preisabsprachen für unsere Kunden nachvollziehbar bleiben.",
+    "highlightText": "Viele Empfehlungen entstehen nach Renovierungen in bewohnten Wohnungen, vor Neuvermietungen und bei Außenarbeiten. Kunden schätzen, dass wir den Ablauf vorab erklären, Termine einhalten und den Arbeitsbereich ordentlich übergeben.",
     "items": [
       {
-        "name": "Familie K.",
+        "name": "Familie Schneider",
         "location": "Halle-Süd",
         "service": "Badrenovierung",
         "scope": "Altbau, 12 Arbeitstage",
-        "text": "Der Ablauf war klar organisiert, Rückfragen wurden schnell beantwortet und am Ende war das Bad jeden Abend wieder ordentlich nutzbar. Gerade im bewohnten Zustand war uns diese Rücksicht sehr wichtig."
+        "text": "Der Ablauf und die Termine wurden vor Beginn klar besprochen. Die Wohnung blieb während der Arbeiten bewohnbar, der Bereich wurde täglich ordentlich hinterlassen und das Ergebnis entsprach genau der Absprache."
       },
       {
-        "name": "Herr B.",
+        "name": "Herr Krause",
         "location": "Halle-Trotha",
         "service": "Trockenbau & Malerarbeiten",
         "scope": "Mietwohnung vor Neuvermietung",
-        "text": "Wir brauchten eine schnelle und saubere Lösung zwischen zwei Mietern. Besichtigung, Angebot und Ausführung liefen ohne unnötige Verzögerung, und kleinere Nacharbeiten wurden direkt mit erledigt."
+        "text": "Die Wohnung musste zügig für die nächste Vermietung vorbereitet werden. Nach der Besichtigung kam ein verständliches Angebot, die Arbeiten liefen ohne unnötige Pausen und kleine Fragen wurden direkt vor Ort geklärt."
       },
       {
-        "name": "Frau N.",
+        "name": "Frau Müller",
         "location": "Merseburg",
         "service": "Terrasse & Zaun",
         "scope": "Außenbereich am Reihenhaus",
-        "text": "Das Angebot war nachvollziehbar, Termine wurden eingehalten und es gab keine überraschenden Zusatzkosten. Besonders hilfreich war, dass wir bei Material und Ausführung mehrere sinnvolle Optionen erklärt bekommen haben."
+        "text": "Für Terrasse und Zaun wurden uns mehrere sinnvolle Varianten erklärt. Material und Kosten waren vorab nachvollziehbar, die Termine wurden eingehalten und der Außenbereich wurde sauber übergeben."
       }
     ]
   },

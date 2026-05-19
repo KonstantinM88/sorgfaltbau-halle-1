@@ -18,6 +18,7 @@ import {
   Construction,
   Leaf,
   Scissors,
+  ArrowUpRight,
 } from 'lucide-react';
 
 const constructionIcons = [
@@ -29,14 +30,24 @@ const gardenIcons = [Leaf, Scissors];
 
 export default function Services() {
   const t = useTranslations('services');
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.1 });
 
   const constructionItems = t.raw('construction.items') as string[];
   const gardenItems = t.raw('garden.items') as string[];
 
   return (
-    <section id="services" ref={ref} className="py-20 sm:py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" ref={ref} className="relative overflow-hidden bg-[#f7f9fb] py-20 sm:py-28">
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,#ffffff_0%,#f7f9fb_48%,#eef4f8_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,31,53,0.035)_1px,transparent_1px),linear-gradient(180deg,rgba(7,31,53,0.03)_1px,transparent_1px)] bg-[size:56px_56px]" />
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-1/2 top-0 h-full w-1/3 rotate-12 bg-gradient-to-r from-transparent via-white/90 to-transparent blur-2xl"
+        initial={{ x: '-20%', opacity: 0 }}
+        animate={inView ? { x: ['-20%', '520%'], opacity: [0, 0.55, 0] } : { x: '-20%', opacity: 0 }}
+        transition={{ duration: 2.2, ease: 'easeInOut', repeat: inView ? Infinity : 0, repeatDelay: 2.2 }}
+      />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,7 +58,7 @@ export default function Services() {
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl text-anthracite-900">
             {t('sectionTitle')}
           </h2>
-          <div className="mt-4 mx-auto w-16 h-1 bg-brand-orange rounded-full" />
+          <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-brand-orange" />
         </motion.div>
 
         {/* Construction & Renovation */}
@@ -57,16 +68,26 @@ export default function Services() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-12"
         >
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-brand-orange/10 flex items-center justify-center">
-              <Hammer size={18} className="text-brand-orange" />
+          <div className="mb-6 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-orange text-white shadow-lg shadow-brand-orange/20">
+                <Hammer size={20} />
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-orange/70">
+                  SorgfaltBau
+                </p>
+                <h3 className="font-heading text-xl text-anthracite-900 sm:text-2xl">
+                  {t('construction.title')}
+                </h3>
+              </div>
             </div>
-            <h3 className="font-heading text-xl sm:text-2xl text-anthracite-800">
-              {t('construction.title')}
-            </h3>
+            <div className="hidden rounded-full border border-brand-orange/15 bg-white px-4 py-2 text-sm font-semibold text-brand-orange shadow-sm shadow-brand-orange/10 sm:block">
+              {t('itemsCount', { count: constructionItems.length })}
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
             {constructionItems.map((item: string, i: number) => {
               const Icon = constructionIcons[i] || Hammer;
               return (
@@ -75,13 +96,27 @@ export default function Services() {
                   initial={{ opacity: 0, y: 15 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.15 + i * 0.04 }}
-                  className="flex items-center gap-3 p-4 sm:p-5 rounded-xl border border-anthracite-100 hover:border-brand-orange/30 hover:bg-brand-orange/[0.02] transition-all duration-200 group"
+                  whileHover={{ y: -6, scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                  className="group relative min-h-[5.75rem] overflow-hidden rounded-2xl border border-anthracite-100/80 bg-white p-4 shadow-lg shadow-brand-orange/[0.04] transition-colors duration-300 hover:border-brand-orange/25 hover:shadow-xl hover:shadow-brand-orange/10 sm:p-5"
                 >
-                  <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-brand-orange/8 flex items-center justify-center group-hover:bg-brand-orange/15 transition-colors">
-                    <Icon size={18} className="text-brand-orange" strokeWidth={1.5} />
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-orange/35 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(7,31,53,0.08)_0%,transparent_44%,rgba(242,100,34,0.06)_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="relative flex items-center gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand-orange/8 text-brand-orange transition-all duration-300 group-hover:bg-brand-orange group-hover:text-white group-hover:shadow-lg group-hover:shadow-brand-orange/20">
+                      <Icon size={19} strokeWidth={1.6} />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <span className="block text-[15px] font-semibold leading-snug text-anthracite-800 transition-colors duration-300 group-hover:text-brand-orange sm:text-base">
+                        {item}
+                      </span>
+                    </div>
+                    <div className="flex h-8 w-8 shrink-0 translate-x-2 items-center justify-center rounded-full bg-brand-orange/8 text-brand-orange opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                      <ArrowUpRight size={16} strokeWidth={1.8} />
+                    </div>
                   </div>
-                  <span className="text-sm sm:text-base text-anthracite-700 font-medium">
-                    {item}
+                  <span className="pointer-events-none absolute bottom-3 right-4 font-heading text-4xl leading-none text-brand-orange/[0.05] transition-colors duration-300 group-hover:text-brand-orange/[0.1]">
+                    {String(i + 1).padStart(2, '0')}
                   </span>
                 </motion.div>
               );
@@ -95,16 +130,26 @@ export default function Services() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-brand-orange/10 flex items-center justify-center">
-              <Leaf size={18} className="text-brand-orange" />
+          <div className="mb-6 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-orange text-white shadow-lg shadow-brand-orange/20">
+                <Leaf size={20} />
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-orange/70">
+                  SorgfaltBau
+                </p>
+                <h3 className="font-heading text-xl text-anthracite-900 sm:text-2xl">
+                  {t('garden.title')}
+                </h3>
+              </div>
             </div>
-            <h3 className="font-heading text-xl sm:text-2xl text-anthracite-800">
-              {t('garden.title')}
-            </h3>
+            <div className="hidden rounded-full border border-brand-orange/15 bg-white px-4 py-2 text-sm font-semibold text-brand-orange shadow-sm shadow-brand-orange/10 sm:block">
+              {t('itemsCount', { count: gardenItems.length })}
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
             {gardenItems.map((item: string, i: number) => {
               const Icon = gardenIcons[i] || Leaf;
               return (
@@ -113,13 +158,27 @@ export default function Services() {
                   initial={{ opacity: 0, y: 15 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.5 + i * 0.05 }}
-                  className="flex items-center gap-3 p-4 sm:p-5 rounded-xl border border-anthracite-100 hover:border-brand-orange/30 hover:bg-brand-orange/[0.02] transition-all duration-200 group"
+                  whileHover={{ y: -6, scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                  className="group relative min-h-[5.75rem] overflow-hidden rounded-2xl border border-anthracite-100/80 bg-white p-4 shadow-lg shadow-brand-orange/[0.04] transition-colors duration-300 hover:border-brand-orange/25 hover:shadow-xl hover:shadow-brand-orange/10 sm:p-5"
                 >
-                  <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-brand-orange/8 flex items-center justify-center group-hover:bg-brand-orange/15 transition-colors">
-                    <Icon size={18} className="text-brand-orange" strokeWidth={1.5} />
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-orange/35 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(7,31,53,0.08)_0%,transparent_44%,rgba(242,100,34,0.06)_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="relative flex items-center gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand-orange/8 text-brand-orange transition-all duration-300 group-hover:bg-brand-orange group-hover:text-white group-hover:shadow-lg group-hover:shadow-brand-orange/20">
+                      <Icon size={19} strokeWidth={1.6} />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <span className="block text-[15px] font-semibold leading-snug text-anthracite-800 transition-colors duration-300 group-hover:text-brand-orange sm:text-base">
+                        {item}
+                      </span>
+                    </div>
+                    <div className="flex h-8 w-8 shrink-0 translate-x-2 items-center justify-center rounded-full bg-brand-orange/8 text-brand-orange opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                      <ArrowUpRight size={16} strokeWidth={1.8} />
+                    </div>
                   </div>
-                  <span className="text-sm sm:text-base text-anthracite-700 font-medium">
-                    {item}
+                  <span className="pointer-events-none absolute bottom-3 right-4 font-heading text-4xl leading-none text-brand-orange/[0.05] transition-colors duration-300 group-hover:text-brand-orange/[0.1]">
+                    {String(i + 1).padStart(2, '0')}
                   </span>
                 </motion.div>
               );

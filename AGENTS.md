@@ -153,6 +153,28 @@ After changing `ADMIN_JWT_SECRET`, old admin cookies become invalid. Clear brows
 - Light-wave sweep repeats every 3 seconds while the reviews section remains in view.
 - Testimonial service badges use fixed grid sizing so two-line labels align with other cards.
 - Fixed broken mojibake quote characters in testimonial text rendering.
+- Adapted testimonial card grid across mobile, tablet, and desktop so cards do not become too narrow.
+- Rewrote testimonial comments and changed reviewer names in Russian and German.
+- Rewrote testimonial intro/highlight copy in Russian and German to sound more trustworthy and professional.
+
+### Trust Badges Visual Update
+
+- Restyled the three hero trust cards with branded navy accents, stronger icon blocks, subtle numbering, and hover depth.
+
+### Services Visual Update
+
+- Restyled the homepage services section with a subtle grid background, animated light sweep, stronger category headers, service counts, numbered cards, icon hover states, and motion hover lift.
+
+### Why Us Visual And Copy Update
+
+- Restyled the homepage why-us section with the same branded background system, light sweep, numbered cards, icon hover states, and centered final row.
+- Rewrote the five why-us reasons in Russian and German to sound more specific, reliable, and process-focused.
+- Aligned the why-us card proof marker at the bottom of each card for symmetric layout.
+
+### About Copy Update
+
+- Rewrote homepage about text in Russian and German to sound more reliable, premium, and process-focused.
+- Upgraded the homepage about experience badge into a localized trust signal with 10+ years, proof points, and branded styling.
 
 ## Known Notes
 
