@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 
 const HERO_IMAGE_SRC = '/uploads/hero-sb.webp';
+const HERO_MOBILE_IMAGE_SRC = '/uploads/hero-mobile-sb.webp';
 
 export default function Hero() {
   const t = useTranslations('hero');
@@ -34,22 +35,22 @@ export default function Hero() {
           muted
           playsInline
           preload="auto"
-          poster={HERO_IMAGE_SRC}
-          className="absolute inset-0 h-full w-full object-cover object-[68%_center]"
+          poster={HERO_MOBILE_IMAGE_SRC}
+          className="absolute inset-0 h-full w-full object-cover object-center"
         >
-          <source src="/uploads/hero-b-video.webm" type="video/webm" />
-          <source src="/uploads/hero-b-video.mp4" type="video/mp4" />
+          <source src="/uploads/hero-b-video-mobile-720x960.mp4" type="video/mp4" />
+          <source src="/uploads/hero-mobile-sb.webm" type="video/webm" />
         </video>
 
         {/* Fallback image (if video fails) */}
         <noscript>
           <Image
-            src={HERO_IMAGE_SRC}
+            src={HERO_MOBILE_IMAGE_SRC}
             alt=""
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[68%_center]"
+            className="object-cover object-center"
           />
         </noscript>
 

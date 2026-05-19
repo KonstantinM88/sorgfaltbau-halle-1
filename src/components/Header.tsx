@@ -66,7 +66,7 @@ export default function Header() {
               className="group inline-flex items-center"
               aria-label="SorgfaltBau"
             >
-              <span className={`rounded-md px-2 py-1 shadow-lg transition-colors ${
+              <span className={`rounded-md px-1.5 py-0.5 shadow-lg transition-colors sm:px-2 sm:py-1 ${
                 useSolidHeader ? 'bg-white' : 'bg-white/90 shadow-black/20'
               }`}>
                 <Image
@@ -75,7 +75,7 @@ export default function Header() {
                   width={156}
                   height={83}
                   priority
-                  className="h-11 w-auto sm:h-12"
+                  className="h-8 w-auto sm:h-12"
                 />
               </span>
             </a>
@@ -167,7 +167,7 @@ export default function Header() {
                 alt="SorgfaltBau"
                 width={150}
                 height={79}
-                className="h-11 w-auto"
+                className="h-9 w-auto"
               />
               <button
                 onClick={() => setIsMobileOpen(false)}

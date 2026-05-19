@@ -64,6 +64,10 @@ Do not revert this to Prisma 6 style.
 Current SorgfaltBau assets:
 
 - `/uploads/hero-sb.webp`
+- `/uploads/hero-mobile-sb.webp`
+- `/uploads/hero-mobile-sb.webm`
+- `/uploads/hero-mobile-sb.mp4`
+- `/uploads/hero-b-video-mobile-720x960.mp4` - current primary mobile hero video
 - `/uploads/hero-b-video.webm`
 - `/uploads/hero-b-video.mp4`
 - `/uploads/logo-sb-header.webp`
@@ -103,6 +107,7 @@ After changing `ADMIN_JWT_SECRET`, old admin cookies become invalid. Clear brows
 
 - Converted uploaded `hero-sb.png` to `hero-sb.webp`.
 - Converted `hero-b-video.mp4` to `hero-b-video.webm`.
+- Created optimized mobile hero video/poster assets in portrait format.
 - Cropped `logo-sb.png` into header/footer webp logo assets.
 - Copied old section banners to new `sorgfaltbau_*` names so existing pages do not break.
 - Generated a new branded `favicon.ico` route.
