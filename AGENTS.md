@@ -91,6 +91,7 @@ Important variables:
 - `DATABASE_URL`
 - `NEXT_PUBLIC_SITE_URL`
 - `NEXT_PUBLIC_PHONE`
+- `NEXT_PUBLIC_SECONDARY_PHONE`
 - `NEXT_PUBLIC_EMAIL`
 - `CONTACT_TO_EMAIL`
 - `CONTACT_FROM_EMAIL`
@@ -164,6 +165,7 @@ After changing `ADMIN_JWT_SECRET`, old admin cookies become invalid. Clear brows
 ### Services Visual Update
 
 - Restyled the homepage services section with a subtle grid background, animated light sweep, stronger category headers, service counts, numbered cards, icon hover states, and motion hover lift.
+- Expanded the service catalog in Russian and German with missing work types: facade/armoring, natural stone, roof repairs, parking/drainage, water collectors, openings, welding/metal structures, chimney insulation, turnkey interior/bath works, wood floor restoration, stairs, mowing, emergency trees, wood splitting/stacking, and earth/garden work.
 
 ### Why Us Visual And Copy Update
 
@@ -175,6 +177,30 @@ After changing `ADMIN_JWT_SECRET`, old admin cookies become invalid. Clear brows
 
 - Rewrote homepage about text in Russian and German to sound more reliable, premium, and process-focused.
 - Upgraded the homepage about experience badge into a localized trust signal with 10+ years, proof points, and branded styling.
+
+### FAQ Visual And Copy Update
+
+- Restyled the FAQ section to match the services/why-us standard: light grid background, animated light sweep, stronger question cards, numbered markers, and branded CTA.
+- Added a small process checklist in the FAQ sidebar to clarify how questions, site review, scope, materials, timing, and extra work are handled.
+- Rewrote FAQ copy in Russian and German to sound more specific, reliable, and process-focused.
+
+### Contact Visual And Copy Update
+
+- Restyled the homepage contact section as a branded dark CTA block with a navy gradient, subtle grid, animated light sweep, direct-contact panel, and stronger form card.
+- Added contact proof points, clearer form intro/note copy, map CTA text, and better RU/DE request wording.
+- Added `brand.light` Tailwind token so existing `brand-light` hover/gradient utilities render correctly.
+
+### Contact Details Update
+
+- Updated company address to `Waldmeisterstraße 19, 06120 Halle (Saale)`.
+- Updated public phone handling to support primary `+49 176 623 76 777` and secondary `+49 176 237 95 681` numbers.
+- Centralized address and phone fallbacks in `src/lib/contact.ts` and applied them to public pages, JSON-LD, legal pages, footer, and contact sections.
+
+### Legal Pages Update
+
+- Updated Impressum and Datenschutzerklärung owner data to `Iabangi Gheorghi`.
+- Updated Gewerbeanmeldung details from the new document: Stadt Halle (Saale), Gemeindekennzahl `15002000`, Aktenzeichen `23/1258.01`, registered/beginning date `21.11.2024`, activity `Hausmeisterservice, Bauhelfer`.
+- Replaced previous provider-identification wording with current `§ 5 DDG` wording and added legal reference links for Datenschutz, § 5 DDG, § 36 VSBG, and EU consumer redress bodies.
 
 ## Known Notes
 

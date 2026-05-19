@@ -13,6 +13,7 @@ const config: Config = {
           orange: '#071F35',
           'orange-dark': '#041524',
           'orange-light': '#123A5A',
+          light: '#123A5A',
           accent: '#F26422',
         },
         anthracite: {

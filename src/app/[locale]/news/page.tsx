@@ -1,7 +1,7 @@
 // src/app/[locale]/news/page.tsx
 import type { Metadata } from 'next';
 import { prisma } from '@/lib/prisma';
-import { COMPANY_STREET_ADDRESS } from '@/lib/contact';
+import { COMPANY_POSTAL_CODE, COMPANY_STREET_ADDRESS } from '@/lib/contact';
 import { getSiteUrl } from '@/lib/site';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -76,7 +76,7 @@ export default async function NewsPage({ params }: { params: Params }) {
       address: {
         '@type': 'PostalAddress',
         streetAddress: COMPANY_STREET_ADDRESS,
-        postalCode: '06130',
+        postalCode: COMPANY_POSTAL_CODE,
         addressLocality: 'Halle (Saale)',
         addressRegion: 'Sachsen-Anhalt',
         addressCountry: 'DE',

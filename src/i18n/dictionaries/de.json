@@ -71,10 +71,22 @@
       ]
     },
     "stats": [
-      { "value": "10+", "label": "Jahre Erfahrung im Bau- und Handwerksumfeld" },
-      { "value": "200+", "label": "umgesetzte Arbeiten und Renovierungsprojekte" },
-      { "value": "Halle +", "label": "fester Schwerpunkt in Halle (Saale) und Umgebung" },
-      { "value": "Direkt", "label": "persönliche Abstimmung statt anonymer Weitergabe" }
+      {
+        "value": "10+",
+        "label": "Jahre Erfahrung im Bau- und Handwerksumfeld"
+      },
+      {
+        "value": "200+",
+        "label": "umgesetzte Arbeiten und Renovierungsprojekte"
+      },
+      {
+        "value": "Halle +",
+        "label": "fester Schwerpunkt in Halle (Saale) und Umgebung"
+      },
+      {
+        "value": "Direkt",
+        "label": "persönliche Abstimmung statt anonymer Weitergabe"
+      }
     ],
     "story": {
       "title": "Wer wir sind und wie wir arbeiten",
@@ -85,7 +97,14 @@
     "serviceArea": {
       "title": "Unser Einsatzgebiet",
       "text": "Wir arbeiten schwerpunktmäßig in Halle (Saale) und übernehmen Projekte in nahegelegenen Orten abhängig von Umfang, Terminlage und Anfahrt. Dadurch können wir Besichtigungen, Rückfragen und Nacharbeiten ohne unnötige Verzögerung organisieren.",
-      "locations": ["Halle (Saale)", "Merseburg", "Kabelsketal", "Landsberg", "Teutschenthal", "Bad Lauchstädt"]
+      "locations": [
+        "Halle (Saale)",
+        "Merseburg",
+        "Kabelsketal",
+        "Landsberg",
+        "Teutschenthal",
+        "Bad Lauchstädt"
+      ]
     },
     "valuesTitle": "Worauf Kunden sich bei SorgfaltBau verlassen",
     "valuesIntro": "Gerade bei Renovierungen entscheidet nicht nur das Endergebnis, sondern auch der Weg dorthin. Deshalb sind für uns nicht nur handwerkliche Qualität, sondern auch Ordnung, Transparenz und saubere Absprachen Teil der eigentlichen Leistung.",
@@ -157,12 +176,12 @@
       "imageText": "Gerade bei Renovierungen im bewohnten Zustand oder zwischen zwei Mietern ist ein sinnvoll organisierter Ablauf fast genauso wichtig wie das spätere Ergebnis.",
       "highlights": [
         "Persönliche Besichtigung und ehrliche Einschätzung vor Projektbeginn",
-        "Leistungsbereiche von Trockenbau und Malerarbeiten bis Terrasse und Zaun",
+        "Leistungen von Innenausbau und Fassaden bis Naturstein, Pflasterflächen, Dach und Gartenarbeiten",
         "Saubere Abstimmung bei Material, Reihenfolge und realistischen Zeitfenstern"
       ]
     },
-    "catalogConstructionText": "Innenausbau, Renovierung, Montage und handwerkliche Arbeiten für Wohnungen, Häuser und kleinere Objekte.",
-    "catalogGardenText": "Außenarbeiten, Gartenpflege und Leistungen rund um Bereiche, die schnell wieder nutzbar sein sollen.",
+    "catalogConstructionText": "Bau, Renovierung, Fassaden, Naturstein, Dach, Pflasterflächen, Metallarbeiten und Innenausbau für Wohnungen, Häuser und Außenbereiche.",
+    "catalogGardenText": "Garten-, Erd- und Pflegearbeiten von Rasenpflege bis Baumschnitt, Fällung und sauberem Abtransport.",
     "intro": {
       "title": "Welche Leistungen wir konkret übernehmen",
       "paragraph1": "Unser Spektrum reicht von einzelnen handwerklichen Arbeiten bis zu zusammenhängenden Renovierungsprojekten. Viele Aufträge kombinieren mehrere Bereiche, etwa Trockenbau, Spachtel- und Malerarbeiten, Bodenbeläge oder Montageleistungen.",
@@ -203,7 +222,14 @@
     "serviceArea": {
       "title": "Wo wir Leistungen anbieten",
       "text": "Unser Schwerpunkt liegt in Halle (Saale). Projekte in der Umgebung übernehmen wir abhängig von Umfang, Terminlage und Erreichbarkeit, damit Besichtigungen, Rückfragen und eventuelle Nacharbeiten ohne unnötige Verzögerungen möglich bleiben.",
-      "locations": ["Halle (Saale)", "Merseburg", "Kabelsketal", "Landsberg", "Teutschenthal", "Bad Lauchstädt"]
+      "locations": [
+        "Halle (Saale)",
+        "Merseburg",
+        "Kabelsketal",
+        "Landsberg",
+        "Teutschenthal",
+        "Bad Lauchstädt"
+      ]
     },
     "seoTitle": "Leistungen, bei denen Ablauf und Ergebnis zusammenpassen",
     "seoParagraphs": [
@@ -359,23 +385,41 @@
       "items": [
         "Massivbau aus Ziegel und Beton",
         "Bau von Garagen und Nebengebäuden",
-        "Fassadendämmung",
+        "Fassadenarbeiten inkl. Dämmung und Armierung",
         "Trockenbau (Gipskarton)",
         "Maler- und Spachtelarbeiten",
         "Verlegung aller Bodenbeläge",
+        "Laminatverlegung",
+        "Restaurierung von Holzböden mit Beize und Klarlack",
+        "Badsanierung und Sanitärarbeiten innen schlüsselfertig",
         "Verlegung von Elektrokabeln (ohne Anschluss)",
         "Montage von Türen und Fenstern",
         "Terrassen und Gartenlauben",
         "Möbelmontage",
         "Keramikfliesen und Pflastersteine",
-        "Zaunmontage"
+        "Zaunmontage",
+        "Natursteinarbeiten aus Sandstein und Granit",
+        "Bögen, Mauern, Pflanzbeete und dekorative Steinarbeiten",
+        "Dachreparaturen und Dachdämmung",
+        "Parkflächen und Einfahrten schlüsselfertig",
+        "Rückbau alter Pflasterflächen und Entwässerung zu Sammelschächten",
+        "Wassersammelschächte rund, quadratisch oder nach Maß",
+        "Pflasterflächen mit Gefälle und schwieriger Entwässerung",
+        "Runde und eckige Durchbrüche in Innenräumen",
+        "Schweißarbeiten und Metallkonstruktionen",
+        "Wärmedämmung von Schornsteinen",
+        "Treppenläufe aus Holz, Keramik, Marmorplatten und Metall"
       ]
     },
     "garden": {
       "title": "Garten & Außenanlagen",
       "items": [
         "Gartenreinigung und Pflege",
-        "Professioneller Baumschnitt"
+        "Rasenmähen inkl. Abtransport",
+        "Baum- und Strauchschnitt",
+        "Fällung gefährlicher Bäume inkl. Zerlegen",
+        "Holz spalten, zuschneiden und stapeln",
+        "Garten- und Erdarbeiten"
       ]
     }
   },
@@ -442,52 +486,75 @@
     "subtitle": "Einblicke in unsere abgeschlossenen Projekte",
     "description": "Wir realisieren Bau-, Renovierungs- und Gartenprojekte für unsere Kunden in Halle (Saale) und Umgebung. Qualität, die überzeugt.",
     "images": [
-      { "alt": "Badezimmer-Renovierung", "label": "Badezimmer" },
-      { "alt": "Trockenbauarbeiten", "label": "Trockenbau" },
-      { "alt": "Fassadensanierung", "label": "Fassade" },
-      { "alt": "Terrassenbau", "label": "Terrasse" },
-      { "alt": "Bodenverlegung", "label": "Bodenbelag" },
-      { "alt": "Raumrenovierung", "label": "Renovierung" }
+      {
+        "alt": "Badezimmer-Renovierung",
+        "label": "Badezimmer"
+      },
+      {
+        "alt": "Trockenbauarbeiten",
+        "label": "Trockenbau"
+      },
+      {
+        "alt": "Fassadensanierung",
+        "label": "Fassade"
+      },
+      {
+        "alt": "Terrassenbau",
+        "label": "Terrasse"
+      },
+      {
+        "alt": "Bodenverlegung",
+        "label": "Bodenbelag"
+      },
+      {
+        "alt": "Raumrenovierung",
+        "label": "Renovierung"
+      }
     ]
   },
   "faq": {
     "eyebrow": "FAQ",
-    "sectionTitle": "Häufige Fragen vor dem Start",
-    "intro": "Vor einer Renovierung oder kleineren Baustelle geht es meistens um Termine, Material, Ablauf und Kosten. Hier finden Sie die Fragen, die wir vor Ort und am Telefon am häufigsten hören.",
-    "contactTitle": "Noch etwas unklar?",
-    "contactText": "Wenn Ihre Frage hier nicht dabei ist, antworten wir Ihnen gern direkt auf Ihr konkretes Vorhaben.",
-    "contactCta": "Zum Kontaktformular",
+    "sectionTitle": "Fragen, die wir vor dem Start sauber klären",
+    "intro": "Vor Renovierung, Fassadenarbeiten oder Außenarbeiten sollten Termine, Material, Ablauf und Kosten verständlich geklärt sein. Wir sprechen diese Punkte früh an, damit das Projekt planbar bleibt und später keine unnötigen Überraschungen entstehen.",
+    "contactTitle": "Antwort zu Ihrem Objekt?",
+    "contactText": "Beschreiben Sie Ihr Vorhaben kurz oder senden Sie Fotos. Wir sagen Ihnen, was sich direkt einschätzen lässt und wann eine Besichtigung sinnvoll ist.",
+    "contactCta": "Frage stellen",
     "items": [
       {
-        "question": "Wie schnell erhalten wir nach der Besichtigung ein Angebot?",
-        "answer": "In der Regel innerhalb von 2 bis 5 Werktagen. Bei kleineren Arbeiten geht es oft schneller, bei größeren Projekten prüfen wir zuerst Material, Umfang und Terminfenster, damit das Angebot belastbar ist."
+        "question": "Wann erhalten wir nach der Besichtigung ein Angebot?",
+        "answer": "In der Regel innerhalb von 2 bis 5 Werktagen. Kleinere Arbeiten lassen sich oft schneller einschätzen. Bei komplexeren Projekten prüfen wir Material, Umfang und Terminfenster genauer, damit das Angebot belastbar ist und nicht nur grob geschätzt wirkt."
       },
       {
-        "question": "Arbeiten Sie auch in bewohnten Wohnungen oder Häusern?",
-        "answer": "Ja. Wir stimmen laute oder staubige Arbeiten vorher ab, schützen Laufwege und hinterlassen den Arbeitsbereich am Tagesende so ordentlich wie möglich. Gerade bei Bad- oder Innenausbauprojekten planen wir den Ablauf deshalb sehr genau."
+        "question": "Arbeiten Sie auch, wenn Wohnung oder Haus bewohnt sind?",
+        "answer": "Ja. Wir stimmen laute und staubige Arbeitsschritte vorher ab, schützen Laufwege und Arbeitsbereiche und hinterlassen die Baustelle am Tagesende möglichst ordentlich. Gerade bei Bädern, Innenausbau und Arbeiten zwischen Mietern ist dieser Ablauf wichtig."
       },
       {
-        "question": "Besorgen Sie Material oder können wir es selbst kaufen?",
-        "answer": "Beides ist möglich. Wenn wir Material beschaffen, sprechen wir Qualität, Optik und Budget vorab mit Ihnen ab. Bereits vorhandenes Material verbauen wir ebenfalls, sofern es technisch geeignet und vollständig vorhanden ist."
+        "question": "Wer kümmert sich um die Materialbeschaffung?",
+        "answer": "Beides ist möglich. Wenn wir Material besorgen, stimmen wir Qualität, Optik und Budget vorher mit Ihnen ab. Wenn Material bereits vorhanden ist, prüfen wir, ob es technisch geeignet und in ausreichender Menge verfügbar ist."
       },
       {
-        "question": "Übernehmen Sie auch kleinere Reparaturen oder nur komplette Projekte?",
-        "answer": "Wir übernehmen sowohl kleinere Arbeiten als auch komplette Renovierungen, solange Umfang und Terminlage passen. Am besten schicken Sie kurz eine Beschreibung oder Fotos, damit wir den Aufwand realistisch einschätzen können."
+        "question": "Übernehmen Sie auch kleinere Arbeiten oder nur große Projekte?",
+        "answer": "Wir übernehmen kleinere Aufgaben ebenso wie umfangreichere Renovierungen, sofern wir sie sauber und termingerecht ausführen können. Am besten senden Sie eine kurze Beschreibung, den Stadtteil und einige Fotos, damit wir den nächsten Schritt einschätzen können."
       },
       {
         "question": "In welchem Gebiet arbeiten Sie?",
-        "answer": "Unser Schwerpunkt liegt in Halle (Saale) und Umgebung. Einsätze in nahegelegenen Orten wie Merseburg, Kabelsketal oder Landsberg prüfen wir je nach Umfang, Anfahrt und aktueller Auslastung."
+        "answer": "Unser Schwerpunkt liegt in Halle (Saale) und der näheren Umgebung. Einsätze in Merseburg, Kabelsketal, Landsberg und weiteren Orten stimmen wir je nach Umfang, Entfernung und aktueller Auslastung ab."
       },
       {
-        "question": "Wie läuft die Bezahlung ab?",
-        "answer": "Je nach Projekt per Abschlagszahlung, nach Baufortschritt oder nach Abschluss. Das besprechen wir transparent im Angebot, damit es später keine Überraschungen bei der Abrechnung gibt."
+        "question": "Wie laufen Bezahlung und zusätzliche Arbeiten ab?",
+        "answer": "Die Zahlungsweise hängt vom Umfang ab: nach Abschluss, nach Baufortschritt oder über vereinbarte Abschlagszahlungen. Wenn sich vor Ort Zusatzarbeiten ergeben, erklären wir zuerst Grund, Kosten und Auswirkung auf den Termin und stimmen die Ausführung ab."
       }
+    ],
+    "proofItems": [
+      "Zuerst klären wir Aufgabe und Zustand vor Ort.",
+      "Nach der Besichtigung werden Umfang, Material und Termine festgehalten.",
+      "Zusätzliche Arbeiten werden vor der Ausführung abgestimmt."
     ]
   },
   "contact": {
     "sectionTitle": "Kontakt",
-    "title": "Kontaktieren Sie uns",
-    "subtitle": "Sie planen ein Bau- oder Renovierungsprojekt? Kontaktieren Sie uns gerne für eine unverbindliche Beratung.",
+    "title": "Direkt Kontakt aufnehmen",
+    "subtitle": "Beschreiben Sie kurz, worum es geht: Renovierung, Fassade, Außenarbeiten, Garten oder eine kleinere Aufgabe am Objekt. Wir klären die Details und empfehlen den nächsten sinnvollen Schritt.",
     "region": "Unser Einsatzgebiet: Halle (Saale) und Umgebung",
     "address": "Adresse",
     "form": {
@@ -495,13 +562,26 @@
       "email": "E-Mail-Adresse",
       "phone": "Telefon (optional)",
       "message": "Ihre Nachricht",
-      "submit": "Jetzt Beratung anfragen",
+      "submit": "Anfrage absenden",
       "sending": "Wird gesendet...",
-      "success": "Vielen Dank! Wir melden uns in Kürze bei Ihnen.",
-      "error": "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+      "success": "Vielen Dank! Ihre Anfrage wurde gesendet. Wir melden uns in Kürze bei Ihnen.",
+      "error": "Die Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns telefonisch.",
+      "messagePlaceholder": "Beschreiben Sie kurz Vorhaben, Stadtteil, Wunschzeitraum und wichtige Details"
     },
     "phone": "Telefon",
-    "email": "E-Mail"
+    "email": "E-Mail",
+    "eyebrow": "Kontakt",
+    "directTitle": "Kurzer Weg zur Besichtigung",
+    "replyTime": "Anruf oder WhatsApp für schnelle Rückfragen",
+    "formTitle": "Vorhaben kurz beschreiben",
+    "formIntro": "Je genauer Ihre Nachricht ist, desto schneller können wir den Umfang einschätzen: Stadtteil, Art der Arbeiten, gewünschter Zeitraum und wichtige Details.",
+    "formNote": "Nach dem Absenden prüfen wir Ihre Nachricht und melden uns über die angegebenen Kontaktdaten. Bei komplexeren Arbeiten schlagen wir in der Regel eine Besichtigung vor.",
+    "mapCta": "Adresse auf Karte öffnen",
+    "proofItems": [
+      "Wir antworten konkret und klären offene Punkte vor der Besichtigung.",
+      "Fotos und eine kurze Beschreibung helfen bei der ersten Einschätzung.",
+      "Termine, Material und zusätzliche Schritte werden vorab abgestimmt."
+    ]
   },
   "footer": {
     "description": "SorgfaltBau – Bau- und Handwerksleistungen in Halle (Saale). Qualität, Zuverlässigkeit und saubere Arbeit.",
@@ -512,10 +592,15 @@
   },
   "impressum": {
     "title": "Impressum",
-    "content": "Angaben gemäß § 5 TMG\n\nSorgfaltBau\nInhaber: Nebesnyi Oleh\nVeszpremer Str. 5\n06130 Halle (Saale)\nDeutschland\n\nKontakt:\nTelefon: {phone}\nE-Mail: {email}\n\nGewerbeanmeldung:\nErteilt durch Stadt Halle (Saale)\nGemeindekennzahl: 15002000\nAngemeldet am: 30.01.2026\n\nAngaben zur Person (laut Gewerbeanmeldung):\nGeburtsdatum: 09.05.1977\nGeburtsort: Cherson Oblast, Ukraine\nStaatsangehörigkeit: ukrainisch\n\nTätigkeit:\nMaurer und Betonbauer, Bodenleger, Kabelverleger im Hochbau (ohne Anschlussarbeiten), Einbau von genormten Baufertigteilen (z. B. Fenster, Türen, Zargen), Trockenbau, Hausmeisterservice\n\nVerantwortlich für den Inhalt nach § 18 Abs. 2 MStV:\nNebesnyi Oleh\nVeszpremer Str. 5\n06130 Halle (Saale)"
+    "content": "Angaben gemäß § 5 DDG\n\nSorgfaltBau\nInhaber: Iabangi Gheorghi\nWaldmeisterstraße 19\n06120 Halle (Saale)\nDeutschland\n\nKontakt:\nTelefon: {phone}\nE-Mail: {email}\n\nGewerbeanmeldung:\nZuständige Stelle: Stadt Halle (Saale)\nGemeindekennzahl: 15002000\nAktenzeichen: 23/1258.01\nAngemeldet am: 21.11.2024\nBeginn der Tätigkeit: 21.11.2024\n\nAngemeldete Tätigkeit:\nHausmeisterservice, Bauhelfer\n\nVerantwortlich für den Inhalt nach § 18 Abs. 2 MStV:\nIabangi Gheorghi\nWaldmeisterstraße 19\n06120 Halle (Saale)\n\nVerbraucherstreitbeilegung nach § 36 VSBG:\nWir sind weder verpflichtet noch bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.\n\nEU-Online-Streitbeilegung:\nDie frühere EU-Plattform zur Online-Streitbeilegung wurde zum 20.07.2025 eingestellt. Informationen zu Verbraucherstreitbeilegungsstellen finden Sie im Linkbereich dieser Seite.",
+    "linksTitle": "Rechtliche Links",
+    "privacyLink": "Datenschutzerklärung",
+    "ddgLink": "§ 5 DDG - Anbieterkennzeichnung",
+    "vsbgLink": "§ 36 VSBG - Verbraucherstreitbeilegung",
+    "consumerRedressLink": "EU-Verbraucherstreitbeilegungsstellen"
   },
   "datenschutz": {
     "title": "Datenschutzerklärung",
-    "content": "Datenschutzerklärung\nStand: 22.02.2026\n\n1. Verantwortlicher\nSorgfaltBau\nInhaber: Nebesnyi Oleh\nVeszpremer Str. 5\n06130 Halle (Saale)\nDeutschland\nTelefon: {phone}\nE-Mail: {email}\n\n2. Umfang und Zwecke der Verarbeitung\nWir verarbeiten personenbezogene Daten nur, soweit dies für den Betrieb unserer Website ({siteUrl}), die Bearbeitung von Anfragen und die Bereitstellung unserer Leistungen erforderlich ist.\n\n3. Aufruf der Website (Server-Logfiles)\nBeim Aufruf der Website werden technisch notwendige Verbindungsdaten verarbeitet, insbesondere IP-Adresse, Datum/Uhrzeit, aufgerufene URL, Referrer-URL, Browser/Version, Betriebssystem und HTTP-Status.\nZwecke: technische Bereitstellung, Stabilität, Sicherheit und Missbrauchserkennung.\nRechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.\n\n4. Kontaktformular und Kontaktaufnahme\nBei Nutzung des Kontaktformulars verarbeiten wir Name, E-Mail-Adresse, Telefonnummer (optional), Nachricht und gewählte Sprache.\nZwecke: Bearbeitung Ihrer Anfrage, Rückmeldung und Anbahnung vorvertraglicher/vertraglicher Maßnahmen.\nRechtsgrundlagen: Art. 6 Abs. 1 lit. b DSGVO und Art. 6 Abs. 1 lit. f DSGVO.\nPflichtfelder sind für die Bearbeitung erforderlich.\n\n5. E-Mail-Versand über Resend\nFür den Versand von Formularnachrichten nutzen wir den Dienst Resend (Plus Five Five, Inc.).\nDabei werden die im Formular angegebenen Daten an Resend übermittelt, damit die Nachricht an uns zugestellt werden kann.\nRechtsgrundlage: Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO i.V.m. Art. 28 DSGVO.\nSoweit Daten in Drittländer (insbesondere USA) übermittelt werden, erfolgt dies auf Grundlage geeigneter Garantien nach Art. 44 ff. DSGVO (insb. Art. 45/46 DSGVO).\n\n6. Hosting und Datenbank\nUnsere Website wird bei Vercel gehostet. Kontaktanfragen speichern wir in einer PostgreSQL-Datenbank bei Neon.\nRechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO i.V.m. Art. 28 DSGVO.\nMit eingesetzten Dienstleistern bestehen Auftragsverarbeitungsregelungen.\n\n7. Cookies und ähnliche Technologien\nWir setzen derzeit keine Analyse- oder Marketing-Cookies ein.\nEs wird ein technisch erforderliches Cookie \"admin-token\" ausschließlich im geschützten Admin-Bereich gesetzt, um angemeldete Sitzungen aufrechtzuerhalten.\nRechtsgrundlage DSGVO: Art. 6 Abs. 1 lit. f DSGVO.\nRechtsgrundlage für Speicherung/Zugriff auf Endgeräte: § 25 Abs. 2 Nr. 2 TDDDG.\n\n8. Externe Links und WhatsApp\nUnsere Website enthält externe Links (z.B. WhatsApp über wa.me).\nEine Datenübermittlung an den jeweiligen Anbieter erfolgt erst, wenn Sie den Link aktiv anklicken.\nDabei können insbesondere IP-Adresse und Verbindungsdaten verarbeitet werden.\nRechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.\n\n9. Speicherdauer\nWir speichern personenbezogene Daten nur so lange, wie dies für die jeweiligen Zwecke erforderlich ist.\nKontaktanfragen speichern wir bis zur abschließenden Bearbeitung sowie darüber hinaus, soweit gesetzliche Aufbewahrungspflichten oder berechtigte Interessen (z.B. Rechtsverteidigung) bestehen.\nServer-Logdaten werden nach Zweckerreichung gelöscht oder anonymisiert.\n\n10. Empfänger\nEmpfänger Ihrer Daten können sein:\n- Hosting- und Infrastrukturanbieter (Vercel)\n- Datenbankanbieter (Neon)\n- E-Mail-Versanddienstleister (Resend)\n- interne Stellen, soweit dies zur Bearbeitung erforderlich ist\nEine Weitergabe an sonstige Dritte erfolgt nur bei gesetzlicher Verpflichtung oder mit Ihrer Einwilligung.\n\n11. Ihre Rechte\nSie haben nach der DSGVO insbesondere folgende Rechte:\n- Auskunft (Art. 15 DSGVO)\n- Berichtigung (Art. 16 DSGVO)\n- Löschung (Art. 17 DSGVO)\n- Einschränkung der Verarbeitung (Art. 18 DSGVO)\n- Datenübertragbarkeit (Art. 20 DSGVO)\n- Widerspruch gegen Verarbeitungen auf Grundlage von Art. 6 Abs. 1 lit. e/f DSGVO (Art. 21 DSGVO)\n- Widerruf erteilter Einwilligungen mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO)\nZur Ausübung Ihrer Rechte genügt eine Mitteilung an {email}.\n\n12. Beschwerderecht bei einer Aufsichtsbehörde\nSie haben das Recht auf Beschwerde bei einer Datenschutzaufsichtsbehörde (Art. 77 DSGVO).\nZuständige Aufsichtsbehörde in Sachsen-Anhalt:\nLandesbeauftragte für den Datenschutz Sachsen-Anhalt\nOtto-von-Guericke-Straße 34a, 39104 Magdeburg\nPostfach 1947, 39009 Magdeburg\nTelefon: 0391 81803-0\nE-Mail: poststelle@lfd.sachsen-anhalt.de\nWeb: https://datenschutz.sachsen-anhalt.de\n\n13. Pflicht zur Bereitstellung\nDie Bereitstellung personenbezogener Daten ist gesetzlich nicht vorgeschrieben.\nFür die Bearbeitung von Kontaktanfragen sind jedoch Name, E-Mail-Adresse und Nachricht erforderlich.\n\n14. Keine automatisierte Entscheidungsfindung\nEine automatisierte Entscheidungsfindung einschließlich Profiling nach Art. 22 DSGVO findet nicht statt.\n\n15. Änderungen dieser Datenschutzerklärung\nWir passen diese Datenschutzerklärung an, sobald sich unsere Website, Verarbeitungen oder die Rechtslage ändern.\nEs gilt die jeweils auf dieser Seite veröffentlichte Fassung."
+    "content": "Datenschutzerklärung\nStand: 19.05.2026\n\n1. Verantwortlicher\nSorgfaltBau\nInhaber: Iabangi Gheorghi\nWaldmeisterstraße 19\n06120 Halle (Saale)\nDeutschland\nTelefon: {phone}\nE-Mail: {email}\n\n2. Umfang und Zwecke der Verarbeitung\nWir verarbeiten personenbezogene Daten nur, soweit dies für den Betrieb unserer Website ({siteUrl}), die Bearbeitung von Anfragen und die Bereitstellung unserer Leistungen erforderlich ist.\n\n3. Aufruf der Website (Server-Logfiles)\nBeim Aufruf der Website werden technisch notwendige Verbindungsdaten verarbeitet, insbesondere IP-Adresse, Datum/Uhrzeit, aufgerufene URL, Referrer-URL, Browser/Version, Betriebssystem und HTTP-Status.\nZwecke: technische Bereitstellung, Stabilität, Sicherheit und Missbrauchserkennung.\nRechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.\n\n4. Kontaktformular und Kontaktaufnahme\nBei Nutzung des Kontaktformulars verarbeiten wir Name, E-Mail-Adresse, Telefonnummer (optional), Nachricht und gewählte Sprache.\nZwecke: Bearbeitung Ihrer Anfrage, Rückmeldung und Anbahnung vorvertraglicher/vertraglicher Maßnahmen.\nRechtsgrundlagen: Art. 6 Abs. 1 lit. b DSGVO und Art. 6 Abs. 1 lit. f DSGVO.\nPflichtfelder sind für die Bearbeitung erforderlich.\n\n5. E-Mail-Versand über Resend\nFür den Versand von Formularnachrichten nutzen wir den Dienst Resend (Plus Five Five, Inc.).\nDabei werden die im Formular angegebenen Daten an Resend übermittelt, damit die Nachricht an uns zugestellt werden kann.\nRechtsgrundlage: Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO i.V.m. Art. 28 DSGVO.\nSoweit Daten in Drittländer (insbesondere USA) übermittelt werden, erfolgt dies auf Grundlage geeigneter Garantien nach Art. 44 ff. DSGVO (insb. Art. 45/46 DSGVO).\n\n6. Hosting und Datenbank\nUnsere Website wird bei Vercel gehostet. Kontaktanfragen speichern wir in einer PostgreSQL-Datenbank bei Neon.\nRechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO i.V.m. Art. 28 DSGVO.\nMit eingesetzten Dienstleistern bestehen Auftragsverarbeitungsregelungen.\n\n7. Cookies und ähnliche Technologien\nWir setzen derzeit keine Analyse- oder Marketing-Cookies ein.\nEs wird ein technisch erforderliches Cookie \"admin-token\" ausschließlich im geschützten Admin-Bereich gesetzt, um angemeldete Sitzungen aufrechtzuerhalten.\nRechtsgrundlage DSGVO: Art. 6 Abs. 1 lit. f DSGVO.\nRechtsgrundlage für Speicherung/Zugriff auf Endgeräte: § 25 Abs. 2 Nr. 2 TDDDG.\n\n8. Externe Links und WhatsApp\nUnsere Website enthält externe Links (z.B. WhatsApp über wa.me).\nEine Datenübermittlung an den jeweiligen Anbieter erfolgt erst, wenn Sie den Link aktiv anklicken.\nDabei können insbesondere IP-Adresse und Verbindungsdaten verarbeitet werden.\nRechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.\n\n9. Speicherdauer\nWir speichern personenbezogene Daten nur so lange, wie dies für die jeweiligen Zwecke erforderlich ist.\nKontaktanfragen speichern wir bis zur abschließenden Bearbeitung sowie darüber hinaus, soweit gesetzliche Aufbewahrungspflichten oder berechtigte Interessen (z.B. Rechtsverteidigung) bestehen.\nServer-Logdaten werden nach Zweckerreichung gelöscht oder anonymisiert.\n\n10. Empfänger\nEmpfänger Ihrer Daten können sein:\n- Hosting- und Infrastrukturanbieter (Vercel)\n- Datenbankanbieter (Neon)\n- E-Mail-Versanddienstleister (Resend)\n- interne Stellen, soweit dies zur Bearbeitung erforderlich ist\nEine Weitergabe an sonstige Dritte erfolgt nur bei gesetzlicher Verpflichtung oder mit Ihrer Einwilligung.\n\n11. Ihre Rechte\nSie haben nach der DSGVO insbesondere folgende Rechte:\n- Auskunft (Art. 15 DSGVO)\n- Berichtigung (Art. 16 DSGVO)\n- Löschung (Art. 17 DSGVO)\n- Einschränkung der Verarbeitung (Art. 18 DSGVO)\n- Datenübertragbarkeit (Art. 20 DSGVO)\n- Widerspruch gegen Verarbeitungen auf Grundlage von Art. 6 Abs. 1 lit. e/f DSGVO (Art. 21 DSGVO)\n- Widerruf erteilter Einwilligungen mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO)\nZur Ausübung Ihrer Rechte genügt eine Mitteilung an {email}.\n\n12. Beschwerderecht bei einer Aufsichtsbehörde\nSie haben das Recht auf Beschwerde bei einer Datenschutzaufsichtsbehörde (Art. 77 DSGVO).\nZuständige Aufsichtsbehörde in Sachsen-Anhalt:\nLandesbeauftragte für den Datenschutz Sachsen-Anhalt\nOtto-von-Guericke-Straße 34a, 39104 Magdeburg\nPostfach 1947, 39009 Magdeburg\nTelefon: 0391 81803-0\nE-Mail: poststelle@lfd.sachsen-anhalt.de\nWeb: https://datenschutz.sachsen-anhalt.de\n\n13. Pflicht zur Bereitstellung\nDie Bereitstellung personenbezogener Daten ist gesetzlich nicht vorgeschrieben.\nFür die Bearbeitung von Kontaktanfragen sind jedoch Name, E-Mail-Adresse und Nachricht erforderlich.\n\n14. Keine automatisierte Entscheidungsfindung\nEine automatisierte Entscheidungsfindung einschließlich Profiling nach Art. 22 DSGVO findet nicht statt.\n\n15. Änderungen dieser Datenschutzerklärung\nWir passen diese Datenschutzerklärung an, sobald sich unsere Website, Verarbeitungen oder die Rechtslage ändern.\nEs gilt die jeweils auf dieser Seite veröffentlichte Fassung."
   }
 }

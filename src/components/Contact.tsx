@@ -4,17 +4,39 @@ import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Send, Phone, Mail, MapPin, CheckCircle, AlertCircle, PhoneCall } from 'lucide-react';
-import { COMPANY_MAP_URL, COMPANY_POSTAL_CITY, COMPANY_STREET_ADDRESS } from '@/lib/contact';
+import {
+  AlertCircle,
+  ArrowRight,
+  CheckCircle,
+  CheckCircle2,
+  ClipboardCheck,
+  Clock3,
+  Mail,
+  MapPin,
+  MessageSquareText,
+  Phone,
+  PhoneCall,
+  Send,
+  ShieldCheck,
+} from 'lucide-react';
+import {
+  COMPANY_MAP_URL,
+  COMPANY_POSTAL_CITY,
+  COMPANY_PRIMARY_PHONE,
+  COMPANY_SECONDARY_PHONE,
+  COMPANY_STREET_ADDRESS,
+} from '@/lib/contact';
 
 export default function Contact() {
   const t = useTranslations('contact');
   const locale = useLocale();
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
-  const primaryPhone = process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659';
-  const secondaryPhone = '+49 177 33077538';
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.14 });
+  const primaryPhone = COMPANY_PRIMARY_PHONE;
+  const secondaryPhone = COMPANY_SECONDARY_PHONE;
   const phoneToTel = (value: string) => value.replace(/\s+/g, '');
   const phoneToWhatsApp = (value: string) => value.replace(/\D/g, '');
+  const email = process.env.NEXT_PUBLIC_EMAIL || 'info@sorgfaltbau-halle.de';
+  const proofItems = t.raw('proofItems') as string[];
 
   const [formData, setFormData] = useState({
     name: '',
@@ -47,58 +69,98 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" ref={ref} className="py-20 sm:py-28 bg-anthracite-50/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Title */}
+    <section id="contact" ref={ref} className="relative overflow-hidden bg-[#061b2f] py-20 text-white sm:py-28">
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,#041524_0%,#071f35_48%,#0c314f_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.08)_0,transparent_28%,transparent_72%,rgba(255,255,255,0.06)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(180deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      <div className="absolute inset-x-0 top-0 h-px bg-white/20" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-white/15" />
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-1/2 top-0 h-full w-1/3 rotate-12 bg-gradient-to-r from-transparent via-white/25 to-transparent blur-2xl"
+        initial={{ x: '-20%', opacity: 0 }}
+        animate={inView ? { x: ['-20%', '520%'], opacity: [0, 0.75, 0] } : { x: '-20%', opacity: 0 }}
+        transition={{ duration: 1.9, ease: 'easeInOut', repeat: inView ? Infinity : 0, repeatDelay: 1.4 }}
+      />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12 sm:mb-16"
+          className="mx-auto mb-12 max-w-3xl text-center sm:mb-16"
         >
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl text-anthracite-900">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-white shadow-sm shadow-black/10 backdrop-blur">
+            <MessageSquareText size={14} strokeWidth={1.8} />
+            {t('eyebrow')}
+          </span>
+          <h2 className="mt-5 font-heading text-3xl text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.22)] sm:text-4xl md:text-5xl">
             {t('sectionTitle')}
           </h2>
-          <div className="mt-4 mx-auto w-16 h-1 bg-brand-orange rounded-full" />
+          <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-white" />
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-100/85 sm:text-lg">
+            {t('subtitle')}
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14">
-          {/* Contact Info */}
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-5 lg:gap-8 xl:gap-10">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="lg:col-span-2"
           >
-            <h3 className="font-heading text-2xl sm:text-3xl text-anthracite-800 mb-4">
-              {t('title')}
-            </h3>
-            <p className="text-anthracite-500 text-base leading-relaxed mb-8">
-              {t('subtitle')}
-            </p>
-
-            <div className="space-y-5">
-              <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center group-hover:bg-brand-orange transition-colors">
-                  <Phone size={20} className="text-brand-orange group-hover:text-white transition-colors" />
+            <div className="relative overflow-hidden rounded-2xl border border-white/18 bg-white/[0.095] p-5 shadow-2xl shadow-black/20 backdrop-blur-md sm:p-6 lg:sticky lg:top-24">
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent" />
+              <div className="flex items-start gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white text-brand-orange shadow-lg shadow-black/15">
+                  <ClipboardCheck size={21} strokeWidth={1.8} />
                 </div>
                 <div>
-                  <p className="text-xs text-anthracite-400 uppercase tracking-wider font-medium">{t('phone')}</p>
-                  <div className="mt-1.5 space-y-1.5">
+                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-200/75">
+                    {t('directTitle')}
+                  </p>
+                  <h3 className="mt-1 font-heading text-2xl text-white sm:text-3xl">
+                    {t('title')}
+                  </h3>
+                </div>
+              </div>
+
+              <div className="mt-6 space-y-3">
+                {proofItems.map((item) => (
+                  <div key={item} className="flex items-start gap-2.5 text-sm leading-relaxed text-slate-100/85">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#f7b267]" strokeWidth={1.9} />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-7 space-y-4">
+                <div className="group rounded-2xl border border-white/14 bg-white/[0.08] p-4 transition-colors hover:bg-white/[0.12]">
+                  <div className="mb-3 flex items-center gap-3">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-brand-orange transition-colors group-hover:bg-brand-orange group-hover:text-white">
+                      <Phone size={19} />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-200/70">{t('phone')}</p>
+                      <p className="mt-0.5 text-sm text-slate-100/75">{t('replyTime')}</p>
+                    </div>
+                  </div>
+                  <div className="space-y-2.5">
                     {[
                       { label: primaryPhone, value: primaryPhone },
                       { label: secondaryPhone, value: secondaryPhone },
                     ].map((phone) => (
-                      <div key={phone.value} className="flex items-center gap-2">
+                      <div key={phone.value} className="flex flex-wrap items-center gap-2">
                         <a
                           href={`tel:${phoneToTel(phone.value)}`}
-                          className="text-anthracite-800 font-medium hover:text-brand-orange transition-colors"
+                          className="min-w-0 font-semibold text-white transition-colors hover:text-[#f7b267]"
                         >
                           {phone.label}
                         </a>
                         <a
                           href={`tel:${phoneToTel(phone.value)}`}
-                          className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-anthracite-200 text-anthracite-500 hover:border-brand-orange/40 hover:text-brand-orange transition-colors"
+                          className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/18 text-slate-100 transition-colors hover:border-[#f7b267]/60 hover:text-[#f7b267]"
                           aria-label={`Call ${phone.label}`}
                         >
                           <PhoneCall size={14} />
@@ -107,7 +169,7 @@ export default function Contact() {
                           href={`https://wa.me/${phoneToWhatsApp(phone.value)}`}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-green-200 text-green-600 hover:bg-green-50 transition-colors"
+                          className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-emerald-300/30 text-emerald-200 transition-colors hover:bg-emerald-400/10"
                           aria-label={`WhatsApp ${phone.label}`}
                           title="WhatsApp"
                         >
@@ -120,46 +182,49 @@ export default function Contact() {
                     ))}
                   </div>
                 </div>
+
+                <a
+                  href={`mailto:${email}`}
+                  className="group flex items-center gap-4 rounded-2xl border border-white/14 bg-white/[0.08] p-4 transition-colors hover:bg-white/[0.12]"
+                >
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-brand-orange transition-colors group-hover:bg-brand-orange group-hover:text-white">
+                    <Mail size={19} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-200/70">{t('email')}</p>
+                    <p className="mt-1 break-words font-semibold text-white transition-colors group-hover:text-[#f7b267]">
+                      {email}
+                    </p>
+                  </div>
+                </a>
+
+                <a
+                  href={COMPANY_MAP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex items-center gap-4 rounded-2xl border border-white/14 bg-white/[0.08] p-4 transition-colors hover:bg-white/[0.12]"
+                >
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-brand-orange transition-colors group-hover:bg-brand-orange group-hover:text-white">
+                    <MapPin size={19} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-200/70">{t('address')}</p>
+                    <p className="mt-1 font-semibold text-white transition-colors group-hover:text-[#f7b267]">
+                      {COMPANY_STREET_ADDRESS}
+                    </p>
+                    <p className="text-sm text-slate-100/75">
+                      {COMPANY_POSTAL_CITY}
+                    </p>
+                    <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-[#f7b267]">
+                      {t('mapCta')}
+                      <ArrowRight size={13} strokeWidth={1.9} />
+                    </span>
+                  </div>
+                </a>
               </div>
-
-              <a
-                href={`mailto:${process.env.NEXT_PUBLIC_EMAIL || 'info@sorgfaltbau-halle.de'}`}
-                className="flex items-center gap-4 group"
-              >
-                <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center group-hover:bg-brand-orange transition-colors">
-                  <Mail size={20} className="text-brand-orange group-hover:text-white transition-colors" />
-                </div>
-                <div>
-                  <p className="text-xs text-anthracite-400 uppercase tracking-wider font-medium">{t('email')}</p>
-                  <p className="text-anthracite-800 font-medium">
-                    {process.env.NEXT_PUBLIC_EMAIL || 'info@sorgfaltbau-halle.de'}
-                  </p>
-                </div>
-              </a>
-
-              <a
-                href={COMPANY_MAP_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-4 group"
-              >
-                <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center">
-                  <MapPin size={20} className="text-brand-orange" />
-                </div>
-                <div>
-                  <p className="text-xs text-anthracite-400 uppercase tracking-wider font-medium">{t('address')}</p>
-                  <p className="text-anthracite-800 font-medium transition-colors group-hover:text-brand-orange">
-                    {COMPANY_STREET_ADDRESS}
-                  </p>
-                  <p className="text-anthracite-600 text-sm">
-                    {COMPANY_POSTAL_CITY}
-                  </p>
-                </div>
-              </a>
             </div>
           </motion.div>
 
-          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -168,8 +233,23 @@ export default function Contact() {
           >
             <form
               onSubmit={handleSubmit}
-              className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl shadow-black/5 border border-anthracite-100/50"
+              className="relative overflow-hidden rounded-2xl border border-white/90 bg-white p-5 text-anthracite-900 shadow-2xl shadow-black/25 sm:p-7 lg:p-8"
             >
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-orange via-brand-light to-brand-accent" />
+              <div className="mb-6 grid gap-4 sm:grid-cols-[auto_1fr] sm:items-start">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-orange/8 text-brand-orange">
+                  <ShieldCheck size={22} strokeWidth={1.7} />
+                </div>
+                <div>
+                  <h3 className="font-heading text-2xl text-anthracite-900 sm:text-3xl">
+                    {t('formTitle')}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-anthracite-600 sm:text-base">
+                    {t('formIntro')}
+                  </p>
+                </div>
+              </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 <div>
                   <label className="block text-sm font-medium text-anthracite-600 mb-1.5">
@@ -180,7 +260,7 @@ export default function Contact() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-anthracite-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none transition-all text-anthracite-800 placeholder-anthracite-300"
+                    className="w-full rounded-xl border border-anthracite-200 px-4 py-3 text-anthracite-800 outline-none transition-all placeholder:text-anthracite-300 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20"
                     placeholder={t('form.name')}
                   />
                 </div>
@@ -193,7 +273,7 @@ export default function Contact() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-anthracite-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none transition-all text-anthracite-800 placeholder-anthracite-300"
+                    className="w-full rounded-xl border border-anthracite-200 px-4 py-3 text-anthracite-800 outline-none transition-all placeholder:text-anthracite-300 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20"
                     placeholder={t('form.email')}
                   />
                 </div>
@@ -207,7 +287,7 @@ export default function Contact() {
                   type="tel"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-anthracite-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none transition-all text-anthracite-800 placeholder-anthracite-300"
+                  className="w-full rounded-xl border border-anthracite-200 px-4 py-3 text-anthracite-800 outline-none transition-all placeholder:text-anthracite-300 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20"
                   placeholder={t('form.phone')}
                 />
               </div>
@@ -221,12 +301,11 @@ export default function Contact() {
                   rows={5}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-anthracite-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none transition-all text-anthracite-800 placeholder-anthracite-300 resize-none"
-                  placeholder={t('form.message')}
+                  className="w-full resize-none rounded-xl border border-anthracite-200 px-4 py-3 text-anthracite-800 outline-none transition-all placeholder:text-anthracite-300 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20"
+                  placeholder={t('form.messagePlaceholder')}
                 />
               </div>
 
-              {/* Status Messages */}
               {status === 'success' && (
                 <div className="mb-4 flex items-center gap-2 p-3 rounded-xl bg-green-50 text-green-700 text-sm">
                   <CheckCircle size={18} />
@@ -243,11 +322,15 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className="w-full flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orange-dark disabled:opacity-60 text-white py-3.5 sm:py-4 rounded-xl text-base font-semibold transition-all hover:shadow-lg hover:shadow-brand-orange/25 active:scale-[0.98]"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-brand-orange py-3.5 text-base font-semibold text-white shadow-lg shadow-brand-orange/20 transition-all hover:-translate-y-0.5 hover:bg-brand-light hover:shadow-xl hover:shadow-brand-orange/25 active:scale-[0.98] disabled:translate-y-0 disabled:opacity-60 sm:py-4"
               >
                 <Send size={18} />
                 {status === 'sending' ? t('form.sending') : t('form.submit')}
               </button>
+              <div className="mt-4 flex items-start gap-2 text-xs leading-relaxed text-anthracite-500">
+                <Clock3 className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" strokeWidth={1.9} />
+                <span>{t('formNote')}</span>
+              </div>
             </form>
           </motion.div>
         </div>

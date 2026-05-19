@@ -18,7 +18,7 @@ import Footer from '@/components/Footer';
 import Testimonials from '@/components/Testimonials';
 import Faq from '@/components/Faq';
 import Contact from '@/components/Contact';
-import { COMPANY_STREET_ADDRESS } from '@/lib/contact';
+import { COMPANY_POSTAL_CODE, COMPANY_PRIMARY_PHONE, COMPANY_STREET_ADDRESS } from '@/lib/contact';
 import { getSiteUrl } from '@/lib/site';
 
 type Params = Promise<{ locale: string }>;
@@ -109,7 +109,7 @@ export default async function AboutPage({ params }: { params: Params }) {
   const faq = await getTranslations({ locale, namespace: 'faq' });
   const siteUrl = getSiteUrl();
   const pageUrl = `${siteUrl}/${lang}/about`;
-  const phone = process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659';
+  const phone = COMPANY_PRIMARY_PHONE;
   const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau-halle.de';
   const values = t.raw('values') as AboutPageSectionItem[];
   const processSteps = t.raw('process') as AboutPageProcess[];
@@ -184,7 +184,7 @@ export default async function AboutPage({ params }: { params: Params }) {
       address: {
         '@type': 'PostalAddress',
         streetAddress: COMPANY_STREET_ADDRESS,
-        postalCode: '06130',
+        postalCode: COMPANY_POSTAL_CODE,
         addressLocality: 'Halle (Saale)',
         addressRegion: 'Sachsen-Anhalt',
         addressCountry: 'DE',

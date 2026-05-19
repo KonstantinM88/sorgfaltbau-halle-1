@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
-import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import { ExternalLink } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { COMPANY_PHONE_TEXT } from '@/lib/contact';
 
 type Params = Promise<{ locale: string }>;
 
@@ -42,9 +45,16 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
 export default function Impressum() {
   const t = useTranslations('impressum');
-  const phone = process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659';
+  const locale = useLocale();
+  const phone = COMPANY_PHONE_TEXT;
   const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau-halle.de';
   const content = t('content', { phone, email });
+  const legalLinks = [
+    { label: t('privacyLink'), href: `/${locale}/datenschutz`, external: false },
+    { label: t('ddgLink'), href: 'https://www.gesetze-im-internet.de/ddg/__5.html', external: true },
+    { label: t('vsbgLink'), href: 'https://www.gesetze-im-internet.de/vsbg/__36.html', external: true },
+    { label: t('consumerRedressLink'), href: 'https://consumer-redress.ec.europa.eu/dispute-resolution-bodies', external: true },
+  ];
 
   return (
     <>
@@ -61,6 +71,35 @@ export default function Impressum() {
               </p>
             ))}
           </div>
+          <section className="mt-10 rounded-lg border border-anthracite-200 bg-anthracite-50 p-5">
+            <h2 className="font-heading text-xl text-anthracite-900 mb-4">
+              {t('linksTitle')}
+            </h2>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {legalLinks.map((item) => (
+                item.external ? (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-between gap-3 rounded-md border border-anthracite-200 bg-white px-4 py-3 text-sm font-medium text-anthracite-700 transition-colors hover:border-brand-orange hover:text-brand-orange"
+                  >
+                    {item.label}
+                    <ExternalLink className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  </a>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="inline-flex items-center justify-between gap-3 rounded-md border border-anthracite-200 bg-white px-4 py-3 text-sm font-medium text-anthracite-700 transition-colors hover:border-brand-orange hover:text-brand-orange"
+                  >
+                    {item.label}
+                  </Link>
+                )
+              ))}
+            </div>
+          </section>
         </div>
       </main>
       <Footer />

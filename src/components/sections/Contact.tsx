@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Phone, Mail, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import AnimateOnScroll from '@/components/ui/AnimateOnScroll';
 import SectionLabel from '@/components/ui/SectionLabel';
+import { COMPANY_POSTAL_CITY, COMPANY_PRIMARY_PHONE, COMPANY_SECONDARY_PHONE, COMPANY_STREET_ADDRESS } from '@/lib/contact';
 
 export default function Contact() {
   const t = useTranslations('contact');
@@ -70,9 +71,17 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-anthracite-400">{t('phone')}</p>
-                  <a href="tel:+4915204586659" className="text-white font-medium hover:text-primary-400 transition-colors">
-                    +49 1520 458 6659
-                  </a>
+                  <div className="space-y-1">
+                    {[COMPANY_PRIMARY_PHONE, COMPANY_SECONDARY_PHONE].map((phone) => (
+                      <a
+                        key={phone}
+                        href={`tel:${phone.replace(/\s+/g, '')}`}
+                        className="block text-white font-medium hover:text-primary-400 transition-colors"
+                      >
+                        {phone}
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -98,7 +107,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-anthracite-400">{t('region')}</p>
-                  <p className="text-white font-medium">Halle (Saale), Sachsen-Anhalt</p>
+                  <p className="text-white font-medium">{COMPANY_STREET_ADDRESS}</p>
+                  <p className="text-anthracite-400 text-sm">{COMPANY_POSTAL_CITY}</p>
                 </div>
               </div>
             </div>

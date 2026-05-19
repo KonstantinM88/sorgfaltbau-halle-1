@@ -24,9 +24,12 @@ import {
 const constructionIcons = [
   Hammer, Home, Thermometer, Layers, Paintbrush, SquareStack,
   Cable, DoorOpen, Fence, Armchair, Grid3X3, Construction,
+  Hammer, Grid3X3, Thermometer, Home, SquareStack, Construction,
+  Grid3X3, DoorOpen, Construction, Thermometer, Layers, Construction,
+  Hammer, Layers,
 ];
 
-const gardenIcons = [Leaf, Scissors];
+const gardenIcons = [Leaf, Scissors, Scissors, Construction, Hammer, Leaf];
 
 export default function Services() {
   const t = useTranslations('services');

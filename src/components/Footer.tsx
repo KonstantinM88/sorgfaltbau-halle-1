@@ -3,7 +3,13 @@
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { Phone, Mail, MapPin } from 'lucide-react';
-import { COMPANY_MAP_URL, COMPANY_POSTAL_CITY, COMPANY_STREET_ADDRESS } from '@/lib/contact';
+import {
+  COMPANY_MAP_URL,
+  COMPANY_POSTAL_CITY,
+  COMPANY_PRIMARY_PHONE,
+  COMPANY_SECONDARY_PHONE,
+  COMPANY_STREET_ADDRESS,
+} from '@/lib/contact';
 
 export default function Footer() {
   const t = useTranslations();
@@ -75,9 +81,13 @@ export default function Footer() {
               {t('nav.contact')}
             </h4>
             <div className="space-y-3">
-              <a href={`tel:${process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659'}`} className="flex items-center gap-3 text-sm text-anthracite-400 hover:text-brand-orange transition-colors">
+              <a href={`tel:${COMPANY_PRIMARY_PHONE.replace(/\s+/g, '')}`} className="flex items-center gap-3 text-sm text-anthracite-400 hover:text-brand-orange transition-colors">
                 <Phone size={15} className="text-brand-orange flex-shrink-0" />
-                {process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659'}
+                {COMPANY_PRIMARY_PHONE}
+              </a>
+              <a href={`tel:${COMPANY_SECONDARY_PHONE.replace(/\s+/g, '')}`} className="flex items-center gap-3 text-sm text-anthracite-400 hover:text-brand-orange transition-colors">
+                <Phone size={15} className="text-brand-orange flex-shrink-0" />
+                {COMPANY_SECONDARY_PHONE}
               </a>
               <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL || 'info@sorgfaltbau-halle.de'}`} className="flex items-center gap-3 text-sm text-anthracite-400 hover:text-brand-orange transition-colors">
                 <Mail size={15} className="text-brand-orange flex-shrink-0" />
@@ -198,9 +208,9 @@ export default function Footer() {
 //               {t('nav.contact')}
 //             </h4>
 //             <div className="space-y-3">
-//               <a href={`tel:${process.env.NEXT_PUBLIC_PHONE || '+49 123 456789'}`} className="flex items-center gap-3 text-sm text-anthracite-400 hover:text-brand-orange transition-colors">
+//               <a href={`tel:${process.env.NEXT_PUBLIC_PHONE || '+49 176 623 76 777'}`} className="flex items-center gap-3 text-sm text-anthracite-400 hover:text-brand-orange transition-colors">
 //                 <Phone size={15} className="text-brand-orange flex-shrink-0" />
-//                 {process.env.NEXT_PUBLIC_PHONE || '+49 123 456789'}
+//                 {process.env.NEXT_PUBLIC_PHONE || '+49 176 623 76 777'}
 //               </a>
 //               <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL || 'info@sorgfaltbau-halle.de'}`} className="flex items-center gap-3 text-sm text-anthracite-400 hover:text-brand-orange transition-colors">
 //                 <Mail size={15} className="text-brand-orange flex-shrink-0" />

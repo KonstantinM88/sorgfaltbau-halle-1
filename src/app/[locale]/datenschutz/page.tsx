@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl';
 import { getSiteUrl } from '@/lib/site';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { COMPANY_PHONE_TEXT } from '@/lib/contact';
 
 type Params = Promise<{ locale: string }>;
 
@@ -45,7 +46,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
 export default function Datenschutz() {
   const t = useTranslations('datenschutz');
-  const phone = process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659';
+  const phone = COMPANY_PHONE_TEXT;
   const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau-halle.de';
   const siteUrl = getSiteUrl();
   const content = t('content', { phone, email, siteUrl });
