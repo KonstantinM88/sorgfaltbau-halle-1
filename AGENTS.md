@@ -118,6 +118,9 @@ After changing `ADMIN_JWT_SECRET`, old admin cookies become invalid. Clear brows
 - Cropped `logo-sb.png` into header/footer webp logo assets.
 - Copied old section banners to new `sorgfaltbau_*` names so existing pages do not break.
 - Generated a new branded `favicon.ico` route.
+- Converted the new `sorgfaltbau_about_banner.webp` Temp asset into responsive about-page desktop/mobile WebP banners and removed the Temp source after publishing.
+- Switched the about page to cache-busting `sorgfaltbau_about_banner_v2_*` image filenames after Next image cache kept serving the old Onebbau banner path.
+- Converted `public/uploads/Temp/sorgfaltbau_about_banner_1.webp` into responsive cache-busting `/about` banners as `sorgfaltbau_about_banner_v3_*` and switched the page metadata/schema/image sources to them.
 
 ### Prisma / Database
 
@@ -177,6 +180,12 @@ After changing `ADMIN_JWT_SECRET`, old admin cookies become invalid. Clear brows
 
 - Rewrote homepage about text in Russian and German to sound more reliable, premium, and process-focused.
 - Upgraded the homepage about experience badge into a localized trust signal with 10+ years, proof points, and branded styling.
+- Restyled the full `/about` page to match the current SorgfaltBau visual system: navy gradient hero, grid textures, stronger image treatment, branded value/audience cards, and a dark process section.
+- Rewrote `/about` RU/DE copy for a more confident, concrete, process-focused company presentation.
+- Improved the `/about` hero headline readability with structured title lines, orange emphasis, and compact proof markers below the lead text.
+- Added motion and hover effects to the `/about` hero proof cards, highlight rows, and right-side trust cards, including light sweeps, icon states, staggered fade-up, and lift effects.
+- Added scroll-triggered reveal animations to the `/about` hero CTA buttons and stat cards, plus richer stat-card icons, accent lines, hover lift, light sweep, and numbered background markers.
+- Expanded the `/about` service-area list to 12 nearby cities/municipalities around Halle (Saale), including Leipzig.
 
 ### FAQ Visual And Copy Update
 

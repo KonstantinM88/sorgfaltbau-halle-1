@@ -52,114 +52,137 @@
   "aboutPage": {
     "hero": {
       "eyebrow": "Über uns",
-      "title": "SorgfaltBau als Partner für Bau, Renovierung und saubere Abläufe",
-      "lead": "Wir arbeiten für Privatkunden, Vermieter und kleinere Unternehmen in Halle (Saale) und Umgebung. Im Mittelpunkt stehen für uns nachvollziehbare Angebote, saubere Ausführung und eine Kommunikation, die auch während laufender Arbeiten verlässlich bleibt.",
+      "title": "SorgfaltBau: Bau und Renovierung mit klarem Ablauf",
+      "titleStart": "SorgfaltBau",
+      "titleAccent": "Bau & Renovierung",
+      "titleEnd": "mit klarem Ablauf",
+      "lead": "Wir arbeiten in Halle (Saale) und Umgebung für Privatkunden, Vermieter und kleinere Unternehmen. Unser Ansatz verbindet ehrliche Einschätzung, saubere Organisation, ordentliche Ausführung und verlässliche Kommunikation vom ersten Vor-Ort-Termin bis zur Übergabe.",
       "primaryCta": "Projekt anfragen",
       "secondaryCta": "Referenzen ansehen",
-      "imageAlt": "SorgfaltBau bei Bau- und Renovierungsarbeiten in Halle (Saale)",
+      "imageAlt": "SorgfaltBau Team bei einer Beratung zu einem Bauprojekt in Halle (Saale)",
       "imageTag": "Halle (Saale) & Umgebung",
-      "imageTitle": "Ordentliche Baustelle, klare Absprachen, sauberes Ergebnis",
-      "imageText": "Viele Kunden beauftragen uns, weil sie nicht nur eine handwerkliche Ausführung brauchen, sondern einen Ablauf, der auch im Alltag tragbar bleibt.",
-      "floatingCardTitle": "Direkte Abstimmung",
-      "floatingCardText": "Kurze Wege bei Rückfragen, realistische Einschätzung vor Ort und nachvollziehbare Entscheidungen während des Projekts.",
-      "metricValue": "Sauber + planbar",
-      "metricLabel": "Gerade bei bewohnten Wohnungen, Mietobjekten und Außenarbeiten ist ein geordneter Ablauf oft genauso wichtig wie das Endergebnis.",
+      "imageTitle": "Klare Einschätzung, saubere Umsetzung, ruhige Übergabe",
+      "imageText": "Wir übernehmen Arbeiten dann, wenn wir sie verantwortlich organisieren können: Umfang klären, eine praktikable Lösung empfehlen und das Ergebnis sauber übergabefähig machen.",
+      "floatingCardTitle": "Persönliche Verantwortung",
+      "floatingCardText": "Auf der Baustelle zählen nicht nur Handgriffe, sondern auch klare Entscheidungen. Wir erklären Abläufe, Termine und mögliche Besonderheiten frühzeitig.",
+      "metricValue": "Sauber + verlässlich",
+      "metricLabel": "Bei bewohnten Wohnungen, Mietobjekten und Außenarbeiten ist Ordnung auf der Baustelle oft genauso wichtig wie die fertige Optik.",
       "highlights": [
-        "Persönliche Besichtigung und ehrliche Einschätzung vor Beginn",
-        "Strukturierte Ausführung mit Blick auf Ordnung und Alltagstauglichkeit",
-        "Ein Ansprechpartner statt unklarer Übergaben zwischen mehreren Stellen"
+        "Besichtigung vor Ort und ehrliche Einschätzung des Umfangs",
+        "Strukturierte Umsetzung mit Blick auf Termine, Sauberkeit und Details",
+        "Direkte Kommunikation ohne vage Zusagen und unnötige Zwischenwege"
+      ],
+      "proof": [
+        {
+          "value": "10+",
+          "label": "Jahre Praxis"
+        },
+        {
+          "value": "Halle",
+          "label": "und Umgebung"
+        },
+        {
+          "value": "1",
+          "label": "direkter Kontakt"
+        }
       ]
     },
     "stats": [
       {
         "value": "10+",
-        "label": "Jahre Erfahrung im Bau- und Handwerksumfeld"
+        "label": "Jahre praktische Erfahrung in Bau, Renovierung und angrenzenden Arbeiten"
       },
       {
         "value": "200+",
-        "label": "umgesetzte Arbeiten und Renovierungsprojekte"
+        "label": "umgesetzte Aufgaben von Innenarbeiten bis Außenflächen"
       },
       {
         "value": "Halle +",
-        "label": "fester Schwerpunkt in Halle (Saale) und Umgebung"
+        "label": "Schwerpunkt in Halle (Saale) und nahegelegenen Orten"
       },
       {
         "value": "Direkt",
-        "label": "persönliche Abstimmung statt anonymer Weitergabe"
+        "label": "persönliche Abstimmung, klare Entscheidungen und Verantwortung"
       }
     ],
     "story": {
-      "title": "Wer wir sind und wie wir arbeiten",
-      "paragraph1": "SorgfaltBau ist ein Bau- und Handwerksunternehmen mit Sitz in Halle (Saale). Wir übernehmen sowohl einzelne Gewerke als auch zusammenhängende Renovierungsarbeiten, wenn ein Projekt sauber geplant und zuverlässig umgesetzt werden soll.",
-      "paragraph2": "Viele Kunden kommen zu uns, wenn sie nicht nur eine Ausführung, sondern auch eine klare Einschätzung brauchen: Was ist sinnvoll, welche Reihenfolge passt, wo lohnt sich Materialqualität und wie lässt sich ein Projekt im bewohnten Zustand oder zwischen zwei Mietern realistisch organisieren.",
-      "paragraph3": "Unser Fokus liegt auf einer verständlichen Abstimmung vor Beginn, einer geordneten Baustelle während der Ausführung und einem Ergebnis, das auch im Detail ordentlich wirkt. Genau diese Kombination aus Beratung, handwerklicher Arbeit und Verlässlichkeit ist der Grund, warum wir häufig weiterempfohlen werden."
+      "title": "Wer wir sind und was unseren Ansatz ausmacht",
+      "paragraph1": "SorgfaltBau ist ein Bau- und Renovierungsunternehmen aus Halle (Saale). Wir übernehmen einzelne Gewerke und zusammenhängende Projektabschnitte: Innenrenovierung, Ausbau, Montage, Fassaden, Außenflächen, Naturstein, Dacharbeiten und Gartenaufgaben.",
+      "paragraph2": "Kunden kommen zu uns, wenn sie nicht nur eine Ausführung brauchen, sondern einen ruhigen und nachvollziehbaren Ablauf. Vor Beginn prüfen wir die Situation, besprechen realistische Termine, Materialien, Reihenfolge und mögliche Risiken.",
+      "paragraph3": "Unser Ziel ist ein Ergebnis, das gut aussieht, im Alltag funktioniert und während der Arbeiten möglichst wenig Reibung verursacht. Deshalb achten wir auf Sauberkeit, Ordnung, klare Kommunikation und transparente Absprachen."
     },
     "serviceArea": {
       "title": "Unser Einsatzgebiet",
-      "text": "Wir arbeiten schwerpunktmäßig in Halle (Saale) und übernehmen Projekte in nahegelegenen Orten abhängig von Umfang, Terminlage und Anfahrt. Dadurch können wir Besichtigungen, Rückfragen und Nacharbeiten ohne unnötige Verzögerung organisieren.",
+      "text": "Unser Schwerpunkt liegt in Halle (Saale). Projekte in der Umgebung übernehmen wir je nach Umfang, Entfernung und aktueller Terminlage, damit Besichtigung, Abstimmung und mögliche Nacharbeiten ohne unnötige Verzögerungen möglich bleiben.",
       "locations": [
         "Halle (Saale)",
         "Merseburg",
-        "Kabelsketal",
+        "Leipzig",
+        "Schkeuditz",
+        "Delitzsch",
         "Landsberg",
+        "Kabelsketal",
         "Teutschenthal",
-        "Bad Lauchstädt"
+        "Bad Lauchstädt",
+        "Wettin-Löbejün",
+        "Salzatal",
+        "Petersberg"
       ]
     },
-    "valuesTitle": "Worauf Kunden sich bei SorgfaltBau verlassen",
-    "valuesIntro": "Gerade bei Renovierungen entscheidet nicht nur das Endergebnis, sondern auch der Weg dorthin. Deshalb sind für uns nicht nur handwerkliche Qualität, sondern auch Ordnung, Transparenz und saubere Absprachen Teil der eigentlichen Leistung.",
+    "valuesTitle": "Worauf Kunden sich verlassen können",
+    "valuesIntro": "Professionelle Arbeit bedeutet für uns nicht nur saubere Farbe, korrekt verlegtes Material oder eine montierte Konstruktion. Entscheidend sind auch klare Abläufe, ein ordentlicher Umgang mit dem Objekt und ehrliche Kommunikation.",
     "values": [
       {
-        "title": "Klare Abstimmung statt Unklarheiten auf der Baustelle",
-        "text": "Vor Beginn besprechen wir Umfang, Reihenfolge und sinnvolle Lösungen so, dass Sie wissen, was tatsächlich gemacht wird. Das reduziert Missverständnisse und hilft, Änderungen rechtzeitig zu klären."
+        "title": "Klare Vorbereitung vor dem Start",
+        "text": "Wir besprechen Umfang, Materialien, Reihenfolge und Termine im Voraus. Wenn mehrere Lösungen möglich sind, erklären wir Unterschiede bei Kosten, Zeit und praktischer Wirkung."
       },
       {
-        "title": "Saubere und nachvollziehbare Ausführung",
-        "text": "Viele Projekte finden in bewohnten Wohnungen, Häusern oder sensiblen Übergangsphasen statt. Deshalb achten wir auf saubere Arbeitsbereiche, geordnete Abläufe und einen Zustand, der auch während der Arbeiten tragbar bleibt."
+        "title": "Ordentliche Arbeit auf der Baustelle",
+        "text": "Viele Projekte finden in bewohnten Räumen oder vor einer Neuvermietung statt. Deshalb schützen wir Arbeitsbereiche, halten Ordnung und hinterlassen den Objektzustand so sauber wie möglich."
       },
       {
-        "title": "Realistische Preise und ehrliche Einschätzung",
-        "text": "Wir versuchen nicht, Projekte künstlich schönzurechnen. Wenn ein Vorhaben mehr Aufwand bedeutet oder wenn mehrere Wege möglich sind, sprechen wir das offen an, damit Entscheidungen auf einer realistischen Basis getroffen werden können."
+        "title": "Ehrliche Einschätzung und transparente Absprachen",
+        "text": "Wir versprechen nicht das Unmögliche, nur um schnell einen Auftrag zu bekommen. Wenn etwas mehr Aufwand, Material oder Zeit erfordert, sprechen wir es rechtzeitig an."
       }
     ],
-    "audiencesTitle": "Für welche Kunden wir besonders oft arbeiten",
-    "audiencesIntro": "Unsere Projekte sind selten völlig standardisiert. Trotzdem gibt es typische Situationen, in denen Kunden uns besonders häufig anfragen, weil Zuverlässigkeit, Tempo und saubere Kommunikation dort besonders wichtig sind.",
+    "audiencesTitle": "Für wen wir besonders häufig arbeiten",
+    "audiencesIntro": "Unsere Kunden schätzen nicht nur das fertige Ergebnis, sondern auch Planbarkeit. Besonders wichtig ist das in bewohnten Wohnungen, vor Neuvermietungen und bei Außenarbeiten, bei denen Termine, Zugang und Ordnung eine große Rolle spielen.",
     "audiences": [
       {
-        "title": "Privatkunden mit Bad-, Innenausbau- oder Außenprojekten",
-        "text": "Wenn im eigenen Zuhause renoviert oder umgebaut wird, braucht es nicht nur gute Arbeit, sondern auch Rücksicht auf den Alltag. Genau hier helfen strukturierte Abläufe und realistische Zeitfenster."
+        "title": "Privatkunden",
+        "text": "Wir unterstützen bei Renovierung, Innenarbeiten, Bädern, Böden, Fassaden, Terrassen, Einfahrten und weiteren Aufgaben rund um Haus oder Wohnung."
       },
       {
-        "title": "Vermieter und Eigentümer vor Neuvermietung",
-        "text": "Zwischen zwei Mietern zählt oft jeder Tag. Wir helfen dabei, Wohnungen oder einzelne Bereiche zügig, ordentlich und ohne unnötige Abstimmungsrunden wieder in einen guten Zustand zu bringen."
+        "title": "Vermieter und Eigentümer",
+        "text": "Wir bringen Wohnungen und einzelne Bereiche zügig und ordentlich in einen guten Zustand, wenn Neuvermietung, Termine und nachvollziehbare Kosten wichtig sind."
       },
       {
-        "title": "Kleine Unternehmen mit überschaubaren Umbauten",
-        "text": "Auch kleinere Gewerbeobjekte brauchen saubere Lösungen, klare Termine und eine Ausführung, die den laufenden Betrieb möglichst wenig stört. Genau darauf richten wir unsere Planung aus."
+        "title": "Kleine Unternehmen und Objekte",
+        "text": "Wir übernehmen lokale Bau-, Renovierungs- und Montageaufgaben, wenn eine saubere Umsetzung ohne unnötige Störung des laufenden Betriebs gefragt ist."
       }
     ],
     "audiencesHighlight": {
-      "title": "Nicht jedes Projekt muss groß sein, um gut organisiert zu werden",
-      "text": "Wir übernehmen auch kleinere oder mittlere Arbeiten, wenn sie fachlich zu unserem Spektrum passen und sich sinnvoll in den Ablauf einplanen lassen. Entscheidend ist nicht nur die Größe, sondern dass das Projekt sauber vorbereitet und ordentlich abgeschlossen wird."
+      "title": "Gute Organisation ist bei jeder Projektgröße wichtig",
+      "text": "Wir übernehmen kleine, mittlere und zusammenhängende Arbeiten, wenn wir sie sauber ausführen und sinnvoll einplanen können. Entscheidend ist nicht die Größe, sondern dass die Arbeit ruhig, ordentlich und vollständig abgeschlossen wird."
     },
-    "processTitle": "So läuft ein Projekt mit uns in der Regel ab",
-    "processIntro": "Je klarer die Vorbereitung, desto ruhiger die Ausführung. Deshalb setzen wir auf einen Ablauf, der Entscheidungen früh bündelt und spätere Reibung reduziert.",
+    "processTitle": "Wie die Zusammenarbeit abläuft",
+    "processIntro": "Je klarer der Start, desto ruhiger die Umsetzung. Deshalb strukturieren wir den Ablauf so, dass wichtige Fragen vor Beginn geklärt sind und Änderungen vor der Ausführung besprochen werden.",
     "process": [
       {
-        "title": "Besichtigung und Einschätzung",
-        "text": "Wir schauen uns vor Ort an, was gemacht werden soll, welche Randbedingungen bestehen und welche Lösung technisch und wirtschaftlich sinnvoll ist."
+        "title": "Besichtigung vor Ort",
+        "text": "Wir prüfen die Bedingungen, den Umfang, Zugänge, Oberflächen und mögliche Einschränkungen direkt am Objekt."
       },
       {
         "title": "Angebot und Abstimmung",
-        "text": "Sie erhalten ein nachvollziehbares Angebot mit realistischem Umfang. Wenn Alternativen möglich sind, besprechen wir diese vor Beginn und nicht erst mitten im Projekt."
+        "text": "Wir halten Umfang, Materialien, Termine und Preis nachvollziehbar fest. Mögliche Alternativen werden vor dem Start besprochen."
       },
       {
-        "title": "Ausführung mit Ordnung und Rückmeldung",
-        "text": "Während der Arbeiten bleiben wir ansprechbar, halten Absprachen ein und stimmen relevante Punkte rechtzeitig mit Ihnen ab."
+        "title": "Ausführung der Arbeiten",
+        "text": "Wir arbeiten nach abgestimmter Reihenfolge, halten Ordnung und bleiben bei wichtigen Entscheidungen erreichbar."
       },
       {
-        "title": "Abschluss und saubere Übergabe",
-        "text": "Am Ende geht es nicht nur um 'fertig', sondern um einen Zustand, den Sie tatsächlich übernehmen oder direkt weiter nutzen können."
+        "title": "Übergabe des Ergebnisses",
+        "text": "Abschluss bedeutet für uns nicht nur 'fertig', sondern ein Zustand, den Sie übernehmen, nutzen oder weitervermieten können."
       }
     ]
   },
