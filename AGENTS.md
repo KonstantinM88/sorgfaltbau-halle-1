@@ -185,6 +185,7 @@ After changing `ADMIN_JWT_SECRET`, old admin cookies become invalid. Clear brows
 - Improved the `/about` hero headline readability with structured title lines, orange emphasis, and compact proof markers below the lead text.
 - Added motion and hover effects to the `/about` hero proof cards, highlight rows, and right-side trust cards, including light sweeps, icon states, staggered fade-up, and lift effects.
 - Added scroll-triggered reveal animations to the `/about` hero CTA buttons and stat cards, plus richer stat-card icons, accent lines, hover lift, light sweep, and numbered background markers.
+- Converted the `/about` mobile hero proof cards and highlight rows to scroll-triggered `AnimateOnScroll` reveal animations with staggered timing instead of load-only CSS animation.
 - Expanded the `/about` service-area list to 12 nearby cities/municipalities around Halle (Saale), including Leipzig.
 
 ### FAQ Visual And Copy Update

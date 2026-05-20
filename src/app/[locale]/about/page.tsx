@@ -241,49 +241,57 @@ export default async function AboutPage({ params }: { params: Params }) {
                     const Icon = heroProofIcons[index] || ShieldCheck;
 
                     return (
-                      <div
+                      <AnimateOnScroll
                         key={item.label}
-                        style={{ animationDelay: `${140 + index * 90}ms` }}
-                        className="group relative overflow-hidden rounded-2xl border border-white/14 bg-white/[0.08] p-4 shadow-lg shadow-black/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/45 hover:bg-white/[0.12] hover:shadow-2xl hover:shadow-brand-accent/10 motion-safe:animate-[fadeUp_0.7s_ease-out_both]"
+                        variant="fadeUp"
+                        delay={index * 0.08}
+                        className="h-full"
                       >
-                        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
-                        <div className="pointer-events-none absolute -left-1/2 top-0 h-full w-1/3 rotate-12 bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 blur-xl transition-all duration-700 group-hover:translate-x-[420%] group-hover:opacity-100" />
-                        <div className="relative flex items-center gap-3">
-                          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-brand-orange shadow-lg shadow-black/10 transition-colors duration-300 group-hover:bg-brand-accent group-hover:text-white">
-                            <Icon size={18} strokeWidth={1.8} />
-                          </span>
-                          <div>
-                            <p className="font-heading text-2xl leading-none text-white">{item.value}</p>
-                            <p className="mt-1 text-xs font-medium leading-5 text-slate-100/70">{item.label}</p>
+                        <div className="group relative h-full overflow-hidden rounded-2xl border border-white/14 bg-white/[0.08] p-4 shadow-lg shadow-black/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/45 hover:bg-white/[0.12] hover:shadow-2xl hover:shadow-brand-accent/10">
+                          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+                          <div className="pointer-events-none absolute -left-1/2 top-0 h-full w-1/3 rotate-12 bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 blur-xl transition-all duration-700 group-hover:translate-x-[420%] group-hover:opacity-100" />
+                          <div className="relative flex items-center gap-3">
+                            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-brand-orange shadow-lg shadow-black/10 transition-colors duration-300 group-hover:bg-brand-accent group-hover:text-white">
+                              <Icon size={18} strokeWidth={1.8} />
+                            </span>
+                            <div>
+                              <p className="font-heading text-2xl leading-none text-white">{item.value}</p>
+                              <p className="mt-1 text-xs font-medium leading-5 text-slate-100/70">{item.label}</p>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      </AnimateOnScroll>
                     );
                   })}
                 </div>
 
-                <ul className="mt-8 grid grid-cols-1 gap-3">
+                <div className="mt-8 grid grid-cols-1 gap-3" role="list">
                   {heroHighlights.map((item, index) => {
                     const Icon = heroHighlightIcons[index] || CheckCircle2;
 
                     return (
-                      <li
+                      <AnimateOnScroll
                         key={`${item}-${index}`}
-                        style={{ animationDelay: `${260 + index * 90}ms` }}
-                        className="group relative flex items-start gap-3 overflow-hidden rounded-2xl border border-white/14 bg-white/[0.08] px-4 py-3.5 text-sm leading-6 text-slate-50/88 shadow-lg shadow-black/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-accent/45 hover:bg-white/[0.12] hover:shadow-xl hover:shadow-brand-accent/10 motion-safe:animate-[fadeUp_0.7s_ease-out_both] sm:px-5"
+                        variant="fadeUp"
+                        delay={0.12 + index * 0.08}
                       >
-                        <div className="pointer-events-none absolute -left-1/2 top-0 h-full w-1/3 rotate-12 bg-gradient-to-r from-transparent via-white/18 to-transparent opacity-0 blur-xl transition-all duration-700 group-hover:translate-x-[460%] group-hover:opacity-100" />
-                        <span className="relative mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-brand-accent/35 bg-brand-accent/10 text-brand-accent transition-colors duration-300 group-hover:bg-brand-accent group-hover:text-white">
-                          <Icon size={14} strokeWidth={1.9} />
-                        </span>
-                        <span className="relative pr-8">{item}</span>
-                        <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 font-heading text-4xl leading-none text-white/[0.055] transition-colors duration-300 group-hover:text-brand-accent/15">
-                          {String(index + 1).padStart(2, '0')}
-                        </span>
-                      </li>
+                        <div
+                          className="group relative flex items-start gap-3 overflow-hidden rounded-2xl border border-white/14 bg-white/[0.08] px-4 py-3.5 text-sm leading-6 text-slate-50/88 shadow-lg shadow-black/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-accent/45 hover:bg-white/[0.12] hover:shadow-xl hover:shadow-brand-accent/10 sm:px-5"
+                          role="listitem"
+                        >
+                          <div className="pointer-events-none absolute -left-1/2 top-0 h-full w-1/3 rotate-12 bg-gradient-to-r from-transparent via-white/18 to-transparent opacity-0 blur-xl transition-all duration-700 group-hover:translate-x-[460%] group-hover:opacity-100" />
+                          <span className="relative mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-brand-accent/35 bg-brand-accent/10 text-brand-accent transition-colors duration-300 group-hover:bg-brand-accent group-hover:text-white">
+                            <Icon size={14} strokeWidth={1.9} />
+                          </span>
+                          <span className="relative pr-8">{item}</span>
+                          <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 font-heading text-4xl leading-none text-white/[0.055] transition-colors duration-300 group-hover:text-brand-accent/15">
+                            {String(index + 1).padStart(2, '0')}
+                          </span>
+                        </div>
+                      </AnimateOnScroll>
                     );
                   })}
-                </ul>
+                </div>
 
                 <AnimateOnScroll
                   className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
@@ -363,39 +371,45 @@ export default async function AboutPage({ params }: { params: Params }) {
                 </div>
 
                 <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
-                  <div
-                    style={{ animationDelay: '420ms' }}
-                    className="group relative overflow-hidden rounded-[1.6rem] border border-white/14 bg-white/[0.08] p-5 shadow-2xl shadow-black/20 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/45 hover:bg-white/[0.12] motion-safe:animate-[fadeUp_0.75s_ease-out_both]"
+                  <AnimateOnScroll
+                    variant="fadeUp"
+                    delay={0.08}
+                    className="h-full"
                   >
-                    <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-accent/70 to-transparent" />
-                    <div className="pointer-events-none absolute -right-14 -top-14 h-28 w-28 rounded-full bg-brand-accent/12 blur-2xl transition-transform duration-500 group-hover:scale-125" />
-                    <div className="relative flex items-start gap-3">
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white text-brand-orange shadow-lg shadow-black/15 transition-colors duration-300 group-hover:bg-brand-accent group-hover:text-white">
-                        <MessageSquareMore size={20} strokeWidth={1.8} />
-                      </span>
-                      <div>
-                        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-accent">
-                          {t('hero.floatingCardTitle')}
-                        </p>
-                        <p className="mt-3 text-sm leading-7 text-slate-50/78">
-                          {t('hero.floatingCardText')}
-                        </p>
+                    <div className="group relative h-full overflow-hidden rounded-[1.6rem] border border-white/14 bg-white/[0.08] p-5 shadow-2xl shadow-black/20 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/45 hover:bg-white/[0.12]">
+                      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-accent/70 to-transparent" />
+                      <div className="pointer-events-none absolute -right-14 -top-14 h-28 w-28 rounded-full bg-brand-accent/12 blur-2xl transition-transform duration-500 group-hover:scale-125" />
+                      <div className="relative flex items-start gap-3">
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white text-brand-orange shadow-lg shadow-black/15 transition-colors duration-300 group-hover:bg-brand-accent group-hover:text-white">
+                          <MessageSquareMore size={20} strokeWidth={1.8} />
+                        </span>
+                        <div>
+                          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-accent">
+                            {t('hero.floatingCardTitle')}
+                          </p>
+                          <p className="mt-3 text-sm leading-7 text-slate-50/78">
+                            {t('hero.floatingCardText')}
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div
-                    style={{ animationDelay: '520ms' }}
-                    className="group relative overflow-hidden rounded-[1.6rem] border border-white/14 bg-white/[0.08] p-5 shadow-2xl shadow-black/[0.18] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/45 hover:bg-white/[0.12] motion-safe:animate-[fadeUp_0.75s_ease-out_both]"
+                  </AnimateOnScroll>
+                  <AnimateOnScroll
+                    variant="fadeUp"
+                    delay={0.16}
+                    className="h-full"
                   >
-                    <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/45 to-transparent" />
-                    <Sparkles className="pointer-events-none absolute right-5 top-5 h-9 w-9 text-brand-accent/18 transition-all duration-500 group-hover:rotate-12 group-hover:text-brand-accent/30" />
-                    <p className="relative max-w-[9ch] font-heading text-4xl leading-[1.05] text-white">
-                      {t('hero.metricValue')}
-                    </p>
-                    <p className="relative mt-3 text-sm leading-6 text-slate-50/72">
-                      {t('hero.metricLabel')}
-                    </p>
-                  </div>
+                    <div className="group relative h-full overflow-hidden rounded-[1.6rem] border border-white/14 bg-white/[0.08] p-5 shadow-2xl shadow-black/[0.18] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/45 hover:bg-white/[0.12]">
+                      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/45 to-transparent" />
+                      <Sparkles className="pointer-events-none absolute right-5 top-5 h-9 w-9 text-brand-accent/18 transition-all duration-500 group-hover:rotate-12 group-hover:text-brand-accent/30" />
+                      <p className="relative max-w-[9ch] font-heading text-4xl leading-[1.05] text-white">
+                        {t('hero.metricValue')}
+                      </p>
+                      <p className="relative mt-3 text-sm leading-6 text-slate-50/72">
+                        {t('hero.metricLabel')}
+                      </p>
+                    </div>
+                  </AnimateOnScroll>
                 </div>
               </div>
             </div>
