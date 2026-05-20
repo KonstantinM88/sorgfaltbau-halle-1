@@ -13,6 +13,9 @@ const galleryImages = [
   'terrace.webp',
   'flooring.webp',
   'room.webp',
+  'parking-driveways.webp',
+  'roof-repair-insulation.webp',
+  'natural-stone-sandstone-granite.webp',
 ];
 
 export default function Gallery() {

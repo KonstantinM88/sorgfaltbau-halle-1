@@ -22,6 +22,9 @@ const ALLOWED_CATEGORIES = new Set([
   'interior',
   'garden',
   'masonry',
+  'parking',
+  'roof',
+  'natural-stone',
 ]);
 
 const ALLOWED_MIME_TYPES = new Set([

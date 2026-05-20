@@ -495,7 +495,7 @@
         "label": "Trockenbau"
       },
       {
-        "alt": "Fassadensanierung",
+        "alt": "Fassadenarbeiten und Dämmung",
         "label": "Fassade"
       },
       {
@@ -503,12 +503,24 @@
         "label": "Terrasse"
       },
       {
-        "alt": "Bodenverlegung",
+        "alt": "Verlegung von Bodenbelägen",
         "label": "Bodenbelag"
       },
       {
-        "alt": "Raumrenovierung",
+        "alt": "Renovierung und Raumarbeiten",
         "label": "Renovierung"
+      },
+      {
+        "alt": "Parkplätze und Einfahrten schlüsselfertig",
+        "label": "Parkplätze und Einfahrten schlüsselfertig"
+      },
+      {
+        "alt": "Dachreparatur und Dämmung",
+        "label": "Dachreparatur und Dämmung"
+      },
+      {
+        "alt": "Natursteinarbeiten mit Sandstein und Granit",
+        "label": "Natursteinarbeiten - Sandstein und Granit"
       }
     ]
   },

@@ -45,6 +45,9 @@ const CATEGORIES = [
   { value: 'interior', de: 'Innenausbau', ru: 'Интерьер', icon: '🏗️' },
   { value: 'garden', de: 'Garten', ru: 'Сад', icon: '🌳' },
   { value: 'masonry', de: 'Massivbau', ru: 'Кладка', icon: '⬛' },
+  { value: 'parking', de: 'Parkplätze und Einfahrten schlüsselfertig', ru: 'Парковки и въезды под ключ', icon: '🅿️' },
+  { value: 'roof', de: 'Dachreparatur und Dämmung', ru: 'Кровля и утепление', icon: '🏚️' },
+  { value: 'natural-stone', de: 'Natursteinarbeiten - Sandstein und Granit', ru: 'Натуральный камень: песчаник и гранит', icon: '🪨' },
 ];
 
 const t = {

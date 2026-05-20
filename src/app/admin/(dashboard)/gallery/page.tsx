@@ -49,6 +49,9 @@ const CATEGORIES = [
   { value: 'interior', de: 'Innenausbau', ru: 'Интерьер' },
   { value: 'garden', de: 'Garten', ru: 'Сад' },
   { value: 'masonry', de: 'Massivbau', ru: 'Кладка' },
+  { value: 'parking', de: 'Parkplätze und Einfahrten schlüsselfertig', ru: 'Парковки и въезды под ключ' },
+  { value: 'roof', de: 'Dachreparatur und Dämmung', ru: 'Кровля и утепление' },
+  { value: 'natural-stone', de: 'Natursteinarbeiten - Sandstein und Granit', ru: 'Натуральный камень: песчаник и гранит' },
 ];
 
 const MAX_FILE_SIZE = 15 * 1024 * 1024;

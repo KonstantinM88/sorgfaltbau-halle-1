@@ -190,6 +190,12 @@ After changing `ADMIN_JWT_SECRET`, old admin cookies become invalid. Clear brows
 - Added contact proof points, clearer form intro/note copy, map CTA text, and better RU/DE request wording.
 - Added `brand.light` Tailwind token so existing `brand-light` hover/gradient utilities render correctly.
 
+### Gallery Image Update
+
+- Converted new PNG reference images from `public/uploads/Temp` to `1200x900` WebP files in `public/images`.
+- Replaced the six homepage reference images and added three new homepage reference cards: parking/driveways, roof repair/insulation, and natural stone work.
+- Added the same three categories to public gallery filters, admin gallery category selection, and the gallery upload API allow-list.
+
 ### Contact Details Update
 
 - Updated company address to `Waldmeisterstraße 19, 06120 Halle (Saale)`.
