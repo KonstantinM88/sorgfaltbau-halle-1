@@ -72,7 +72,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.5 }}
-              className="block text-brand-orange"
+              className="block text-brand-accent drop-shadow-[0_3px_16px_rgba(0,0,0,0.88)] [text-shadow:0_0_22px_rgba(242,100,34,0.48)]"
             >
               {t('titleHighlight')}
             </motion.span>
@@ -128,7 +128,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="mb-5 font-heading text-[clamp(3rem,5.2vw,5.4rem)] leading-[1.05] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.82)]"
+              className="relative mb-5 rounded-[1.5rem] py-2 font-heading text-[clamp(3rem,5.2vw,5.4rem)] leading-[1.05] text-white drop-shadow-[0_4px_22px_rgba(0,0,0,0.72)] before:absolute before:-inset-x-6 before:-inset-y-4 before:-z-10 before:rounded-[2rem] before:bg-[radial-gradient(ellipse_at_left,rgba(7,31,53,0.46)_0%,rgba(7,31,53,0.28)_46%,transparent_76%)] before:backdrop-blur-[1px]"
               aria-hidden="true"
             >
               <span className="block">SorgfaltBau - Bau- und Handwerks-</span>
@@ -137,7 +137,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.5 }}
-                className="block text-brand-orange"
+                className="block text-brand-accent drop-shadow-[0_3px_12px_rgba(0,0,0,0.62)] [text-shadow:0_2px_10px_rgba(7,31,53,0.55)]"
               >
                 {t('titleHighlight')}
               </motion.span>
@@ -147,7 +147,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="mb-8 max-w-xl text-xl font-medium tracking-wide text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.78)] lg:text-2xl"
+              className="mb-8 inline-block max-w-xl rounded-full bg-anthracite-950/18 px-1 text-xl font-semibold tracking-wide text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.82)] lg:text-2xl"
             >
               {t('subtitle')}
             </motion.p>

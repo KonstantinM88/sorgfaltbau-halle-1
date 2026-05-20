@@ -597,10 +597,12 @@
   },
   "footer": {
     "description": "SorgfaltBau — строительные и ремонтные работы в Halle (Saale). Качество. Надёжность. Профессиональный подход.",
+    "region": "Halle (Saale) и окрестности",
     "navigation": "Навигация",
     "services": "Услуги",
     "legal": "Правовая информация",
-    "rights": "Все права защищены."
+    "rights": "Все права защищены.",
+    "backToTop": "Наверх"
   },
   "impressum": {
     "title": "Impressum",

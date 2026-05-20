@@ -196,6 +196,18 @@ After changing `ADMIN_JWT_SECRET`, old admin cookies become invalid. Clear brows
 - Replaced the six homepage reference images and added three new homepage reference cards: parking/driveways, roof repair/insulation, and natural stone work.
 - Added the same three categories to public gallery filters, admin gallery category selection, and the gallery upload API allow-list.
 
+### Hero Readability Update
+
+- Changed the hero location highlight to the logo orange accent token `brand-accent` and added a dark/orange text glow for better mobile video readability.
+- Improved desktop hero readability with a subtle local navy radial backing behind the headline and a lighter text-shadow treatment so the text feels less washed out on bright image areas.
+
+### Footer UX Update
+
+- Added a localized footer "back to top" button with smooth scroll behavior and brand-accent hover styling.
+- Restyled the full footer as a branded navy section with logo panel, service highlights, contact rows, legal links, grid texture, glow accents, and responsive layout.
+- Center-aligned the footer logo, region badge, and column headings for a more symmetric footer composition.
+- Kept footer navigation links left-aligned to match the services list rhythm.
+
 ### Contact Details Update
 
 - Updated company address to `Waldmeisterstraße 19, 06120 Halle (Saale)`.

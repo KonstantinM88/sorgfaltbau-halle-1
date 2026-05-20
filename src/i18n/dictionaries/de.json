@@ -597,10 +597,12 @@
   },
   "footer": {
     "description": "SorgfaltBau – Bau- und Handwerksleistungen in Halle (Saale). Qualität, Zuverlässigkeit und saubere Arbeit.",
+    "region": "Halle (Saale) und Umgebung",
     "navigation": "Navigation",
     "services": "Leistungen",
     "legal": "Rechtliches",
-    "rights": "Alle Rechte vorbehalten."
+    "rights": "Alle Rechte vorbehalten.",
+    "backToTop": "Nach oben"
   },
   "impressum": {
     "title": "Impressum",
