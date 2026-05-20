@@ -265,6 +265,9 @@
     "hero": {
       "eyebrow": "Vorteile",
       "title": "Warum Kunden SorgfaltBau gerade für sensible Projekte wählen",
+      "titleStart": "Warum Kunden",
+      "titleAccent": "SorgfaltBau",
+      "titleEnd": "bei wichtigen Projekten wählen",
       "lead": "Viele Anfragen entstehen dort, wo nicht nur ein Ergebnis zählt, sondern auch der Weg dorthin: bei bewohnten Wohnungen, vor einer Neuvermietung, bei kleineren Umbauten oder bei Außenarbeiten mit engem Zeitfenster. Genau in solchen Situationen werden Zuverlässigkeit, Ordnung und klare Kommunikation besonders wichtig.",
       "primaryCta": "Kontakt aufnehmen",
       "secondaryCta": "Kundenstimmen ansehen",
@@ -280,6 +283,20 @@
         "Klare Kommunikation vor Beginn und während der Ausführung",
         "Saubere Arbeitsweise gerade in sensiblen oder bewohnten Objekten",
         "Realistische Preise und Zusagen, die im Projektverlauf tragfähig bleiben"
+      ],
+      "proof": [
+        {
+          "value": "Plan",
+          "label": "realistischer Start"
+        },
+        {
+          "value": "Ordnung",
+          "label": "auf der Baustelle"
+        },
+        {
+          "value": "Direkt",
+          "label": "klare Abstimmung"
+        }
       ]
     },
     "proofTitle": "Was unsere Arbeitsweise im Alltag besser macht",

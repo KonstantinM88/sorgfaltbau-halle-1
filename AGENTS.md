@@ -121,6 +121,8 @@ After changing `ADMIN_JWT_SECRET`, old admin cookies become invalid. Clear brows
 - Converted the new `sorgfaltbau_about_banner.webp` Temp asset into responsive about-page desktop/mobile WebP banners and removed the Temp source after publishing.
 - Switched the about page to cache-busting `sorgfaltbau_about_banner_v2_*` image filenames after Next image cache kept serving the old Onebbau banner path.
 - Converted `public/uploads/Temp/sorgfaltbau_about_banner_1.webp` into responsive cache-busting `/about` banners as `sorgfaltbau_about_banner_v3_*` and switched the page metadata/schema/image sources to them.
+- Converted `public/uploads/Temp/confident_contractor_at_sunset_construction_site.webp` into responsive `/why-us` hero banners as `sorgfaltbau_why_us_contractor_v2_*` and switched the page image/metadata sources.
+- Removed the temporary `confident_contractor_at_sunset_construction_site.webp` source from `public/uploads/Temp` after publishing the responsive `/why-us` versions.
 
 ### Prisma / Database
 
@@ -175,6 +177,8 @@ After changing `ADMIN_JWT_SECRET`, old admin cookies become invalid. Clear brows
 - Restyled the homepage why-us section with the same branded background system, light sweep, numbered cards, icon hover states, and centered final row.
 - Rewrote the five why-us reasons in Russian and German to sound more specific, reliable, and process-focused.
 - Aligned the why-us card proof marker at the bottom of each card for symmetric layout.
+- Restyled the full `/why-us` page to match the SorgfaltBau visual system: navy gradient hero, responsive contractor image, proof cards, highlighted trust rows, recommendation reasons, dark workflow section, audience cards, and scroll-triggered reveal effects.
+- Added missing localized `/why-us` hero title split and proof-card translation keys in Russian and German.
 
 ### About Copy Update
 
