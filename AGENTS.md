@@ -123,6 +123,7 @@ After changing `ADMIN_JWT_SECRET`, old admin cookies become invalid. Clear brows
 - Converted `public/uploads/Temp/sorgfaltbau_about_banner_1.webp` into responsive cache-busting `/about` banners as `sorgfaltbau_about_banner_v3_*` and switched the page metadata/schema/image sources to them.
 - Converted `public/uploads/Temp/confident_contractor_at_sunset_construction_site.webp` into responsive `/why-us` hero banners as `sorgfaltbau_why_us_contractor_v2_*` and switched the page image/metadata sources.
 - Removed the temporary `confident_contractor_at_sunset_construction_site.webp` source from `public/uploads/Temp` after publishing the responsive `/why-us` versions.
+- Converted `public/uploads/Temp/Kontakt_SG.webp` into responsive `/contact` hero banners as `sorgfaltbau_contact_banner_v2_*` and removed the Temp source after publishing.
 
 ### Prisma / Database
 
@@ -203,6 +204,8 @@ After changing `ADMIN_JWT_SECRET`, old admin cookies become invalid. Clear brows
 - Restyled the homepage contact section as a branded dark CTA block with a navy gradient, subtle grid, animated light sweep, direct-contact panel, and stronger form card.
 - Added contact proof points, clearer form intro/note copy, map CTA text, and better RU/DE request wording.
 - Added `brand.light` Tailwind token so existing `brand-light` hover/gradient utilities render correctly.
+- Restyled the full `/contact` page to match the SorgfaltBau visual system: navy gradient hero, new responsive contact image, direct contact cards, channel cards, dark response/process section, checklist panel, and scroll-triggered reveal effects.
+- Reworked `/contact` RU/DE copy and metadata to be more direct, trustworthy, and process-focused.
 
 ### Gallery Image Update
 

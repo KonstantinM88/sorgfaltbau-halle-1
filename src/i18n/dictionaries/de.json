@@ -358,57 +358,60 @@
     "hero": {
       "eyebrow": "Kontakt",
       "title": "Kontakt für Bau-, Renovierungs- und Außenarbeiten",
-      "lead": "Wenn Sie ein Projekt in Halle (Saale) oder Umgebung planen, können Sie uns telefonisch, per E-Mail, über WhatsApp oder direkt über das Formular schreiben. Je klarer die Ausgangslage, desto schneller können wir sagen, was sinnvoll ist und wie ein nächster Schritt aussieht.",
-      "primaryCta": "Zum Formular",
-      "secondaryCta": "Direkt anrufen",
+      "titleStart": "Kontakt zu",
+      "titleAccent": "SorgfaltBau",
+      "titleEnd": "für klare nächste Schritte",
+      "lead": "Beschreiben Sie kurz, was gemacht werden soll, wo sich das Objekt befindet und welcher Zeitraum wichtig ist. Wir ordnen die Ausgangslage ein, klären offene Punkte und empfehlen den sinnvollen nächsten Schritt: kurze Rückmeldung, Besichtigung oder Angebot.",
+      "primaryCta": "Projekt beschreiben",
+      "secondaryCta": "Anrufen",
       "imageAlt": "Kontakt zu SorgfaltBau für Bau- und Renovierungsarbeiten",
-      "imageTag": "Schnelle Anfrage",
-      "imageTitle": "Kurze Wege vom ersten Kontakt bis zur Besichtigung",
-      "imageText": "Viele Projekte beginnen mit ein paar Fotos, einer kurzen Beschreibung und der Frage, wie sich Umfang, Zeitraum und gewünschtes Ergebnis realistisch einschätzen lassen.",
+      "imageTag": "Schneller Start",
+      "imageTitle": "Vom ersten Kontakt zu einem klaren nächsten Schritt",
+      "imageText": "Oft reichen einige Fotos, der Stadtteil und eine kurze Beschreibung. So können wir Umfang, mögliche Risiken, Zeitraum und die Notwendigkeit einer Besichtigung schneller einschätzen.",
       "phoneLabel": "Telefon",
       "emailLabel": "E-Mail",
       "highlights": [
         "Unverbindliche Anfrage für Wohnungen, Häuser und Außenbereiche",
-        "Telefon, E-Mail und WhatsApp für schnelle Rückfragen",
+        "Telefon, E-Mail und WhatsApp für schnelle Abstimmungen",
         "Besichtigungen in Halle (Saale) und je nach Projekt auch im Umland"
       ]
     },
-    "channelsTitle": "Wie Sie uns am schnellsten erreichen",
-    "channelsIntro": "Je nach Situation ist ein anderer Kontaktweg sinnvoll. Für kurze Rückfragen reicht oft ein Anruf oder WhatsApp, für größere Projekte helfen ein paar Eckdaten per Nachricht oder E-Mail.",
+    "channelsTitle": "Wählen Sie den passenden Kontaktweg",
+    "channelsIntro": "Für dringende Rückfragen eignen sich Telefon oder WhatsApp. Bei größeren Projekten helfen Beschreibung, Fotos und Wunschzeitraum, damit wir die Aufgabe ruhiger und genauer einschätzen können.",
     "channels": [
       {
         "title": "Telefon",
-        "text": "Gut für direkte Rückfragen, Terminabstimmung und eine erste kurze Einschätzung, ob Ihr Vorhaben in unser Spektrum passt."
+        "text": "Gut für direkte Rückfragen, Terminabstimmung und eine erste Einschätzung, ob wir die Aufgabe sinnvoll übernehmen können."
       },
       {
         "title": "E-Mail",
-        "text": "Sinnvoll, wenn Sie Bilder, eine kurze Beschreibung oder einen etwas ausführlicheren Überblick zum Projekt schicken möchten."
+        "text": "Sinnvoll, wenn Sie Fotos, Objektbeschreibung, Leistungsumfang oder weitere Eckdaten strukturiert senden möchten."
       },
       {
         "title": "WhatsApp",
-        "text": "Praktisch für schnelle Fotos, kurze Rückfragen und eine unkomplizierte erste Kontaktaufnahme unterwegs."
+        "text": "Praktisch für schnelle Fotos, kurze Abstimmungen und eine unkomplizierte erste Kontaktaufnahme."
       }
     ],
     "responseTitle": "Was nach Ihrer Anfrage passiert",
-    "responseIntro": "Wir versuchen Anfragen zügig einzuordnen, damit Sie schnell wissen, ob ein Projekt zeitlich und fachlich zu uns passt und welcher nächste Schritt sinnvoll ist.",
+    "responseIntro": "Unser Ziel ist eine zügige und ehrliche Einordnung, ohne blind etwas zu versprechen. Wenn Projekt, Zeitraum und Region passen, schlagen wir den nächsten klaren Schritt vor.",
     "response": [
       {
         "title": "Erste Rückmeldung",
-        "text": "Bei klaren Anfragen oft kurzfristig, bei umfangreicheren Projekten nach kurzer Sichtung der Angaben und Bilder."
+        "text": "Bei klaren Anfragen können wir oft schnell reagieren. Bei größeren Projekten prüfen wir zuerst Fotos, Beschreibung und wichtige Rahmenbedingungen."
       },
       {
         "title": "Besichtigung",
-        "text": "Wenn das Projekt in Frage kommt, schauen wir uns die Situation vor Ort an und klären offene Punkte direkt."
+        "text": "Wenn eine genaue Einschätzung nötig ist, sehen wir uns die Situation vor Ort an und klären Punkte, die Kosten, Termine und Ablauf beeinflussen."
       },
       {
         "title": "Angebot oder Einschätzung",
-        "text": "Danach erhalten Sie eine realistische Einschätzung oder ein Angebot, das auf den tatsächlichen Bedingungen basiert."
+        "text": "Nach Klärung der Bedingungen erhalten Sie eine realistische Einschätzung oder ein Angebot auf Grundlage der tatsächlichen Situation."
       }
     ],
     "regionTitle": "Unser Einsatzgebiet",
-    "regionText": "Schwerpunkt ist Halle (Saale) mit Einsätzen in der näheren Umgebung. Je nach Umfang und Terminlage prüfen wir Projekte auch in Merseburg, Kabelsketal, Landsberg und weiteren nahegelegenen Orten.",
+    "regionText": "Unser Schwerpunkt liegt in Halle (Saale). Je nach Umfang, Terminlage und Entfernung prüfen wir auch Projekte in nahegelegenen Städten und Ortsteilen.",
     "checklistTitle": "Welche Informationen für eine Anfrage hilfreich sind",
-    "checklistIntro": "Je genauer die Ausgangslage beschrieben ist, desto schneller lässt sich ein Projekt sinnvoll einordnen. Oft reichen schon ein paar Punkte, um den nächsten Schritt klarer zu machen.",
+    "checklistIntro": "Je klarer die Ausgangslage beschrieben ist, desto schneller lässt sich die Aufgabe sinnvoll einordnen. Häufig reichen einige konkrete Punkte für den nächsten Schritt.",
     "checklist": [
       "Welche Arbeiten geplant sind und ob mehrere Gewerke zusammenkommen",
       "Ob das Objekt bewohnt ist, leer steht oder zwischen zwei Mietern übergeben wird",
