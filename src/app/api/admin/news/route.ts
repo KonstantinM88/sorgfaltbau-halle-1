@@ -1,13 +1,12 @@
 // src/app/api/admin/news/route.ts
 import { randomUUID } from 'crypto';
-import { mkdir, unlink, writeFile } from 'fs/promises';
+import { unlink } from 'fs/promises';
 import path from 'path';
 import { NextRequest, NextResponse } from 'next/server';
 import sharp from 'sharp';
 import { getSession } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 
-const UPLOAD_DIR = path.join(process.cwd(), 'public', 'uploads', 'news');
 const COVER_WIDTH = 1200;
 const COVER_HEIGHT = 630; // OG image ratio
 const WEBP_QUALITY = 85;
@@ -28,6 +27,42 @@ async function requireSession() {
   return null;
 }
 
+const NEWS_ARTICLE_SELECT = {
+  id: true,
+  slug: true,
+  title: true,
+  titleRu: true,
+  excerpt: true,
+  excerptRu: true,
+  content: true,
+  contentRu: true,
+  coverUrl: true,
+  coverWidth: true,
+  coverHeight: true,
+  metaTitle: true,
+  metaTitleRu: true,
+  metaDesc: true,
+  metaDescRu: true,
+  published: true,
+  publishedAt: true,
+  createdAt: true,
+  updatedAt: true,
+} as const;
+
+function newsCoverUrl(articleId: string) {
+  return `/api/news/media/${articleId}?v=${Date.now()}`;
+}
+
+async function deleteLegacyCover(coverUrl: string | null) {
+  if (!coverUrl?.startsWith('/uploads/news/')) return;
+
+  try {
+    await unlink(path.join(process.cwd(), 'public', coverUrl.replace(/^\/+/, '')));
+  } catch {
+    // Legacy runtime file can be already missing after a deployment.
+  }
+}
+
 // GET — list all articles (admin)
 export async function GET() {
   const unauthorized = await requireSession();
@@ -36,6 +71,7 @@ export async function GET() {
   try {
     const articles = await prisma.newsArticle.findMany({
       orderBy: { publishedAt: 'desc' },
+      select: NEWS_ARTICLE_SELECT,
     });
     return NextResponse.json(articles);
   } catch {
@@ -84,13 +120,14 @@ export async function POST(request: NextRequest) {
     let coverUrl: string | null = null;
     let coverWidth = 0;
     let coverHeight = 0;
+    let coverData: Uint8Array<ArrayBuffer> | null = null;
+    const articleId = randomUUID();
 
     if (coverFile && coverFile.size > 0) {
       if (coverFile.size > MAX_FILE_SIZE) {
         return NextResponse.json({ error: 'Datei zu groß (max 10 MB)' }, { status: 400 });
       }
 
-      await mkdir(UPLOAD_DIR, { recursive: true });
       const buffer = Buffer.from(await coverFile.arrayBuffer());
       const image = sharp(buffer, { failOn: 'none' });
       const meta = await image.metadata();
@@ -105,16 +142,15 @@ export async function POST(request: NextRequest) {
         .webp({ quality: WEBP_QUALITY })
         .toBuffer();
 
-      const filename = `${slug}_${Date.now()}_${randomUUID().slice(0, 8)}.webp`;
-      await writeFile(path.join(UPLOAD_DIR, filename), webpBuffer);
-
-      coverUrl = `/uploads/news/${filename}`;
+      coverUrl = newsCoverUrl(articleId);
       coverWidth = COVER_WIDTH;
       coverHeight = COVER_HEIGHT;
+      coverData = new Uint8Array(webpBuffer);
     }
 
     const article = await prisma.newsArticle.create({
       data: {
+        id: articleId,
         slug,
         title,
         titleRu,
@@ -129,9 +165,11 @@ export async function POST(request: NextRequest) {
         coverUrl,
         coverWidth,
         coverHeight,
+        coverData,
         published,
         publishedAt,
       },
+      select: NEWS_ARTICLE_SELECT,
     });
 
     return NextResponse.json({ success: true, article });
@@ -189,39 +227,34 @@ export async function PATCH(request: NextRequest) {
         return NextResponse.json({ error: 'Datei zu groß (max 10 MB)' }, { status: 400 });
       }
 
-      await mkdir(UPLOAD_DIR, { recursive: true });
       const buffer = Buffer.from(await coverFile.arrayBuffer());
       const webpBuffer = await sharp(buffer, { failOn: 'none' })
         .resize(COVER_WIDTH, COVER_HEIGHT, { fit: 'cover', position: 'center' })
         .webp({ quality: WEBP_QUALITY })
         .toBuffer();
 
-      const filename = `${existing.slug}_${Date.now()}_${randomUUID().slice(0, 8)}.webp`;
-      await writeFile(path.join(UPLOAD_DIR, filename), webpBuffer);
+      await deleteLegacyCover(existing.coverUrl);
 
-      // Delete old cover
-      if (existing.coverUrl) {
-        try {
-          await unlink(path.join(process.cwd(), 'public', existing.coverUrl.replace(/^\/+/, '')));
-        } catch { /* ignore */ }
-      }
-
-      data.coverUrl = `/uploads/news/${filename}`;
+      data.coverUrl = newsCoverUrl(existing.id);
       data.coverWidth = COVER_WIDTH;
       data.coverHeight = COVER_HEIGHT;
+      data.coverData = new Uint8Array(webpBuffer);
     }
 
     // Remove cover
     if (formData.get('removeCover') === 'true' && existing.coverUrl) {
-      try {
-        await unlink(path.join(process.cwd(), 'public', existing.coverUrl.replace(/^\/+/, '')));
-      } catch { /* ignore */ }
+      await deleteLegacyCover(existing.coverUrl);
       data.coverUrl = null;
       data.coverWidth = 0;
       data.coverHeight = 0;
+      data.coverData = null;
     }
 
-    const updated = await prisma.newsArticle.update({ where: { id }, data });
+    const updated = await prisma.newsArticle.update({
+      where: { id },
+      data,
+      select: NEWS_ARTICLE_SELECT,
+    });
     return NextResponse.json({ success: true, article: updated });
   } catch (error) {
     console.error('News update error:', error);
@@ -241,12 +274,7 @@ export async function DELETE(request: NextRequest) {
     const article = await prisma.newsArticle.findUnique({ where: { id } });
     if (!article) return NextResponse.json({ error: 'Nicht gefunden' }, { status: 404 });
 
-    // Delete cover file
-    if (article.coverUrl) {
-      try {
-        await unlink(path.join(process.cwd(), 'public', article.coverUrl.replace(/^\/+/, '')));
-      } catch { /* ignore */ }
-    }
+    await deleteLegacyCover(article.coverUrl);
 
     await prisma.newsArticle.delete({ where: { id } });
     return NextResponse.json({ success: true });

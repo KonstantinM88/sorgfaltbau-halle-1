@@ -1,13 +1,12 @@
 // src/app/api/admin/gallery/route.ts
 import { randomUUID } from 'crypto';
-import { mkdir, unlink, writeFile } from 'fs/promises';
+import { unlink } from 'fs/promises';
 import path from 'path';
 import { NextRequest, NextResponse } from 'next/server';
 import sharp from 'sharp';
 import { getSession } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 
-const UPLOAD_DIR = path.join(process.cwd(), 'public', 'uploads', 'gallery');
 const MAX_WIDTH = 1920;
 const WEBP_QUALITY = 82;
 const MAX_FILE_SIZE = 15 * 1024 * 1024;
@@ -52,15 +51,21 @@ function sanitizeOptionalText(value: unknown): string | null | undefined {
   return trimmed.slice(0, MAX_CAPTION_LENGTH);
 }
 
-function safeFilenameBase(filename: string) {
-  const base = filename
-    .replace(/\.[^.]+$/, '')
-    .replace(/[^a-zA-Z0-9_-]/g, '_')
-    .toLowerCase()
-    .replace(/_+/g, '_')
-    .replace(/^_+|_+$/g, '');
-  return base || 'image';
-}
+const GALLERY_IMAGE_SELECT = {
+  id: true,
+  url: true,
+  filename: true,
+  mimeType: true,
+  category: true,
+  caption: true,
+  captionRu: true,
+  sortOrder: true,
+  width: true,
+  height: true,
+  size: true,
+  createdAt: true,
+  updatedAt: true,
+} as const;
 
 async function requireSession() {
   const session = await getSession();
@@ -78,6 +83,7 @@ export async function GET() {
   try {
     const images = await prisma.galleryImage.findMany({
       orderBy: [{ sortOrder: 'asc' }, { createdAt: 'desc' }],
+      select: GALLERY_IMAGE_SELECT,
     });
     return NextResponse.json(images);
   } catch {
@@ -91,8 +97,6 @@ export async function POST(request: NextRequest) {
   if (unauthorized) return unauthorized;
 
   try {
-    await mkdir(UPLOAD_DIR, { recursive: true });
-
     const formData = await request.formData();
     const files = formData.getAll('files').filter((item): item is File => typeof item !== 'string');
     const category = sanitizeCategory(formData.get('category'));
@@ -139,16 +143,14 @@ export async function POST(request: NextRequest) {
       const webpBuffer = await processed.webp({ quality: WEBP_QUALITY }).toBuffer();
       const finalMeta = await sharp(webpBuffer).metadata();
 
-      const filename = `${safeFilenameBase(file.name)}_${Date.now()}_${randomUUID().slice(0, 8)}.webp`;
-      const filePath = path.join(UPLOAD_DIR, filename);
-      await writeFile(filePath, webpBuffer);
-
-      const url = `/uploads/gallery/${filename}`;
+      const id = randomUUID();
       const record = await prisma.galleryImage.create({
         data: {
-          url,
+          id,
+          url: `/api/gallery/media/${id}`,
           filename: file.name,
           mimeType: 'image/webp',
+          data: new Uint8Array(webpBuffer),
           category,
           caption: caption === undefined ? null : caption,
           captionRu: captionRu === undefined ? null : captionRu,
@@ -156,6 +158,7 @@ export async function POST(request: NextRequest) {
           height: finalMeta.height || 0,
           size: webpBuffer.length,
         },
+        select: GALLERY_IMAGE_SELECT,
       });
 
       results.push(record);
@@ -180,17 +183,22 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: 'Ungültige Anfrage' }, { status: 400 });
     }
 
-    const image = await prisma.galleryImage.findUnique({ where: { id } });
+    const image = await prisma.galleryImage.findUnique({
+      where: { id },
+      select: { id: true, url: true },
+    });
     if (!image) {
       return NextResponse.json({ error: 'Bild nicht gefunden' }, { status: 404 });
     }
 
-    const relativePath = image.url.replace(/^\/+/, '');
-    const filePath = path.join(process.cwd(), 'public', relativePath);
-    try {
-      await unlink(filePath);
-    } catch {
-      // File can be already missing, DB delete still should continue.
+    if (image.url.startsWith('/uploads/gallery/')) {
+      const relativePath = image.url.replace(/^\/+/, '');
+      const filePath = path.join(process.cwd(), 'public', relativePath);
+      try {
+        await unlink(filePath);
+      } catch {
+        // Legacy file can be already missing, DB delete still should continue.
+      }
     }
 
     await prisma.galleryImage.delete({ where: { id } });
@@ -244,6 +252,7 @@ export async function PATCH(request: NextRequest) {
     const updated = await prisma.galleryImage.update({
       where: { id },
       data,
+      select: GALLERY_IMAGE_SELECT,
     });
 
     return NextResponse.json(updated);

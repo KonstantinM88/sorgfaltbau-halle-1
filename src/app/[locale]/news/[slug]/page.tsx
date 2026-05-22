@@ -93,7 +93,24 @@ export default async function ArticlePage({ params }: { params: Params }) {
   const isRu = locale === 'ru';
   const siteUrl = getSiteUrl();
 
-  const article = await prisma.newsArticle.findUnique({ where: { slug } });
+  const article = await prisma.newsArticle.findUnique({
+    where: { slug },
+    select: {
+      slug: true,
+      title: true,
+      titleRu: true,
+      excerpt: true,
+      excerptRu: true,
+      content: true,
+      contentRu: true,
+      coverUrl: true,
+      coverWidth: true,
+      coverHeight: true,
+      published: true,
+      publishedAt: true,
+      updatedAt: true,
+    },
+  });
 
   if (!article || (!article.published && process.env.NODE_ENV === 'production')) {
     notFound();

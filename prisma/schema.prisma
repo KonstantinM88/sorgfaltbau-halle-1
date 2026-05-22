@@ -22,6 +22,7 @@ model GalleryImage {
   url       String
   filename  String?
   mimeType  String?
+  data      Bytes?
   category  String   @default("interior")
   caption   String?
   captionRu String?
@@ -50,6 +51,7 @@ model NewsArticle {
   coverUrl    String?
   coverWidth  Int      @default(0)
   coverHeight Int      @default(0)
+  coverData   Bytes?
   /// SEO
   metaTitle   String?
   metaTitleRu String?
