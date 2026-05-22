@@ -63,7 +63,7 @@ export default async function Home({params}: {params: Params}) {
   const {locale} = await params;
   const baseUrl = getSiteUrl();
   const phone = COMPANY_PRIMARY_PHONE;
-  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau-halle.de';
+  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau.de';
 
   const jsonLd = {
     '@context': 'https://schema.org',

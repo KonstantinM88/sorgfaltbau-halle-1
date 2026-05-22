@@ -47,7 +47,7 @@ export default function Impressum() {
   const t = useTranslations('impressum');
   const locale = useLocale();
   const phone = COMPANY_PHONE_TEXT;
-  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau-halle.de';
+  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau.de';
   const content = t('content', { phone, email });
   const legalLinks = [
     { label: t('privacyLink'), href: `/${locale}/datenschutz`, external: false },

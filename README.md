@@ -18,9 +18,8 @@ Moderne, professionelle Website für SorgfaltBau – Bau- und Handwerksunternehm
 # 1. Abhängigkeiten installieren
 npm install
 
-# 2. Umgebungsvariablen konfigurieren
-cp .env.example .env
-# → DATABASE_URL, NEXT_PUBLIC_PHONE, NEXT_PUBLIC_EMAIL eintragen
+# 2. Umgebungsvariablen in .env konfigurieren
+# -> DATABASE_URL, NEXT_PUBLIC_PHONE, NEXT_PUBLIC_EMAIL and SMTP_PASSWORD eintragen
 
 # 3. Datenbank erstellen
 npx prisma db push

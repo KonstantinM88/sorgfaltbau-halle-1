@@ -8,7 +8,7 @@ Base project was originally adapted from `onebbau.de`; old brand references shou
 
 ## Stack
 
-- Next.js `16.2.3` App Router
+- Next.js `16.2.5` App Router
 - React `19.2.5`
 - TypeScript
 - next-intl for `de` and `ru`
@@ -95,12 +95,18 @@ Important variables:
 - `NEXT_PUBLIC_EMAIL`
 - `CONTACT_TO_EMAIL`
 - `CONTACT_FROM_EMAIL`
-- `RESEND_API_KEY`
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_SECURE`
+- `SMTP_USER`
+- `SMTP_PASSWORD`
 - `ADMIN_USERNAME`
 - `ADMIN_PASSWORD`
 - `ADMIN_JWT_SECRET`
 
 After changing `ADMIN_JWT_SECRET`, old admin cookies become invalid. Clear browser cookies or visit `/api/auth/logout`, then log in again at `/admin/login`.
+
+Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` in `.env.local`, because it overrides a configured mailbox password from `.env` during local contact-form tests.
 
 ## Completed Work Log
 
@@ -135,7 +141,7 @@ After changing `ADMIN_JWT_SECRET`, old admin cookies become invalid. Clear brows
 
 ### Dependency Updates
 
-- Upgraded Next.js to `16.2.3`.
+- Upgraded Next.js to `16.2.5`.
 - Upgraded React and React DOM to `19.2.5`.
 - Upgraded next-intl to `4.12.0`.
 - Added npm overrides for `picomatch` and `@hono/node-server`.
@@ -206,6 +212,9 @@ After changing `ADMIN_JWT_SECRET`, old admin cookies become invalid. Clear brows
 - Added `brand.light` Tailwind token so existing `brand-light` hover/gradient utilities render correctly.
 - Restyled the full `/contact` page to match the SorgfaltBau visual system: navy gradient hero, new responsive contact image, direct contact cards, channel cards, dark response/process section, checklist panel, and scroll-triggered reveal effects.
 - Reworked `/contact` RU/DE copy and metadata to be more direct, trustworthy, and process-focused.
+- Moved contact-form delivery from Resend to Hostinger SMTP via Nodemailer and updated mailbox defaults to `service@sorgfaltbau.de`.
+- Added Hostinger SMTP env examples and adjusted Datenschutzerklaerung RU/DE wording to describe Hostinger mail delivery.
+- Added localized RU/DE customer auto-reply e-mails for submitted contact forms; confirmation failures are logged without turning an already accepted request into a client-side form error.
 
 ### Gallery Image Update
 
@@ -239,6 +248,6 @@ After changing `ADMIN_JWT_SECRET`, old admin cookies become invalid. Clear brows
 
 ## Known Notes
 
-- `npm audit` still reports issues tied to the requested `next@16.2.3` and its internal `postcss@8.4.31`.
+- `npm audit` still reports issues tied to the requested `next@16.2.5` and its internal `postcss@8.4.31`.
 - Build currently passes with `npm run build`.
 - `pg` may warn about `sslmode=require`; later consider `sslmode=verify-full` in Neon `DATABASE_URL` if Neon accepts it.

@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 export default function Datenschutz() {
   const t = useTranslations('datenschutz');
   const phone = COMPANY_PHONE_TEXT;
-  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau-halle.de';
+  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau.de';
   const siteUrl = getSiteUrl();
   const content = t('content', { phone, email, siteUrl });
 

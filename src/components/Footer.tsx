@@ -14,7 +14,7 @@ import {
 export default function Footer() {
   const t = useTranslations();
   const locale = useLocale();
-  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau-halle.de';
+  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau.de';
   const phoneToTel = (value: string) => value.replace(/\s+/g, '');
   const navigationItems = [
     { label: t('nav.home'), href: `/${locale}` },

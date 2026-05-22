@@ -107,7 +107,7 @@ export default async function AboutPage({ params }: { params: Params }) {
   const siteUrl = getSiteUrl();
   const pageUrl = `${siteUrl}/${lang}/about`;
   const phone = COMPANY_PRIMARY_PHONE;
-  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau-halle.de';
+  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau.de';
   const values = t.raw('values') as AboutPageSectionItem[];
   const processSteps = t.raw('process') as AboutPageProcess[];
   const audiences = t.raw('audiences') as AboutPageSectionItem[];
@@ -329,7 +329,7 @@ export default async function AboutPage({ params }: { params: Params }) {
                       alt={t('hero.imageAlt')}
                       fill
                       priority
-                      sizes="100vw"
+                      sizes="(max-width: 639px) calc(100vw - 2rem), 0px"
                       className="object-cover object-center sm:hidden"
                     />
                     <Image

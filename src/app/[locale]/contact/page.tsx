@@ -101,7 +101,7 @@ export default async function ContactPage({ params }: { params: Params }) {
   const pageUrl = `${siteUrl}/${lang}/contact`;
   const phone = COMPANY_PRIMARY_PHONE;
   const secondaryPhone = COMPANY_SECONDARY_PHONE;
-  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau-halle.de';
+  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau.de';
   const phoneToTel = (value: string) => value.replace(/\s+/g, '');
   const phoneToWhatsApp = (value: string) => value.replace(/\D/g, '');
   const channels = t.raw('channels') as ContactPageCard[];
@@ -294,7 +294,7 @@ export default async function ContactPage({ params }: { params: Params }) {
                       alt={t('hero.imageAlt')}
                       fill
                       priority
-                      sizes="100vw"
+                      sizes="(max-width: 639px) calc(100vw - 2rem), 0px"
                       className="object-cover object-center sm:hidden"
                     />
                     <Image

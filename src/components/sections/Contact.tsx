@@ -93,8 +93,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-anthracite-400">{t('email')}</p>
-                  <a href="mailto:info@sorgfaltbau-halle.de" className="text-white font-medium hover:text-primary-400 transition-colors">
-                    info@sorgfaltbau-halle.de
+                  <a href="mailto:service@sorgfaltbau.de" className="text-white font-medium hover:text-primary-400 transition-colors">
+                    service@sorgfaltbau.de
                   </a>
                 </div>
               </div>

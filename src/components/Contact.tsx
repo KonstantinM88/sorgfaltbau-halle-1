@@ -35,7 +35,7 @@ export default function Contact() {
   const secondaryPhone = COMPANY_SECONDARY_PHONE;
   const phoneToTel = (value: string) => value.replace(/\s+/g, '');
   const phoneToWhatsApp = (value: string) => value.replace(/\D/g, '');
-  const email = process.env.NEXT_PUBLIC_EMAIL || 'info@sorgfaltbau-halle.de';
+  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau.de';
   const proofItems = t.raw('proofItems') as string[];
 
   const [formData, setFormData] = useState({

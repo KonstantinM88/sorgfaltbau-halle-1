@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
 import { prisma } from '@/lib/prisma';
 
-const RESEND_API_URL = 'https://api.resend.com/emails';
+export const runtime = 'nodejs';
 
 function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -16,24 +17,54 @@ function escapeHtml(value: string) {
     .replace(/'/g, '&#39;');
 }
 
-async function sendContactEmail(params: {
+function getSmtpPort() {
+  const port = Number.parseInt(process.env.SMTP_PORT || '465', 10);
+  return Number.isFinite(port) ? port : 465;
+}
+
+type ContactEmailParams = {
   name: string;
   email: string;
   phone: string;
   message: string;
   locale: string;
-}) {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    throw new Error('RESEND_API_KEY is not configured');
+};
+
+function createContactMailer() {
+  const smtpHost = process.env.SMTP_HOST;
+  const smtpUser = process.env.SMTP_USER;
+  const smtpPassword = process.env.SMTP_PASSWORD;
+
+  if (!smtpHost || !smtpUser || !smtpPassword) {
+    throw new Error('SMTP_HOST, SMTP_USER and SMTP_PASSWORD must be configured');
   }
 
-  const to = process.env.CONTACT_TO_EMAIL || 'service@sorgfaltbau-halle.de';
-  const from = process.env.CONTACT_FROM_EMAIL || 'SorgfaltBau <onboarding@resend.dev>';
-  const localeLabel = params.locale === 'ru' ? 'RU' : 'DE';
-  const phoneValue = params.phone || '—';
+  const transporter = nodemailer.createTransport({
+    host: smtpHost,
+    port: getSmtpPort(),
+    secure: process.env.SMTP_SECURE !== 'false',
+    auth: {
+      user: smtpUser,
+      pass: smtpPassword,
+    },
+  });
 
-  const subject = `Neue Anfrage (${localeLabel}) — ${params.name}`;
+  const inbox = process.env.CONTACT_TO_EMAIL || smtpUser;
+
+  return {
+    transporter,
+    inbox,
+    from: process.env.CONTACT_FROM_EMAIL || `SorgfaltBau <${smtpUser}>`,
+  };
+}
+
+async function sendContactEmail(
+  params: ContactEmailParams,
+  mailer: ReturnType<typeof createContactMailer>
+) {
+  const localeLabel = params.locale === 'ru' ? 'RU' : 'DE';
+  const phoneValue = params.phone || '-';
+  const subject = `Neue Anfrage (${localeLabel}) - ${params.name}`;
   const text = [
     'Neue Kontaktanfrage von sorgfaltbau-halle.de',
     '',
@@ -45,7 +76,6 @@ async function sendContactEmail(params: {
     'Nachricht:',
     params.message,
   ].join('\n');
-
   const html = `
     <h2>Neue Kontaktanfrage von sorgfaltbau-halle.de</h2>
     <p><strong>Name:</strong> ${escapeHtml(params.name)}</p>
@@ -56,26 +86,93 @@ async function sendContactEmail(params: {
     <p>${escapeHtml(params.message).replace(/\n/g, '<br/>')}</p>
   `.trim();
 
-  const response = await fetch(RESEND_API_URL, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      from,
-      to: [to],
-      reply_to: params.email,
-      subject,
-      text,
-      html,
-    }),
+  await mailer.transporter.sendMail({
+    from: mailer.from,
+    to: mailer.inbox,
+    replyTo: params.email,
+    subject,
+    text,
+    html,
   });
+}
 
-  if (!response.ok) {
-    const body = await response.text();
-    throw new Error(`Resend error ${response.status}: ${body}`);
-  }
+function getCustomerConfirmation(params: ContactEmailParams) {
+  const isRussian = params.locale === 'ru';
+  const greeting = isRussian ? `Здравствуйте, ${params.name}!` : `Guten Tag ${params.name},`;
+  const subject = isRussian
+    ? 'SorgfaltBau: мы получили Ваше сообщение'
+    : 'SorgfaltBau: Ihre Nachricht ist eingegangen';
+  const title = isRussian ? 'Спасибо за Ваше сообщение' : 'Vielen Dank für Ihre Nachricht';
+  const receivedText = isRussian
+    ? 'Мы получили Ваш запрос и внимательно его рассмотрим.'
+    : 'Wir haben Ihre Anfrage erhalten und sehen sie uns sorgfältig an.';
+  const responseText = isRussian
+    ? 'Мы свяжемся с Вами в ближайшее время по указанным контактным данным.'
+    : 'Wir melden uns in Kürze über die von Ihnen angegebenen Kontaktdaten.';
+  const replyText = isRussian
+    ? 'Если нужно добавить детали или фотографии, просто ответьте на это письмо.'
+    : 'Wenn Sie Details oder Fotos ergänzen möchten, antworten Sie einfach auf diese E-Mail.';
+  const signoff = isRussian ? 'С уважением' : 'Freundliche Grüße';
+  const automaticNote = isRussian
+    ? 'Это автоматическое подтверждение получения Вашего сообщения.'
+    : 'Dies ist eine automatische Bestätigung zum Eingang Ihrer Nachricht.';
+  const text = [
+    greeting,
+    '',
+    receivedText,
+    responseText,
+    '',
+    replyText,
+    '',
+    signoff,
+    'SorgfaltBau',
+    'Halle (Saale)',
+    '',
+    automaticNote,
+  ].join('\n');
+  const html = `
+    <div style="margin:0;background:#f4f7fa;padding:32px 16px;color:#071f35;font-family:Arial,Helvetica,sans-serif;">
+      <div style="margin:0 auto;max-width:620px;overflow:hidden;border:1px solid #d7e0e8;border-radius:24px;background:#ffffff;box-shadow:0 18px 48px rgba(7,31,53,0.12);">
+        <div style="height:6px;background:linear-gradient(90deg,#071f35 0%,#123d61 70%,#f26422 100%);"></div>
+        <div style="padding:34px 30px;">
+          <p style="margin:0 0 18px;color:#f26422;font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;">SorgfaltBau</p>
+          <h1 style="margin:0 0 22px;color:#071f35;font-size:28px;line-height:1.2;">${escapeHtml(title)}</h1>
+          <p style="margin:0 0 16px;color:#071f35;font-size:16px;line-height:1.7;">${escapeHtml(greeting)}</p>
+          <div style="margin:0 0 18px;border-left:4px solid #f26422;border-radius:0 16px 16px 0;background:#f4f7fa;padding:18px 20px;">
+            <p style="margin:0 0 8px;color:#071f35;font-size:16px;line-height:1.7;">${escapeHtml(receivedText)}</p>
+            <p style="margin:0;color:#071f35;font-size:16px;line-height:1.7;">${escapeHtml(responseText)}</p>
+          </div>
+          <p style="margin:0 0 26px;color:#38526a;font-size:15px;line-height:1.7;">${escapeHtml(replyText)}</p>
+          <p style="margin:0;color:#071f35;font-size:15px;line-height:1.7;">${escapeHtml(signoff)}<br/><strong>SorgfaltBau</strong><br/>Halle (Saale)</p>
+        </div>
+        <div style="border-top:1px solid #e3ebf2;background:#f7fafc;padding:18px 30px;color:#62798d;font-size:12px;line-height:1.6;">
+          ${escapeHtml(automaticNote)}
+        </div>
+      </div>
+    </div>
+  `.trim();
+
+  return { subject, text, html };
+}
+
+async function sendCustomerConfirmationEmail(
+  params: ContactEmailParams,
+  mailer: ReturnType<typeof createContactMailer>
+) {
+  const confirmation = getCustomerConfirmation(params);
+
+  await mailer.transporter.sendMail({
+    from: mailer.from,
+    to: params.email,
+    replyTo: mailer.inbox,
+    subject: confirmation.subject,
+    text: confirmation.text,
+    html: confirmation.html,
+    headers: {
+      'Auto-Submitted': 'auto-replied',
+      'X-Auto-Response-Suppress': 'All',
+    },
+  });
 }
 
 export async function POST(request: NextRequest) {
@@ -96,12 +193,15 @@ export async function POST(request: NextRequest) {
 
     if (!isValidEmail(email)) {
       return NextResponse.json(
-        { error: 'Bitte geben Sie eine gültige E-Mail-Adresse an.' },
+        { error: 'Bitte geben Sie eine gueltige E-Mail-Adresse an.' },
         { status: 400 }
       );
     }
 
-    await sendContactEmail({ name, email, phone, message, locale });
+    const emailParams = { name, email, phone, message, locale };
+    const mailer = createContactMailer();
+
+    await sendContactEmail(emailParams, mailer);
 
     const contact = await prisma.contactRequest.create({
       data: {
@@ -113,12 +213,15 @@ export async function POST(request: NextRequest) {
       },
     });
 
+    try {
+      await sendCustomerConfirmationEmail(emailParams, mailer);
+    } catch (error) {
+      console.error('Customer contact confirmation error:', error);
+    }
+
     return NextResponse.json({ success: true, id: contact.id }, { status: 201 });
   } catch (error) {
     console.error('Contact form error:', error);
-    return NextResponse.json(
-      { error: 'Interner Serverfehler.' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Interner Serverfehler.' }, { status: 500 });
   }
 }
