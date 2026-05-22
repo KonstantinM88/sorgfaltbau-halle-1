@@ -19,6 +19,7 @@ import Footer from '@/components/Footer';
 import Testimonials from '@/components/Testimonials';
 import Faq from '@/components/Faq';
 import Contact from '@/components/Contact';
+import ServiceAreaLocations from '@/components/ServiceAreaLocations';
 import AnimateOnScroll from '@/components/ui/AnimateOnScroll';
 import { COMPANY_POSTAL_CODE, COMPANY_PRIMARY_PHONE, COMPANY_STREET_ADDRESS } from '@/lib/contact';
 import { getSiteUrl } from '@/lib/site';
@@ -449,7 +450,7 @@ export default async function AboutPage({ params }: { params: Params }) {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-[#f7f9fb] py-16 sm:py-20">
+        <section id="service-area" className="relative overflow-hidden bg-[#f7f9fb] py-16 sm:py-20">
           <div className="absolute inset-0 bg-[linear-gradient(180deg,#ffffff_0%,#f7f9fb_48%,#eef4f8_100%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,31,53,0.035)_1px,transparent_1px),linear-gradient(180deg,rgba(7,31,53,0.03)_1px,transparent_1px)] bg-[size:56px_56px]" />
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -477,17 +478,7 @@ export default async function AboutPage({ params }: { params: Params }) {
                 <p className="mt-3 text-sm leading-7 text-anthracite-600 sm:text-base">
                   {t('serviceArea.text')}
                 </p>
-                <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  {locations.map((location) => (
-                    <li
-                      key={location}
-                      className="flex items-center gap-2 rounded-xl border border-anthracite-100 bg-anthracite-50 px-4 py-3 text-sm font-medium text-anthracite-700"
-                    >
-                      <MapPin size={16} className="text-brand-orange" />
-                      {location}
-                    </li>
-                  ))}
-                </ul>
+                <ServiceAreaLocations locations={locations} density="compact" />
               </div>
             </div>
           </div>

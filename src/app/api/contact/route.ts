@@ -4,6 +4,38 @@ import { prisma } from '@/lib/prisma';
 
 export const runtime = 'nodejs';
 
+type RateLimitBucket = {
+  count: number;
+  resetAt: number;
+};
+
+type ContactRateLimitStore = {
+  buckets: Map<string, RateLimitBucket>;
+  lastCleanupAt: number;
+};
+
+const CONTACT_IP_RATE_LIMIT = {
+  max: 6,
+  windowMs: 15 * 60 * 1000,
+};
+const CONTACT_EMAIL_RATE_LIMIT = {
+  max: 4,
+  windowMs: 60 * 60 * 1000,
+};
+const RATE_LIMIT_CLEANUP_INTERVAL_MS = 60 * 1000;
+const MAX_RATE_LIMIT_BUCKETS = 2000;
+
+const globalForContactRateLimit = globalThis as unknown as {
+  contactRateLimitStore?: ContactRateLimitStore;
+};
+
+const contactRateLimitStore = globalForContactRateLimit.contactRateLimitStore ?? {
+  buckets: new Map<string, RateLimitBucket>(),
+  lastCleanupAt: 0,
+};
+
+globalForContactRateLimit.contactRateLimitStore = contactRateLimitStore;
+
 function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
@@ -20,6 +52,82 @@ function escapeHtml(value: string) {
 function getSmtpPort() {
   const port = Number.parseInt(process.env.SMTP_PORT || '465', 10);
   return Number.isFinite(port) ? port : 465;
+}
+
+function firstForwardedValue(value: string | null) {
+  return value?.split(',')[0]?.trim().slice(0, 80) || null;
+}
+
+function getClientIp(request: NextRequest) {
+  return (
+    firstForwardedValue(request.headers.get('cf-connecting-ip')) ||
+    firstForwardedValue(request.headers.get('x-real-ip')) ||
+    firstForwardedValue(request.headers.get('x-forwarded-for'))
+  );
+}
+
+function cleanupRateLimitBuckets(now: number) {
+  if (
+    now - contactRateLimitStore.lastCleanupAt < RATE_LIMIT_CLEANUP_INTERVAL_MS &&
+    contactRateLimitStore.buckets.size <= MAX_RATE_LIMIT_BUCKETS
+  ) {
+    return;
+  }
+
+  for (const [key, bucket] of contactRateLimitStore.buckets) {
+    if (bucket.resetAt <= now) {
+      contactRateLimitStore.buckets.delete(key);
+    }
+  }
+
+  while (contactRateLimitStore.buckets.size > MAX_RATE_LIMIT_BUCKETS) {
+    const oldestKey = contactRateLimitStore.buckets.keys().next().value;
+    if (!oldestKey) break;
+    contactRateLimitStore.buckets.delete(oldestKey);
+  }
+
+  contactRateLimitStore.lastCleanupAt = now;
+}
+
+function consumeRateLimit(key: string, max: number, windowMs: number, now: number) {
+  const bucket = contactRateLimitStore.buckets.get(key);
+  if (!bucket || bucket.resetAt <= now) {
+    contactRateLimitStore.buckets.set(key, {
+      count: 1,
+      resetAt: now + windowMs,
+    });
+    return null;
+  }
+
+  if (bucket.count >= max) {
+    return Math.max(1, Math.ceil((bucket.resetAt - now) / 1000));
+  }
+
+  bucket.count += 1;
+  return null;
+}
+
+function checkContactRateLimit(request: NextRequest, email: string) {
+  const now = Date.now();
+  cleanupRateLimitBuckets(now);
+
+  const ip = getClientIp(request);
+  if (ip) {
+    const retryAfter = consumeRateLimit(
+      `contact:ip:${ip}`,
+      CONTACT_IP_RATE_LIMIT.max,
+      CONTACT_IP_RATE_LIMIT.windowMs,
+      now
+    );
+    if (retryAfter) return retryAfter;
+  }
+
+  return consumeRateLimit(
+    `contact:email:${email.toLowerCase()}`,
+    CONTACT_EMAIL_RATE_LIMIT.max,
+    CONTACT_EMAIL_RATE_LIMIT.windowMs,
+    now
+  );
 }
 
 type ContactEmailParams = {
@@ -182,7 +290,12 @@ export async function POST(request: NextRequest) {
     const email = typeof body?.email === 'string' ? body.email.trim() : '';
     const phone = typeof body?.phone === 'string' ? body.phone.trim() : '';
     const message = typeof body?.message === 'string' ? body.message.trim() : '';
+    const website = typeof body?.website === 'string' ? body.website.trim() : '';
     const locale = body?.locale === 'ru' ? 'ru' : 'de';
+
+    if (website) {
+      return NextResponse.json({ success: true }, { status: 201 });
+    }
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -195,6 +308,19 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: 'Bitte geben Sie eine gueltige E-Mail-Adresse an.' },
         { status: 400 }
+      );
+    }
+
+    const retryAfter = checkContactRateLimit(request, email);
+    if (retryAfter) {
+      return NextResponse.json(
+        { error: 'Zu viele Anfragen. Bitte versuchen Sie es spaeter erneut.' },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': String(retryAfter),
+          },
+        }
       );
     }
 

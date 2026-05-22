@@ -31,15 +31,26 @@ const constructionIcons = [
 
 const gardenIcons = [Leaf, Scissors, Scissors, Construction, Hammer, Leaf];
 
-export default function Services() {
+type ServicesProps = {
+  headingTitle?: string;
+  headingIntro?: string;
+  sectionId?: string;
+};
+
+export default function Services({
+  headingTitle,
+  headingIntro,
+  sectionId = 'services',
+}: ServicesProps = {}) {
   const t = useTranslations('services');
   const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.1 });
 
   const constructionItems = t.raw('construction.items') as string[];
   const gardenItems = t.raw('garden.items') as string[];
+  const title = headingTitle || t('sectionTitle');
 
   return (
-    <section id="services" ref={ref} className="relative overflow-hidden bg-[#f7f9fb] py-20 sm:py-28">
+    <section id={sectionId} ref={ref} className="relative overflow-hidden bg-[#f7f9fb] py-20 sm:py-28">
       <div className="absolute inset-0 bg-[linear-gradient(180deg,#ffffff_0%,#f7f9fb_48%,#eef4f8_100%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,31,53,0.035)_1px,transparent_1px),linear-gradient(180deg,rgba(7,31,53,0.03)_1px,transparent_1px)] bg-[size:56px_56px]" />
       <motion.div
@@ -59,8 +70,13 @@ export default function Services() {
           className="text-center mb-12 sm:mb-16"
         >
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl text-anthracite-900">
-            {t('sectionTitle')}
+            {title}
           </h2>
+          {headingIntro ? (
+            <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-anthracite-600 sm:text-lg">
+              {headingIntro}
+            </p>
+          ) : null}
           <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-brand-orange" />
         </motion.div>
 

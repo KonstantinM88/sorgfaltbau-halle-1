@@ -189,26 +189,29 @@
   "servicesPage": {
     "hero": {
       "eyebrow": "Leistungen",
-      "title": "Bau-, Renovierungs- und Außenarbeiten mit klarer Struktur",
-      "lead": "Wir übernehmen Arbeiten für Wohnungen, Häuser, Mietobjekte und Außenbereiche in Halle (Saale) und Umgebung. Entscheidend ist für uns nicht nur, was gebaut oder renoviert wird, sondern wie nachvollziehbar, sauber und planbar ein Projekt insgesamt abläuft.",
+      "title": "Bau- und Renovierungsarbeiten in Halle (Saale) für Wohnung, Haus und Außenbereich",
+      "titleStart": "Bau, Renovierung",
+      "titleAccent": "und Außenarbeiten",
+      "titleEnd": "in Halle (Saale)",
+      "lead": "SorgfaltBau übernimmt Renovierungen, Innenausbau, einzelne Bauabschnitte und ausgewählte Außenarbeiten in Halle (Saale) und Umgebung. Wir klären Objekt, Umfang und Reihenfolge vor dem Start, damit Ausführung und Abstimmung nachvollziehbar bleiben.",
       "primaryCta": "Projekt anfragen",
       "secondaryCta": "Kontakt aufnehmen",
-      "imageAlt": "Leistungen von SorgfaltBau in Halle (Saale)",
+      "imageAlt": "Bau- und Renovierungsleistungen von SorgfaltBau in Halle (Saale)",
       "imageTag": "Halle (Saale) & Umgebung",
-      "imageTitle": "Leistungen für Innenbereiche, Mietobjekte und Außenflächen",
-      "imageText": "Gerade bei Renovierungen im bewohnten Zustand oder zwischen zwei Mietern ist ein sinnvoll organisierter Ablauf fast genauso wichtig wie das spätere Ergebnis.",
+      "imageTitle": "Vom Innenausbau bis zur Außenfläche",
+      "imageText": "Wohnung, Haus, Fassade, Dach, Pflasterfläche oder Garten brauchen unterschiedliche Vorbereitung. Wir ordnen die passenden Arbeitsschritte zu einem klaren Ablauf.",
       "highlights": [
-        "Persönliche Besichtigung und ehrliche Einschätzung vor Projektbeginn",
-        "Leistungen von Innenausbau und Fassaden bis Naturstein, Pflasterflächen, Dach und Gartenarbeiten",
-        "Saubere Abstimmung bei Material, Reihenfolge und realistischen Zeitfenstern"
+        "Renovierung und Innenausbau: Trockenbau, Malerarbeiten, Bodenbeläge und Montage",
+        "Außenarbeiten: Fassade, Dach, Naturstein, Einfahrten, Terrassen und Garten",
+        "Besichtigung, Materialabstimmung, Reihenfolge und realistische Zeitfenster vor dem Start"
       ]
     },
-    "catalogConstructionText": "Bau, Renovierung, Fassaden, Naturstein, Dach, Pflasterflächen, Metallarbeiten und Innenausbau für Wohnungen, Häuser und Außenbereiche.",
-    "catalogGardenText": "Garten-, Erd- und Pflegearbeiten von Rasenpflege bis Baumschnitt, Fällung und sauberem Abtransport.",
+    "catalogConstructionText": "Bau, Renovierung, Innenausbau, Fassaden, Naturstein, Dach, Pflasterflächen, Metallarbeiten und Montage für Wohnungen, Häuser und Außenbereiche.",
+    "catalogGardenText": "Garten-, Erd- und Pflegearbeiten von Rasenpflege über Baumschnitt bis Fällung, Flächenvorbereitung und sauberem Abtransport.",
     "intro": {
-      "title": "Welche Leistungen wir konkret übernehmen",
-      "paragraph1": "Unser Spektrum reicht von einzelnen handwerklichen Arbeiten bis zu zusammenhängenden Renovierungsprojekten. Viele Aufträge kombinieren mehrere Bereiche, etwa Trockenbau, Spachtel- und Malerarbeiten, Bodenbeläge oder Montageleistungen.",
-      "paragraph2": "Wichtig ist uns dabei, dass ein Projekt nicht nur fachlich passt, sondern auch organisatorisch sauber umsetzbar ist. Deshalb schauen wir vor Ort, welche Reihenfolge sinnvoll ist, welche Materialien realistisch sind und wo sich Aufwand, Termine und Nutzung des Objekts gut miteinander verbinden lassen."
+      "title": "Welche Bau- und Renovierungsleistungen wir übernehmen",
+      "paragraph1": "Unser Spektrum reicht von einzelnen handwerklichen Arbeiten bis zu zusammenhängenden Renovierungsabschnitten: Trockenbau, Spachtel- und Malerarbeiten, Bodenbeläge, Badbereiche, Türen- und Fenstermontage, Fassaden und Arbeiten an Außenflächen.",
+      "paragraph2": "Vor dem Start zählt nicht nur eine Liste von Gewerken, sondern die tatsächliche Situation im Objekt. Wir prüfen sinnvolle Reihenfolge, passende Materialien, Zugang und Zeitfenster, damit Wohnung, Haus oder Außenbereich nicht aus unverbundenen Einzellösungen bestehen."
     },
     "focuses": [
       {
@@ -224,8 +227,8 @@
         "text": "Bei Terrassen, Zäunen, Fassaden oder Gartenbereichen müssen Material, Wetter, Zugang und Terminfenster zusammenpassen. Genau deshalb ist die Vorbereitung hier besonders wichtig."
       }
     ],
-    "catalogTitle": "Unsere Leistungsbereiche im Überblick",
-    "catalogIntro": "Nicht jedes Projekt braucht ein großes Bauvorhaben. Häufig sind es mehrere kleinere oder mittlere Gewerke, die sauber zusammengeführt werden müssen. Genau dafür ist ein breit aufgestellter Handwerks- und Renovierungsbetrieb besonders sinnvoll.",
+    "catalogTitle": "Bau-, Renovierungs- und Außenarbeiten im Überblick",
+    "catalogIntro": "Nicht jedes Projekt braucht ein großes Bauvorhaben. Häufig sind mehrere mittlere Arbeitsschritte sauber zu verbinden: Innenausbau, konstruktive Arbeiten, Fassade, Dach, Pflasterflächen oder Pflege des Grundstücks.",
     "executionTitle": "Wie wir Leistungen praktisch organisieren",
     "executionIntro": "Je nach Projekt unterscheiden sich Umfang und Reihenfolge. Trotzdem gibt es ein paar Grundsätze, die fast immer dafür sorgen, dass Arbeit und Kommunikation ruhiger laufen.",
     "execution": [
@@ -244,21 +247,27 @@
     ],
     "serviceArea": {
       "title": "Wo wir Leistungen anbieten",
-      "text": "Unser Schwerpunkt liegt in Halle (Saale). Projekte in der Umgebung übernehmen wir abhängig von Umfang, Terminlage und Erreichbarkeit, damit Besichtigungen, Rückfragen und eventuelle Nacharbeiten ohne unnötige Verzögerungen möglich bleiben.",
+      "text": "Der Schwerpunkt von SorgfaltBau liegt in Halle (Saale). Je nach Umfang, Terminlage und Logistik prüfen wir Bau-, Renovierungs- und Außenarbeiten auch in nahegelegenen Städten und Gemeinden.",
       "locations": [
         "Halle (Saale)",
         "Merseburg",
-        "Kabelsketal",
+        "Leipzig",
+        "Schkeuditz",
+        "Delitzsch",
         "Landsberg",
+        "Kabelsketal",
         "Teutschenthal",
-        "Bad Lauchstädt"
+        "Bad Lauchstädt",
+        "Wettin-Löbejün",
+        "Salzatal",
+        "Petersberg"
       ]
     },
-    "seoTitle": "Leistungen, bei denen Ablauf und Ergebnis zusammenpassen",
+    "seoTitle": "Renovierung von Wohnungen, Häusern und Außenflächen in Halle (Saale)",
     "seoParagraphs": [
-      "Viele Kunden suchen nicht nur einen einzelnen Handwerker, sondern eine Lösung, bei der mehrere Arbeitsschritte zusammenpassen. Genau dort liegt ein großer Teil unseres Werts: Wir helfen dabei, Leistungen so zu kombinieren, dass das Projekt nicht unnötig kompliziert wird.",
-      "Das betrifft besonders Innenausbau, Renovierungen vor Neuvermietung, Arbeiten in bewohnten Wohnungen und Außenprojekte, bei denen Material, Wetter und Zugänglichkeit eine Rolle spielen. In solchen Situationen ist eine klare Einschätzung vor Beginn oft entscheidender als ein besonders schnell formuliertes Angebot.",
-      "Wenn Sie Leistungen suchen, die in Halle (Saale) und Umgebung nicht nur fachlich, sondern auch organisatorisch sauber umgesetzt werden sollen, können Sie uns Ihr Projekt direkt schildern. Auf dieser Basis sagen wir offen, was sinnvoll ist und wie es sich vernünftig umsetzen lässt."
+      "Viele Anfragen betreffen die Renovierung einer Wohnung oder eines Hauses in Halle (Saale), die Vorbereitung vor einer Neuvermietung, einen Innenausbau oder einen klar abgegrenzten Bauabschnitt. Wir können Trockenbau, Spachtel- und Malerarbeiten, Bodenbeläge, Badarbeiten und Montage so abstimmen, dass die Reihenfolge verständlich bleibt.",
+      "Bei Außenflächen übernehmen wir unter anderem Fassadenarbeiten, Terrassen, Naturstein, Parkflächen und Einfahrten, Dachreparaturen und Dachdämmung sowie Erd- und Gartenarbeiten. Dort entscheiden Untergrund, Entwässerung, Zugang, Wetter und Terminfenster darüber, welche Lösung praktisch tragfähig ist.",
+      "Wenn Sie Bau- oder Renovierungsarbeiten in Halle (Saale), Merseburg, Leipzig oder im nahen Umland planen, senden Sie Objektbeschreibung, Fotos und Wunschzeitraum. Wir klären den Umfang und nennen den sinnvollen nächsten Schritt: erste Einschätzung, Besichtigung oder Angebot."
     ]
   },
   "whyUsPage": {

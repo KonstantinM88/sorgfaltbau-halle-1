@@ -344,17 +344,23 @@ export default async function ContactPage({ params }: { params: Params }) {
                 </div>
 
                 <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
-                  <a
-                    href={`tel:${phoneToTel(phone)}`}
-                    className="group relative overflow-hidden rounded-[1.45rem] border border-white/14 bg-white/[0.08] p-5 shadow-2xl shadow-black/20 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/45 hover:bg-white/[0.12]"
-                  >
+                  <div className="group relative overflow-hidden rounded-[1.45rem] border border-white/14 bg-white/[0.08] p-5 shadow-2xl shadow-black/20 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/45 hover:bg-white/[0.12]">
                     <PhoneCall className="h-5 w-5 text-brand-accent" />
                     <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-brand-accent">
                       {t('hero.phoneLabel')}
                     </p>
-                    <p className="mt-2 text-sm font-semibold text-white">{phone}</p>
-                    <p className="mt-1 text-xs text-slate-100/64">{secondaryPhone}</p>
-                  </a>
+                    <div className="mt-2 grid gap-1.5">
+                      {[phone, secondaryPhone].map((phoneNumber) => (
+                        <a
+                          key={phoneNumber}
+                          href={`tel:${phoneToTel(phoneNumber)}`}
+                          className="inline-flex min-h-8 w-full items-center justify-center whitespace-nowrap rounded-lg border border-white/10 bg-white/[0.055] px-2 text-[0.82rem] font-semibold tabular-nums text-white transition-all duration-300 hover:border-brand-accent/45 hover:bg-white/[0.1] hover:text-brand-accent sm:text-sm"
+                        >
+                          {phoneNumber}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
                   <a
                     href={`mailto:${email}`}
                     className="group relative overflow-hidden rounded-[1.45rem] border border-white/14 bg-white/[0.08] p-5 shadow-2xl shadow-black/20 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/45 hover:bg-white/[0.12]"

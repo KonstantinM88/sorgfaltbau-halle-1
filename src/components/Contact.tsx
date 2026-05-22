@@ -55,6 +55,7 @@ export default function Contact() {
       email: String(submittedFormData.get('email') || formData.email),
       phone: String(submittedFormData.get('phone') || formData.phone),
       message: String(submittedFormData.get('message') || formData.message),
+      website: String(submittedFormData.get('website') || ''),
     };
 
     setStatus('sending');
@@ -325,6 +326,17 @@ export default function Contact() {
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full resize-none rounded-xl border border-anthracite-200 px-4 py-3 text-anthracite-800 outline-none transition-all placeholder:text-anthracite-300 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20"
                   placeholder={t('form.messagePlaceholder')}
+                />
+              </div>
+
+              <div aria-hidden="true" className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden">
+                <label htmlFor="contact-website">Website</label>
+                <input
+                  id="contact-website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
                 />
               </div>
 
