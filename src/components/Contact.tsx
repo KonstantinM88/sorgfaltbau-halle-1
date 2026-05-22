@@ -46,15 +46,24 @@ export default function Contact() {
   });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const submittedFormData = new FormData(e.currentTarget);
+    const requestData = {
+      name: String(submittedFormData.get('name') || formData.name),
+      email: String(submittedFormData.get('email') || formData.email),
+      phone: String(submittedFormData.get('phone') || formData.phone),
+      message: String(submittedFormData.get('message') || formData.message),
+    };
+
     setStatus('sending');
 
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, locale }),
+        body: JSON.stringify({ ...requestData, locale }),
       });
 
       if (res.ok) {
@@ -233,6 +242,7 @@ export default function Contact() {
           >
             <form
               onSubmit={handleSubmit}
+              autoComplete="on"
               className="relative overflow-hidden rounded-2xl border border-white/90 bg-white p-5 text-anthracite-900 shadow-2xl shadow-black/25 sm:p-7 lg:p-8"
             >
               <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-orange via-brand-light to-brand-accent" />
@@ -252,11 +262,14 @@ export default function Contact() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="block text-sm font-medium text-anthracite-600 mb-1.5">
+                  <label htmlFor="contact-name" className="block text-sm font-medium text-anthracite-600 mb-1.5">
                     {t('form.name')} *
                   </label>
                   <input
+                    id="contact-name"
+                    name="name"
                     type="text"
+                    autoComplete="name"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -265,11 +278,14 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-anthracite-600 mb-1.5">
+                  <label htmlFor="contact-email" className="block text-sm font-medium text-anthracite-600 mb-1.5">
                     {t('form.email')} *
                   </label>
                   <input
+                    id="contact-email"
+                    name="email"
                     type="email"
+                    autoComplete="email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -280,11 +296,14 @@ export default function Contact() {
               </div>
 
               <div className="mb-4">
-                <label className="block text-sm font-medium text-anthracite-600 mb-1.5">
+                <label htmlFor="contact-phone" className="block text-sm font-medium text-anthracite-600 mb-1.5">
                   {t('form.phone')}
                 </label>
                 <input
+                  id="contact-phone"
+                  name="phone"
                   type="tel"
+                  autoComplete="tel"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className="w-full rounded-xl border border-anthracite-200 px-4 py-3 text-anthracite-800 outline-none transition-all placeholder:text-anthracite-300 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20"
@@ -293,10 +312,13 @@ export default function Contact() {
               </div>
 
               <div className="mb-6">
-                <label className="block text-sm font-medium text-anthracite-600 mb-1.5">
+                <label htmlFor="contact-message" className="block text-sm font-medium text-anthracite-600 mb-1.5">
                   {t('form.message')} *
                 </label>
                 <textarea
+                  id="contact-message"
+                  name="message"
+                  autoComplete="off"
                   required
                   rows={5}
                   value={formData.message}

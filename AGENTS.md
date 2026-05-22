@@ -215,6 +215,7 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Moved contact-form delivery from Resend to Hostinger SMTP via Nodemailer and updated mailbox defaults to `service@sorgfaltbau.de`.
 - Added Hostinger SMTP env examples and adjusted Datenschutzerklaerung RU/DE wording to describe Hostinger mail delivery.
 - Added localized RU/DE customer auto-reply e-mails for submitted contact forms; confirmation failures are logged without turning an already accepted request into a client-side form error.
+- Enabled browser autofill hints on the active contact form for customer name, e-mail, and telephone fields, and read submitted DOM form values so browser-filled data reaches the contact API reliably.
 
 ### Gallery Image Update
 
