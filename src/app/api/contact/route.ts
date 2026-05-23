@@ -40,6 +40,16 @@ function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
+function getEmailAddress(value: string) {
+  const bracketAddress = value.match(/<([^<>]+)>/)?.[1];
+  const address = (bracketAddress || value).trim();
+  return isValidEmail(address) ? address.toLowerCase() : null;
+}
+
+function getEmailDomain(value: string) {
+  return value.split('@')[1]?.toLowerCase() || null;
+}
+
 function escapeHtml(value: string) {
   return value
     .replace(/&/g, '&amp;')
@@ -158,11 +168,30 @@ function createContactMailer() {
   });
 
   const inbox = process.env.CONTACT_TO_EMAIL || smtpUser;
+  const smtpAddress = getEmailAddress(smtpUser);
+
+  if (!smtpAddress) {
+    throw new Error('SMTP_USER must be a valid mailbox address');
+  }
+
+  const fallbackFrom = `SorgfaltBau <${smtpAddress}>`;
+  const configuredFrom = process.env.CONTACT_FROM_EMAIL?.trim();
+  const configuredFromAddress = configuredFrom ? getEmailAddress(configuredFrom) : null;
+  const from =
+    configuredFrom &&
+    configuredFromAddress &&
+    getEmailDomain(configuredFromAddress) === getEmailDomain(smtpAddress)
+      ? configuredFrom
+      : fallbackFrom;
+
+  if (configuredFrom && from === fallbackFrom) {
+    console.warn('CONTACT_FROM_EMAIL must use the SMTP_USER domain; using SMTP mailbox From address');
+  }
 
   return {
     transporter,
     inbox,
-    from: process.env.CONTACT_FROM_EMAIL || `SorgfaltBau <${smtpUser}>`,
+    from,
   };
 }
 

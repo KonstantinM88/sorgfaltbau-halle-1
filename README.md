@@ -52,6 +52,20 @@ npm run build
 npm start
 ```
 
+## E-Mail-Zustellung
+
+Kontaktformular-Nachrichten werden über die konfigurierte Hostinger-Mailbox versendet.
+Für gute Zustellbarkeit müssen die DNS-Einträge der absendenden Domain aktiv bleiben:
+
+- SPF für die Root-Domain mit Hostinger (`include:_spf.mail.hostinger.com`)
+- DKIM CNAME-Einträge `hostingermail-a._domainkey`, `hostingermail-b._domainkey` und `hostingermail-c._domainkey`
+- DMARC TXT-Eintrag unter `_dmarc`
+
+`SMTP_USER` und `CONTACT_FROM_EMAIL` müssen dieselbe absendende Domain verwenden, zum Beispiel
+`service@sorgfaltbau.de`. Kundenadressen gehören nur in `Reply-To`; sie dürfen nicht als
+`From` der Website-E-Mails verwendet werden, weil sonst SPF, DKIM und DMARC nicht sauber
+zusammenpassen.
+
 ## Struktur
 
 ```

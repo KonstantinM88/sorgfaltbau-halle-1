@@ -6,6 +6,11 @@ SorgfaltBau website for `sorgfaltbau-halle.de`.
 
 Base project was originally adapted from `onebbau.de`; old brand references should not be reintroduced.
 
+## Agent Memory Rule
+
+- Record important project changes in this `AGENTS.md` file before finishing work that changes architecture, integrations, shared UI systems, public copy/SEO structure, production assets, operational setup, or behavior future work must preserve.
+- Keep the log concise and append new notes to the relevant existing section when possible instead of duplicating the same change in multiple places.
+
 ## Stack
 
 - Next.js `16.2.5` App Router
@@ -130,6 +135,7 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Converted `public/uploads/Temp/confident_contractor_at_sunset_construction_site.webp` into responsive `/why-us` hero banners as `sorgfaltbau_why_us_contractor_v2_*` and switched the page image/metadata sources.
 - Removed the temporary `confident_contractor_at_sunset_construction_site.webp` source from `public/uploads/Temp` after publishing the responsive `/why-us` versions.
 - Converted `public/uploads/Temp/Kontakt_SG.webp` into responsive `/contact` hero banners as `sorgfaltbau_contact_banner_v2_*` and removed the Temp source after publishing.
+- Converted `public/uploads/Temp/Service_SG.webp` into responsive `/services` banner assets as `sorgfaltbau_services_banner_v2_*` and removed the Temp source after publishing.
 
 ### Prisma / Database
 
@@ -178,6 +184,9 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 
 - Restyled the homepage services section with a subtle grid background, animated light sweep, stronger category headers, service counts, numbered cards, icon hover states, and motion hover lift.
 - Expanded the service catalog in Russian and German with missing work types: facade/armoring, natural stone, roof repairs, parking/drainage, water collectors, openings, welding/metal structures, chimney insulation, turnkey interior/bath works, wood floor restoration, stairs, mowing, emergency trees, wood splitting/stacking, and earth/garden work.
+- Restyled the full `/services` page hero and lower sections to match the current SorgfaltBau navy/grid visual system and switched its catalog section to reuse the animated homepage services component with page-specific intro copy.
+- Strengthened `/services` RU/DE SEO copy, metadata and structured business data around concrete indoor/outdoor work types and the Halle (Saale) service area.
+- Added reusable service-area location cards with scroll reveals, custom non-official SVG shields, municipality-inspired color palettes and German registration-style codes such as `HAL`, `MER`, `L` and `DZ`; `/services` uses the full variant and `/about` uses the compact variant.
 
 ### Why Us Visual And Copy Update
 
@@ -217,7 +226,14 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Added localized RU/DE customer auto-reply e-mails for submitted contact forms; confirmation failures are logged without turning an already accepted request into a client-side form error.
 - Enabled browser autofill hints on the active contact form for customer name, e-mail, and telephone fields, and read submitted DOM form values so browser-filled data reaches the contact API reliably.
 - Added a contact-form honeypot and in-process submission limits before SMTP sends: 6 requests per client IP per 15 minutes and 4 requests per recipient e-mail per hour on the current Node process.
+- Aligned the two phone numbers in the `/contact` hero direct-contact card as equal clickable rows instead of primary/secondary text sizes.
+- Kept contact-form mail `From` aligned to the SMTP mailbox domain; customer addresses remain in `Reply-To`, and invalid cross-domain `CONTACT_FROM_EMAIL` values fall back to the SMTP mailbox sender.
 - Moved new admin gallery uploads and news cover uploads from runtime `public/uploads/*` writes to WebP bytes stored in PostgreSQL and served by `/api/gallery/media/[id]` and `/api/news/media/[id]` routes so Hostinger production deployments do not depend on uploaded files inside the Next build directory.
+
+### Header Navigation Update
+
+- Restyled the mobile header menu as a branded drawer with a dark logo header, icon rows, active navigation state, language panel, contact CTA, backdrop close behavior, and scroll support on short viewports.
+- Restyled desktop header navigation into a rounded glass panel with active page state and stronger hover/readability treatment for both solid inner-page headers and the homepage hero header.
 
 ### Gallery Image Update
 
