@@ -66,6 +66,18 @@ Für gute Zustellbarkeit müssen die DNS-Einträge der absendenden Domain aktiv 
 `From` der Website-E-Mails verwendet werden, weil sonst SPF, DKIM und DMARC nicht sauber
 zusammenpassen.
 
+Bei Spam-Analysen in Gmail zuerst "Original anzeigen" prüfen. Wenn SPF, DKIM und DMARC auf
+`PASS` stehen, aber MailChannels-Header wie `X-MC-Relay: Junk` oder `X-MC-Relay: Bad`
+auftauchen, liegt das Problem nicht an der DNS-Authentifizierung, sondern an Relay- oder
+Inhaltsklassifizierung bei Hostinger/MailChannels. In diesem Fall den vollständigen Header
+ohne personenbezogene Daten an Hostinger weitergeben und nach Relay-Reputation/False Positive
+fragen.
+
+Die Website-Mails verwenden bewusst stabile lateinische Betreffzeilen, eine ausgerichtete
+SMTP-Envelope-Adresse und einen Firmenfooter. Wenn Gmail das eigentliche Lese-Postfach ist,
+ist `CONTACT_TO_EMAIL` direkt auf dieses Postfach sauberer als eine zusätzliche Weiterleitung
+von der Hostinger-Mailbox nach Gmail.
+
 ## Struktur
 
 ```

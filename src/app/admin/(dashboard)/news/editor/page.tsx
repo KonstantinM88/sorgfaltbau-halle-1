@@ -469,7 +469,7 @@ export default function NewsEditorPage() {
               )}
               <p className="text-sm font-semibold text-anthracite-900 line-clamp-2">{title || 'Überschrift...'}</p>
               <p className="mt-1 text-xs text-anthracite-400 line-clamp-2">{excerpt || 'Kurzbeschreibung...'}</p>
-              <p className="mt-2 text-[11px] text-anthracite-300">sorgfaltbau-halle.de/news/...</p>
+              <p className="mt-2 text-[11px] text-anthracite-300">sorgfaltbau.de/news/...</p>
             </div>
           </div>
         </div>

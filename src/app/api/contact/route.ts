@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { COMPANY_ADDRESS_TEXT, COMPANY_PHONE_TEXT } from '@/lib/contact';
 import { prisma } from '@/lib/prisma';
+import { getSiteUrl } from '@/lib/site';
 
 export const runtime = 'nodejs';
 
@@ -192,6 +194,7 @@ function createContactMailer() {
     transporter,
     inbox,
     from,
+    smtpAddress,
   };
 }
 
@@ -201,9 +204,10 @@ async function sendContactEmail(
 ) {
   const localeLabel = params.locale === 'ru' ? 'RU' : 'DE';
   const phoneValue = params.phone || '-';
-  const subject = `Neue Anfrage (${localeLabel}) - ${params.name}`;
+  const subject = `SorgfaltBau Kontaktanfrage (${localeLabel})`;
+  const siteUrl = getSiteUrl();
   const text = [
-    'Neue Kontaktanfrage von sorgfaltbau-halle.de',
+    `Neue Kontaktanfrage von ${siteUrl}`,
     '',
     `Name: ${params.name}`,
     `E-Mail: ${params.email}`,
@@ -214,7 +218,7 @@ async function sendContactEmail(
     params.message,
   ].join('\n');
   const html = `
-    <h2>Neue Kontaktanfrage von sorgfaltbau-halle.de</h2>
+    <h2>Neue Kontaktanfrage von ${escapeHtml(siteUrl)}</h2>
     <p><strong>Name:</strong> ${escapeHtml(params.name)}</p>
     <p><strong>E-Mail:</strong> ${escapeHtml(params.email)}</p>
     <p><strong>Telefon:</strong> ${escapeHtml(phoneValue)}</p>
@@ -226,19 +230,26 @@ async function sendContactEmail(
   await mailer.transporter.sendMail({
     from: mailer.from,
     to: mailer.inbox,
+    envelope: {
+      from: mailer.smtpAddress,
+      to: mailer.inbox,
+    },
     replyTo: params.email,
     subject,
     text,
     html,
+    headers: {
+      'X-SorgfaltBau-Message-Type': 'contact-request',
+    },
   });
 }
 
 function getCustomerConfirmation(params: ContactEmailParams) {
   const isRussian = params.locale === 'ru';
+  const contactEmail = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau.de';
+  const siteUrl = getSiteUrl();
   const greeting = isRussian ? `Здравствуйте, ${params.name}!` : `Guten Tag ${params.name},`;
-  const subject = isRussian
-    ? 'SorgfaltBau: мы получили Ваше сообщение'
-    : 'SorgfaltBau: Ihre Nachricht ist eingegangen';
+  const subject = 'SorgfaltBau: Anfrage erhalten';
   const title = isRussian ? 'Спасибо за Ваше сообщение' : 'Vielen Dank für Ihre Nachricht';
   const receivedText = isRussian
     ? 'Мы получили Ваш запрос и внимательно его рассмотрим.'
@@ -263,7 +274,10 @@ function getCustomerConfirmation(params: ContactEmailParams) {
     '',
     signoff,
     'SorgfaltBau',
-    'Halle (Saale)',
+    COMPANY_ADDRESS_TEXT,
+    COMPANY_PHONE_TEXT,
+    contactEmail,
+    siteUrl,
     '',
     automaticNote,
   ].join('\n');
@@ -280,7 +294,7 @@ function getCustomerConfirmation(params: ContactEmailParams) {
             <p style="margin:0;color:#071f35;font-size:16px;line-height:1.7;">${escapeHtml(responseText)}</p>
           </div>
           <p style="margin:0 0 26px;color:#38526a;font-size:15px;line-height:1.7;">${escapeHtml(replyText)}</p>
-          <p style="margin:0;color:#071f35;font-size:15px;line-height:1.7;">${escapeHtml(signoff)}<br/><strong>SorgfaltBau</strong><br/>Halle (Saale)</p>
+          <p style="margin:0;color:#071f35;font-size:15px;line-height:1.7;">${escapeHtml(signoff)}<br/><strong>SorgfaltBau</strong><br/>${escapeHtml(COMPANY_ADDRESS_TEXT)}<br/>${escapeHtml(COMPANY_PHONE_TEXT)}<br/><a href="mailto:${escapeHtml(contactEmail)}" style="color:#071f35;text-decoration:none;">${escapeHtml(contactEmail)}</a><br/><a href="${escapeHtml(siteUrl)}" style="color:#071f35;text-decoration:none;">${escapeHtml(siteUrl)}</a></p>
         </div>
         <div style="border-top:1px solid #e3ebf2;background:#f7fafc;padding:18px 30px;color:#62798d;font-size:12px;line-height:1.6;">
           ${escapeHtml(automaticNote)}
@@ -301,12 +315,16 @@ async function sendCustomerConfirmationEmail(
   await mailer.transporter.sendMail({
     from: mailer.from,
     to: params.email,
+    envelope: {
+      from: mailer.smtpAddress,
+      to: params.email,
+    },
     replyTo: mailer.inbox,
     subject: confirmation.subject,
     text: confirmation.text,
     html: confirmation.html,
     headers: {
-      'Auto-Submitted': 'auto-replied',
+      'Auto-Submitted': 'auto-generated',
       'X-Auto-Response-Suppress': 'All',
     },
   });

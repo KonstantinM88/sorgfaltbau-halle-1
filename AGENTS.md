@@ -2,7 +2,7 @@
 
 ## Project
 
-SorgfaltBau website for `sorgfaltbau-halle.de`.
+SorgfaltBau website for `sorgfaltbau.de`.
 
 Base project was originally adapted from `onebbau.de`; old brand references should not be reintroduced.
 
@@ -119,7 +119,7 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 
 - Replaced old text references to `Onebbau`, `onebbau.de`, and related fallbacks.
 - Updated metadata, JSON-LD, footer, contact e-mail fallbacks, admin labels.
-- Updated production site URL to `https://www.sorgfaltbau-halle.de`.
+- Updated production site URL to `https://www.sorgfaltbau.de`.
 
 ### Assets
 
@@ -228,6 +228,7 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Added a contact-form honeypot and in-process submission limits before SMTP sends: 6 requests per client IP per 15 minutes and 4 requests per recipient e-mail per hour on the current Node process.
 - Aligned the two phone numbers in the `/contact` hero direct-contact card as equal clickable rows instead of primary/secondary text sizes.
 - Kept contact-form mail `From` aligned to the SMTP mailbox domain; customer addresses remain in `Reply-To`, and invalid cross-domain `CONTACT_FROM_EMAIL` values fall back to the SMTP mailbox sender.
+- Hardened contact-form deliverability after Gmail spam-header review: internal notifications and customer confirmations now use stable Latin subjects, explicit SMTP envelope senders, and confirmation e-mails include company contact details; MailChannels `X-MC-Relay: Junk/Bad` means a Hostinger/MailChannels relay classification issue, not SPF/DKIM/DMARC failure.
 - Moved new admin gallery uploads and news cover uploads from runtime `public/uploads/*` writes to WebP bytes stored in PostgreSQL and served by `/api/gallery/media/[id]` and `/api/news/media/[id]` routes so Hostinger production deployments do not depend on uploaded files inside the Next build directory.
 
 ### Header Navigation Update
