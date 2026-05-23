@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { COMPANY_PHONE_TEXT } from '@/lib/contact';
+import { getAbsoluteUrl, getLocalizedAlternates } from '@/lib/site';
 
 type Params = Promise<{ locale: string }>;
 
@@ -23,18 +24,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     title,
     description,
     alternates: {
-      canonical: `/${lang}/impressum`,
-      languages: {
-        de: '/de/impressum',
-        ru: '/ru/impressum',
-      },
+      canonical: getAbsoluteUrl(`/${lang}/impressum`),
+      languages: getLocalizedAlternates('/impressum'),
     },
     openGraph: {
       title,
       description,
       type: 'website',
       locale: lang === 'de' ? 'de_DE' : 'ru_RU',
-      url: `/${lang}/impressum`,
+      url: getAbsoluteUrl(`/${lang}/impressum`),
     },
     robots: {
       index: true,

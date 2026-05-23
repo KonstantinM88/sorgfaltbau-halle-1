@@ -23,7 +23,7 @@ import Testimonials from '@/components/Testimonials';
 import Faq from '@/components/Faq';
 import Contact from '@/components/Contact';
 import AnimateOnScroll from '@/components/ui/AnimateOnScroll';
-import { getSiteUrl } from '@/lib/site';
+import { getAbsoluteUrl, getLocalizedAlternates, getSiteUrl } from '@/lib/site';
 
 type Params = Promise<{ locale: string }>;
 
@@ -63,18 +63,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     title,
     description,
     alternates: {
-      canonical: `/${lang}/why-us`,
-      languages: {
-        de: '/de/why-us',
-        ru: '/ru/why-us',
-      },
+      canonical: getAbsoluteUrl(`/${lang}/why-us`),
+      languages: getLocalizedAlternates('/why-us'),
     },
     openGraph: {
       title,
       description,
       type: 'website',
       locale: lang === 'de' ? 'de_DE' : 'ru_RU',
-      url: `/${lang}/why-us`,
+      url: getAbsoluteUrl(`/${lang}/why-us`),
       siteName: 'SorgfaltBau',
       images: [
         {

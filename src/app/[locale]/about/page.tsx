@@ -22,7 +22,7 @@ import Contact from '@/components/Contact';
 import ServiceAreaLocations from '@/components/ServiceAreaLocations';
 import AnimateOnScroll from '@/components/ui/AnimateOnScroll';
 import { COMPANY_POSTAL_CODE, COMPANY_PRIMARY_PHONE, COMPANY_STREET_ADDRESS } from '@/lib/contact';
-import { getSiteUrl } from '@/lib/site';
+import { getAbsoluteUrl, getLocalizedAlternates, getSiteUrl } from '@/lib/site';
 
 type Params = Promise<{ locale: string }>;
 
@@ -65,18 +65,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     title,
     description,
     alternates: {
-      canonical: `/${lang}/about`,
-      languages: {
-        de: '/de/about',
-        ru: '/ru/about',
-      },
+      canonical: getAbsoluteUrl(`/${lang}/about`),
+      languages: getLocalizedAlternates('/about'),
     },
     openGraph: {
       title,
       description,
       type: 'website',
       locale: lang === 'de' ? 'de_DE' : 'ru_RU',
-      url: `/${lang}/about`,
+      url: getAbsoluteUrl(`/${lang}/about`),
       siteName: 'SorgfaltBau',
       images: [
         {

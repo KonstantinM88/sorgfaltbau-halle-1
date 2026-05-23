@@ -12,7 +12,7 @@ import Faq from '@/components/Faq';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import {COMPANY_POSTAL_CODE, COMPANY_PRIMARY_PHONE, COMPANY_STREET_ADDRESS} from '@/lib/contact';
-import {getSiteUrl} from '@/lib/site';
+import {getAbsoluteUrl, getLocalizedAlternates, getSiteUrl} from '@/lib/site';
 
 type Params = Promise<{locale: string}>;
 
@@ -24,18 +24,15 @@ export async function generateMetadata({params}: {params: Params}): Promise<Meta
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: `/${locale}`,
-      languages: {
-        de: '/de',
-        ru: '/ru',
-      },
+      canonical: getAbsoluteUrl(`/${locale}`),
+      languages: getLocalizedAlternates(),
     },
     openGraph: {
       title: t('title'),
       description: t('description'),
       locale: locale === 'de' ? 'de_DE' : 'ru_RU',
       type: 'website',
-      url: `/${locale}`,
+      url: getAbsoluteUrl(`/${locale}`),
       siteName: 'SorgfaltBau',
       images: [
         {

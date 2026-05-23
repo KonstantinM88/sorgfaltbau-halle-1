@@ -4,6 +4,7 @@ import { prisma } from '@/lib/prisma';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { COMPANY_POSTAL_CODE, COMPANY_STREET_ADDRESS } from '@/lib/contact';
+import { getAbsoluteUrl, getLocalizedAlternates } from '@/lib/site';
 import GalerieClient from './GalerieClient';
 
 type Params = Promise<{ locale: string }>;
@@ -26,17 +27,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     title: metaTitles[lang],
     description: metaDescriptions[lang],
     alternates: {
-      canonical: `/${lang}/galerie`,
-      languages: {
-        de: '/de/galerie',
-        ru: '/ru/galerie',
-      },
+      canonical: getAbsoluteUrl(`/${lang}/galerie`),
+      languages: getLocalizedAlternates('/galerie'),
     },
     openGraph: {
       title: metaTitles[lang],
       description: metaDescriptions[lang],
       type: 'website',
       locale: lang === 'de' ? 'de_DE' : 'ru_RU',
+      url: getAbsoluteUrl(`/${lang}/galerie`),
     },
   };
 }

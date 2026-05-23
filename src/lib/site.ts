@@ -13,3 +13,17 @@ export function getSiteUrl() {
   if (siteUrl) return normalizeSiteUrl(siteUrl);
   return process.env.NODE_ENV === 'production' ? PROD_SITE_URL : DEV_SITE_URL;
 }
+
+export function getAbsoluteUrl(path = '') {
+  const normalizedPath = path ? `/${path.replace(/^\/+/, '')}` : '';
+  return `${getSiteUrl()}${normalizedPath}`;
+}
+
+export function getLocalizedAlternates(path = '') {
+  const normalizedPath = path ? `/${path.replace(/^\/+/, '')}` : '';
+
+  return {
+    de: getAbsoluteUrl(`/de${normalizedPath}`),
+    ru: getAbsoluteUrl(`/ru${normalizedPath}`),
+  };
+}

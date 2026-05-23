@@ -16,7 +16,10 @@ export default function TrustBadges() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
-    <section ref={ref} className="relative z-20 -mt-16 pb-12">
+    <section ref={ref} aria-labelledby="trust-badges-heading" className="relative z-20 -mt-16 pb-12">
+      <h2 id="trust-badges-heading" className="sr-only">
+        SorgfaltBau: {t('reliability.title')}, {t('quality.title')}, {t('satisfaction.title')}
+      </h2>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-3">
           {badges.map(({ key, Icon }, i) => (

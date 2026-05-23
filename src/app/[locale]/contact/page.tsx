@@ -29,7 +29,7 @@ import {
   COMPANY_SECONDARY_PHONE,
   COMPANY_STREET_ADDRESS,
 } from '@/lib/contact';
-import { getSiteUrl } from '@/lib/site';
+import { getAbsoluteUrl, getLocalizedAlternates, getSiteUrl } from '@/lib/site';
 
 type Params = Promise<{ locale: string }>;
 
@@ -57,18 +57,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     title,
     description,
     alternates: {
-      canonical: `/${lang}/contact`,
-      languages: {
-        de: '/de/contact',
-        ru: '/ru/contact',
-      },
+      canonical: getAbsoluteUrl(`/${lang}/contact`),
+      languages: getLocalizedAlternates('/contact'),
     },
     openGraph: {
       title,
       description,
       type: 'website',
       locale: lang === 'de' ? 'de_DE' : 'ru_RU',
-      url: `/${lang}/contact`,
+      url: getAbsoluteUrl(`/${lang}/contact`),
       siteName: 'SorgfaltBau',
       images: [
         {

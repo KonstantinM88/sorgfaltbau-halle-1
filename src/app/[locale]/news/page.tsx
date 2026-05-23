@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import { prisma } from '@/lib/prisma';
 import { COMPANY_POSTAL_CODE, COMPANY_STREET_ADDRESS } from '@/lib/contact';
-import { getSiteUrl } from '@/lib/site';
+import { getAbsoluteUrl, getLocalizedAlternates, getSiteUrl } from '@/lib/site';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import NewsListClient from './NewsListClient';
@@ -27,14 +27,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     title: metaTitles[lang],
     description: metaDescriptions[lang],
     alternates: {
-      canonical: `/${lang}/news`,
-      languages: { de: '/de/news', ru: '/ru/news' },
+      canonical: getAbsoluteUrl(`/${lang}/news`),
+      languages: getLocalizedAlternates('/news'),
     },
     openGraph: {
       title: metaTitles[lang],
       description: metaDescriptions[lang],
       type: 'website',
       locale: lang === 'de' ? 'de_DE' : 'ru_RU',
+      url: getAbsoluteUrl(`/${lang}/news`),
     },
   };
 }

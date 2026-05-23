@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
-import { getSiteUrl } from '@/lib/site';
+import { getAbsoluteUrl, getLocalizedAlternates, getSiteUrl } from '@/lib/site';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { COMPANY_PHONE_TEXT } from '@/lib/contact';
@@ -24,18 +24,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     title,
     description,
     alternates: {
-      canonical: `/${lang}/datenschutz`,
-      languages: {
-        de: '/de/datenschutz',
-        ru: '/ru/datenschutz',
-      },
+      canonical: getAbsoluteUrl(`/${lang}/datenschutz`),
+      languages: getLocalizedAlternates('/datenschutz'),
     },
     openGraph: {
       title,
       description,
       type: 'website',
       locale: lang === 'de' ? 'de_DE' : 'ru_RU',
-      url: `/${lang}/datenschutz`,
+      url: getAbsoluteUrl(`/${lang}/datenschutz`),
     },
     robots: {
       index: true,
