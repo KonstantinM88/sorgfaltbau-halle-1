@@ -121,6 +121,7 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Updated metadata, JSON-LD, footer, contact e-mail fallbacks, admin labels.
 - Updated production site URL to `https://www.sorgfaltbau.de`.
 - Canonical and hreflang alternates now use absolute localized URLs from `src/lib/site.ts` so all SEO tags stay on the canonical `https://www.sorgfaltbau.de` host.
+- Requests to `sorgfaltbau.de` are redirected permanently to `https://www.sorgfaltbau.de` via Next redirects and proxy host normalization to avoid split canonical/hreflang audits.
 
 ### Assets
 

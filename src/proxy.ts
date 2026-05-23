@@ -12,6 +12,14 @@ const intlMiddleware = createMiddleware({
 
 export default async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const hostname = request.headers.get('host')?.split(':')[0]?.toLowerCase();
+
+  if (hostname === 'sorgfaltbau.de') {
+    const url = request.nextUrl.clone();
+    url.protocol = 'https';
+    url.hostname = 'www.sorgfaltbau.de';
+    return NextResponse.redirect(url, 308);
+  }
 
   // Google Search Console verification files in site root
   if (/^\/google[a-z0-9]+\.html$/i.test(pathname)) {

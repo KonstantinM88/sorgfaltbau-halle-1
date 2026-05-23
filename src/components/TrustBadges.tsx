@@ -41,9 +41,9 @@ export default function TrustBadges() {
                 {String(i + 1).padStart(2, '0')}
               </span>
 
-              <h3 className="relative mb-2 font-heading text-lg text-anthracite-900 sm:text-xl">
+              <p className="relative mb-2 font-heading text-lg text-anthracite-900 sm:text-xl">
                 {t(`${key}.title`)}
-              </h3>
+              </p>
               <p className="relative mx-auto max-w-[18rem] text-sm leading-relaxed text-anthracite-600 sm:text-base">
                 {t(`${key}.text`)}
               </p>
