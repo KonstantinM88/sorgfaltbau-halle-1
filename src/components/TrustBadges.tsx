@@ -39,7 +39,7 @@ export default function TrustBadges() {
               </div>
               <span
                 aria-hidden="true"
-                className="absolute left-6 top-6 select-none font-heading text-4xl leading-none text-brand-orange/[0.18] transition-colors duration-300 group-hover:text-brand-orange/25"
+                className="absolute left-6 top-6 select-none font-heading text-4xl leading-none text-[#8a3414] opacity-80 transition-opacity duration-300 group-hover:opacity-100"
               >
                 {String(i + 1).padStart(2, '0')}
               </span>
