@@ -37,7 +37,10 @@ export default function TrustBadges() {
               <div className="relative mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-orange text-white shadow-lg shadow-[#071f35]/20 ring-8 ring-brand-orange/10 transition-all duration-300 group-hover:scale-105 group-hover:bg-brand-light">
                 <Icon size={26} strokeWidth={1.5} />
               </div>
-              <span className="absolute left-6 top-6 font-heading text-4xl leading-none text-brand-orange/[0.08] transition-colors duration-300 group-hover:text-brand-orange/[0.13]">
+              <span
+                aria-hidden="true"
+                className="absolute left-6 top-6 select-none font-heading text-4xl leading-none text-brand-orange/[0.18] transition-colors duration-300 group-hover:text-brand-orange/25"
+              >
                 {String(i + 1).padStart(2, '0')}
               </span>
 
