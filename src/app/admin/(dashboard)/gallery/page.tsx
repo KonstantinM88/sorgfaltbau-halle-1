@@ -14,6 +14,7 @@ import {
   Upload,
   X,
 } from 'lucide-react';
+import { GALLERY_CATEGORIES } from '@/lib/galleryCategories';
 
 type GalleryImage = {
   id: string;
@@ -40,19 +41,7 @@ type Notice = {
   text: string;
 };
 
-const CATEGORIES = [
-  { value: 'bathroom', de: 'Badezimmer', ru: 'Ванная' },
-  { value: 'drywall', de: 'Trockenbau', ru: 'Гипсокартон' },
-  { value: 'facade', de: 'Fassade', ru: 'Фасад' },
-  { value: 'terrace', de: 'Terrasse', ru: 'Терраса' },
-  { value: 'flooring', de: 'Bodenbeläge', ru: 'Полы' },
-  { value: 'interior', de: 'Innenausbau', ru: 'Интерьер' },
-  { value: 'garden', de: 'Garten', ru: 'Сад' },
-  { value: 'masonry', de: 'Massivbau', ru: 'Кладка' },
-  { value: 'parking', de: 'Parkplätze und Einfahrten schlüsselfertig', ru: 'Парковки и въезды под ключ' },
-  { value: 'roof', de: 'Dachreparatur und Dämmung', ru: 'Кровля и утепление' },
-  { value: 'natural-stone', de: 'Natursteinarbeiten - Sandstein und Granit', ru: 'Натуральный камень: песчаник и гранит' },
-];
+const CATEGORIES = GALLERY_CATEGORIES;
 
 const MAX_FILE_SIZE = 15 * 1024 * 1024;
 const ACCEPTED_TYPES = new Set([

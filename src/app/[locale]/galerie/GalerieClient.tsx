@@ -25,6 +25,7 @@ import {
   SquareParking,
   Stone,
 } from 'lucide-react';
+import { GALLERY_CATEGORIES } from '@/lib/galleryCategories';
 
 /* ═══════════════════════ TYPES ═══════════════════════ */
 
@@ -55,19 +56,41 @@ type Category = {
   icon: CategoryIcon;
 };
 
-const CATEGORIES: Category[] = [
-  { value: 'bathroom', de: 'Badezimmer', ru: 'Ванная', icon: Bath },
-  { value: 'drywall', de: 'Trockenbau', ru: 'Гипсокартон', icon: BrickWall },
-  { value: 'facade', de: 'Fassade', ru: 'Фасад', icon: Home },
-  { value: 'terrace', de: 'Terrasse', ru: 'Терраса', icon: Leaf },
-  { value: 'flooring', de: 'Bodenbeläge', ru: 'Полы', icon: Grid3X3 },
-  { value: 'interior', de: 'Innenausbau', ru: 'Интерьер', icon: Hammer },
-  { value: 'garden', de: 'Garten', ru: 'Сад', icon: Leaf },
-  { value: 'masonry', de: 'Massivbau', ru: 'Кладка', icon: BrickWall },
-  { value: 'parking', de: 'Parkplätze und Einfahrten schlüsselfertig', ru: 'Парковки и въезды под ключ', icon: SquareParking },
-  { value: 'roof', de: 'Dachreparatur und Dämmung', ru: 'Кровля и утепление', icon: Home },
-  { value: 'natural-stone', de: 'Natursteinarbeiten - Sandstein und Granit', ru: 'Натуральный камень: песчаник и гранит', icon: Stone },
-];
+const CATEGORY_ICONS = {
+  bathroom: Bath,
+  drywall: BrickWall,
+  facade: Home,
+  terrace: Leaf,
+  flooring: Grid3X3,
+  interior: Hammer,
+  garden: Leaf,
+  masonry: BrickWall,
+  parking: SquareParking,
+  roof: Home,
+  'natural-stone': Stone,
+  painting: Hammer,
+  plastering: Hammer,
+  tiling: Grid3X3,
+  'demolition-openings': Hammer,
+  concrete: BrickWall,
+  'garage-outbuildings': Home,
+  drainage: Leaf,
+  metalwork: Hammer,
+  chimney: Home,
+  'wood-floor': Grid3X3,
+  stairs: Hammer,
+  earthwork: Leaf,
+  'lawn-care': Leaf,
+  'tree-care': Leaf,
+  firewood: Leaf,
+  'property-care': CheckCircle2,
+  'full-renovation': Hammer,
+} satisfies Record<(typeof GALLERY_CATEGORIES)[number]['value'], CategoryIcon>;
+
+const CATEGORIES: Category[] = GALLERY_CATEGORIES.map((category) => ({
+  ...category,
+  icon: CATEGORY_ICONS[category.value],
+}));
 
 const t = {
   de: {

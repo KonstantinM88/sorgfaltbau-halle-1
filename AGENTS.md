@@ -243,6 +243,7 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Converted new PNG reference images from `public/uploads/Temp` to `1200x900` WebP files in `public/images`.
 - Replaced the six homepage reference images and added three new homepage reference cards: parking/driveways, roof repair/insulation, and natural stone work.
 - Added the same three categories to public gallery filters, admin gallery category selection, and the gallery upload API allow-list.
+- Centralized gallery categories in `src/lib/galleryCategories.ts` and expanded them with additional service-based work types so admin upload categories, public gallery filters, and API validation stay in sync.
 
 ### Hero Readability Update
 

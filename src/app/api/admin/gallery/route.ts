@@ -5,26 +5,13 @@ import path from 'path';
 import { NextRequest, NextResponse } from 'next/server';
 import sharp from 'sharp';
 import { getSession } from '@/lib/auth';
+import { normalizeGalleryCategory } from '@/lib/galleryCategories';
 import { prisma } from '@/lib/prisma';
 
 const MAX_WIDTH = 1920;
 const WEBP_QUALITY = 82;
 const MAX_FILE_SIZE = 15 * 1024 * 1024;
 const MAX_CAPTION_LENGTH = 180;
-
-const ALLOWED_CATEGORIES = new Set([
-  'bathroom',
-  'drywall',
-  'facade',
-  'terrace',
-  'flooring',
-  'interior',
-  'garden',
-  'masonry',
-  'parking',
-  'roof',
-  'natural-stone',
-]);
 
 const ALLOWED_MIME_TYPES = new Set([
   'image/jpeg',
@@ -37,9 +24,7 @@ const ALLOWED_MIME_TYPES = new Set([
 ]);
 
 function sanitizeCategory(value: unknown) {
-  if (typeof value !== 'string') return 'interior';
-  const normalized = value.trim().toLowerCase();
-  return ALLOWED_CATEGORIES.has(normalized) ? normalized : 'interior';
+  return normalizeGalleryCategory(value);
 }
 
 function sanitizeOptionalText(value: unknown): string | null | undefined {
