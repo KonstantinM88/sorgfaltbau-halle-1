@@ -232,6 +232,7 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Kept contact-form mail `From` aligned to the SMTP mailbox domain; customer addresses remain in `Reply-To`, and invalid cross-domain `CONTACT_FROM_EMAIL` values fall back to the SMTP mailbox sender.
 - Hardened contact-form deliverability after Gmail spam-header review: internal notifications and customer confirmations now use stable Latin subjects, explicit SMTP envelope senders, and confirmation e-mails include company contact details; MailChannels `X-MC-Relay: Junk/Bad` means a Hostinger/MailChannels relay classification issue, not SPF/DKIM/DMARC failure.
 - Moved new admin gallery uploads and news cover uploads from runtime `public/uploads/*` writes to WebP bytes stored in PostgreSQL and served by `/api/gallery/media/[id]` and `/api/news/media/[id]` routes so Hostinger production deployments do not depend on uploaded files inside the Next build directory.
+- Added Next image `localPatterns` for `/uploads/**`, `/images/**`, `/api/news/media/**`, and `/api/gallery/media/**`; news cover URLs include cache-busting query strings and must remain allowed for `next/image` in production.
 
 ### Header Navigation Update
 

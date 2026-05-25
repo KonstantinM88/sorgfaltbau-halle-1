@@ -6,6 +6,12 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
+    localPatterns: [
+      { pathname: '/uploads/**' },
+      { pathname: '/images/**' },
+      { pathname: '/api/news/media/**' },
+      { pathname: '/api/gallery/media/**' },
+    ],
   },
   async redirects() {
     return [
