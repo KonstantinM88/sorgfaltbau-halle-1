@@ -239,6 +239,10 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Restyled the mobile header menu as a branded drawer with a dark logo header, icon rows, active navigation state, language panel, contact CTA, backdrop close behavior, and scroll support on short viewports.
 - Restyled desktop header navigation into a rounded glass panel with active page state and stronger hover/readability treatment for both solid inner-page headers and the homepage hero header.
 
+### News Visual Update
+
+- Restyled the public `/news` list page to match the SorgfaltBau visual system: navy gradient hero, light grid article area, branded news cards, orange accent details, and a dark CTA block while preserving the existing layout and data behavior.
+
 ### Gallery Image Update
 
 - Converted new PNG reference images from `public/uploads/Temp` to `1200x900` WebP files in `public/images`.
