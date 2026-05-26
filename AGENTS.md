@@ -242,6 +242,7 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 ### News Visual Update
 
 - Restyled the public `/news` list page to match the SorgfaltBau visual system: navy gradient hero, light grid article area, branded news cards, orange accent details, and a dark CTA block while preserving the existing layout and data behavior.
+- Kept news visibility consistent between `/news` and `/news/[slug]`: in production an article must be `published` and have `publishedAt <= now`; future-dated articles are treated as scheduled and should not be directly visible.
 
 ### Gallery Image Update
 

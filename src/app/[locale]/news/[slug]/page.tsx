@@ -27,10 +27,18 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       metaDesc: true,
       metaDescRu: true,
       coverUrl: true,
+      published: true,
+      publishedAt: true,
     },
   });
 
-  if (!article) return { title: 'Not Found' };
+  if (
+    !article ||
+    (process.env.NODE_ENV === 'production' &&
+      (!article.published || article.publishedAt > new Date()))
+  ) {
+    return { title: 'Not Found' };
+  }
 
   const title = isRu
     ? (article.metaTitleRu || article.titleRu || article.title)
@@ -82,7 +90,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 // Generate static slugs
 export async function generateStaticParams() {
   const articles = await prisma.newsArticle.findMany({
-    where: { published: true },
+    where: { published: true, publishedAt: { lte: new Date() } },
     select: { slug: true },
   });
   return articles.map((a) => ({ slug: a.slug }));
@@ -112,7 +120,11 @@ export default async function ArticlePage({ params }: { params: Params }) {
     },
   });
 
-  if (!article || (!article.published && process.env.NODE_ENV === 'production')) {
+  if (
+    !article ||
+    (process.env.NODE_ENV === 'production' &&
+      (!article.published || article.publishedAt > new Date()))
+  ) {
     notFound();
   }
 
