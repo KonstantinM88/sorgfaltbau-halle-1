@@ -11,8 +11,8 @@ import Gallery from '@/components/Gallery';
 import Faq from '@/components/Faq';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import {COMPANY_POSTAL_CODE, COMPANY_PRIMARY_PHONE, COMPANY_STREET_ADDRESS} from '@/lib/contact';
-import {getAbsoluteUrl, getLocalizedAlternates, getSiteUrl} from '@/lib/site';
+import {getAbsoluteUrl, getLocalizedAlternates} from '@/lib/site';
+import {getLocalBusinessSchema} from '@/lib/seo';
 
 type Params = Promise<{locale: string}>;
 
@@ -58,28 +58,8 @@ export async function generateMetadata({params}: {params: Params}): Promise<Meta
 
 export default async function Home({params}: {params: Params}) {
   const {locale} = await params;
-  const baseUrl = getSiteUrl();
-  const phone = COMPANY_PRIMARY_PHONE;
-  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@sorgfaltbau.de';
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'HomeAndConstructionBusiness',
-    name: 'SorgfaltBau',
-    url: `${baseUrl}/${locale}`,
-    telephone: phone,
-    email,
-    areaServed: 'Halle (Saale) und Umgebung',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: COMPANY_STREET_ADDRESS,
-      postalCode: COMPANY_POSTAL_CODE,
-      addressLocality: 'Halle (Saale)',
-      addressRegion: 'Sachsen-Anhalt',
-      addressCountry: 'DE',
-    },
-    image: `${baseUrl}/uploads/hero-sb.webp`,
-  };
+  const jsonLd = getLocalBusinessSchema(locale);
 
   return (
     <>

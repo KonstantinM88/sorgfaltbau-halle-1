@@ -234,6 +234,14 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Moved new admin gallery uploads and news cover uploads from runtime `public/uploads/*` writes to WebP bytes stored in PostgreSQL and served by `/api/gallery/media/[id]` and `/api/news/media/[id]` routes so Hostinger production deployments do not depend on uploaded files inside the Next build directory.
 - Added Next image `localPatterns` for `/uploads/**`, `/images/**`, `/api/news/media/**`, and `/api/gallery/media/**`; news cover URLs include cache-busting query strings and must remain allowed for `next/image` in production.
 
+### SEO Schema Update
+
+- Added `src/lib/seo.ts` with reusable LocalBusiness, BreadcrumbList, and Service JSON-LD builders.
+- Switched the homepage JSON-LD to `getLocalBusinessSchema(locale)` instead of inline minimal LocalBusiness markup.
+- Set LocalBusiness geo coordinates for `Waldmeisterstraße 19, 06120 Halle (Saale)` from OpenStreetMap/Nominatim: `51.5164092, 11.9062511`.
+- Added the verified Google Unternehmensprofil URL `https://www.google.com/maps?cid=8758564088334118206` to `hasMap` and `sameAs`.
+- Confirmed LocalBusiness opening hours from Google Maps: Monday-Friday `08:00-18:00`, Saturday `09:00-14:00`, Sunday closed.
+
 ### Header Navigation Update
 
 - Restyled the mobile header menu as a branded drawer with a dark logo header, icon rows, active navigation state, language panel, contact CTA, backdrop close behavior, and scroll support on short viewports.
