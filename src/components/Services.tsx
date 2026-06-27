@@ -1,6 +1,8 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { Fragment } from 'react';
+import Link from 'next/link';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import {
@@ -20,6 +22,7 @@ import {
   Scissors,
   ArrowUpRight,
 } from 'lucide-react';
+import { CONSTRUCTION_CATALOG_SLUGS } from '@/lib/serviceCatalog';
 
 const constructionIcons = [
   Hammer, Home, Thermometer, Layers, Paintbrush, SquareStack,
@@ -43,6 +46,7 @@ export default function Services({
   sectionId = 'services',
 }: ServicesProps = {}) {
   const t = useTranslations('services');
+  const locale = useLocale();
   const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.1 });
 
   const constructionItems = t.raw('construction.items') as string[];
@@ -109,15 +113,17 @@ export default function Services({
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
             {constructionItems.map((item: string, i: number) => {
               const Icon = constructionIcons[i] || Hammer;
-              return (
+              const slug = CONSTRUCTION_CATALOG_SLUGS[i];
+              const hasPage = Boolean(slug);
+
+              const card = (
                 <motion.div
-                  key={i}
                   initial={{ opacity: 0, y: 15 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.15 + i * 0.04 }}
                   whileHover={{ y: -6, scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
-                  className="group relative min-h-[5.75rem] overflow-hidden rounded-2xl border border-anthracite-100/80 bg-white p-4 shadow-lg shadow-brand-orange/[0.04] transition-colors duration-300 hover:border-brand-orange/25 hover:shadow-xl hover:shadow-brand-orange/10 sm:p-5"
+                  className="group relative h-full min-h-[5.75rem] overflow-hidden rounded-2xl border border-anthracite-100/80 bg-white p-4 shadow-lg shadow-brand-orange/[0.04] transition-colors duration-300 hover:border-brand-orange/25 hover:shadow-xl hover:shadow-brand-orange/10 sm:p-5"
                 >
                   <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-orange/35 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(7,31,53,0.08)_0%,transparent_44%,rgba(242,100,34,0.06)_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -130,7 +136,13 @@ export default function Services({
                         {item}
                       </span>
                     </div>
-                    <div className="flex h-8 w-8 shrink-0 translate-x-2 items-center justify-center rounded-full bg-brand-orange/8 text-brand-orange opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                    <div
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-orange/8 text-brand-orange transition-all duration-300 ${
+                        hasPage
+                          ? 'translate-x-0 opacity-100'
+                          : 'translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100'
+                      }`}
+                    >
                       <ArrowUpRight size={16} strokeWidth={1.8} />
                     </div>
                   </div>
@@ -138,6 +150,19 @@ export default function Services({
                     {String(i + 1).padStart(2, '0')}
                   </span>
                 </motion.div>
+              );
+
+              return hasPage ? (
+                <Link
+                  key={i}
+                  href={`/${locale}/services/${slug}`}
+                  aria-label={item}
+                  className="block rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/60"
+                >
+                  {card}
+                </Link>
+              ) : (
+                <Fragment key={i}>{card}</Fragment>
               );
             })}
           </div>

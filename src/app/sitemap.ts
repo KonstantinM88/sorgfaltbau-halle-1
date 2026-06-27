@@ -1,7 +1,8 @@
-import type { MetadataRoute } from 'next';
-import { prisma } from '@/lib/prisma';
-import { locales } from '@/i18n/config';
-import { getSiteUrl } from '@/lib/site';
+import type {MetadataRoute} from 'next';
+import {prisma} from '@/lib/prisma';
+import {locales} from '@/i18n/config';
+import {getSiteUrl} from '@/lib/site';
+import {SERVICE_SLUGS} from '@/lib/services';
 
 const STATIC_PATHS = [
   '',
@@ -24,14 +25,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${baseUrl}/${locale}${path}`,
       lastModified: now,
       changeFrequency: path === '' ? 'weekly' : 'monthly',
-      priority: path === '' ? 1 : path === '/news' ? 0.9 : 0.7,
+      priority:
+        path === ''
+          ? 1
+          : path === '/news'
+            ? 0.9
+            : path === '/services'
+              ? 0.85
+              : 0.7,
+    }))
+  );
+
+  // Посадочные страницы услуг /services/[slug]
+  const serviceEntries: MetadataRoute.Sitemap = locales.flatMap((locale) =>
+    SERVICE_SLUGS.map((slug) => ({
+      url: `${baseUrl}/${locale}/services/${slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
     }))
   );
 
   const articles = await prisma.newsArticle.findMany({
     where: {
       published: true,
-      publishedAt: { lte: now },
+      publishedAt: {lte: now},
     },
     select: {
       slug: true,
@@ -52,5 +70,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   );
 
-  return [...staticEntries, ...articleEntries];
+  return [...staticEntries, ...serviceEntries, ...articleEntries];
 }

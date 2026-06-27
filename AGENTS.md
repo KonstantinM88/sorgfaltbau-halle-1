@@ -189,6 +189,14 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Restyled the full `/services` page hero and lower sections to match the current SorgfaltBau navy/grid visual system and switched its catalog section to reuse the animated homepage services component with page-specific intro copy.
 - Strengthened `/services` RU/DE SEO copy, metadata and structured business data around concrete indoor/outdoor work types and the Halle (Saale) service area.
 - Added reusable service-area location cards with scroll reveals, custom non-official SVG shields, municipality-inspired color palettes and German registration-style codes such as `HAL`, `MER`, `L` and `DZ`; `/services` uses the full variant and `/about` uses the compact variant.
+- Added SEO landing pages for key services under the existing `/[locale]/services` hub as `/[locale]/services/[slug]`.
+- Added `src/lib/services.ts` as the single source for service landing-page content, metadata, FAQ, images and related-service links.
+- Added `src/components/ServiceHighlights.tsx` to link from the `/services` hub to the detailed service landing pages.
+- Added sitemap entries for all `/services/[slug]` pages in both `de` and `ru`; the old `/leistungen` experiment was removed.
+- Added `src/lib/serviceCatalog.ts` to map existing service catalog indices to detailed service slugs.
+- Linked matching homepage and `/services` catalog cards to `/[locale]/services/[slug]`; footer service items now link to the same detail pages for sitewide internal linking.
+- Expanded `trockenbau-halle`, `rohbau-halle`, and `fassadendaemmung-halle` in `src/lib/services.ts` with deeper DE/RU SEO/GEO copy, longer includes, five content sections, and seven FAQ entries each.
+- Replaced the temporary `rohbau-halle` service image with `/images/rohbau-massivbau-halle.webp`, converted from the Temp PNG to an optimized 1024x768 WebP for responsive `next/image` rendering.
 
 ### Why Us Visual And Copy Update
 
@@ -241,6 +249,9 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Set LocalBusiness geo coordinates for `Waldmeisterstraße 19, 06120 Halle (Saale)` from OpenStreetMap/Nominatim: `51.5164092, 11.9062511`.
 - Added the verified Google Unternehmensprofil URL `https://www.google.com/maps?cid=8758564088334118206` to `hasMap` and `sameAs`.
 - Confirmed LocalBusiness opening hours from Google Maps: Monday-Friday `08:00-18:00`, Saturday `09:00-14:00`, Sunday closed.
+- Added public `public/llms.txt` for GEO/AI discovery with Markdown links to the main pages, detailed service landing pages, local service area, contact details and AI usage guidance.
+- Added a `/llms.txt` header rule in `next.config.mjs` so the file is served as `text/markdown; charset=utf-8`.
+- Excluded `/llms.txt` from `src/proxy.ts` locale middleware matching so the root public file serves directly like `robots.txt` and `sitemap.xml`.
 
 ### Header Navigation Update
 

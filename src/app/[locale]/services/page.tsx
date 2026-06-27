@@ -18,6 +18,7 @@ import Testimonials from '@/components/Testimonials';
 import Faq from '@/components/Faq';
 import Contact from '@/components/Contact';
 import Services from '@/components/Services';
+import ServiceHighlights from '@/components/ServiceHighlights';
 import ServiceAreaLocations from '@/components/ServiceAreaLocations';
 import AnimateOnScroll from '@/components/ui/AnimateOnScroll';
 import { COMPANY_POSTAL_CODE, COMPANY_PRIMARY_PHONE, COMPANY_STREET_ADDRESS } from '@/lib/contact';
@@ -428,6 +429,8 @@ export default async function ServicesPage({ params }: { params: Params }) {
           headingIntro={t('catalogIntro')}
           sectionId="services-catalog"
         />
+
+        <ServiceHighlights locale={locale} />
 
         <section className="relative overflow-hidden bg-[#061b2f] py-16 text-white sm:py-20">
           <div className="absolute inset-0 bg-[linear-gradient(135deg,#041524_0%,#071f35_48%,#0c314f_100%)]" />

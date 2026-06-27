@@ -10,6 +10,10 @@ import {
   COMPANY_SECONDARY_PHONE,
   COMPANY_STREET_ADDRESS,
 } from '@/lib/contact';
+import {
+  CONSTRUCTION_CATALOG_SLUGS,
+  FOOTER_SERVICE_INDICES,
+} from '@/lib/serviceCatalog';
 
 export default function Footer() {
   const t = useTranslations();
@@ -25,7 +29,13 @@ export default function Footer() {
     { label: t('nav.news'), href: `/${locale}/news` },
     { label: t('nav.contact'), href: `/${locale}/contact` },
   ];
-  const serviceItems = (t.raw('services.construction.items') as string[]).slice(0, 7);
+
+  // Услуги в подвале — теперь ссылки на детальные страницы /services/[slug]
+  const constructionItems = t.raw('services.construction.items') as string[];
+  const serviceLinks = FOOTER_SERVICE_INDICES.map((i) => ({
+    label: constructionItems[i],
+    href: `/${locale}/services/${CONSTRUCTION_CATALOG_SLUGS[i]}`,
+  }));
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -88,10 +98,15 @@ export default function Footer() {
               {t('footer.services')}
             </h4>
             <ul className="space-y-2.5">
-              {serviceItems.map((item) => (
-                <li key={item} className="flex gap-2 text-sm leading-relaxed text-slate-100/72">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-accent" />
-                  <span>{item}</span>
+              {serviceLinks.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className="group flex items-start gap-2 text-sm leading-relaxed text-slate-100/72 transition-colors hover:text-brand-accent"
+                  >
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-accent transition-transform group-hover:scale-125" />
+                    <span>{item.label}</span>
+                  </a>
                 </li>
               ))}
             </ul>
