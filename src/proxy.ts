@@ -11,6 +11,10 @@ const intlMiddleware = createMiddleware({
   alternateLinks: false,
 });
 
+const STATIC_ASSET_CACHE_CONTROL = 'public, max-age=31536000, immutable';
+const CACHEABLE_PUBLIC_ASSET_PATH =
+  /^\/(?:images|uploads)\/.+\.(?:avif|webp|png|jpe?g|gif|svg|ico|mp4|webm|woff2?)$/i;
+
 export default async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const hostname = request.headers.get('host')?.split(':')[0]?.toLowerCase();
@@ -25,6 +29,12 @@ export default async function proxy(request: NextRequest) {
   // Google Search Console verification files in site root.
   if (/^\/google[a-z0-9]+\.html$/i.test(pathname)) {
     return NextResponse.next();
+  }
+
+  if (CACHEABLE_PUBLIC_ASSET_PATH.test(pathname)) {
+    const response = NextResponse.next();
+    response.headers.set('Cache-Control', STATIC_ASSET_CACHE_CONTROL);
+    return response;
   }
 
   // Admin routes: check auth cookie.
@@ -56,6 +66,8 @@ export default async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
+    '/images/:path*',
+    '/uploads/:path*',
     '/((?!_next|images|uploads|favicon.ico|robots.txt|sitemap.xml|llms.txt).*)',
   ],
 };

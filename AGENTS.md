@@ -254,6 +254,7 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Excluded `/llms.txt` from `src/proxy.ts` locale middleware matching so the root public file serves directly like `robots.txt` and `sitemap.xml`.
 - Standardized public SEO routing so canonical pages live only under `/de` or `/ru`: `next-intl` automatic alternate `Link` headers are disabled, and public URLs without a locale prefix redirect permanently (`308`) to the default `/de` path.
 - Added long-lived browser cache headers in `next.config.mjs` for `/images/**` and `/uploads/**` (`public, max-age=31536000, immutable`) to satisfy PageSpeed static-asset caching audits; when replacing public assets, prefer new filenames/cache-busting paths.
+- Added the same long-lived browser cache header in `src/proxy.ts` for cacheable `/images` and `/uploads` asset requests as a Hostinger/Node fallback; if live `Server: hcdn` responses still show no `Cache-Control`, configure or clear Hostinger CDN/browser cache because the CDN is bypassing Next response headers.
 
 ### Header Navigation Update
 
