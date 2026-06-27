@@ -252,6 +252,7 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Added public `public/llms.txt` for GEO/AI discovery with Markdown links to the main pages, detailed service landing pages, local service area, contact details and AI usage guidance.
 - Added a `/llms.txt` header rule in `next.config.mjs` so the file is served as `text/markdown; charset=utf-8`.
 - Excluded `/llms.txt` from `src/proxy.ts` locale middleware matching so the root public file serves directly like `robots.txt` and `sitemap.xml`.
+- Standardized public SEO routing so canonical pages live only under `/de` or `/ru`: `next-intl` automatic alternate `Link` headers are disabled, and public URLs without a locale prefix redirect permanently (`308`) to the default `/de` path.
 
 ### Header Navigation Update
 

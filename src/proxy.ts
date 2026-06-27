@@ -8,6 +8,7 @@ const intlMiddleware = createMiddleware({
   defaultLocale,
   localePrefix: 'always',
   localeDetection: false,
+  alternateLinks: false,
 });
 
 export default async function proxy(request: NextRequest) {
@@ -21,12 +22,12 @@ export default async function proxy(request: NextRequest) {
     return NextResponse.redirect(url, 308);
   }
 
-  // Google Search Console verification files in site root
+  // Google Search Console verification files in site root.
   if (/^\/google[a-z0-9]+\.html$/i.test(pathname)) {
     return NextResponse.next();
   }
 
-  // Admin routes — check auth cookie
+  // Admin routes: check auth cookie.
   if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
     const token = request.cookies.get('admin-token')?.value;
     if (!token) {
@@ -35,12 +36,21 @@ export default async function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Admin login & API routes — skip intl
+  // Admin login and API routes do not use locale routing.
   if (pathname.startsWith('/admin/login') || pathname.startsWith('/api/')) {
     return NextResponse.next();
   }
 
-  // All other routes — next-intl locale routing
+  const hasLocalePrefix = locales.some(
+    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
+  );
+
+  if (!hasLocalePrefix) {
+    const url = request.nextUrl.clone();
+    url.pathname = `/${defaultLocale}${pathname === '/' ? '' : pathname}`;
+    return NextResponse.redirect(url, 308);
+  }
+
   return intlMiddleware(request);
 }
 
