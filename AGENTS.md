@@ -196,7 +196,8 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Added `src/lib/serviceCatalog.ts` to map existing service catalog indices to detailed service slugs.
 - Linked matching homepage and `/services` catalog cards to `/[locale]/services/[slug]`; footer service items now link to the same detail pages for sitewide internal linking.
 - Expanded `trockenbau-halle`, `rohbau-halle`, and `fassadendaemmung-halle` in `src/lib/services.ts` with deeper DE/RU SEO/GEO copy, longer includes, five content sections, and seven FAQ entries each.
-- Replaced the temporary `rohbau-halle` service image with `/images/rohbau-massivbau-halle.webp`, converted from the Temp PNG to an optimized 1024x768 WebP for responsive `next/image` rendering.
+- Replaced the temporary `rohbau-halle` service image with `/images/rohbau-massivbau-halle.webp`, converted from the Temp PNG to an optimized 1024x768 WebP for responsive `next/image` rendering; preserve this path when replacing `src/lib/services.ts` from content packages.
+- Replaced `src/lib/services.ts` from the content package so all 8 detailed service pages now have full DE/RU SEO/GEO content: five content sections, expanded includes, and seven FAQ entries each.
 
 ### Why Us Visual And Copy Update
 

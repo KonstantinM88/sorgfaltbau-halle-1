@@ -195,7 +195,6 @@ export const SERVICES: Service[] = [
 
   {
     slug: 'rohbau-halle',
-    // TODO: при наличии заменить на отдельное фото Rohbau/Massivbau
     image: '/images/rohbau-massivbau-halle.webp',
     serviceType: 'Rohbau und Massivbau',
     related: ['fassadendaemmung-halle', 'pflasterarbeiten-halle', 'dachsanierung-halle'],
@@ -501,40 +500,70 @@ export const SERVICES: Service[] = [
       title: 'Badsanierung in Halle (Saale)',
       metaTitle: 'Badsanierung Halle (Saale) – Bad schlüsselfertig | SorgfaltBau',
       metaDescription:
-        'Badsanierung in Halle (Saale): Fliesen, Sanitär, Abdichtung und Innenausbau – schlüsselfertig aus einer Hand. Klare Termine und Kosten. Jetzt anfragen.',
+        'Badsanierung in Halle (Saale): Fliesen, Sanitär, Abdichtung und Innenausbau schlüsselfertig aus einer Hand. Klare Termine, nachvollziehbare Kosten, barrierearme Lösungen. Jetzt anfragen.',
       short: 'Bad schlüsselfertig: Fliesen, Sanitär, Abdichtung.',
       intro:
-        'Ein neues Bad verbindet viele Gewerke: Abriss, Installation, Abdichtung, Fliesen und Montage. SorgfaltBau saniert Bäder in Halle (Saale) schlüsselfertig und koordiniert die Schritte so, dass die Reihenfolge stimmt.',
+        'Ein neues Bad verbindet viele Gewerke – Abriss, Installation, Abdichtung, Fliesen und Montage müssen genau ineinandergreifen. SorgfaltBau saniert Bäder in Halle (Saale) schlüsselfertig aus einer Hand und koordiniert die Schritte so, dass Reihenfolge, Termine und Qualität stimmen – ob kompaktes Altbaubad oder barrierearmer Umbau.',
       includes: [
-        'Demontage und Entsorgung',
-        'Sanitärarbeiten innen (Zu- und Ableitungen)',
-        'Abdichtung im Nassbereich',
-        'Keramik- und Bodenfliesen',
-        'Montage von Sanitärobjekten',
-        'Maler- und Trockenbauarbeiten im Bad',
+        'Demontage, Abbruch und Entsorgung',
+        'Sanitärinstallation innen (Zu- und Ableitungen)',
+        'Fachgerechte Abdichtung im Nassbereich',
+        'Wand- und Bodenfliesen',
+        'Trockenbau, Vorwandinstallation und abgehängte Decke',
+        'Montage von WC, Waschtisch, Dusche und Wanne',
+        'Barrierearme und bodengleiche Duschen',
+        'Maler- und Anschlussarbeiten bis fertig',
       ],
       sections: [
         {
           heading: 'Schlüsselfertig aus einer Hand',
-          body: 'Sie haben einen Ansprechpartner für das gesamte Bad. Wir stimmen Installation, Abdichtung, Fliesen und Montage so ab, dass keine Lücken zwischen den Gewerken entstehen.',
+          body: 'Bei einer Badsanierung greifen viele Gewerke ineinander. Sie haben bei uns einen Ansprechpartner für das gesamte Bad – wir stimmen Installation, Abdichtung, Fliesen und Montage so ab, dass keine Lücken oder Wartezeiten zwischen den Schritten entstehen. Das spart Nerven, Zeit und Abstimmungsaufwand.',
         },
         {
           heading: 'Abdichtung ernst genommen',
-          body: 'Gerade im Nassbereich entscheidet die Abdichtung über die Lebensdauer. Wir arbeiten hier sorgfältig und nachvollziehbar, bevor gefliest wird.',
+          body: 'Im Nassbereich entscheidet die Abdichtung über die Lebensdauer des ganzen Bades. Wir arbeiten hier nach den anerkannten Regeln, dichten Wand- und Bodenanschlüsse sorgfältig ab und dokumentieren die Schritte, bevor gefliest wird. So bleiben Feuchteschäden außen vor.',
+        },
+        {
+          heading: 'Bäder im Altbau und im Plattenbau',
+          body: 'Viele Bäder in Halle sind klein geschnitten – im Gründerzeit-Altbau ebenso wie in den Wohnungen in Halle-Neustadt. Mit durchdachter Vorwandinstallation, der richtigen Fliesenwahl und bodengleicher Dusche lässt sich auch auf wenigen Quadratmetern ein modernes, gut nutzbares Bad gestalten.',
+        },
+        {
+          heading: 'Barrierearm und altersgerecht',
+          body: 'Auf Wunsch planen wir das Bad barrierearm: bodengleiche Dusche, rutschhemmende Fliesen, gut erreichbare Armaturen und stabile Befestigungen für Haltegriffe. Das erhöht den Komfort heute und macht das Bad langfristig nutzbar.',
+        },
+        {
+          heading: 'Termine und Kosten nachvollziehbar',
+          body: 'Nach der Besichtigung nennen wir ein realistisches Zeitfenster und eine nachvollziehbare Kostenaufstellung. Auf Wunsch übernehmen wir die Materialbeschaffung oder arbeiten mit den von Ihnen gewählten Fliesen und Objekten. So behalten Sie den Überblick.',
         },
       ],
       faq: [
         {
           q: 'Wie lange ist das Bad nicht nutzbar?',
-          a: 'Eine komplette Badsanierung dauert je nach Größe meist ein bis drei Wochen. Wir nennen vorab ein realistisches Zeitfenster und halten Sie über den Stand informiert.',
+          a: 'Eine komplette Badsanierung dauert je nach Größe und Umfang meist ein bis drei Wochen. Wir nennen vorab ein realistisches Zeitfenster und informieren Sie über den Stand, damit Sie planen können.',
         },
         {
           q: 'Kümmern Sie sich um das Material?',
-          a: 'Auf Wunsch übernehmen wir die Materialbeschaffung oder arbeiten mit von Ihnen ausgewählten Fliesen und Objekten. Das klären wir beim Angebot.',
+          a: 'Auf Wunsch übernehmen wir die Materialbeschaffung komplett oder arbeiten mit den von Ihnen ausgewählten Fliesen, Armaturen und Objekten. Was sinnvoll ist, klären wir beim Angebot.',
+        },
+        {
+          q: 'Können Sie eine bodengleiche Dusche einbauen?',
+          a: 'Ja. Bodengleiche, barrierearme Duschen gehören zu unserem Standard – inklusive passender Abdichtung, Gefälle und rutschhemmender Fliesen.',
         },
         {
           q: 'Übernehmen Sie auch Teilsanierungen?',
-          a: 'Ja. Vom Austausch der Dusche bis zum kompletten Umbau – wir passen den Umfang an Ihr Vorhaben an.',
+          a: 'Ja. Vom Austausch der Dusche oder einzelner Objekte bis zum kompletten Umbau – wir passen den Umfang an Ihr Vorhaben und Ihr Budget an.',
+        },
+        {
+          q: 'Machen Sie auch die Elektrik im Bad?',
+          a: 'Wir koordinieren die nötigen Arbeiten im Ablauf. Den fachgerechten Elektroanschluss führt ein Fachbetrieb aus; wir stimmen die Schnittstellen ab, damit alles zusammenpasst.',
+        },
+        {
+          q: 'Arbeiten Sie auch in vermieteten Wohnungen?',
+          a: 'Ja. Gerade vor einer Neuvermietung bringen wir Bäder zügig und sauber in einen modernen, übergabefähigen Zustand.',
+        },
+        {
+          q: 'In welchem Gebiet arbeiten Sie?',
+          a: 'Schwerpunkt ist Halle (Saale) mit allen Stadtteilen, dazu Merseburg, Leipzig, Schkeuditz und das nahe Umland.',
         },
       ],
     },
@@ -542,40 +571,70 @@ export const SERVICES: Service[] = [
       title: 'Ремонт ванной в Halle (Saale)',
       metaTitle: 'Ремонт ванной Halle – под ключ | SorgfaltBau',
       metaDescription:
-        'Ремонт ванной комнаты в Halle (Saale) под ключ: плитка, сантехника, гидроизоляция, отделка — из одних рук. Понятные сроки и стоимость. Оставьте заявку.',
+        'Ремонт ванной в Halle (Saale) под ключ: плитка, сантехника, гидроизоляция и отделка из одних рук. Понятные сроки и стоимость, решения без барьеров. Оставьте заявку.',
       short: 'Ванная под ключ: плитка, сантехника, гидроизоляция.',
       intro:
-        'Новая ванная объединяет много работ: демонтаж, разводку, гидроизоляцию, плитку и монтаж. SorgfaltBau делает ванные в Halle (Saale) под ключ и согласует этапы в правильном порядке.',
+        'Новая ванная объединяет много работ — демонтаж, разводка, гидроизоляция, плитка и монтаж должны точно состыковаться. SorgfaltBau делает ванные в Halle (Saale) под ключ из одних рук и согласует этапы так, чтобы порядок, сроки и качество совпали — будь то компактная ванная в Altbau или ремонт без барьеров.',
       includes: [
-        'Демонтаж и вывоз',
+        'Демонтаж, разборка и вывоз',
         'Внутренняя сантехника (подвод и слив)',
-        'Гидроизоляция мокрой зоны',
-        'Керамическая и напольная плитка',
-        'Установка сантехники',
-        'Малярные работы и гипсокартон в ванной',
+        'Профессиональная гидроизоляция мокрой зоны',
+        'Плитка на стены и пол',
+        'Гипсокартон, инсталляция и подвесной потолок',
+        'Монтаж унитаза, раковины, душа и ванны',
+        'Душ вровень с полом, без барьеров',
+        'Малярные и финишные работы до готовности',
       ],
       sections: [
         {
           heading: 'Под ключ из одних рук',
-          body: 'У вас один ответственный по всей ванной. Согласуем разводку, гидроизоляцию, плитку и монтаж так, чтобы между этапами не было пробелов.',
+          body: 'В ремонте ванной много работ идут встык. У вас один ответственный по всей ванной — согласуем разводку, гидроизоляцию, плитку и монтаж так, чтобы между этапами не было пробелов и простоев. Это экономит время, нервы и согласования.',
         },
         {
           heading: 'Серьёзно относимся к гидроизоляции',
-          body: 'В мокрой зоне именно гидроизоляция определяет срок службы. Делаем её аккуратно и понятно — до укладки плитки.',
+          body: 'В мокрой зоне именно гидроизоляция определяет срок службы всей ванной. Работаем по правилам, тщательно проклеиваем примыкания стен и пола и фиксируем этапы до укладки плитки. Так протечки и плесень остаются в стороне.',
+        },
+        {
+          heading: 'Ванные в Altbau и панельных домах',
+          body: 'Многие ванные в Halle небольшие — и в грюндерзайт-домах, и в квартирах Halle-Neustadt. С продуманной инсталляцией, правильной плиткой и душем вровень с полом даже на нескольких квадратных метрах получается современная, удобная ванная.',
+        },
+        {
+          heading: 'Без барьеров и на годы',
+          body: 'По желанию проектируем ванную без барьеров: душ вровень с полом, нескользящая плитка, удобные смесители и надёжные крепления под поручни. Это и комфорт сейчас, и пригодность ванной на годы вперёд.',
+        },
+        {
+          heading: 'Сроки и стоимость прозрачны',
+          body: 'После осмотра называем реальные сроки и понятную смету. По желанию берём закупку материалов на себя или работаем с вашими плиткой и сантехникой. Вы держите всё под контролем.',
         },
       ],
       faq: [
         {
           q: 'Сколько ванная будет недоступна?',
-          a: 'Полный ремонт обычно занимает от одной до трёх недель в зависимости от площади. Заранее называем реальные сроки и держим в курсе.',
+          a: 'Полный ремонт в зависимости от площади и объёма обычно занимает от одной до трёх недель. Заранее называем реальные сроки и держим в курсе, чтобы вы могли планировать.',
         },
         {
           q: 'Закупаете ли материалы?',
-          a: 'По желанию берём закупку на себя или работаем с выбранными вами плиткой и сантехникой. Обсуждаем при расчёте.',
+          a: 'По желанию берём закупку полностью или работаем с выбранными вами плиткой, смесителями и сантехникой. Что разумнее — обсудим при расчёте.',
+        },
+        {
+          q: 'Сделаете ли душ вровень с полом?',
+          a: 'Да. Душ без порога — это наш стандарт: с правильной гидроизоляцией, уклоном и нескользящей плиткой.',
         },
         {
           q: 'Делаете ли частичный ремонт?',
-          a: 'Да. От замены душа до полной перепланировки — подстраиваем объём под вашу задачу.',
+          a: 'Да. От замены душа или отдельных предметов до полной перепланировки — подстраиваем объём под задачу и бюджет.',
+        },
+        {
+          q: 'Делаете ли электрику в ванной?',
+          a: 'Координируем нужные работы в общем графике. Электроподключение по нормам выполняет профильная фирма; мы согласуем стыки, чтобы всё совпало.',
+        },
+        {
+          q: 'Работаете в сдаваемых квартирах?',
+          a: 'Да. Перед сдачей быстро и чисто доводим ванную до современного состояния под передачу.',
+        },
+        {
+          q: 'В каком районе работаете?',
+          a: 'Основной район — Halle (Saale) со всеми районами, плюс Merseburg, Leipzig, Schkeuditz и ближайшие окрестности.',
         },
       ],
     },
@@ -588,83 +647,143 @@ export const SERVICES: Service[] = [
     related: ['wohnungsrenovierung-halle', 'trockenbau-halle', 'badsanierung-halle'],
     de: {
       title: 'Bodenbeläge verlegen in Halle (Saale)',
-      metaTitle: 'Bodenleger Halle (Saale) – Laminat, Parkett, Fliesen | SorgfaltBau',
+      metaTitle: 'Bodenleger Halle (Saale) – Laminat, Vinyl, Fliesen | SorgfaltBau',
       metaDescription:
-        'Bodenbeläge in Halle (Saale): Laminat, Vinyl, Fliesen und Holzboden-Restaurierung. Sauber verlegt, fester Termin. Jetzt kostenlose Einschätzung anfragen.',
+        'Bodenbeläge in Halle (Saale): Laminat, Vinyl, Fliesen und Aufarbeitung von Holzböden. Saubere Untergrundvorbereitung, ebenes Ergebnis, fester Termin. Jetzt kostenlos anfragen.',
       short: 'Laminat, Vinyl, Fliesen und Holzboden-Aufbereitung.',
       intro:
-        'Der richtige Boden macht einen Raum aus. SorgfaltBau verlegt in Halle (Saale) alle gängigen Bodenbeläge und bereitet den Untergrund so vor, dass das Ergebnis eben, ruhig und langlebig ist.',
+        'Der richtige Boden prägt einen Raum – optisch wie im Alltag. SorgfaltBau verlegt in Halle (Saale) alle gängigen Bodenbeläge und bereitet den Untergrund so vor, dass das Ergebnis eben, ruhig und langlebig ist. Vom einzelnen Zimmer bis zur kompletten Wohnung, auch mit Aufarbeitung alter Dielen.',
       includes: [
-        'Laminat und Vinyl (Klick und vollflächig)',
-        'Verlegung aller Bodenbeläge',
+        'Laminat und Vinyl (Klick und vollflächig verklebt)',
+        'Designboden und Mehrschichtparkett',
         'Keramik- und Bodenfliesen',
-        'Untergrundvorbereitung und Ausgleich',
-        'Restaurierung von Holzböden mit Beize und Klarlack',
+        'Untergrundvorbereitung und Spachtelausgleich',
+        'Trittschalldämmung',
+        'Aufarbeitung von Holzböden (Schliff, Beize, Klarlack)',
         'Sockelleisten und Übergangsprofile',
+        'Entsorgung des alten Belags',
       ],
       sections: [
         {
           heading: 'Der Untergrund entscheidet',
-          body: 'Ein guter Boden beginnt unter dem Belag. Wir prüfen Ebenheit und Zustand, gleichen bei Bedarf aus und verlegen erst dann – das verhindert spätere Fugen, Knarren und Höhenunterschiede.',
+          body: 'Ein guter Boden beginnt unter dem Belag. Wir prüfen Ebenheit, Feuchte und Zustand des Untergrunds, gleichen bei Bedarf mit Spachtelmasse aus und verlegen erst dann. Das verhindert spätere Fugen, Knarren und sichtbare Höhenunterschiede.',
         },
         {
-          heading: 'Auch Aufarbeitung statt Austausch',
-          body: 'Wo es sich lohnt, restaurieren wir bestehende Holzböden statt sie zu ersetzen – mit Schliff, Beize und Klarlack für ein frisches, langlebiges Ergebnis.',
+          heading: 'Der passende Belag für jeden Raum',
+          body: 'Nicht jeder Boden passt in jeden Raum. Für stark genutzte Bereiche, Küchen oder Mietwohnungen empfehlen wir robustes Vinyl oder Fliesen, für Wohnräume gemütliches Laminat oder Parkett. Wir beraten ehrlich, was zu Nutzung, Optik und Budget passt.',
+        },
+        {
+          heading: 'Trittschall und Ruhe',
+          body: 'Gerade in Mehrfamilienhäusern in Halle ist Trittschall ein Thema. Mit der passenden Dämmunterlage reduzieren wir Geräusche zum Nachbarn und im eigenen Raum – ein spürbarer Komfortgewinn, der beim Verlegen mitgedacht wird.',
+        },
+        {
+          heading: 'Aufarbeiten statt austauschen',
+          body: 'Wo es sich lohnt, restaurieren wir bestehende Holzböden und Dielen, statt sie zu ersetzen – mit Schliff, Beize und Klarlack. Gerade in Altbauwohnungen entsteht so ein frischer, langlebiger Boden mit Charakter und meist zu geringeren Kosten.',
+        },
+        {
+          heading: 'Sauber, schnell, begehbar',
+          body: 'Wir arbeiten zügig und sauber, schützen angrenzende Bereiche und räumen ordentlich auf. Laminat und Vinyl sind meist sofort begehbar; bei Fliesen oder Lackierungen planen wir die nötigen Trocknungszeiten transparent mit ein.',
         },
       ],
       faq: [
         {
           q: 'Muss der alte Boden raus?',
-          a: 'Nicht immer. Je nach Zustand und Aufbau kann der neue Belag auf den alten – oder der Untergrund wird vorbereitet. Das prüfen wir vor Ort.',
+          a: 'Nicht immer. Je nach Zustand und Aufbau kann der neue Belag auf den alten verlegt werden, oder wir bereiten den Untergrund neu vor. Das prüfen wir bei der Besichtigung.',
+        },
+        {
+          q: 'Welcher Belag ist der pflegeleichteste?',
+          a: 'Vinyl und Fliesen sind besonders robust und pflegeleicht, ideal für Küchen, Flure und Mietwohnungen. Für Wohnräume sind Laminat oder Parkett beliebt. Wir empfehlen nach Nutzung und Budget.',
         },
         {
           q: 'Verlegen Sie auch nur einen Raum?',
           a: 'Ja, vom einzelnen Zimmer bis zur kompletten Wohnung. Den Umfang richten wir nach Ihrem Vorhaben.',
         },
         {
+          q: 'Können alte Dielen aufgearbeitet werden?',
+          a: 'Oft ja. Mit Schliff, Beize und Klarlack lassen sich Holzböden und Dielen häufig aufarbeiten – das ist nachhaltiger und meist günstiger als ein kompletter Austausch.',
+        },
+        {
           q: 'Wie schnell ist der Boden begehbar?',
-          a: 'Laminat und Vinyl sind meist sofort nutzbar. Bei Fliesen oder Lackierungen planen wir die nötigen Trocknungszeiten mit ein.',
+          a: 'Laminat und Vinyl sind meist sofort nutzbar. Bei Fliesen, Verklebungen oder Lackierungen planen wir die nötigen Trocknungszeiten mit ein.',
+        },
+        {
+          q: 'Übernehmen Sie auch die Trittschalldämmung?',
+          a: 'Ja. Die passende Dämmunterlage gehört für uns zum sauberen Aufbau – besonders in Mehrfamilienhäusern.',
+        },
+        {
+          q: 'In welchem Gebiet arbeiten Sie?',
+          a: 'Schwerpunkt ist Halle (Saale) mit allen Stadtteilen, dazu Merseburg, Leipzig, Schkeuditz und das nahe Umland.',
         },
       ],
     },
     ru: {
       title: 'Укладка напольных покрытий в Halle (Saale)',
-      metaTitle: 'Полы Halle – ламинат, паркет, плитка | SorgfaltBau',
+      metaTitle: 'Полы Halle – ламинат, винил, плитка | SorgfaltBau',
       metaDescription:
-        'Напольные покрытия в Halle (Saale): ламинат, винил, плитка, восстановление деревянных полов. Ровно, аккуратно и в срок. Оставьте заявку.',
+        'Напольные покрытия в Halle (Saale): ламинат, винил, плитка и реставрация деревянных полов. Аккуратная подготовка основания, ровный результат, точный срок. Оставьте заявку.',
       short: 'Ламинат, винил, плитка и реставрация дерева.',
       intro:
-        'Правильный пол задаёт характер помещения. SorgfaltBau укладывает в Halle (Saale) все распространённые покрытия и готовит основание так, чтобы результат был ровным, тихим и долговечным.',
+        'Правильный пол задаёт характер помещения — и внешне, и в быту. SorgfaltBau укладывает в Halle (Saale) все распространённые покрытия и готовит основание так, чтобы результат был ровным, тихим и долговечным. От одной комнаты до всей квартиры, в том числе с реставрацией старых досок.',
       includes: [
         'Ламинат и винил (замковый и клеевой)',
-        'Укладка любых напольных покрытий',
+        'Дизайн-покрытие и многослойный паркет',
         'Керамическая и напольная плитка',
-        'Подготовка и выравнивание основания',
-        'Реставрация деревянных полов (морилка, лак)',
+        'Подготовка и шпаклёвочное выравнивание основания',
+        'Подложка для ударного шума',
+        'Реставрация деревянных полов (шлифовка, морилка, лак)',
         'Плинтусы и переходные профили',
+        'Вывоз старого покрытия',
       ],
       sections: [
         {
           heading: 'Решает основание',
-          body: 'Хороший пол начинается под покрытием. Проверяем ровность и состояние, при необходимости выравниваем и только потом укладываем — это исключает щели, скрип и перепады.',
+          body: 'Хороший пол начинается под покрытием. Проверяем ровность, влажность и состояние основания, при необходимости выравниваем шпаклёвкой и только потом укладываем. Это исключает щели, скрип и заметные перепады.',
+        },
+        {
+          heading: 'Подходящее покрытие под каждую комнату',
+          body: 'Не каждый пол уместен в любой комнате. Для нагруженных зон, кухонь и съёмных квартир советуем прочный винил или плитку, для жилых комнат — уютный ламинат или паркет. Честно подскажем, что подходит по эксплуатации, виду и бюджету.',
+        },
+        {
+          heading: 'Ударный шум и тишина',
+          body: 'В многоквартирных домах Halle ударный шум важен. С правильной подложкой снижаем звук к соседям и в самой комнате — ощутимый комфорт, заложенный ещё на этапе укладки.',
         },
         {
           heading: 'Реставрация вместо замены',
-          body: 'Где это оправдано, восстанавливаем деревянные полы вместо замены — шлифовка, морилка и лак дают свежий и долговечный результат.',
+          body: 'Где это оправдано, восстанавливаем деревянные полы и доски вместо замены — шлифовкой, морилкой и лаком. Особенно в старых квартирах так получается свежий, долговечный пол с характером и обычно дешевле.',
+        },
+        {
+          heading: 'Чисто, быстро, можно ходить',
+          body: 'Работаем быстро и аккуратно, защищаем соседние зоны и убираем за собой. По ламинату и винилу обычно можно ходить сразу; для плитки и лака прозрачно закладываем время высыхания.',
         },
       ],
       faq: [
         {
           q: 'Нужно ли снимать старый пол?',
-          a: 'Не всегда. В зависимости от состояния новое покрытие можно уложить поверх или подготовить основание. Проверяем на месте.',
+          a: 'Не всегда. В зависимости от состояния новое покрытие можно уложить поверх или подготовить основание заново. Проверяем на осмотре.',
+        },
+        {
+          q: 'Какое покрытие самое неприхотливое?',
+          a: 'Винил и плитка особенно прочные и простые в уходе — для кухонь, коридоров и съёмных квартир. Для жилых комнат популярны ламинат и паркет. Рекомендуем по эксплуатации и бюджету.',
         },
         {
           q: 'Кладёте ли только одну комнату?',
           a: 'Да, от одной комнаты до всей квартиры. Объём — под вашу задачу.',
         },
         {
+          q: 'Можно ли отреставрировать старые доски?',
+          a: 'Часто да. Шлифовкой, морилкой и лаком деревянные полы и доски нередко восстанавливаются — это экологичнее и обычно дешевле полной замены.',
+        },
+        {
           q: 'Когда можно ходить по полу?',
-          a: 'По ламинату и винилу обычно сразу. Для плитки и лака закладываем время высыхания.',
+          a: 'По ламинату и винилу обычно сразу. Для плитки, клеевой укладки и лака закладываем время высыхания.',
+        },
+        {
+          q: 'Делаете ли подложку под ударный шум?',
+          a: 'Да. Правильная подложка для нас — часть аккуратного пирога пола, особенно в многоквартирных домах.',
+        },
+        {
+          q: 'В каком районе работаете?',
+          a: 'Основной район — Halle (Saale) со всеми районами, плюс Merseburg, Leipzig, Schkeuditz и ближайшие окрестности.',
         },
       ],
     },
@@ -677,34 +796,48 @@ export const SERVICES: Service[] = [
     related: ['trockenbau-halle', 'badsanierung-halle', 'bodenbelaege-halle'],
     de: {
       title: 'Wohnungsrenovierung in Halle (Saale)',
-      metaTitle: 'Wohnungsrenovierung Halle (Saale) – Komplett | SorgfaltBau',
+      metaTitle: 'Wohnungsrenovierung Halle (Saale) – komplett | SorgfaltBau',
       metaDescription:
-        'Wohnungsrenovierung in Halle (Saale): Renovierung bewohnter Wohnungen und Vorbereitung vor Neuvermietung. Mehrere Gewerke koordiniert aus einer Hand.',
+        'Wohnungsrenovierung in Halle (Saale): Renovierung bewohnter Wohnungen und Vorbereitung vor Neuvermietung. Maler, Trockenbau, Boden, Bad und Montage koordiniert aus einer Hand.',
       short: 'Komplette Renovierung – bewohnt oder vor Vermietung.',
       intro:
-        'Ob bewohnte Wohnung oder Vorbereitung vor der Neuvermietung: SorgfaltBau renoviert in Halle (Saale) und verbindet mehrere Arbeitsschritte – Trockenbau, Maler, Boden, Bad und Montage – zu einem nachvollziehbaren Ablauf.',
+        'Ob bewohnte Wohnung oder Vorbereitung vor der Neuvermietung – eine Renovierung besteht selten aus einer einzigen Aufgabe. SorgfaltBau renoviert in Halle (Saale) und verbindet Maler-, Trockenbau-, Boden-, Bad- und Montagearbeiten zu einem klaren, koordinierten Ablauf, damit Termine und Qualität stimmen.',
       includes: [
         'Maler- und Spachtelarbeiten',
         'Trockenbau und Innenausbau',
         'Bodenbeläge und Sockelleisten',
         'Bad- und Sanitärarbeiten',
         'Montage von Türen und Fenstern',
-        'Kleinere Reparaturen und Endreinigung',
+        'Austausch von Armaturen und Sanitärobjekten',
+        'Kleinreparaturen und Anpassungen',
+        'Endreinigung und übergabefertige Räume',
       ],
       sections: [
         {
           heading: 'Mehrere Gewerke, ein Ablauf',
-          body: 'Renovierungen bestehen selten aus einer Aufgabe. Wir bündeln die Schritte sinnvoll, planen die Reihenfolge und vermeiden so Wartezeiten, Doppelarbeit und unnötige Rückschritte.',
+          body: 'Renovierungen bestehen selten aus einer Aufgabe. Wir bündeln Maler, Trockenbau, Boden und Montage sinnvoll, planen die richtige Reihenfolge und vermeiden so Wartezeiten, Doppelarbeit und unnötige Rückschritte. Ein Ansprechpartner koordiniert das Ganze.',
+        },
+        {
+          heading: 'Bewohnt renovieren – mit Rücksicht',
+          body: 'In vielen Fällen können Sie während der Arbeiten wohnen bleiben. Wir schützen Räume und Möbel, begrenzen Staub und stimmen die Reihenfolge so ab, dass möglichst immer ein Teil der Wohnung nutzbar bleibt. Die Belastung halten wir bewusst gering.',
         },
         {
           heading: 'Schnell wieder vermietbar',
-          body: 'Zwischen zwei Mietern zählt jeder Tag. Wir bringen Wohnungen zügig und ordentlich in einen übergabefähigen Zustand – streichfertig und sauber.',
+          body: 'Zwischen zwei Mietern zählt jeder Tag. Wir bringen Wohnungen in Halle zügig und ordentlich in einen übergabefähigen Zustand – streichfertig, sauber und mit funktionierender Ausstattung. Das verkürzt Leerstand und Aufwand für Vermieter.',
+        },
+        {
+          heading: 'Altbau und Plattenbau im Blick',
+          body: 'Vom Gründerzeit-Altbau im Paulusviertel bis zur Wohnung in Halle-Neustadt: Jede Bausubstanz hat ihre Eigenheiten. Wir kennen typische Themen wie unebene Wände, alte Leitungen oder hohe Decken und planen die Renovierung passend dazu.',
+        },
+        {
+          heading: 'Angebot in wenigen Tagen',
+          body: 'Nach einer Besichtigung erhalten Sie in der Regel innerhalb von 2 bis 5 Werktagen ein nachvollziehbares Angebot. Kleinere Arbeiten lassen sich oft schneller einschätzen. So wissen Sie früh, woran Sie sind.',
         },
       ],
       faq: [
         {
           q: 'Können wir während der Renovierung wohnen bleiben?',
-          a: 'In vielen Fällen ja. Wir schützen die Räume, begrenzen Staub und stimmen die Reihenfolge so ab, dass die Wohnung nutzbar bleibt.',
+          a: 'In vielen Fällen ja. Wir schützen die Räume, begrenzen Staub und stimmen die Reihenfolge so ab, dass möglichst immer ein Teil der Wohnung nutzbar bleibt.',
         },
         {
           q: 'Wie schnell kommt ein Angebot?',
@@ -712,7 +845,23 @@ export const SERVICES: Service[] = [
         },
         {
           q: 'Übernehmen Sie auch einzelne Räume?',
-          a: 'Ja, vom einzelnen Zimmer bis zur kompletten Wohnung – den Umfang richten wir nach Ihrem Bedarf.',
+          a: 'Ja, vom einzelnen Zimmer bis zur kompletten Wohnung. Den Umfang richten wir nach Ihrem Bedarf und Budget.',
+        },
+        {
+          q: 'Renovieren Sie Wohnungen vor der Vermietung?',
+          a: 'Ja, das ist ein Schwerpunkt. Wir bringen Wohnungen zügig und sauber in einen übergabefähigen, vermietbaren Zustand.',
+        },
+        {
+          q: 'Bekomme ich alles aus einer Hand?',
+          a: 'Ja. Maler, Trockenbau, Boden, Bad und Montage koordinieren wir als ein Ablauf – Sie haben einen Ansprechpartner statt mehrerer Einzelfirmen.',
+        },
+        {
+          q: 'Übernehmen Sie auch die Entsorgung und Endreinigung?',
+          a: 'Ja. Entsorgung von Altmaterial und eine besenreine bis übergabefertige Endreinigung gehören auf Wunsch dazu.',
+        },
+        {
+          q: 'In welchem Gebiet arbeiten Sie?',
+          a: 'Schwerpunkt ist Halle (Saale) mit allen Stadtteilen, dazu Merseburg, Leipzig, Schkeuditz und das nahe Umland.',
         },
       ],
     },
@@ -720,32 +869,46 @@ export const SERVICES: Service[] = [
       title: 'Ремонт квартиры в Halle (Saale)',
       metaTitle: 'Ремонт квартиры Halle – комплексно | SorgfaltBau',
       metaDescription:
-        'Ремонт квартир в Halle (Saale): ремонт жилых квартир и подготовка к сдаче в аренду. Несколько видов работ из одних рук с понятным порядком.',
+        'Ремонт квартир в Halle (Saale): ремонт жилых квартир и подготовка к сдаче. Малярка, гипсокартон, полы, ванная и монтаж — скоординированно из одних рук.',
       short: 'Комплексный ремонт — жилой или под сдачу.',
       intro:
-        'Жилая квартира или подготовка к новой сдаче: SorgfaltBau делает ремонт в Halle (Saale) и связывает несколько этапов — гипсокартон, малярка, полы, ванная, монтаж — в понятный процесс.',
+        'Жилая квартира или подготовка к новой сдаче — ремонт редко состоит из одной задачи. SorgfaltBau делает ремонт в Halle (Saale) и связывает малярные, гипсокартонные, напольные, сантехнические и монтажные работы в понятный, скоординированный процесс, чтобы сроки и качество совпали.',
       includes: [
         'Малярные и шпаклёвочные работы',
         'Гипсокартон и внутренняя отделка',
         'Напольные покрытия и плинтусы',
         'Работы по ванной и сантехнике',
         'Установка дверей и окон',
-        'Мелкий ремонт и финальная уборка',
+        'Замена смесителей и сантехники',
+        'Мелкий ремонт и подгонка',
+        'Финальная уборка и сдача под ключ',
       ],
       sections: [
         {
           heading: 'Несколько работ — один процесс',
-          body: 'Ремонт редко состоит из одной задачи. Логично объединяем этапы, планируем порядок и избегаем простоев, двойной работы и переделок.',
+          body: 'Ремонт редко состоит из одной задачи. Логично объединяем малярку, гипсокартон, полы и монтаж, планируем правильный порядок и избегаем простоев, двойной работы и переделок. Всё координирует один ответственный.',
+        },
+        {
+          heading: 'Ремонт в жилой квартире — бережно',
+          body: 'Часто во время работ можно продолжать жить. Защищаем помещения и мебель, ограничиваем пыль и согласуем порядок так, чтобы часть квартиры по возможности всегда оставалась пригодной. Нагрузку держим минимальной.',
         },
         {
           heading: 'Быстро снова под сдачу',
-          body: 'Между арендаторами важен каждый день. Быстро и аккуратно доводим квартиру до состояния под передачу — под покраску и чисто.',
+          body: 'Между арендаторами важен каждый день. Быстро и аккуратно доводим квартиру в Halle до состояния под передачу — под покраску, чисто и с рабочей комплектацией. Это сокращает простой и хлопоты арендодателя.',
+        },
+        {
+          heading: 'Учитываем Altbau и панель',
+          body: 'От грюндерзайт-дома в Paulusviertel до квартиры в Halle-Neustadt: у каждой застройки свои особенности. Знаем типичные нюансы — неровные стены, старые коммуникации, высокие потолки — и планируем ремонт под них.',
+        },
+        {
+          heading: 'Смета за несколько дней',
+          body: 'После осмотра обычно за 2–5 рабочих дней даём понятную смету. Небольшие работы оцениваем быстрее. Вы рано понимаете условия.',
         },
       ],
       faq: [
         {
           q: 'Можно ли жить во время ремонта?',
-          a: 'Часто да. Защищаем помещения, ограничиваем пыль и согласуем порядок так, чтобы квартирой можно было пользоваться.',
+          a: 'Часто да. Защищаем помещения, ограничиваем пыль и согласуем порядок так, чтобы часть квартиры по возможности всегда оставалась пригодной.',
         },
         {
           q: 'Как быстро будет смета?',
@@ -753,7 +916,23 @@ export const SERVICES: Service[] = [
         },
         {
           q: 'Делаете ли отдельные комнаты?',
-          a: 'Да, от одной комнаты до всей квартиры — объём под ваши задачи.',
+          a: 'Да, от одной комнаты до всей квартиры. Объём — под ваши задачи и бюджет.',
+        },
+        {
+          q: 'Готовите ли квартиры к сдаче?',
+          a: 'Да, это одно из основных направлений. Быстро и чисто доводим квартиру до состояния под передачу и сдачу.',
+        },
+        {
+          q: 'Всё ли из одних рук?',
+          a: 'Да. Малярку, гипсокартон, полы, ванную и монтаж ведём как один процесс — у вас один ответственный вместо нескольких фирм.',
+        },
+        {
+          q: 'Берёте ли вывоз и финальную уборку?',
+          a: 'Да. Вывоз старого материала и уборку до состояния под передачу по желанию включаем.',
+        },
+        {
+          q: 'В каком районе работаете?',
+          a: 'Основной район — Halle (Saale) со всеми районами, плюс Merseburg, Leipzig, Schkeuditz и ближайшие окрестности.',
         },
       ],
     },
@@ -768,40 +947,70 @@ export const SERVICES: Service[] = [
       title: 'Pflasterarbeiten und Einfahrten in Halle (Saale)',
       metaTitle: 'Pflasterarbeiten Halle (Saale) – Einfahrt & Hof | SorgfaltBau',
       metaDescription:
-        'Pflasterarbeiten in Halle (Saale): Einfahrten, Parkflächen und Höfe schlüsselfertig – inkl. Gefälle, Entwässerung und Sammelschächten. Jetzt anfragen.',
+        'Pflasterarbeiten in Halle (Saale): Einfahrten, Parkflächen, Höfe und Wege schlüsselfertig – mit tragfähigem Unterbau, Gefälle und Entwässerung. Jetzt anfragen.',
       short: 'Einfahrten, Parkflächen und Höfe mit Entwässerung.',
       intro:
-        'Eine Einfahrt muss tragen, entwässern und Jahre halten. SorgfaltBau übernimmt Pflasterarbeiten in Halle (Saale) schlüsselfertig – mit dem passenden Unterbau, Gefälle und einer durchdachten Entwässerung.',
+        'Eine Einfahrt muss tragen, Wasser ableiten und viele Jahre halten. SorgfaltBau übernimmt Pflasterarbeiten in Halle (Saale) und Umgebung schlüsselfertig – vom Rückbau der alten Fläche über tragfähigen Unterbau und Gefälle bis zur fertigen, sauber verlegten Fläche mit durchdachter Entwässerung.',
       includes: [
-        'Parkflächen und Einfahrten schlüsselfertig',
-        'Rückbau alter Pflasterflächen',
-        'Unterbau und Tragschicht',
-        'Pflasterflächen mit Gefälle',
-        'Entwässerung zu Sammelschächten',
+        'Einfahrten, Parkflächen und Hofflächen',
+        'Geh- und Gartenwege',
+        'Rückbau alter Pflaster- und Asphaltflächen',
+        'Tragfähiger Unterbau und Tragschicht',
+        'Verlegen mit Gefälle und Randeinfassung',
+        'Entwässerung und Wasserführung',
         'Wassersammelschächte rund, quadratisch oder nach Maß',
+        'Pflasterarten nach Wahl (Beton, Naturstein)',
       ],
       sections: [
         {
           heading: 'Unterbau und Entwässerung machen den Unterschied',
-          body: 'Wir planen Gefälle und Wasserführung von Anfang an mit. So entstehen keine Pfützen, der Belag bleibt stabil und Niederschlag wird sauber zu Sammelschächten geführt.',
+          body: 'Eine Einfahrt hält nur so gut wie ihr Unterbau. Wir planen Tragschicht, Gefälle und Wasserführung von Anfang an mit, sodass keine Pfützen stehen bleiben, der Belag stabil liegt und Niederschlag sauber zu den Sammelschächten geführt wird.',
         },
         {
           heading: 'Von der alten Fläche zur fertigen Einfahrt',
-          body: 'Bei Bedarf bauen wir die alte Fläche zurück, richten den Unterbau neu ein und verlegen das Pflaster sauber – auch bei schwieriger Entwässerung.',
+          body: 'Bei Bedarf bauen wir die alte Pflaster- oder Asphaltfläche zurück, entsorgen das Material, richten den Unterbau neu ein und verlegen das Pflaster sauber mit fester Randeinfassung – auch bei schwieriger Entwässerung oder beengten Verhältnissen.',
+        },
+        {
+          heading: 'Tragfähig für Auto und Alltag',
+          body: 'Eine Pkw-Einfahrt trägt andere Lasten als ein Gartenweg. Wir wählen Aufbau, Pflasterdicke und Verband passend zur Nutzung, damit die Fläche unter dem Gewicht von Fahrzeugen dauerhaft eben und tragfähig bleibt.',
+        },
+        {
+          heading: 'Material und Optik nach Wunsch',
+          body: 'Ob schlichtes Betonpflaster, Naturstein oder eine bestimmte Verlegeart – wir beraten zu Material, Farbe und Muster, das zu Haus und Garten passt. So entsteht eine Fläche, die funktioniert und gut aussieht.',
+        },
+        {
+          heading: 'Sauber, termintreu, ordentlich übergeben',
+          body: 'Wir arbeiten strukturiert, halten die Baustelle ordentlich und entsorgen Aushub und Altmaterial. Nach Abschluss übergeben wir eine saubere, nutzbare Fläche – mit klarer Absprache zu Ablauf und Termin vorab.',
         },
       ],
       faq: [
         {
           q: 'Übernehmen Sie auch die Entwässerung?',
-          a: 'Ja. Gefälle, Wasserführung und Sammelschächte planen und setzen wir mit um – auch bei schwierigen Flächen.',
+          a: 'Ja. Gefälle, Wasserführung und Sammelschächte planen und setzen wir mit um – auch bei schwierigen oder wenig geneigten Flächen.',
         },
         {
           q: 'Wie lange hält eine fachgerecht verlegte Fläche?',
-          a: 'Mit tragfähigem Unterbau und richtigem Gefälle viele Jahre. Genau deshalb investieren wir früh in die Vorbereitung.',
+          a: 'Mit tragfähigem Unterbau und richtigem Gefälle viele Jahre. Genau deshalb investieren wir früh in Unterbau und Entwässerung statt nur in die sichtbare Oberfläche.',
         },
         {
           q: 'Reißen Sie die alte Fläche selbst ab?',
-          a: 'Ja, Rückbau und Entsorgung der alten Pflasterfläche gehören zum Leistungsumfang.',
+          a: 'Ja. Rückbau und Entsorgung der alten Pflaster- oder Asphaltfläche gehören zum Leistungsumfang.',
+        },
+        {
+          q: 'Welches Pflaster ist für eine Pkw-Einfahrt geeignet?',
+          a: 'Für Einfahrten wählen wir ausreichend dickes Pflaster und einen tragfähigen Aufbau, der Fahrzeuglasten aufnimmt. Material und Verband stimmen wir auf die Nutzung ab.',
+        },
+        {
+          q: 'Können Sie auch nur einen Hof oder Weg pflastern?',
+          a: 'Ja, vom kleinen Gartenweg über den Hof bis zur kompletten Einfahrt – den Umfang richten wir nach Ihrem Vorhaben.',
+        },
+        {
+          q: 'Wann ist die beste Zeit für Pflasterarbeiten?',
+          a: 'Pflasterarbeiten sind weitgehend wetterunabhängig, solange der Boden frostfrei ist. Bei Dauerfrost oder stark durchnässtem Untergrund warten wir besser ein passendes Fenster ab.',
+        },
+        {
+          q: 'In welchem Gebiet arbeiten Sie?',
+          a: 'Schwerpunkt ist Halle (Saale) und das nahe Umland – darunter Merseburg, Leipzig, Schkeuditz, Landsberg und Kabelsketal.',
         },
       ],
     },
@@ -809,40 +1018,70 @@ export const SERVICES: Service[] = [
       title: 'Мощение и въезды в Halle (Saale)',
       metaTitle: 'Мощение Halle – въезды и дворы | SorgfaltBau',
       metaDescription:
-        'Мощение в Halle (Saale): въезды, парковки и дворы под ключ — с уклоном, водоотводом и сборными колодцами. Оставьте заявку.',
+        'Мощение в Halle (Saale): въезды, парковки, дворы и дорожки под ключ — с несущим основанием, уклоном и водоотводом. Оставьте заявку.',
       short: 'Въезды, парковки и дворы с водоотводом.',
       intro:
-        'Въезд должен держать нагрузку, отводить воду и служить годами. SorgfaltBau выполняет мощение в Halle (Saale) под ключ — с правильным основанием, уклоном и продуманным водоотводом.',
+        'Въезд должен держать нагрузку, отводить воду и служить годами. SorgfaltBau выполняет мощение в Halle (Saale) и окрестностях под ключ — от демонтажа старого покрытия через несущее основание и уклон до готовой, аккуратно уложенной площадки с продуманным водоотводом.',
       includes: [
-        'Парковки и въезды под ключ',
-        'Демонтаж старого покрытия',
-        'Основание и несущий слой',
-        'Мощение с уклоном',
-        'Водоотвод в сборные колодцы',
+        'Въезды, парковки и дворовые площадки',
+        'Пешеходные и садовые дорожки',
+        'Демонтаж старой брусчатки и асфальта',
+        'Несущее основание и щебёночный слой',
+        'Укладка с уклоном и бордюром',
+        'Водоотвод и движение воды',
         'Сборные колодцы: круглые, квадратные, по размеру',
+        'Тип брусчатки на выбор (бетон, натуральный камень)',
       ],
       sections: [
         {
           heading: 'Основание и водоотвод решают всё',
-          body: 'Уклон и движение воды планируем с самого начала. Так не появляются лужи, покрытие остаётся стабильным, а осадки аккуратно уходят в колодцы.',
+          body: 'Въезд держится ровно настолько, насколько хорошо основание. Планируем щебёночный слой, уклон и движение воды с самого начала, чтобы не стояли лужи, покрытие лежало стабильно, а осадки уходили в сборные колодцы.',
         },
         {
           heading: 'От старой площадки до готового въезда',
-          body: 'При необходимости демонтируем старое покрытие, заново формируем основание и аккуратно укладываем брусчатку — в том числе при сложном водоотводе.',
+          body: 'При необходимости демонтируем старую брусчатку или асфальт, вывозим материал, заново формируем основание и аккуратно укладываем покрытие с твёрдым бордюром — в том числе при сложном водоотводе или тесных условиях.',
+        },
+        {
+          heading: 'Под машину и быт',
+          body: 'Въезд под автомобиль держит иные нагрузки, чем садовая дорожка. Подбираем конструкцию, толщину брусчатки и перевязку под эксплуатацию, чтобы площадка под весом машин оставалась ровной и несущей.',
+        },
+        {
+          heading: 'Материал и вид на выбор',
+          body: 'Простая бетонная брусчатка, натуральный камень или определённый рисунок укладки — советуем материал, цвет и узор под дом и сад. Получается площадка, которая работает и хорошо выглядит.',
+        },
+        {
+          heading: 'Чисто, в срок, сдаём аккуратно',
+          body: 'Работаем структурированно, держим площадку в порядке и вывозим грунт и старый материал. По завершении сдаём чистую, готовую к использованию площадку — с заранее согласованным порядком и сроком.',
         },
       ],
       faq: [
         {
           q: 'Делаете ли водоотвод?',
-          a: 'Да. Уклон, движение воды и сборные колодцы планируем и устраиваем — в том числе на сложных площадках.',
+          a: 'Да. Уклон, движение воды и сборные колодцы планируем и устраиваем — в том числе на сложных и слабонаклонных площадках.',
         },
         {
           q: 'Сколько служит правильно уложенная площадка?',
-          a: 'С несущим основанием и верным уклоном — много лет. Именно поэтому уделяем внимание подготовке.',
+          a: 'С несущим основанием и верным уклоном — много лет. Именно поэтому вкладываемся в основание и водоотвод, а не только в видимую поверхность.',
         },
         {
           q: 'Сносите ли старое покрытие сами?',
-          a: 'Да, демонтаж и вывоз старой брусчатки входят в объём работ.',
+          a: 'Да. Демонтаж и вывоз старой брусчатки или асфальта входят в объём работ.',
+        },
+        {
+          q: 'Какая брусчатка подходит для въезда под машину?',
+          a: 'Для въездов берём достаточно толстую брусчатку и несущую конструкцию под нагрузку автомобилей. Материал и перевязку подбираем под эксплуатацию.',
+        },
+        {
+          q: 'Можно ли замостить только двор или дорожку?',
+          a: 'Да, от небольшой садовой дорожки и двора до целого въезда — объём под вашу задачу.',
+        },
+        {
+          q: 'Когда лучше делать мощение?',
+          a: 'Мощение почти не зависит от погоды, пока грунт не промёрз. При сильных морозах или сильно намокшем основании лучше дождаться подходящего окна.',
+        },
+        {
+          q: 'В каком районе работаете?',
+          a: 'Основной район — Halle (Saale) и ближайшие окрестности: Merseburg, Leipzig, Schkeuditz, Landsberg, Kabelsketal.',
         },
       ],
     },
@@ -857,40 +1096,70 @@ export const SERVICES: Service[] = [
       title: 'Dachreparatur und Dämmung in Halle (Saale)',
       metaTitle: 'Dachreparatur Halle (Saale) – Reparatur & Dämmung | SorgfaltBau',
       metaDescription:
-        'Dachreparatur und Dachdämmung in Halle (Saale): Schadstellen beheben, abdichten und dämmen. Schnelle Einschätzung, saubere Ausführung. Jetzt anfragen.',
+        'Dachreparatur und Dachdämmung in Halle (Saale): Schadstellen beheben, abdichten und dämmen. Schnelle Einschätzung, saubere Ausführung, Hilfe bei akuten Schäden. Jetzt anfragen.',
       short: 'Schadstellen beheben, abdichten und dämmen.',
       intro:
-        'Ein undichtes oder schlecht gedämmtes Dach kostet Substanz und Energie. SorgfaltBau übernimmt Dachreparaturen und Dachdämmung in Halle (Saale) – von der einzelnen Schadstelle bis zur gedämmten Fläche.',
+        'Ein undichtes oder schlecht gedämmtes Dach kostet Bausubstanz und Energie – und wird mit der Zeit teurer. SorgfaltBau übernimmt Dachreparaturen und Dachdämmung in Halle (Saale) und Umgebung: von der einzelnen Schadstelle über die Abdichtung bis zur gedämmten Fläche, mit ehrlicher Einschätzung vor Ort.',
       includes: [
         'Dachreparaturen und Schadstellen',
-        'Dachdämmung',
         'Abdichtungsarbeiten',
-        'Ausbesserung nach Sturm oder Feuchte',
+        'Dachdämmung (Aufsparren, Zwischensparren, oberste Geschossdecke)',
+        'Ausbesserung nach Sturm, Hagel oder Feuchte',
         'Wärmedämmung von Schornsteinen',
-        'Einschätzung vor Ort',
+        'Anschlüsse, Kehlen und Durchdringungen',
+        'Begleitende Trockenbau- und Innenarbeiten',
+        'Einschätzung und Schadensaufnahme vor Ort',
       ],
       sections: [
         {
           heading: 'Erst die Ursache, dann die Reparatur',
-          body: 'Wir suchen die tatsächliche Schadensursache, statt nur Symptome zu überdecken. So vermeiden Sie, dass dieselbe Stelle nach kurzer Zeit wieder Probleme macht.',
+          body: 'Wir suchen die tatsächliche Schadensursache, statt nur Symptome zu überdecken. Gerade bei Feuchteflecken liegt die Ursache oft an einer anderen Stelle als der sichtbare Schaden. So vermeiden Sie, dass dieselbe Stelle nach kurzer Zeit wieder Probleme macht.',
         },
         {
           heading: 'Reparatur und Dämmung zusammen denken',
-          body: 'Wenn ohnehin am Dach gearbeitet wird, lohnt es sich oft, Reparatur und Dämmung zu verbinden – das spart Wege und verbessert die Energiebilanz.',
+          body: 'Wenn ohnehin am Dach gearbeitet wird, lohnt es sich oft, Reparatur und Dämmung zu verbinden. Eine gute Dachdämmung senkt Heizkosten spürbar und verbessert das Raumklima unter dem Dach – das spart Wege, Gerüst und Kosten.',
+        },
+        {
+          heading: 'Dächer im Bestand von Halle',
+          body: 'Vom steilen Gründerzeitdach in der Innenstadt bis zu Flachdächern und Anbauten im Umland: Jede Dachform hat ihre typischen Schwachstellen an Anschlüssen, Kehlen und Durchdringungen. Wir kennen diese Punkte und prüfen sie gezielt.',
+        },
+        {
+          heading: 'Hilfe bei akuten Schäden',
+          body: 'Bei akuten Undichtigkeiten nach Sturm oder Starkregen versuchen wir, kurzfristig eine erste Einschätzung und Sicherung zu ermöglichen, damit kein Folgeschaden entsteht. Melden Sie sich in solchen Fällen am besten telefonisch.',
+        },
+        {
+          heading: 'Ehrliche Einschätzung vor Ort',
+          body: 'Bei Dacharbeiten ist eine Besichtigung sinnvoll. Wir nehmen den Schaden auf, erklären Umfang und Möglichkeiten verständlich und nennen eine belastbare Einschätzung – ohne unnötige Arbeiten zu empfehlen.',
         },
       ],
       faq: [
         {
           q: 'Schauen Sie sich den Schaden vorab an?',
-          a: 'Ja. Bei Dacharbeiten ist eine Besichtigung sinnvoll, damit Umfang, Material und Aufwand belastbar eingeschätzt werden.',
+          a: 'Ja. Bei Dacharbeiten ist eine Besichtigung sinnvoll, damit Umfang, Material und Aufwand belastbar eingeschätzt werden können.',
         },
         {
           q: 'Übernehmen Sie auch kleine Reparaturen?',
-          a: 'Ja, von der einzelnen undichten Stelle bis zur größeren Dämmfläche.',
+          a: 'Ja, von der einzelnen undichten Stelle bis zur größeren Dämmfläche. Auch kleine Schäden beheben wir, bevor sie größer werden.',
         },
         {
           q: 'Wie schnell können Sie bei einem akuten Schaden helfen?',
-          a: 'Bei akuten Schäden versuchen wir, kurzfristig eine erste Einschätzung und Sicherung zu ermöglichen. Melden Sie sich am besten telefonisch.',
+          a: 'Bei akuten Schäden versuchen wir, kurzfristig eine erste Einschätzung und Sicherung zu ermöglichen. Rufen Sie in solchen Fällen am besten direkt an.',
+        },
+        {
+          q: 'Lohnt sich eine Dachdämmung?',
+          a: 'In den meisten Fällen ja. Eine gute Dämmung senkt Heizkosten und verbessert das Klima unter dem Dach. Wenn ohnehin am Dach gearbeitet wird, ist der Zusatzaufwand besonders wirtschaftlich.',
+        },
+        {
+          q: 'Finden Sie auch die Ursache von Feuchteflecken?',
+          a: 'Das ist unser Anspruch. Feuchte wandert oft, daher suchen wir die tatsächliche Quelle, statt nur den sichtbaren Fleck zu überdecken.',
+        },
+        {
+          q: 'Gibt es Förderung für die Dachdämmung?',
+          a: 'Energetische Maßnahmen können förderfähig sein; die Programme regeln BAFA und KfW und ändern sich. Wir führen die Arbeiten technisch passend aus; die Förderprüfung läuft über die offiziellen Stellen oder einen Energieberater.',
+        },
+        {
+          q: 'In welchem Gebiet arbeiten Sie?',
+          a: 'Schwerpunkt ist Halle (Saale) mit allen Stadtteilen, dazu Merseburg, Leipzig, Schkeuditz und das nahe Umland.',
         },
       ],
     },
@@ -898,26 +1167,40 @@ export const SERVICES: Service[] = [
       title: 'Ремонт и утепление крыши в Halle (Saale)',
       metaTitle: 'Ремонт крыши Halle – ремонт и утепление | SorgfaltBau',
       metaDescription:
-        'Ремонт и утепление крыши в Halle (Saale): устранение протечек, гидроизоляция и утепление. Быстрая оценка и аккуратная работа. Оставьте заявку.',
+        'Ремонт и утепление крыши в Halle (Saale): устранение протечек, гидроизоляция и утепление. Быстрая оценка, аккуратная работа, помощь при срочных повреждениях.',
       short: 'Устранение протечек, гидроизоляция и утепление.',
       intro:
-        'Протекающая или плохо утеплённая крыша вредит зданию и тратит энергию. SorgfaltBau выполняет ремонт и утепление крыши в Halle (Saale) — от отдельной протечки до утеплённой поверхности.',
+        'Протекающая или плохо утеплённая крыша вредит зданию и тратит энергию — и со временем обходится дороже. SorgfaltBau выполняет ремонт и утепление крыши в Halle (Saale) и окрестностях: от отдельной протечки через гидроизоляцию до утеплённой поверхности, с честной оценкой на месте.',
       includes: [
         'Ремонт крыши и повреждений',
-        'Утепление крыши',
         'Гидроизоляционные работы',
-        'Ремонт после непогоды и влаги',
+        'Утепление крыши (над/между стропилами, перекрытие)',
+        'Ремонт после бури, града или влаги',
         'Утепление дымоходов',
-        'Оценка на месте',
+        'Примыкания, ендовы и проходы',
+        'Сопутствующий гипсокартон и внутренние работы',
+        'Оценка и осмотр повреждений на месте',
       ],
       sections: [
         {
           heading: 'Сначала причина, потом ремонт',
-          body: 'Ищем настоящую причину повреждения, а не закрываем симптомы. Так одно и то же место не начнёт протекать снова через короткое время.',
+          body: 'Ищем настоящую причину повреждения, а не закрываем симптомы. При следах влаги источник часто не там, где видно пятно. Так одно и то же место не начнёт протекать снова через короткое время.',
         },
         {
           heading: 'Ремонт и утепление вместе',
-          body: 'Если работа на крыше всё равно идёт, часто выгодно совместить ремонт и утепление — это экономит подходы и улучшает энергобаланс.',
+          body: 'Если работа на крыше всё равно идёт, часто выгодно совместить ремонт и утепление. Хорошее утепление крыши ощутимо снижает расходы на отопление и улучшает климат под крышей — это экономит подходы, леса и деньги.',
+        },
+        {
+          heading: 'Крыши в застройке Halle',
+          body: 'От крутой грюндерзайт-крыши в центре до плоских крыш и пристроек в пригороде: у каждой формы свои слабые места — примыкания, ендовы, проходы. Знаем эти точки и проверяем их прицельно.',
+        },
+        {
+          heading: 'Помощь при срочных повреждениях',
+          body: 'При острых протечках после бури или ливня стараемся оперативно дать первую оценку и сделать временную защиту, чтобы не было новых повреждений. В таких случаях лучше позвонить.',
+        },
+        {
+          heading: 'Честная оценка на месте',
+          body: 'Для кровельных работ осмотр оправдан. Фиксируем повреждение, понятно объясняем объём и варианты и даём надёжную оценку — без лишних работ.',
         },
       ],
       faq: [
@@ -927,11 +1210,27 @@ export const SERVICES: Service[] = [
         },
         {
           q: 'Берётесь ли за мелкий ремонт?',
-          a: 'Да, от одной протечки до крупной площади утепления.',
+          a: 'Да, от одной протечки до крупной площади утепления. Мелкие повреждения устраняем, пока они не выросли.',
         },
         {
           q: 'Как быстро поможете при срочном повреждении?',
-          a: 'При срочных случаях стараемся оперативно дать первую оценку и сделать временную защиту. Лучше позвоните.',
+          a: 'При острых случаях стараемся оперативно дать первую оценку и сделать временную защиту. В таких ситуациях лучше сразу позвонить.',
+        },
+        {
+          q: 'Стоит ли утеплять крышу?',
+          a: 'В большинстве случаев да. Хорошее утепление снижает расходы на отопление и улучшает климат под крышей. Если работа на крыше всё равно идёт, доплата особенно выгодна.',
+        },
+        {
+          q: 'Находите ли причину следов влаги?',
+          a: 'Это наш принцип. Влага часто мигрирует, поэтому ищем настоящий источник, а не закрываем видимое пятно.',
+        },
+        {
+          q: 'Есть ли субсидии на утепление крыши?',
+          a: 'Энергетические меры могут субсидироваться; программы регулируют BAFA и KfW и они меняются. Мы делаем работы технически правильно; проверка субсидий — через официальные органы или энергоконсультанта.',
+        },
+        {
+          q: 'В каком районе работаете?',
+          a: 'Основной район — Halle (Saale) со всеми районами, плюс Merseburg, Leipzig, Schkeuditz и ближайшие окрестности.',
         },
       ],
     },
