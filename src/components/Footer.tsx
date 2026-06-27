@@ -2,7 +2,7 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { ArrowUp, ChevronRight, Mail, MapPin, Phone } from 'lucide-react';
+import { ArrowUp, ChevronRight, ExternalLink, Mail, MapPin, Phone } from 'lucide-react';
 import {
   COMPANY_MAP_URL,
   COMPANY_POSTAL_CITY,
@@ -14,6 +14,11 @@ import {
   CONSTRUCTION_CATALOG_SLUGS,
   FOOTER_SERVICE_INDICES,
 } from '@/lib/serviceCatalog';
+
+const saaleWebAd = {
+  href: 'https://saaleweb.de/',
+  label: 'Werbung · Webentwicklung: SaaleWeb',
+};
 
 export default function Footer() {
   const t = useTranslations();
@@ -178,6 +183,22 @@ export default function Footer() {
               className="text-xs font-medium text-slate-100/50 transition-colors hover:text-brand-accent"
             >
               {t('nav.datenschutz')}
+            </a>
+            <span className="h-1 w-1 rounded-full bg-slate-100/25" />
+            <a
+              href={saaleWebAd.href}
+              target="_blank"
+              rel="sponsored noopener noreferrer"
+              className="group inline-flex items-center gap-1.5 rounded-full border border-brand-accent/22 bg-brand-accent/[0.08] px-3 py-1.5 text-xs font-semibold text-slate-100/72 shadow-sm shadow-brand-accent/[0.05] transition-all hover:-translate-y-0.5 hover:border-brand-accent/45 hover:bg-brand-accent/14 hover:text-white hover:shadow-brand-accent/10"
+              aria-label="Werbung Webentwicklung SaaleWeb"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-brand-accent shadow-[0_0_10px_rgba(242,100,34,0.55)]" />
+              <span>{saaleWebAd.label}</span>
+              <ExternalLink
+                size={12}
+                strokeWidth={2}
+                className="text-brand-accent opacity-80 transition-opacity group-hover:opacity-100"
+              />
             </a>
           </div>
 

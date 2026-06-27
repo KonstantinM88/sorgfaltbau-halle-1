@@ -281,6 +281,7 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 
 ### Footer UX Update
 
+- Added a visible sponsored SaaleWeb footer credit linking to `https://saaleweb.de/` with the disclosure text `Werbung · Webentwicklung: SaaleWeb` and `rel="sponsored noopener noreferrer"`.
 - Added a localized footer "back to top" button with smooth scroll behavior and brand-accent hover styling.
 - Restyled the full footer as a branded navy section with logo panel, service highlights, contact rows, legal links, grid texture, glow accents, and responsive layout.
 - Center-aligned the footer logo, region badge, and column headings for a more symmetric footer composition.
