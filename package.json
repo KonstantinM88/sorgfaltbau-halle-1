@@ -3,29 +3,32 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "prelint": "node scripts/patch-minimatch-brace-expansion.mjs",
+    "postinstall": "node scripts/patch-minimatch-brace-expansion.mjs && prisma generate",
     "dev": "set NODE_OPTIONS=--max-old-space-size=4096&& next dev --webpack",
     "dev:turbo": "set NODE_OPTIONS=--max-old-space-size=4096&& next dev",
     "build": "prisma generate && set NODE_OPTIONS=--max-old-space-size=4096&& next build --webpack",
     "build:turbo": "prisma generate && set NODE_OPTIONS=--max-old-space-size=4096&& next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@prisma/adapter-pg": "^7.7.0",
-    "@prisma/client": "^7.7.0",
+    "@prisma/adapter-pg": "7.9.1",
+    "@prisma/client": "7.9.1",
     "clsx": "^2.1.1",
     "dotenv": "^17.4.2",
     "framer-motion": "^12.34.0",
     "jose": "^6.1.3",
     "lucide-react": "^0.563.0",
-    "next": "^16.2.5",
+    "next": "16.3.0",
     "next-intl": "^4.12.0",
-    "nodemailer": "^8.0.7",
+    "nodemailer": "9.0.5",
     "pg": "^8.21.0",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
     "react-intersection-observer": "^10.0.2",
-    "sharp": "^0.34.5"
+    "sharp": "0.35.3"
   },
   "devDependencies": {
     "@types/node": "^22.19.11",
@@ -34,13 +37,25 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.4.19",
-    "postcss": "^8.5.14",
-    "prisma": "^7.7.0",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "16.3.0",
+    "postcss": "8.5.26",
+    "prisma": "7.9.1",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.9.3"
   },
   "overrides": {
     "picomatch": "4.0.4",
-    "@hono/node-server": "1.19.13"
+    "@hono/node-server": "1.19.13",
+    "postcss": "8.5.26",
+    "js-yaml": "4.3.1",
+    "fast-uri": "3.1.5",
+    "undici": "6.28.0",
+    "minimatch@3": {
+      "brace-expansion": "5.0.9"
+    },
+    "minimatch@10": {
+      "brace-expansion": "5.0.9"
+    }
   }
 }

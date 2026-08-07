@@ -13,8 +13,8 @@ Base project was originally adapted from `onebbau.de`; old brand references shou
 
 ## Stack
 
-- Next.js `16.2.5` App Router
-- React `19.2.5`
+- Next.js `16.3.0` App Router
+- React `19.2.8`
 - TypeScript
 - next-intl for `de` and `ru`
 - Tailwind CSS
@@ -149,10 +149,12 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 
 ### Dependency Updates
 
-- Upgraded Next.js to `16.2.5`.
-- Upgraded React and React DOM to `19.2.5`.
+- Upgraded Next.js to `16.3.0` and React/React DOM to `19.2.8`.
 - Upgraded next-intl to `4.12.0`.
 - Added npm overrides for `picomatch` and `@hono/node-server`.
+- Added security overrides for PostCSS, js-yaml, fast-uri, undici and brace-expansion; `scripts/patch-minimatch-brace-expansion.mjs` keeps minimatch 3 compatible with brace-expansion 5 during postinstall/lint.
+- Added ESLint 9 with the Next.js 16 flat config, plus `typecheck`, `prelint`, and Prisma-aware `postinstall` scripts.
+- Updated Nodemailer to `9.0.5`, Sharp to `0.35.3`, and the resolved Prisma toolchain/client to `7.9.1`; `npm audit` reports zero vulnerabilities.
 
 ### Dev Stability
 
@@ -160,6 +162,7 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Removed stale `.next` cache when it caused type/cache errors.
 - Disabled webpack filesystem cache in `next.config.mjs` due memory allocation failures.
 - Scripts use webpack mode and `--max-old-space-size=4096`.
+- Verified the Next.js `16.3.0` production build with `NEXT_TEST_WASM=1`; preserve the Webpack production build because Hostinger can fall back to `@next/swc-wasm-nodejs` on hosts with an older glibc.
 
 ### Brand Color Update
 
@@ -301,6 +304,6 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 
 ## Known Notes
 
-- `npm audit` still reports issues tied to the requested `next@16.2.5` and its internal `postcss@8.4.31`.
-- Build currently passes with `npm run build`.
+- `npm audit` currently reports `0` vulnerabilities.
+- Build currently passes with `npm run build` and with the Hostinger-oriented `NEXT_TEST_WASM=1` fallback check.
 - `pg` may warn about `sslmode=require`; later consider `sslmode=verify-full` in Neon `DATABASE_URL` if Neon accepts it.
