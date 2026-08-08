@@ -33,6 +33,9 @@ const t = {
     readTime: (m: number) => `${m} Min. Lesezeit`,
     ctaTitle: 'Interesse geweckt?',
     ctaButton: 'Kostenlose Beratung',
+    renovationLead: 'Wenn Sie die Umsetzung nicht selbst koordinieren möchten, unterstützt SorgfaltBau Sie bei der',
+    renovationAnchor: 'professionellen Wohnungsrenovierung in Halle',
+    renovationTail: '– von der Besichtigung bis zur abgestimmten Übergabe.',
   },
   ru: {
     back: 'Все новости',
@@ -40,6 +43,9 @@ const t = {
     readTime: (m: number) => `${m} мин. чтения`,
     ctaTitle: 'Заинтересовались?',
     ctaButton: 'Бесплатная консультация',
+    renovationLead: 'Если вы не хотите самостоятельно координировать все этапы, SorgfaltBau выполнит',
+    renovationAnchor: 'профессиональный ремонт квартиры в Halle',
+    renovationTail: '— от осмотра до согласованной передачи результата.',
   },
 };
 
@@ -171,6 +177,8 @@ export default function ArticleClient({
   const tx = isRu ? t.ru : t.de;
   const readTime = estimateReadTime(content);
   const siteUrl = getSiteUrl();
+  const isRenovationGuide =
+    slug === 'wohnung-renovieren-in-halle-trockenbau-malerarbeiten-bodenverlegung';
 
   const shareUrl = typeof window !== 'undefined'
     ? window.location.href
@@ -278,6 +286,19 @@ export default function ArticleClient({
           className="text-base sm:text-[17px] leading-relaxed"
         >
           {renderContent(content)}
+
+          {isRenovationGuide && (
+            <p className="mb-5 mt-8 text-anthracite-600 leading-[1.8]">
+              {tx.renovationLead}{' '}
+              <Link
+                href={`/${locale}/services/wohnungsrenovierung-halle`}
+                className="font-semibold text-brand-orange underline decoration-brand-orange/30 underline-offset-4 transition-colors hover:text-brand-orange-dark"
+              >
+                {tx.renovationAnchor}
+              </Link>{' '}
+              {tx.renovationTail}
+            </p>
+          )}
         </motion.div>
 
         {/* Bottom divider */}

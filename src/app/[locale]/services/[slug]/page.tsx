@@ -204,9 +204,26 @@ export default async function ServiceDetailPage({params}: {params: Params}) {
                   <h2 className="font-heading text-2xl text-anthracite-950 sm:text-3xl">
                     {section.heading}
                   </h2>
-                  <p className="mt-4 text-base leading-8 text-anthracite-600">
-                    {section.body}
-                  </p>
+                  {(Array.isArray(section.body) ? section.body : [section.body]).map((paragraph) => (
+                    <p key={paragraph} className="mt-4 text-base leading-8 text-anthracite-600">
+                      {paragraph}
+                    </p>
+                  ))}
+                  {section.points && (
+                    <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                      {section.points.map((point) => (
+                        <li
+                          key={point}
+                          className="flex items-start gap-3 rounded-2xl border border-anthracite-100 bg-anthracite-50 px-4 py-3 text-sm leading-6 text-anthracite-700"
+                        >
+                          <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-accent/12 text-brand-accent">
+                            <Check size={13} strokeWidth={2.4} />
+                          </span>
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               ))}
             </div>
@@ -226,12 +243,50 @@ export default async function ServiceDetailPage({params}: {params: Params}) {
                   ))}
                 </ul>
               </div>
+
+              {c.trustPoints && (
+                <div className="mt-6 grid grid-cols-2 gap-3">
+                  {c.trustPoints.map((point) => (
+                    <div
+                      key={point.label}
+                      className="rounded-3xl border border-anthracite-100 bg-white p-5 shadow-sm"
+                    >
+                      <div className="font-heading text-3xl text-brand-accent">{point.value}</div>
+                      <p className="mt-2 text-xs leading-5 text-anthracite-600">{point.label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
             </aside>
           </div>
 
+          {c.process && (
+            <div className="mt-16 border-t border-anthracite-100 pt-12 sm:mt-20">
+              <h2 className="font-heading text-2xl text-anthracite-950 sm:text-3xl">
+                {c.process.heading}
+              </h2>
+              <div className="mt-7 grid grid-cols-1 gap-4 md:grid-cols-5">
+                {c.process.steps.map((step, index) => (
+                  <div
+                    key={step.title}
+                    className="relative rounded-3xl border border-anthracite-100 bg-anthracite-50 p-5"
+                  >
+                    <span className="text-xs font-bold tracking-[0.18em] text-brand-accent">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className="mt-3 font-heading text-lg text-anthracite-950">{step.title}</h3>
+                    <p className="mt-3 text-sm leading-6 text-anthracite-600">{step.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* FAQ */}
           <div className="mt-16 border-t border-anthracite-100 pt-12 sm:mt-20">
-            <h2 className="font-heading text-2xl text-anthracite-950 sm:text-3xl">{ui.faqTitle}</h2>
+            <h2 className="font-heading text-2xl text-anthracite-950 sm:text-3xl">
+              {c.faqHeading ?? ui.faqTitle}
+            </h2>
             <div className="mt-6 divide-y divide-anthracite-100 border-y border-anthracite-100">
               {c.faq.map((item) => (
                 <details key={item.q} className="group py-4">
@@ -247,6 +302,24 @@ export default async function ServiceDetailPage({params}: {params: Params}) {
               ))}
             </div>
           </div>
+
+          {c.guide && (
+            <div className="mt-12 rounded-3xl border border-brand-accent/20 bg-brand-accent/[0.06] p-6 sm:p-8">
+              <h2 className="font-heading text-2xl text-anthracite-950 sm:text-3xl">
+                {c.guide.heading}
+              </h2>
+              <p className="mt-4 max-w-3xl text-base leading-8 text-anthracite-600">
+                {c.guide.body}
+              </p>
+              <Link
+                href={`/${locale}${c.guide.path}`}
+                className="mt-5 inline-flex items-center gap-2 font-semibold text-brand-accent transition-colors hover:text-brand-orange-dark"
+              >
+                {c.guide.anchor}
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          )}
 
           {/* Related */}
           {related.length > 0 && (
@@ -290,8 +363,10 @@ export default async function ServiceDetailPage({params}: {params: Params}) {
         <section id="contact" className="relative overflow-hidden bg-[#061b2f] py-16 text-white sm:py-20">
           <div className="absolute inset-0 bg-[linear-gradient(135deg,#041524_0%,#071f35_55%,#0c314f_100%)]" />
           <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
-            <h2 className="font-heading text-2xl sm:text-4xl">{ui.ctaTitle}</h2>
-            <p className="mx-auto mt-4 max-w-xl text-base leading-8 text-slate-100/82">{ui.ctaText}</p>
+            <h2 className="font-heading text-2xl sm:text-4xl">{c.cta?.title ?? ui.ctaTitle}</h2>
+            <p className="mx-auto mt-4 max-w-xl text-base leading-8 text-slate-100/82">
+              {c.cta?.text ?? ui.ctaText}
+            </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
                 href={`/${locale}/contact`}

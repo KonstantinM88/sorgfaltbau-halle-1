@@ -24,9 +24,19 @@ export type ServiceLocaleContent = {
   /** что входит в услугу */
   includes: string[];
   /** содержательные блоки */
-  sections: {heading: string; body: string}[];
+  sections: {heading: string; body: string | string[]; points?: string[]}[];
+  /** пошаговый процесс для услуг, где он полезен */
+  process?: {heading: string; steps: {title: string; body: string}[]};
+  /** контекстная ссылка на связанный материал */
+  guide?: {heading: string; body: string; anchor: string; path: string};
+  /** только подтверждённые публичные показатели */
+  trustPoints?: {value: string; label: string}[];
+  /** локализованный финальный CTA */
+  cta?: {title: string; text: string};
   /** вопрос-ответ (идёт и в FAQPage-разметку) */
   faq: {q: string; a: string}[];
+  /** уточнённый видимый заголовок FAQ, если нужен */
+  faqHeading?: string;
 };
 
 export type Service = {
@@ -792,48 +802,100 @@ export const SERVICES: Service[] = [
   {
     slug: 'wohnungsrenovierung-halle',
     image: '/images/room.webp',
-    serviceType: 'Wohnungsrenovierung',
+    serviceType: 'Wohnungsrenovierung und Wohnungssanierung',
     related: ['trockenbau-halle', 'badsanierung-halle', 'bodenbelaege-halle'],
     de: {
-      title: 'Wohnungsrenovierung in Halle (Saale)',
-      metaTitle: 'Wohnungsrenovierung Halle (Saale) – komplett | SorgfaltBau',
+      title: 'Wohnungsrenovierung in Halle (Saale) – koordiniert aus einer Hand',
+      metaTitle: 'Wohnungsrenovierung Halle | Wohnungssanierung | SorgfaltBau',
       metaDescription:
-        'Wohnungsrenovierung in Halle (Saale): Renovierung bewohnter Wohnungen und Vorbereitung vor Neuvermietung. Maler, Trockenbau, Boden, Bad und Montage koordiniert aus einer Hand.',
-      short: 'Komplette Renovierung – bewohnt oder vor Vermietung.',
+        'Wohnungsrenovierung und Wohnungssanierung in Halle (Saale): Trockenbau, Malerarbeiten, Bodenbeläge und Renovierung vor Neuvermietung aus einer Hand.',
+      short: 'Koordinierte Renovierung und Sanierung – bewohnt oder vor Neuvermietung.',
       intro:
-        'Ob bewohnte Wohnung oder Vorbereitung vor der Neuvermietung – eine Renovierung besteht selten aus einer einzigen Aufgabe. SorgfaltBau renoviert in Halle (Saale) und verbindet Maler-, Trockenbau-, Boden-, Bad- und Montagearbeiten zu einem klaren, koordinierten Ablauf, damit Termine und Qualität stimmen.',
+        'Ob Wohnungsrenovierung, Wohnungssanierung oder die Vorbereitung vor einer Neuvermietung: In einer Wohnung greifen meist mehrere Arbeiten ineinander. SorgfaltBau renoviert Wohnungen in Halle (Saale) und koordiniert Maler- und Spachtelarbeiten, Trockenbau, Bodenbeläge, Badarbeiten und Montage aus einer Hand. Auch in bewohnten Wohnungen planen wir die Arbeiten so, dass Belastung, Staub und Ausfallzeiten möglichst gering bleiben. Vor dem Start prüfen wir, welche Leistungen zum Zustand der Wohnung und zur geplanten Nutzung passen, und legen daraus eine sinnvolle Reihenfolge fest.',
       includes: [
         'Maler- und Spachtelarbeiten',
+        'Vorbereitung von Wänden und Decken',
         'Trockenbau und Innenausbau',
-        'Bodenbeläge und Sockelleisten',
-        'Bad- und Sanitärarbeiten',
-        'Montage von Türen und Fenstern',
-        'Austausch von Armaturen und Sanitärobjekten',
-        'Kleinreparaturen und Anpassungen',
-        'Endreinigung und übergabefertige Räume',
+        'Bodenbeläge, Laminat, Vinyl und Sockelleisten',
+        'Abgestimmte Arbeiten im Bad',
+        'Kleinere Montage- und Abschlussarbeiten',
+        'Vorbereitung vor einer Neuvermietung',
+        'Altmaterial und übergabefertige Endreinigung auf Wunsch',
       ],
       sections: [
         {
-          heading: 'Mehrere Gewerke, ein Ablauf',
-          body: 'Renovierungen bestehen selten aus einer Aufgabe. Wir bündeln Maler, Trockenbau, Boden und Montage sinnvoll, planen die richtige Reihenfolge und vermeiden so Wartezeiten, Doppelarbeit und unnötige Rückschritte. Ein Ansprechpartner koordiniert das Ganze.',
+          heading: 'Mehrere Gewerke, ein koordinierter Ablauf',
+          body: 'Eine Wohnungsrenovierung besteht selten aus nur einer Aufgabe. Wir bündeln Trockenbau, Spachtel- und Malerarbeiten, Bodenverlegung, abgestimmte Badarbeiten und Montage in einer sinnvollen Reihenfolge. Dadurch werden Übergänge zwischen den Arbeiten früh geklärt, und Sie müssen nicht mehrere einzelne Handwerker separat koordinieren.',
         },
         {
-          heading: 'Bewohnt renovieren – mit Rücksicht',
-          body: 'In vielen Fällen können Sie während der Arbeiten wohnen bleiben. Wir schützen Räume und Möbel, begrenzen Staub und stimmen die Reihenfolge so ab, dass möglichst immer ein Teil der Wohnung nutzbar bleibt. Die Belastung halten wir bewusst gering.',
+          heading: 'Wohnungsrenovierung oder Wohnungssanierung – was ist der Unterschied?',
+          body: [
+            'Bei einer Renovierung stehen meist optische und oberflächenbezogene Arbeiten wie Spachteln, Streichen oder neue Bodenbeläge im Vordergrund. Eine Sanierung geht häufig weiter und kann auch beschädigte oder technisch beziehungsweise baulich problematische Bereiche betreffen.',
+            'In der Praxis überschneiden sich Wohnungsrenovierung und Wohnungssanierung häufig. Deshalb prüfen wir vor Ort, welche Arbeiten für die jeweilige Wohnung tatsächlich notwendig und sinnvoll sind. So entsteht kein unnötig großer Leistungsumfang, sondern eine Lösung, die zum Zustand der Immobilie und zur geplanten Nutzung passt.',
+          ],
         },
         {
-          heading: 'Schnell wieder vermietbar',
-          body: 'Zwischen zwei Mietern zählt jeder Tag. Wir bringen Wohnungen in Halle zügig und ordentlich in einen übergabefähigen Zustand – streichfertig, sauber und mit funktionierender Ausstattung. Das verkürzt Leerstand und Aufwand für Vermieter.',
+          heading: 'Welche Arbeiten gehören zu einer Wohnungsrenovierung?',
+          body: 'Der konkrete Umfang richtet sich nach dem Zustand der Wohnung. Häufig gehören die Vorbereitung von Wänden und Decken, Spachtel- und Malerarbeiten, Trockenbau, neue Bodenbeläge mit Sockelleisten sowie kleinere Montage- und Abschlussarbeiten dazu. Arbeiten im Bad stimmen wir passend zum tatsächlichen Bedarf und zu den von uns angebotenen Leistungen ab.',
         },
         {
-          heading: 'Altbau und Plattenbau im Blick',
-          body: 'Vom Gründerzeit-Altbau im Paulusviertel bis zur Wohnung in Halle-Neustadt: Jede Bausubstanz hat ihre Eigenheiten. Wir kennen typische Themen wie unebene Wände, alte Leitungen oder hohe Decken und planen die Renovierung passend dazu.',
+          heading: 'Wohnung vor der Neuvermietung renovieren',
+          body: [
+            'Nach dem Auszug eines Mieters soll eine Wohnung häufig möglichst schnell wieder bezugs- und vermietbar sein. Typische Arbeiten sind das Ausbessern von Wänden und Decken, Spachtel- und Malerarbeiten, der Austausch beschädigter Bodenbeläge sowie kleinere Trockenbau- und Montagearbeiten.',
+            'SorgfaltBau koordiniert die notwendigen Arbeitsschritte so, dass Vermieter und Eigentümer nicht mehrere einzelne Handwerker separat organisieren müssen. Nach der Besichtigung wird festgelegt, welche Arbeiten tatsächlich erforderlich sind und in welcher Reihenfolge sie sinnvoll ausgeführt werden.',
+            'Ziel ist ein sauberer, gepflegter und übergabefertiger Zustand.',
+          ],
         },
         {
-          heading: 'Angebot in wenigen Tagen',
-          body: 'Nach einer Besichtigung erhalten Sie in der Regel innerhalb von 2 bis 5 Werktagen ein nachvollziehbares Angebot. Kleinere Arbeiten lassen sich oft schneller einschätzen. So wissen Sie früh, woran Sie sind.',
+          heading: 'Bewohnte Wohnung renovieren – mit Rücksicht',
+          body: 'Auch eine bewohnte Wohnung kann schrittweise renoviert werden. Entscheidend sind eine klare Reihenfolge der Arbeiten, der Schutz von Möbeln und Laufwegen sowie eine gute Abstimmung mit den Bewohnern. Welche Arbeiten während der Nutzung sinnvoll möglich sind, klären wir bei der Besichtigung.',
+        },
+        {
+          heading: 'Was kostet eine Wohnungsrenovierung in Halle?',
+          body: [
+            'Die Kosten einer Wohnungsrenovierung in Halle hängen vor allem vom Zustand der Wohnung, der Wohnfläche, dem gewünschten Ausbaustandard und der Anzahl der notwendigen Gewerke ab. Eine Wohnung, bei der nur gespachtelt und gestrichen wird, lässt sich anders kalkulieren als eine Renovierung mit Trockenbau, neuen Bodenbelägen und zusätzlichen Arbeiten im Bad.',
+            'Deshalb prüfen wir größere Renovierungen vor Ort und erstellen anschließend ein nachvollziehbares Angebot auf Basis des tatsächlichen Arbeitsumfangs.',
+          ],
+          points: [
+            'Wohnfläche',
+            'Zustand von Wänden und Decken',
+            'Zustand des vorhandenen Bodens',
+            'Anzahl der notwendigen Gewerke',
+            'Material und gewünschte Ausführung',
+            'Leerstehende oder bewohnte Wohnung',
+            'Notwendige Vorarbeiten',
+          ],
+        },
+        {
+          heading: 'Altbau und Plattenbau in Halle richtig renovieren',
+          body: 'Vom Gründerzeit-Altbau im Paulusviertel bis zur Wohnung in Halle-Neustadt unterscheiden sich Oberflächen, Grundrisse und notwendige Vorarbeiten deutlich. Ältere Wände oder Böden können zusätzliche Vorbereitung erfordern. Deshalb prüfen wir den vorhandenen Zustand vorab und richten Aufbau, Material und Reihenfolge danach aus, statt für jede Wohnung denselben Ablauf anzusetzen.',
         },
       ],
+      process: {
+        heading: 'So läuft eine Wohnungsrenovierung mit SorgfaltBau ab',
+        steps: [
+          {title: 'Anfrage und Fotos', body: 'Sie beschreiben kurz die Wohnung und die gewünschten Arbeiten. Fotos helfen uns bei einer ersten Einschätzung.'},
+          {title: 'Besichtigung vor Ort', body: 'Wir prüfen Wände, Decken, Böden, Zugänge und den tatsächlichen Renovierungsbedarf.'},
+          {title: 'Angebot und Planung', body: 'Sie erhalten ein nachvollziehbares Angebot. Gleichzeitig stimmen wir Reihenfolge, Materialien und einen realistischen Zeitrahmen ab.'},
+          {title: 'Ausführung', body: 'Die einzelnen Arbeiten werden sinnvoll koordiniert – zum Beispiel Trockenbau, Spachteln, Malerarbeiten, Bodenverlegung und Montage.'},
+          {title: 'Übergabe', body: 'Nach Abschluss der Arbeiten wird die Wohnung sauber und ordentlich übergeben.'},
+        ],
+      },
+      guide: {
+        heading: 'Ratgeber zur Wohnungsrenovierung',
+        body: 'Mehr zum Ablauf, zu Trockenbau, Malerarbeiten und Bodenverlegung lesen Sie in unserem Ratgeber zur Wohnungsrenovierung in Halle.',
+        anchor: 'Wohnung renovieren in Halle: Trockenbau, Malerarbeiten und Bodenverlegung',
+        path: '/news/wohnung-renovieren-in-halle-trockenbau-malerarbeiten-bodenverlegung',
+      },
+      trustPoints: [
+        {value: '10+', label: 'Jahre praktische Erfahrung'},
+        {value: '200+', label: 'umgesetzte Aufgaben von Innenarbeiten bis Außenflächen'},
+      ],
+      cta: {
+        title: 'Wohnung in Halle renovieren lassen?',
+        text: 'Beschreiben Sie kurz Ihr Vorhaben und senden Sie uns Fotos der Wohnung. Bei größeren Renovierungen vereinbaren wir eine Besichtigung und erstellen anschließend ein nachvollziehbares Angebot.',
+      },
+      faqHeading: 'Häufige Fragen zur Wohnungsrenovierung',
       faq: [
         {
           q: 'Können wir während der Renovierung wohnen bleiben?',
@@ -861,50 +923,110 @@ export const SERVICES: Service[] = [
         },
         {
           q: 'In welchem Gebiet arbeiten Sie?',
-          a: 'Schwerpunkt ist Halle (Saale) mit allen Stadtteilen, dazu Merseburg, Leipzig, Schkeuditz und das nahe Umland.',
+          a: 'Schwerpunkt ist Halle (Saale) mit allen Stadtteilen. Je nach Umfang übernehmen wir Projekte auch im Umland, zum Beispiel in Merseburg, Landsberg, Kabelsketal oder Schkeuditz.',
+        },
+        {
+          q: 'Was kostet eine Wohnungsrenovierung in Halle?',
+          a: 'Die Kosten hängen von Wohnfläche, Zustand, Material und Umfang der notwendigen Arbeiten ab. Nach einer Besichtigung können wir den Aufwand realistisch einschätzen und ein nachvollziehbares Angebot erstellen.',
+        },
+        {
+          q: 'Wie lange dauert eine komplette Wohnungsrenovierung?',
+          a: 'Die Dauer hängt von Größe, Zustand und Anzahl der Arbeiten ab. Reine Malerarbeiten benötigen deutlich weniger Zeit als eine Renovierung mit Trockenbau, Bodenverlegung und weiteren Gewerken. Nach der Besichtigung nennen wir ein realistisches Zeitfenster.',
         },
       ],
     },
     ru: {
-      title: 'Ремонт квартиры в Halle (Saale)',
-      metaTitle: 'Ремонт квартиры Halle – комплексно | SorgfaltBau',
+      title: 'Ремонт квартиры в Halle (Saale) — комплексная организация работ',
+      metaTitle: 'Ремонт квартиры в Halle (Saale) | SorgfaltBau',
       metaDescription:
-        'Ремонт квартир в Halle (Saale): ремонт жилых квартир и подготовка к сдаче. Малярка, гипсокартон, полы, ванная и монтаж — скоординированно из одних рук.',
-      short: 'Комплексный ремонт — жилой или под сдачу.',
+        'Ремонт квартиры в Halle (Saale): внутренняя отделка, гипсокартон, покраска стен, напольные покрытия и подготовка квартиры перед сдачей.',
+      short: 'Комплексный ремонт жилой квартиры или подготовка перед сдачей.',
       intro:
-        'Жилая квартира или подготовка к новой сдаче — ремонт редко состоит из одной задачи. SorgfaltBau делает ремонт в Halle (Saale) и связывает малярные, гипсокартонные, напольные, сантехнические и монтажные работы в понятный, скоординированный процесс, чтобы сроки и качество совпали.',
+        'Косметический или комплексный ремонт квартиры, внутренняя отделка и подготовка перед сдачей обычно состоят из нескольких связанных этапов. SorgfaltBau выполняет ремонт квартир в Halle (Saale) и координирует шпаклёвку и покраску стен, гипсокартон, напольные покрытия, согласованные работы в ванной и монтаж. В жилой квартире порядок планируем так, чтобы по возможности сократить пыль, неудобства и время ограниченного использования помещений. Перед началом оцениваем фактическое состояние объекта и определяем разумную последовательность работ.',
       includes: [
         'Малярные и шпаклёвочные работы',
+        'Подготовка стен и потолков',
         'Гипсокартон и внутренняя отделка',
-        'Напольные покрытия и плинтусы',
-        'Работы по ванной и сантехнике',
-        'Установка дверей и окон',
-        'Замена смесителей и сантехники',
-        'Мелкий ремонт и подгонка',
-        'Финальная уборка и сдача под ключ',
+        'Напольные покрытия, ламинат, винил и плинтусы',
+        'Согласованные работы в ванной',
+        'Небольшие монтажные и завершающие работы',
+        'Подготовка квартиры перед сдачей',
+        'Вывоз старых материалов и финальная уборка по согласованию',
       ],
       sections: [
         {
-          heading: 'Несколько работ — один процесс',
-          body: 'Ремонт редко состоит из одной задачи. Логично объединяем малярку, гипсокартон, полы и монтаж, планируем правильный порядок и избегаем простоев, двойной работы и переделок. Всё координирует один ответственный.',
+          heading: 'Несколько видов работ — один согласованный процесс',
+          body: 'Ремонт квартиры редко состоит из одной задачи. Мы объединяем гипсокартон, шпаклёвку и покраску, укладку пола, согласованные работы в ванной и монтаж в разумной последовательности. Переходы между этапами определяются заранее, поэтому заказчику не нужно самостоятельно координировать несколько отдельных исполнителей.',
         },
         {
-          heading: 'Ремонт в жилой квартире — бережно',
-          body: 'Часто во время работ можно продолжать жить. Защищаем помещения и мебель, ограничиваем пыль и согласуем порядок так, чтобы часть квартиры по возможности всегда оставалась пригодной. Нагрузку держим минимальной.',
+          heading: 'Косметический ремонт или более глубокая санация — в чём разница?',
+          body: [
+            'Косметический ремонт обычно включает шпаклёвку, покраску и замену напольных покрытий. Более глубокая санация может затрагивать повреждённые или технически проблемные участки.',
+            'На практике оба вида работ часто пересекаются, поэтому перед началом мы оцениваем фактическое состояние квартиры. Это помогает определить действительно необходимый объём без лишних работ и подобрать решение под состояние объекта и его дальнейшее использование.',
+          ],
         },
         {
-          heading: 'Быстро снова под сдачу',
-          body: 'Между арендаторами важен каждый день. Быстро и аккуратно доводим квартиру в Halle до состояния под передачу — под покраску, чисто и с рабочей комплектацией. Это сокращает простой и хлопоты арендодателя.',
+          heading: 'Что входит в ремонт квартиры?',
+          body: 'Точный объём зависит от состояния квартиры. Часто требуются подготовка стен и потолков, шпаклёвка и покраска, гипсокартон, новые напольные покрытия и плинтусы, а также небольшие монтажные и завершающие работы. Работы в ванной согласовываем в пределах фактической задачи и оказываемых нами услуг.',
         },
         {
-          heading: 'Учитываем Altbau и панель',
-          body: 'От грюндерзайт-дома в Paulusviertel до квартиры в Halle-Neustadt: у каждой застройки свои особенности. Знаем типичные нюансы — неровные стены, старые коммуникации, высокие потолки — и планируем ремонт под них.',
+          heading: 'Ремонт квартиры перед сдачей',
+          body: [
+            'После выезда жильца квартиру часто нужно быстро привести в аккуратное и пригодное для новой аренды состояние. Типичные задачи — ремонт стен и потолков, шпаклёвка и покраска, замена повреждённого покрытия пола, небольшие работы с гипсокартоном и монтаж.',
+            'SorgfaltBau координирует этапы так, чтобы собственнику или арендодателю не приходилось отдельно организовывать нескольких мастеров. После осмотра определяем, какие работы действительно нужны и в какой последовательности их выполнять.',
+            'Цель — чистая, ухоженная и готовая к передаче квартира.',
+          ],
         },
         {
-          heading: 'Смета за несколько дней',
-          body: 'После осмотра обычно за 2–5 рабочих дней даём понятную смету. Небольшие работы оцениваем быстрее. Вы рано понимаете условия.',
+          heading: 'Ремонт в жилой квартире — с учётом жильцов',
+          body: 'Жилую квартиру можно ремонтировать поэтапно. Для этого важны понятная последовательность работ, защита мебели и проходов и постоянное согласование с жильцами. Какие работы разумно выполнять во время проживания, определяем при осмотре. Полностью беспыльный процесс не обещаем, но принимаем меры для ограничения загрязнения.',
+        },
+        {
+          heading: 'Сколько стоит ремонт квартиры в Галле?',
+          body: [
+            'Стоимость ремонта зависит от площади, состояния стен и пола, выбранных материалов и количества необходимых работ. Покраска и шпаклёвка одной квартиры рассчитываются иначе, чем комплексный ремонт с гипсокартоном, новым полом и дополнительными работами.',
+            'После осмотра объекта можно точнее определить объём и подготовить понятное предложение на основе фактических работ.',
+          ],
+          points: [
+            'Площадь квартиры',
+            'Состояние стен и потолков',
+            'Состояние существующего пола',
+            'Количество видов работ',
+            'Материалы и желаемое исполнение',
+            'Пустая или жилая квартира',
+            'Необходимые подготовительные работы',
+          ],
+        },
+        {
+          heading: 'Ремонт Altbau и панельных квартир в Halle',
+          body: 'Квартиры в старых домах Paulusviertel и в панельных зданиях Halle-Neustadt требуют разной подготовки. Старые стены, потолки или полы могут нуждаться в дополнительных работах до отделки. Мы заранее проверяем состояние поверхностей и подбираем последовательность, материалы и способ выполнения под конкретный объект.',
         },
       ],
+      process: {
+        heading: 'Как проходит ремонт квартиры с SorgfaltBau',
+        steps: [
+          {title: 'Запрос и фотографии', body: 'Вы кратко описываете квартиру и желаемые работы. Фотографии помогают сделать первичную оценку.'},
+          {title: 'Осмотр на месте', body: 'Проверяем стены, потолки, полы, доступ и фактический объём ремонта.'},
+          {title: 'Предложение и планирование', body: 'Вы получаете понятное предложение. Одновременно согласуем порядок, материалы и реалистичные сроки.'},
+          {title: 'Выполнение', body: 'Отдельные этапы координируются в правильном порядке: гипсокартон, шпаклёвка, покраска, укладка пола и монтаж.'},
+          {title: 'Передача', body: 'После завершения работ квартира передаётся в чистом и аккуратном состоянии.'},
+        ],
+      },
+      guide: {
+        heading: 'Полезная статья о ремонте квартиры',
+        body: 'Подробнее о порядке работ, гипсокартоне, покраске и укладке пола читайте в нашем материале о ремонте квартиры в Halle.',
+        anchor: 'Ремонт квартиры в Halle: гипсокартон, малярные работы и укладка пола',
+        path: '/news/wohnung-renovieren-in-halle-trockenbau-malerarbeiten-bodenverlegung',
+      },
+      trustPoints: [
+        {value: '10+', label: 'лет практического опыта'},
+        {value: '200+', label: 'выполненных задач от внутренней отделки до наружных работ'},
+      ],
+      cta: {
+        title: 'Нужно отремонтировать квартиру в Halle?',
+        text: 'Кратко опишите задачу и пришлите фотографии квартиры. Для более крупных ремонтов мы согласуем осмотр, а затем подготовим понятное предложение.',
+      },
+      faqHeading: 'Частые вопросы о ремонте квартиры',
       faq: [
         {
           q: 'Можно ли жить во время ремонта?',
@@ -932,7 +1054,15 @@ export const SERVICES: Service[] = [
         },
         {
           q: 'В каком районе работаете?',
-          a: 'Основной район — Halle (Saale) со всеми районами, плюс Merseburg, Leipzig, Schkeuditz и ближайшие окрестности.',
+          a: 'Основной район — Halle (Saale). В зависимости от объёма принимаем проекты и в окрестностях, например в Merseburg, Landsberg, Kabelsketal или Schkeuditz.',
+        },
+        {
+          q: 'Сколько стоит ремонт квартиры в Галле?',
+          a: 'Стоимость зависит от площади, состояния, материалов и объёма необходимых работ. После осмотра мы можем реалистично оценить затраты и подготовить понятное предложение.',
+        },
+        {
+          q: 'Сколько длится полный ремонт квартиры?',
+          a: 'Срок зависит от площади, состояния и количества работ. Одна покраска занимает заметно меньше времени, чем ремонт с гипсокартоном, укладкой пола и дополнительными этапами. После осмотра мы называем реалистичный временной диапазон.',
         },
       ],
     },

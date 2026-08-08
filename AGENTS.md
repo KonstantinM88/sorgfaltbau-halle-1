@@ -201,6 +201,9 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Expanded `trockenbau-halle`, `rohbau-halle`, and `fassadendaemmung-halle` in `src/lib/services.ts` with deeper DE/RU SEO/GEO copy, longer includes, five content sections, and seven FAQ entries each.
 - Replaced the temporary `rohbau-halle` service image with `/images/rohbau-massivbau-halle.webp`, converted from the Temp PNG to an optimized 1024x768 WebP for responsive `next/image` rendering; preserve this path when replacing `src/lib/services.ts` from content packages.
 - Replaced `src/lib/services.ts` from the content package so all 8 detailed service pages now have full DE/RU SEO/GEO content: five content sections, expanded includes, and seven FAQ entries each.
+- Expanded only `wohnungsrenovierung-halle` in DE/RU to cover both Wohnungsrenovierung and Wohnungssanierung without creating a competing slug; it now includes Neuvermietung, cost factors without invented prices, a five-step process, verified 10+/200+ trust points, localized CTA/FAQ headings, and a guide link.
+- Extended the shared service content model with optional multi-paragraph sections, factor lists, process, guide, trust, CTA, and FAQ-heading fields; service pages without these fields keep their previous rendering.
+- Added reciprocal contextual DE/RU links between `wohnungsrenovierung-halle` and the existing news article `wohnung-renovieren-in-halle-trockenbau-malerarbeiten-bodenverlegung`; the article backlink is rendered only for that exact slug and does not mutate database content.
 
 ### Why Us Visual And Copy Update
 
