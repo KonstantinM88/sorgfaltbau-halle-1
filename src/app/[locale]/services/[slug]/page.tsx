@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 import {locales} from '@/i18n/config';
 import {COMPANY_PRIMARY_PHONE} from '@/lib/contact';
 import {getAbsoluteUrl, getLocalizedAlternates} from '@/lib/site';
-import {getBreadcrumbSchema, getServiceSchema} from '@/lib/seo';
+import {getBreadcrumbSchema, getLocalBusinessSchema, getServiceSchema} from '@/lib/seo';
 import {
   SERVICE_SLUGS,
   getServiceBySlug,
@@ -105,6 +105,7 @@ export default async function ServiceDetailPage({params}: {params: Params}) {
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
 
   const jsonLd = [
+    ...(slug === 'badsanierung-halle' ? [getLocalBusinessSchema(lang)] : []),
     getServiceSchema({
       name: c.title,
       description: c.metaDescription,
@@ -321,6 +322,24 @@ export default async function ServiceDetailPage({params}: {params: Params}) {
                 className="mt-5 inline-flex items-center gap-2 font-semibold text-brand-accent transition-colors hover:text-brand-orange-dark"
               >
                 {c.guide.anchor}
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          )}
+
+          {c.reference && (
+            <div className="mt-6 rounded-3xl border border-anthracite-100 bg-anthracite-50 p-6 sm:p-8">
+              <h2 className="font-heading text-2xl text-anthracite-950 sm:text-3xl">
+                {c.reference.heading}
+              </h2>
+              <p className="mt-4 max-w-3xl text-base leading-8 text-anthracite-600">
+                {c.reference.body}
+              </p>
+              <Link
+                href={`/${locale}${c.reference.path}`}
+                className="mt-5 inline-flex items-center gap-2 font-semibold text-brand-accent transition-colors hover:text-brand-orange-dark"
+              >
+                {c.reference.anchor}
                 <ArrowRight size={16} />
               </Link>
             </div>

@@ -29,6 +29,8 @@ export type ServiceLocaleContent = {
   process?: {heading: string; steps: {title: string; body: string}[]};
   /** контекстная ссылка на связанный материал */
   guide?: {heading: string; body: string; anchor: string; path: string};
+  /** ссылка на опубликованные примеры работ */
+  reference?: {heading: string; body: string; anchor: string; path: string};
   /** только подтверждённые публичные показатели */
   trustPoints?: {value: string; label: string}[];
   /** локализованный финальный CTA */
@@ -508,145 +510,375 @@ export const SERVICES: Service[] = [
     related: ['wohnungsrenovierung-halle', 'trockenbau-halle', 'bodenbelaege-halle'],
     de: {
       title: 'Badsanierung in Halle (Saale)',
-      metaTitle: 'Badsanierung Halle (Saale) – Bad schlüsselfertig | SorgfaltBau',
+      metaTitle: 'Badsanierung Halle | Badrenovierung & Komplettbad | SorgfaltBau',
       metaDescription:
-        'Badsanierung in Halle (Saale): Fliesen, Sanitär, Abdichtung und Innenausbau schlüsselfertig aus einer Hand. Klare Termine, nachvollziehbare Kosten, barrierearme Lösungen. Jetzt anfragen.',
-      short: 'Bad schlüsselfertig: Fliesen, Sanitär, Abdichtung.',
-      intro:
-        'Ein neues Bad verbindet viele Gewerke – Abriss, Installation, Abdichtung, Fliesen und Montage müssen genau ineinandergreifen. SorgfaltBau saniert Bäder in Halle (Saale) schlüsselfertig aus einer Hand und koordiniert die Schritte so, dass Reihenfolge, Termine und Qualität stimmen – ob kompaktes Altbaubad oder barrierearmer Umbau.',
+        'Badsanierung und Badrenovierung in Halle (Saale): Demontage, Abdichtung, Fliesen, Trockenbau und Montage koordiniert aus einer Hand. Jetzt anfragen.',
+      short: 'Badsanierung und Badrenovierung koordiniert aus einer Hand.',
+      intro: [
+        'Ob komplette Badsanierung, Badrenovierung oder gezielter Umbau einzelner Bereiche: In einem Badezimmer müssen Demontage, Leitungen, Abdichtung, Trockenbau, Fliesen und Montage genau aufeinander abgestimmt sein. SorgfaltBau saniert Bäder in Halle (Saale) und koordiniert die notwendigen Schritte aus einer Hand – vom kompakten Altbaubad bis zur bodengleichen, barrierearmen Dusche.',
+        'Vor Beginn prüfen wir den vorhandenen Zustand, besprechen Nutzung und Ausstattung und legen fest, welche Arbeiten tatsächlich notwendig sind.',
+      ],
       includes: [
         'Demontage, Abbruch und Entsorgung',
         'Sanitärinstallation innen (Zu- und Ableitungen)',
-        'Fachgerechte Abdichtung im Nassbereich',
+        'Sorgfältige Abdichtung im Nassbereich',
         'Wand- und Bodenfliesen',
         'Trockenbau, Vorwandinstallation und abgehängte Decke',
         'Montage von WC, Waschtisch, Dusche und Wanne',
-        'Barrierearme und bodengleiche Duschen',
-        'Maler- und Anschlussarbeiten bis fertig',
+        'Bodengleiche oder schwellenarme Dusche, sofern technisch möglich',
+        'Maler- und Anschlussarbeiten',
+        'Koordination der Elektroanschlüsse mit einem entsprechenden Fachbetrieb',
       ],
       sections: [
         {
-          heading: 'Schlüsselfertig aus einer Hand',
-          body: 'Bei einer Badsanierung greifen viele Gewerke ineinander. Sie haben bei uns einen Ansprechpartner für das gesamte Bad – wir stimmen Installation, Abdichtung, Fliesen und Montage so ab, dass keine Lücken oder Wartezeiten zwischen den Schritten entstehen. Das spart Nerven, Zeit und Abstimmungsaufwand.',
+          heading: 'Badsanierung oder Badrenovierung – was ist der Unterschied?',
+          body: [
+            'Bei einer Badrenovierung stehen häufig sichtbare Veränderungen im Vordergrund, zum Beispiel neue Fliesen, Sanitärobjekte, Oberflächen oder eine neue Dusche. Eine Badsanierung geht in der Regel weiter und kann auch Leitungen, Abdichtung, Untergründe oder den Aufbau von Wand und Boden betreffen.',
+            'In der Praxis überschneiden sich beide Begriffe häufig. Deshalb prüfen wir vor Ort, welche Maßnahmen für das vorhandene Bad tatsächlich sinnvoll sind.',
+          ],
         },
         {
-          heading: 'Abdichtung ernst genommen',
-          body: 'Im Nassbereich entscheidet die Abdichtung über die Lebensdauer des ganzen Bades. Wir arbeiten hier nach den anerkannten Regeln, dichten Wand- und Bodenanschlüsse sorgfältig ab und dokumentieren die Schritte, bevor gefliest wird. So bleiben Feuchteschäden außen vor.',
+          heading: 'Komplettsanierung oder Teilsanierung des Badezimmers?',
+          body: [
+            'Nicht jedes Bad muss vollständig entkernt werden. Wenn Leitungen, Untergrund und vorhandene Bereiche technisch in Ordnung sind, kann je nach Ziel auch eine Teilsanierung sinnvoll sein.',
+            'Bei einer Komplettsanierung werden Demontage, Leitungen, Trockenbau oder Vorwand, Abdichtung, Wand- und Bodenflächen, Fliesen, Sanitärobjekte sowie Montage und Abschlussarbeiten aufeinander abgestimmt. Welche Variante sinnvoll ist, entscheiden wir nach Besichtigung des vorhandenen Bades.',
+          ],
+          points: [
+            'Dusche erneuern',
+            'Badewanne ersetzen',
+            'Einzelne Sanitärobjekte austauschen',
+            'Teilbereiche neu fliesen',
+            'Beschädigte Bereiche instand setzen',
+          ],
         },
         {
-          heading: 'Bäder im Altbau und im Plattenbau',
-          body: 'Viele Bäder in Halle sind klein geschnitten – im Gründerzeit-Altbau ebenso wie in den Wohnungen in Halle-Neustadt. Mit durchdachter Vorwandinstallation, der richtigen Fliesenwahl und bodengleicher Dusche lässt sich auch auf wenigen Quadratmetern ein modernes, gut nutzbares Bad gestalten.',
+          heading: 'Was kostet eine Badsanierung in Halle?',
+          body: [
+            'Die Kosten einer Badsanierung hängen nicht allein von der Größe des Badezimmers ab. Entscheidend sind der vorhandene Zustand, notwendige Demontage, Leitungsarbeiten, Abdichtung, Untergründe, Fliesen, Sanitärobjekte und der gewünschte Ausstattungsstandard.',
+            'Eine Teilsanierung mit neuer Dusche wird anders kalkuliert als ein komplett entkerntes Badezimmer mit neuen Leitungen, Vorwandinstallation und vollständiger Neuverfliesung. Nach der Besichtigung können wir den tatsächlichen Umfang einschätzen und ein nachvollziehbares Angebot erstellen.',
+          ],
+          points: [
+            'Größe des Badezimmers',
+            'Zustand der Leitungen',
+            'Umfang der Demontage',
+            'Zustand von Wand und Boden',
+            'Abdichtung und Untergrund',
+            'Fliesen und Format',
+            'Dusche, Wanne, WC und Waschtisch',
+            'Gewünschte Ausstattung',
+            'Grundrissänderungen',
+            'Zugänglichkeit des Bades',
+          ],
         },
         {
-          heading: 'Barrierearm und altersgerecht',
-          body: 'Auf Wunsch planen wir das Bad barrierearm: bodengleiche Dusche, rutschhemmende Fliesen, gut erreichbare Armaturen und stabile Befestigungen für Haltegriffe. Das erhöht den Komfort heute und macht das Bad langfristig nutzbar.',
+          heading: 'Abdichtung im Bad – entscheidend für den Nassbereich',
+          body: 'Wand- und Bodenanschlüsse sowie beanspruchte Nassbereiche werden sorgfältig vorbereitet und abgedichtet, bevor die Fliesenarbeiten beginnen. Eine sorgfältig ausgeführte Abdichtung reduziert das Risiko von Feuchteschäden und ist eine wichtige Grundlage für langlebige Wand- und Bodenflächen.',
         },
         {
-          heading: 'Termine und Kosten nachvollziehbar',
-          body: 'Nach der Besichtigung nennen wir ein realistisches Zeitfenster und eine nachvollziehbare Kostenaufstellung. Auf Wunsch übernehmen wir die Materialbeschaffung oder arbeiten mit den von Ihnen gewählten Fliesen und Objekten. So behalten Sie den Überblick.',
+          heading: 'Kleine Bäder, Altbau und Plattenbau in Halle',
+          body: [
+            'In Halle treffen unterschiedliche Gebäudetypen aufeinander: Gründerzeitwohnungen mit älteren Installationen ebenso wie kompakte Badezimmer in Halle-Neustadt und anderen Plattenbaugebieten. Deshalb lässt sich nicht jedes Bad nach demselben Schema planen. Das gilt ebenso für Bestandswohnungen im Paulusviertel, in Giebichenstein oder Trotha.',
+            'Gerade bei kleinen Badezimmern sind die Position von Dusche, WC und Waschtisch, ausreichende Bewegungsflächen und sinnvoller Stauraum entscheidend.',
+          ],
         },
+        {
+          heading: 'Bodengleiche Dusche und barrierearmer Badumbau',
+          body: [
+            'Eine bodengleiche oder möglichst schwellenarme Dusche kann den Einstieg erleichtern und den Nutzungskomfort deutlich verbessern. Ob eine vollständig bodengleiche Lösung im Bestand möglich ist, hängt unter anderem von Aufbauhöhe, Leitungsführung und Entwässerung ab.',
+            'Bei der Besichtigung prüfen wir die vorhandenen Voraussetzungen und besprechen eine technisch passende, barrierearme oder altersgerechte Lösung.',
+          ],
+        },
+        {
+          heading: 'Fliesen, Sanitärobjekte und Ausstattung auswählen',
+          body: [
+            'Optik und Budget werden stark durch Fliesen, Armaturen und Sanitärobjekte beeinflusst. Auf Wunsch übernehmen wir die Materialbeschaffung oder arbeiten mit bereits ausgewählten Produkten.',
+            'Vor der Bestellung prüfen wir, welche Formate und Produkte zur vorhandenen Situation und zum geplanten Aufbau passen.',
+          ],
+        },
+        {
+          heading: 'Bad vor einer Neuvermietung modernisieren',
+          body: [
+            'Bei Mietwohnungen muss nicht immer die maximal aufwendige Lösung gewählt werden. Entscheidend sind ein technisch ordentlicher Zustand, pflegeleichte Oberflächen und eine saubere, übergabefähige Ausführung.',
+            'Nach der Besichtigung stimmen wir den Umfang auf Zustand, Nutzung und geplante Neuvermietung ab.',
+          ],
+        },
+      ],
+      process: {
+        heading: 'So läuft eine Badsanierung mit SorgfaltBau ab',
+        steps: [
+          {
+            title: 'Anfrage und Fotos',
+            body: 'Sie beschreiben kurz den aktuellen Zustand und Ihre Wünsche. Fotos helfen bei der ersten Einschätzung.',
+          },
+          {
+            title: 'Besichtigung und Aufmaß',
+            body: 'Wir prüfen Raum, vorhandene Anschlüsse, Untergründe und die geplante Nutzung.',
+          },
+          {
+            title: 'Planung und Angebot',
+            body: 'Wir stimmen Leistungsumfang, Materialien, Ausstattung, Reihenfolge und ein realistisches Zeitfenster ab.',
+          },
+          {
+            title: 'Demontage und Vorbereitung',
+            body: 'Alte Sanitärobjekte und betroffene Oberflächen werden entsprechend dem vereinbarten Umfang entfernt.',
+          },
+          {
+            title: 'Ausbau und Montage',
+            body: 'Sanitärarbeiten, Trockenbau, Abdichtung, Fliesen und Montage werden sinnvoll aufeinander abgestimmt.',
+          },
+          {
+            title: 'Übergabe',
+            body: 'Nach Abschluss prüfen wir die ausgeführten Arbeiten gemeinsam und übergeben das Bad ordentlich.',
+          },
+        ],
+      },
+      guide: {
+        heading: 'Ratgeber zur Badsanierung',
+        body: 'Mehr zu Kostenfaktoren, Ablauf, Dauer und Planung finden Sie in unserem Ratgeber.',
+        anchor: 'Badsanierung in Halle: Kosten, Ablauf und Dauer richtig planen',
+        path: '/news/badsanierung-halle-kosten-ablauf-dauer',
+      },
+      reference: {
+        heading: 'Badezimmer-Referenzen aus der Praxis',
+        body: 'In unserer Galerie finden Sie veröffentlichte Fotos ausgeführter Badezimmerarbeiten von SorgfaltBau.',
+        anchor: 'Badezimmer-Projekte in der Galerie ansehen',
+        path: '/galerie',
+      },
+      trustPoints: [
+        {value: '10+', label: 'Jahre praktische Erfahrung'},
+        {value: '200+', label: 'umgesetzte Aufgaben von Innenarbeiten bis Außenflächen'},
+        {value: 'Direkt', label: 'ein Ansprechpartner für die abgestimmten Arbeitsschritte'},
+        {value: 'Halle', label: 'Schwerpunkt Halle (Saale) und Umgebung'},
       ],
       faq: [
         {
-          q: 'Wie lange ist das Bad nicht nutzbar?',
-          a: 'Eine komplette Badsanierung dauert je nach Größe und Umfang meist ein bis drei Wochen. Wir nennen vorab ein realistisches Zeitfenster und informieren Sie über den Stand, damit Sie planen können.',
+          q: 'Was kostet eine Badsanierung in Halle?',
+          a: 'Die Kosten hängen von Größe, Zustand, Leitungen, notwendiger Demontage, Abdichtung, Fliesen und Ausstattung ab. Nach der Besichtigung lässt sich der Umfang realistisch kalkulieren.',
         },
         {
-          q: 'Kümmern Sie sich um das Material?',
-          a: 'Auf Wunsch übernehmen wir die Materialbeschaffung komplett oder arbeiten mit den von Ihnen ausgewählten Fliesen, Armaturen und Objekten. Was sinnvoll ist, klären wir beim Angebot.',
+          q: 'Wie lange dauert eine Badsanierung?',
+          a: 'Die Dauer hängt von Größe, Zustand, Leistungsumfang und Materialverfügbarkeit ab. Nach der Besichtigung nennen wir ein realistisches Zeitfenster.',
         },
         {
-          q: 'Können Sie eine bodengleiche Dusche einbauen?',
-          a: 'Ja. Bodengleiche, barrierearme Duschen gehören zu unserem Standard – inklusive passender Abdichtung, Gefälle und rutschhemmender Fliesen.',
+          q: 'Was ist der Unterschied zwischen Badsanierung und Badrenovierung?',
+          a: 'Eine Badrenovierung betrifft häufig sichtbare Oberflächen und Sanitärobjekte. Bei einer Badsanierung können zusätzlich Leitungen, Abdichtung, Untergründe sowie Wand- und Bodenaufbau erneuert werden. Welche Maßnahmen nötig sind, zeigt die Bestandsprüfung.',
         },
         {
-          q: 'Übernehmen Sie auch Teilsanierungen?',
-          a: 'Ja. Vom Austausch der Dusche oder einzelner Objekte bis zum kompletten Umbau – wir passen den Umfang an Ihr Vorhaben und Ihr Budget an.',
+          q: 'Ist auch eine Teilsanierung möglich?',
+          a: 'Ja. Je nach Zustand können wir zum Beispiel eine Dusche erneuern, einzelne Sanitärobjekte austauschen, Teilbereiche neu fliesen oder beschädigte Bereiche instand setzen.',
         },
         {
-          q: 'Machen Sie auch die Elektrik im Bad?',
-          a: 'Wir koordinieren die nötigen Arbeiten im Ablauf. Den fachgerechten Elektroanschluss führt ein Fachbetrieb aus; wir stimmen die Schnittstellen ab, damit alles zusammenpasst.',
+          q: 'Ist eine bodengleiche Dusche in einem Altbau möglich?',
+          a: 'Das hängt von Aufbauhöhe, Leitungsführung und Entwässerung ab. Wir prüfen die vorhandene Situation vor Ort und besprechen eine technisch passende Lösung.',
         },
         {
-          q: 'Arbeiten Sie auch in vermieteten Wohnungen?',
-          a: 'Ja. Gerade vor einer Neuvermietung bringen wir Bäder zügig und sauber in einen modernen, übergabefähigen Zustand.',
+          q: 'Kann ich eigene Fliesen oder Sanitärobjekte kaufen?',
+          a: 'Ja. Auf Wunsch arbeiten wir mit bereits ausgewählten Produkten oder übernehmen die Materialbeschaffung. Vor der Bestellung prüfen wir, ob Formate und Produkte zur vorhandenen Situation und zum geplanten Aufbau passen.',
+        },
+        {
+          q: 'Übernehmen Sie die Elektrik?',
+          a: 'Elektroanschlüsse werden durch einen entsprechenden Fachbetrieb ausgeführt und von uns im Ablauf koordiniert.',
+        },
+        {
+          q: 'Sanieren Sie auch Bäder vor einer Neuvermietung?',
+          a: 'Ja. Nach der Besichtigung stimmen wir den Umfang auf den technischen Zustand, eine pflegeleichte Ausstattung und die geplante Übergabe der Wohnung ab.',
         },
         {
           q: 'In welchem Gebiet arbeiten Sie?',
           a: 'Schwerpunkt ist Halle (Saale) mit allen Stadtteilen, dazu Merseburg, Leipzig, Schkeuditz und das nahe Umland.',
         },
       ],
+      faqHeading: 'Häufige Fragen zur Badsanierung in Halle',
+      cta: {
+        title: 'Bad in Halle sanieren oder renovieren lassen?',
+        text: 'Beschreiben Sie kurz den aktuellen Zustand Ihres Badezimmers und Ihre Wünsche oder senden Sie uns Fotos. Bei einer größeren Badsanierung vereinbaren wir eine Besichtigung und klären Umfang, Ausstattung und die nächsten Schritte vor Ort.',
+      },
     },
     ru: {
-      title: 'Ремонт ванной в Halle (Saale)',
-      metaTitle: 'Ремонт ванной Halle – под ключ | SorgfaltBau',
+      title: 'Ремонт ванной в Halle (Saale) — под ключ с координацией работ',
+      metaTitle: 'Ремонт ванной Halle | Под ключ и частичный ремонт | SorgfaltBau',
       metaDescription:
-        'Ремонт ванной в Halle (Saale) под ключ: плитка, сантехника, гидроизоляция и отделка из одних рук. Понятные сроки и стоимость, решения без барьеров. Оставьте заявку.',
-      short: 'Ванная под ключ: плитка, сантехника, гидроизоляция.',
-      intro:
-        'Новая ванная объединяет много работ — демонтаж, разводка, гидроизоляция, плитка и монтаж должны точно состыковаться. SorgfaltBau делает ванные в Halle (Saale) под ключ из одних рук и согласует этапы так, чтобы порядок, сроки и качество совпали — будь то компактная ванная в Altbau или ремонт без барьеров.',
+        'Ремонт и обновление ванной в Halle (Saale): демонтаж, гидроизоляция, плитка, гипсокартон и монтаж с координацией всех этапов. Оставьте заявку.',
+      short: 'Полный или частичный ремонт ванной с координацией этапов.',
+      intro: [
+        'Полный ремонт ванной, обновление отдельных зон или точечная переделка требуют согласованной последовательности: демонтаж, коммуникации, гидроизоляция, гипсокартон, плитка и монтаж должны точно сочетаться между собой. SorgfaltBau ремонтирует ванные в Halle (Saale) и координирует необходимые этапы — от компактного санузла в старом доме до душа с удобным малопороговым доступом.',
+        'До начала работ мы оцениваем текущее состояние ванной, обсуждаем её использование и оснащение и определяем, какие работы действительно необходимы.',
+      ],
       includes: [
         'Демонтаж, разборка и вывоз',
         'Внутренняя сантехника (подвод и слив)',
-        'Профессиональная гидроизоляция мокрой зоны',
+        'Тщательная гидроизоляция мокрой зоны',
         'Плитка на стены и пол',
         'Гипсокартон, инсталляция и подвесной потолок',
         'Монтаж унитаза, раковины, душа и ванны',
-        'Душ вровень с полом, без барьеров',
-        'Малярные и финишные работы до готовности',
+        'Душ вровень с полом или с низким порогом, если это технически возможно',
+        'Малярные и финишные работы',
+        'Координация электроподключений с профильной фирмой',
       ],
       sections: [
         {
-          heading: 'Под ключ из одних рук',
-          body: 'В ремонте ванной много работ идут встык. У вас один ответственный по всей ванной — согласуем разводку, гидроизоляцию, плитку и монтаж так, чтобы между этапами не было пробелов и простоев. Это экономит время, нервы и согласования.',
+          heading: 'Полный ремонт или обновление ванной — в чём разница?',
+          body: [
+            'При обновлении ванной основное внимание часто уделяется видимым изменениям: новой плитке, сантехнике, поверхностям или душу. Полный ремонт может дополнительно затрагивать коммуникации, гидроизоляцию, основание и конструкцию стен или пола.',
+            'На практике эти понятия часто пересекаются. Поэтому сначала мы осматриваем объект и определяем, какие меры действительно целесообразны для конкретной ванной.',
+          ],
         },
         {
-          heading: 'Серьёзно относимся к гидроизоляции',
-          body: 'В мокрой зоне именно гидроизоляция определяет срок службы всей ванной. Работаем по правилам, тщательно проклеиваем примыкания стен и пола и фиксируем этапы до укладки плитки. Так протечки и плесень остаются в стороне.',
+          heading: 'Полный или частичный ремонт ванной?',
+          body: [
+            'Не каждую ванную нужно полностью демонтировать. Если коммуникации, основание и сохраняемые участки находятся в нормальном техническом состоянии, в зависимости от задачи может быть разумен частичный ремонт.',
+            'При полном ремонте согласуются демонтаж, коммуникации, гипсокартон или инсталляция, гидроизоляция, стены и пол, плитка, сантехника, монтаж и финишные работы. Подходящий вариант определяем после осмотра ванной.',
+          ],
+          points: [
+            'Обновить душ',
+            'Заменить ванну',
+            'Заменить отдельные предметы сантехники',
+            'Облицевать плиткой отдельные зоны',
+            'Восстановить повреждённые участки',
+          ],
         },
         {
-          heading: 'Ванные в Altbau и панельных домах',
-          body: 'Многие ванные в Halle небольшие — и в грюндерзайт-домах, и в квартирах Halle-Neustadt. С продуманной инсталляцией, правильной плиткой и душем вровень с полом даже на нескольких квадратных метрах получается современная, удобная ванная.',
+          heading: 'Сколько стоит ремонт ванной в Галле?',
+          body: [
+            'Стоимость зависит не только от площади ванной. На итоговую сумму влияют состояние коммуникаций, необходимость демонтажа, подготовка стен и пола, гидроизоляция, плитка, сантехника и выбранный уровень оснащения.',
+            'Частичный ремонт с заменой душа рассчитывается иначе, чем полностью демонтированная ванная с новыми коммуникациями, инсталляцией и облицовкой. После осмотра мы можем оценить фактический объём и подготовить понятное предложение.',
+          ],
+          points: [
+            'Площадь ванной',
+            'Состояние коммуникаций',
+            'Объём демонтажа',
+            'Состояние стен и пола',
+            'Гидроизоляция и основание',
+            'Плитка и её формат',
+            'Душ, ванна, унитаз и раковина',
+            'Выбранное оснащение',
+            'Изменение планировки',
+            'Доступ к помещению',
+          ],
         },
         {
-          heading: 'Без барьеров и на годы',
-          body: 'По желанию проектируем ванную без барьеров: душ вровень с полом, нескользящая плитка, удобные смесители и надёжные крепления под поручни. Это и комфорт сейчас, и пригодность ванной на годы вперёд.',
+          heading: 'Гидроизоляция ванной — основа мокрой зоны',
+          body: 'До укладки плитки мы тщательно подготавливаем и изолируем примыкания стен и пола и участки, испытывающие воздействие воды. Правильно выполненная гидроизоляция снижает риск повреждений от влаги и создаёт важную основу для долговечных стен и пола.',
         },
         {
-          heading: 'Сроки и стоимость прозрачны',
-          body: 'После осмотра называем реальные сроки и понятную смету. По желанию берём закупку материалов на себя или работаем с вашими плиткой и сантехникой. Вы держите всё под контролем.',
+          heading: 'Маленькие ванные, старые и панельные дома в Halle',
+          body: [
+            'В Halle встречаются разные типы зданий: квартиры старого фонда с возрастными коммуникациями и компактные санузлы в Halle-Neustadt и других панельных районах. Поэтому нельзя планировать каждую ванную по одной схеме. Это относится и к квартирам в Paulusviertel, Giebichenstein и Trotha.',
+            'Для маленькой ванной особенно важны расположение душа, унитаза и раковины, удобство перемещения и практичное хранение.',
+          ],
         },
+        {
+          heading: 'Душ без высокого порога и адаптированный ремонт ванной',
+          body: [
+            'Душ вровень с полом или с минимальным порогом может облегчить вход и сделать ванную удобнее. Возможность полностью ровного решения в существующем помещении зависит в том числе от высоты конструкции пола, прокладки коммуникаций и водоотведения.',
+            'Во время осмотра мы проверяем исходные условия и обсуждаем технически подходящее решение с удобным малопороговым доступом.',
+          ],
+        },
+        {
+          heading: 'Выбор плитки, сантехники и оснащения',
+          body: [
+            'На внешний вид и бюджет заметно влияют плитка, смесители и сантехника. По желанию мы берём закупку материалов на себя или работаем с уже выбранными изделиями.',
+            'Перед заказом проверяем, подходят ли формат плитки и оборудование к имеющимся условиям и запланированной конструкции.',
+          ],
+        },
+        {
+          heading: 'Ремонт ванной перед новой сдачей квартиры',
+          body: [
+            'Для сдаваемой квартиры не всегда нужна максимально сложная переделка. Важны исправное техническое состояние, практичные поверхности и аккуратное выполнение, после которого объект можно передать жильцам.',
+            'После осмотра согласуем объём с учётом состояния ванной, будущего использования и планируемой сдачи квартиры.',
+          ],
+        },
+      ],
+      process: {
+        heading: 'Как проходит ремонт ванной с SorgfaltBau',
+        steps: [
+          {
+            title: 'Запрос и фотографии',
+            body: 'Кратко опишите текущее состояние и пожелания. Фотографии помогут с первой оценкой.',
+          },
+          {
+            title: 'Осмотр и замеры',
+            body: 'Проверяем помещение, существующие подключения, основания и планируемое использование.',
+          },
+          {
+            title: 'Планирование и предложение',
+            body: 'Согласуем объём, материалы, оснащение, последовательность и реалистичный период выполнения.',
+          },
+          {
+            title: 'Демонтаж и подготовка',
+            body: 'Старую сантехнику и затрагиваемые поверхности удаляем в согласованном объёме.',
+          },
+          {
+            title: 'Отделка и монтаж',
+            body: 'Сантехнические работы, гипсокартон, гидроизоляцию, плитку и монтаж согласуем по этапам.',
+          },
+          {
+            title: 'Передача результата',
+            body: 'После завершения вместе проверяем выполненные работы и аккуратно передаём ванную.',
+          },
+        ],
+      },
+      guide: {
+        heading: 'Руководство по ремонту ванной',
+        body: 'Подробнее о факторах стоимости, этапах, сроках и планировании читайте в нашем руководстве.',
+        anchor: 'Ремонт ванной в Галле: стоимость, этапы и сроки',
+        path: '/news/badsanierung-halle-kosten-ablauf-dauer',
+      },
+      reference: {
+        heading: 'Примеры ванных из выполненных проектов',
+        body: 'В нашей галерее опубликованы фотографии выполненных SorgfaltBau работ в ванных комнатах.',
+        anchor: 'Посмотреть проекты ванных в галерее',
+        path: '/galerie',
+      },
+      trustPoints: [
+        {value: '10+', label: 'лет практического опыта'},
+        {value: '200+', label: 'выполненных задач от внутренней отделки до наружных работ'},
+        {value: 'Напрямую', label: 'один контакт для согласованных этапов работ'},
+        {value: 'Halle', label: 'основной регион — Halle (Saale) и окрестности'},
       ],
       faq: [
         {
-          q: 'Сколько ванная будет недоступна?',
-          a: 'Полный ремонт в зависимости от площади и объёма обычно занимает от одной до трёх недель. Заранее называем реальные сроки и держим в курсе, чтобы вы могли планировать.',
+          q: 'Сколько стоит ремонт ванной в Галле?',
+          a: 'Стоимость зависит от площади, состояния коммуникаций, необходимого демонтажа, гидроизоляции, плитки и оснащения. Реалистично рассчитать объём можно после осмотра.',
         },
         {
-          q: 'Закупаете ли материалы?',
-          a: 'По желанию берём закупку полностью или работаем с выбранными вами плиткой, смесителями и сантехникой. Что разумнее — обсудим при расчёте.',
+          q: 'Сколько длится ремонт ванной?',
+          a: 'Срок зависит от размера и состояния ванной, объёма работ и доступности материалов. После осмотра мы называем реалистичный период выполнения.',
         },
         {
-          q: 'Сделаете ли душ вровень с полом?',
-          a: 'Да. Душ без порога — это наш стандарт: с правильной гидроизоляцией, уклоном и нескользящей плиткой.',
+          q: 'Чем полный ремонт отличается от обновления ванной?',
+          a: 'Обновление часто затрагивает видимые поверхности и сантехнику. При полном ремонте могут дополнительно обновляться коммуникации, гидроизоляция, основания и конструкция стен или пола. Необходимый объём определяет осмотр.',
         },
         {
-          q: 'Делаете ли частичный ремонт?',
-          a: 'Да. От замены душа или отдельных предметов до полной перепланировки — подстраиваем объём под задачу и бюджет.',
+          q: 'Можно ли сделать только частичный ремонт?',
+          a: 'Да. В зависимости от состояния можно обновить душ, заменить отдельную сантехнику, облицевать плиткой часть помещения или восстановить повреждённые участки.',
         },
         {
-          q: 'Делаете ли электрику в ванной?',
-          a: 'Координируем нужные работы в общем графике. Электроподключение по нормам выполняет профильная фирма; мы согласуем стыки, чтобы всё совпало.',
+          q: 'Можно ли сделать душ вровень с полом в старом доме?',
+          a: 'Это зависит от высоты конструкции пола, прокладки коммуникаций и водоотведения. Мы проверяем существующие условия на месте и предлагаем технически подходящее решение.',
         },
         {
-          q: 'Работаете в сдаваемых квартирах?',
-          a: 'Да. Перед сдачей быстро и чисто доводим ванную до современного состояния под передачу.',
+          q: 'Можно ли купить плитку или сантехнику самостоятельно?',
+          a: 'Да. Мы можем работать с уже выбранными изделиями или взять закупку на себя. До заказа проверяем, подходят ли материалы и оборудование к имеющимся условиям и запланированной конструкции.',
+        },
+        {
+          q: 'Вы выполняете электрику в ванной?',
+          a: 'Электроподключения выполняет соответствующая профильная фирма, а мы координируем эти работы в общем порядке этапов.',
+        },
+        {
+          q: 'Вы ремонтируете ванные перед новой сдачей квартиры?',
+          a: 'Да. После осмотра согласуем объём с учётом технического состояния, практичного оснащения и планируемой передачи квартиры жильцам.',
         },
         {
           q: 'В каком районе работаете?',
           a: 'Основной район — Halle (Saale) со всеми районами, плюс Merseburg, Leipzig, Schkeuditz и ближайшие окрестности.',
         },
       ],
+      faqHeading: 'Частые вопросы о ремонте ванной в Halle',
+      cta: {
+        title: 'Планируете ремонт или обновление ванной в Halle?',
+        text: 'Кратко опишите текущее состояние ванной и свои пожелания или пришлите фотографии. Для крупного ремонта мы договоримся об осмотре и на месте уточним объём, оснащение и следующие шаги.',
+      },
     },
   },
 

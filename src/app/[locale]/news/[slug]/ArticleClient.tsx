@@ -39,6 +39,9 @@ const t = {
     pavingLead: 'Wenn Sie Einfahrt, Hof oder Wege professionell umsetzen lassen möchten, finden Sie weitere Informationen zu unseren',
     pavingAnchor: 'Pflasterarbeiten in Halle',
     pavingTail: '.',
+    bathroomLead: 'Wenn Sie die Arbeiten nicht selbst koordinieren möchten, finden Sie weitere Informationen zu unserer',
+    bathroomAnchor: 'Badsanierung in Halle',
+    bathroomTail: '.',
   },
   ru: {
     back: 'Все новости',
@@ -52,6 +55,9 @@ const t = {
     pavingLead: 'Если вы хотите профессионально выполнить въезд, двор или дорожки, подробнее об услуге читайте на странице',
     pavingAnchor: 'укладки брусчатки в Halle',
     pavingTail: '.',
+    bathroomLead: 'Если вы не хотите самостоятельно координировать все этапы, подробнее об услуге читайте на странице',
+    bathroomAnchor: 'ремонта ванной в Halle',
+    bathroomTail: '.',
   },
 };
 
@@ -225,6 +231,28 @@ export default function ArticleClient({
     slug === 'wohnung-renovieren-in-halle-trockenbau-malerarbeiten-bodenverlegung';
   const isExteriorGuide =
     slug === 'fassadensanierung-aussenanlagen-in-halle-fassade-einfahrt-terrasse';
+  const isBathroomGuide =
+    slug === 'badsanierung-halle-kosten-ablauf-dauer';
+
+  const contextualLink: ContextualLink | undefined = isExteriorGuide
+    ? {
+        afterHeading: isRu ? 'Въезд во двор:' : 'Einfahrt pflastern:',
+        lead: tx.pavingLead,
+        anchor: tx.pavingAnchor,
+        tail: tx.pavingTail,
+        href: `/${locale}/services/pflasterarbeiten-halle`,
+      }
+    : isBathroomGuide
+      ? {
+          afterHeading: isRu
+            ? 'Сколько стоит ремонт ванной в Halle?'
+            : 'Was kostet eine Badsanierung in Halle?',
+          lead: tx.bathroomLead,
+          anchor: tx.bathroomAnchor,
+          tail: tx.bathroomTail,
+          href: `/${locale}/services/badsanierung-halle`,
+        }
+      : undefined;
 
   const shareUrl = typeof window !== 'undefined'
     ? window.location.href
@@ -331,18 +359,7 @@ export default function ArticleClient({
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-base sm:text-[17px] leading-relaxed"
         >
-          {renderContent(
-            content,
-            isExteriorGuide
-              ? {
-                  afterHeading: isRu ? 'Въезд во двор:' : 'Einfahrt pflastern:',
-                  lead: tx.pavingLead,
-                  anchor: tx.pavingAnchor,
-                  tail: tx.pavingTail,
-                  href: `/${locale}/services/pflasterarbeiten-halle`,
-                }
-              : undefined,
-          )}
+          {renderContent(content, contextualLink)}
 
           {isRenovationGuide && (
             <p className="mb-5 mt-8 text-anthracite-600 leading-[1.8]">

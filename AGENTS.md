@@ -213,6 +213,9 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Expanded only `pflasterarbeiten-halle` in DE/RU for the Einfahrt/Hof/Terrasse cluster: surfaces, repair-versus-renewal, underbase, slope/drainage caveats, materials, cost factors without invented prices, a six-step process, verified trust points, CTA, FAQ, and a localized guide link.
 - Service intros can optionally use multiple paragraphs; existing string intros retain their previous rendering.
 - Added reciprocal DE/RU links between `pflasterarbeiten-halle` and `fassadensanierung-aussenanlagen-in-halle-fassade-einfahrt-terrasse`; the article backlink is injected only for that exact slug directly after its existing Einfahrt section heading and does not mutate database content.
+- Expanded only `badsanierung-halle` in DE/RU for the Badsanierung/Badrenovierung cluster: partial-versus-complete scope, cost factors without invented prices, six-step process, Altbau/Plattenbau, technically conditional bodengleiche/barrierearme solutions, material selection, Neuvermietung, verified trust points, FAQ, CTA, and links to the guide and real bathroom gallery references.
+- Added optional `reference` content to the shared service model for localized links to published project examples; service pages without it retain their previous rendering.
+- Published the bilingual database article `badsanierung-halle-kosten-ablauf-dauer` with a real bathroom gallery cover and persisted publication/update dates; added reciprocal contextual DE/RU links with the existing Badsanierung landing page.
 
 ### Why Us Visual And Copy Update
 
@@ -283,6 +286,7 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 
 - Restyled the public `/news` list page to match the SorgfaltBau visual system: navy gradient hero, light grid article area, branded news cards, orange accent details, and a dark CTA block while preserving the existing layout and data behavior.
 - Kept news visibility consistent between `/news` and `/news/[slug]`: in production an article must be `published` and have `publishedAt <= now`; future-dated articles are treated as scheduled and should not be directly visible.
+- News article JSON-LD now includes the existing localized `BreadcrumbList` alongside `BlogPosting`; Open Graph image dimensions come from the persisted cover dimensions instead of a fixed `1200x630` declaration.
 
 ### Gallery Image Update
 

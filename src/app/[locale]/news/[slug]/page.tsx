@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import { COMPANY_POSTAL_CODE, COMPANY_STREET_ADDRESS } from '@/lib/contact';
+import { getBreadcrumbSchema } from '@/lib/seo';
 import { getAbsoluteUrl, getLocalizedAlternates, getSiteUrl } from '@/lib/site';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -27,6 +28,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       metaDesc: true,
       metaDescRu: true,
       coverUrl: true,
+      coverWidth: true,
+      coverHeight: true,
       published: true,
       publishedAt: true,
     },
@@ -67,8 +70,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
             images: [
               {
                 url: `${siteUrl}${article.coverUrl}`,
-                width: 1200,
-                height: 630,
+                width: article.coverWidth || 1200,
+                height: article.coverHeight || 630,
                 alt: title,
               },
             ],
@@ -132,47 +135,54 @@ export default async function ArticlePage({ params }: { params: Params }) {
   const excerpt = isRu ? (article.excerptRu || article.excerpt) : article.excerpt;
   const content = isRu ? (article.contentRu || article.content) : article.content;
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: title,
-    description: excerpt,
-    url: `${siteUrl}/${locale}/news/${slug}`,
-    datePublished: article.publishedAt.toISOString(),
-    dateModified: article.updatedAt.toISOString(),
-    inLanguage: isRu ? 'ru' : 'de',
-    ...(article.coverUrl
-      ? {
-          image: {
-            '@type': 'ImageObject',
-            url: `${siteUrl}${article.coverUrl}`,
-            width: article.coverWidth,
-            height: article.coverHeight,
-          },
-        }
-      : {}),
-    author: {
-      '@type': 'Organization',
-      name: 'SorgfaltBau',
-      url: siteUrl,
-    },
-    publisher: {
-      '@type': 'HomeAndConstructionBusiness',
-      name: 'SorgfaltBau',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: COMPANY_STREET_ADDRESS,
-        postalCode: COMPANY_POSTAL_CODE,
-        addressLocality: 'Halle (Saale)',
-        addressRegion: 'Sachsen-Anhalt',
-        addressCountry: 'DE',
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: title,
+      description: excerpt,
+      url: `${siteUrl}/${locale}/news/${slug}`,
+      datePublished: article.publishedAt.toISOString(),
+      dateModified: article.updatedAt.toISOString(),
+      inLanguage: isRu ? 'ru' : 'de',
+      ...(article.coverUrl
+        ? {
+            image: {
+              '@type': 'ImageObject',
+              url: `${siteUrl}${article.coverUrl}`,
+              width: article.coverWidth,
+              height: article.coverHeight,
+            },
+          }
+        : {}),
+      author: {
+        '@type': 'Organization',
+        name: 'SorgfaltBau',
+        url: siteUrl,
+      },
+      publisher: {
+        '@type': 'HomeAndConstructionBusiness',
+        name: 'SorgfaltBau',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: COMPANY_STREET_ADDRESS,
+          postalCode: COMPANY_POSTAL_CODE,
+          addressLocality: 'Halle (Saale)',
+          addressRegion: 'Sachsen-Anhalt',
+          addressCountry: 'DE',
+        },
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': `${siteUrl}/${locale}/news/${slug}`,
       },
     },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `${siteUrl}/${locale}/news/${slug}`,
-    },
-  };
+    getBreadcrumbSchema([
+      {name: isRu ? 'Главная' : 'Startseite', path: `/${locale}`},
+      {name: isRu ? 'Новости' : 'Neuigkeiten', path: `/${locale}/news`},
+      {name: title, path: `/${locale}/news/${slug}`},
+    ]),
+  ];
 
   return (
     <>
