@@ -18,12 +18,11 @@ const STATIC_PATHS = [
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getSiteUrl();
-  const now = new Date();
+  const currentTime = new Date();
 
   const staticEntries: MetadataRoute.Sitemap = locales.flatMap((locale) =>
     STATIC_PATHS.map((path) => ({
       url: `${baseUrl}/${locale}${path}`,
-      lastModified: now,
       changeFrequency: path === '' ? 'weekly' : 'monthly',
       priority:
         path === ''
@@ -40,7 +39,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const serviceEntries: MetadataRoute.Sitemap = locales.flatMap((locale) =>
     SERVICE_SLUGS.map((slug) => ({
       url: `${baseUrl}/${locale}/services/${slug}`,
-      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,
     }))
@@ -49,12 +47,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articles = await prisma.newsArticle.findMany({
     where: {
       published: true,
-      publishedAt: {lte: now},
+      publishedAt: {lte: currentTime},
     },
     select: {
       slug: true,
       updatedAt: true,
       publishedAt: true,
+      createdAt: true,
     },
     orderBy: {
       publishedAt: 'desc',
@@ -64,7 +63,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articleEntries: MetadataRoute.Sitemap = articles.flatMap((article) =>
     locales.map((locale) => ({
       url: `${baseUrl}/${locale}/news/${article.slug}`,
-      lastModified: article.updatedAt,
+      lastModified: article.updatedAt ?? article.publishedAt ?? article.createdAt,
       changeFrequency: 'weekly',
       priority: 0.8,
     }))

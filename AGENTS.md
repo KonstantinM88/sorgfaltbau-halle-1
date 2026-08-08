@@ -254,6 +254,8 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Added the verified Google Unternehmensprofil URL `https://www.google.com/maps?cid=8758564088334118206` to `hasMap` and `sameAs`.
 - Confirmed LocalBusiness opening hours from Google Maps: Monday-Friday `08:00-18:00`, Saturday `09:00-14:00`, Sunday closed.
 - Added public `public/llms.txt` for GEO/AI discovery with Markdown links to the main pages, detailed service landing pages, local service area, contact details and AI usage guidance.
+- Replaced the generated robots metadata route with `public/robots.txt` so the exact crawler groups and comments are preserved; AI search/assistant bots and all other crawlers may access public pages but not `/api` or `/admin`.
+- Sitemap static and service URLs intentionally omit `lastModified` because the project has no trustworthy per-page content modification dates; news URLs use the persisted `updatedAt ?? publishedAt ?? createdAt` value, while current time is used only to exclude scheduled articles.
 - Added a `/llms.txt` header rule in `next.config.mjs` so the file is served as `text/markdown; charset=utf-8`.
 - Excluded `/llms.txt` from `src/proxy.ts` locale middleware matching so the root public file serves directly like `robots.txt` and `sitemap.xml`.
 - Standardized public SEO routing so canonical pages live only under `/de` or `/ru`: `next-intl` automatic alternate `Link` headers are disabled, and public URLs without a locale prefix redirect permanently (`308`) to the default `/de` path.
