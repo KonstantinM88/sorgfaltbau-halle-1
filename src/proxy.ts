@@ -12,6 +12,7 @@ const intlMiddleware = createMiddleware({
 });
 
 const STATIC_ASSET_CACHE_CONTROL = 'public, max-age=31536000, immutable';
+const STATIC_ASSET_EXPIRES = 'Thu, 31 Dec 2037 23:55:55 GMT';
 const CACHEABLE_PUBLIC_ASSET_PATH =
   /^\/(?:images|uploads)\/.+\.(?:avif|webp|png|jpe?g|gif|svg|ico|mp4|webm|woff2?)$/i;
 
@@ -34,6 +35,8 @@ export default async function proxy(request: NextRequest) {
   if (CACHEABLE_PUBLIC_ASSET_PATH.test(pathname)) {
     const response = NextResponse.next();
     response.headers.set('Cache-Control', STATIC_ASSET_CACHE_CONTROL);
+    response.headers.set('CDN-Cache-Control', STATIC_ASSET_CACHE_CONTROL);
+    response.headers.set('Expires', STATIC_ASSET_EXPIRES);
     return response;
   }
 

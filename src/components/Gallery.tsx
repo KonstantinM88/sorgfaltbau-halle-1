@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -56,10 +57,13 @@ export default function Gallery() {
                 className="relative group cursor-pointer overflow-hidden rounded-2xl aspect-[4/3] bg-anthracite-100"
                 onClick={() => setLightboxIndex(i)}
               >
-                <img
+                <Image
                   src={`/images/${galleryImages[i]}`}
                   alt={img.alt}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  fill
+                  loading="lazy"
+                  sizes="(max-width: 639px) calc(100vw - 2rem), (max-width: 1023px) calc(50vw - 2rem), 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-anthracite-950/70 via-anthracite-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">

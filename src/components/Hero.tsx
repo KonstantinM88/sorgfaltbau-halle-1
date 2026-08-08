@@ -2,6 +2,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { ArrowRight, ChevronDown } from 'lucide-react';
@@ -11,6 +12,46 @@ const HERO_MOBILE_IMAGE_SRC = '/uploads/hero-mobile-sb.webp';
 
 export default function Hero() {
   const t = useTranslations('hero');
+  const [mobileVideoEnabled, setMobileVideoEnabled] = useState(false);
+  const [mobileVideoReady, setMobileVideoReady] = useState(false);
+
+  useEffect(() => {
+    const mobile = window.matchMedia('(max-width: 767px)');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const connection = navigator as Navigator & {
+      connection?: { saveData?: boolean };
+    };
+
+    if (!mobile.matches || reducedMotion.matches || connection.connection?.saveData) {
+      return;
+    }
+
+    let idleId: number | undefined;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+    const enableVideo = () => {
+      if ('requestIdleCallback' in window) {
+        idleId = window.requestIdleCallback(
+          () => setMobileVideoEnabled(true),
+          { timeout: 2500 },
+        );
+      } else {
+        timeoutId = globalThis.setTimeout(() => setMobileVideoEnabled(true), 1500);
+      }
+    };
+
+    if (document.readyState === 'complete') {
+      enableVideo();
+    } else {
+      window.addEventListener('load', enableVideo, { once: true });
+    }
+
+    return () => {
+      window.removeEventListener('load', enableVideo);
+      if (idleId !== undefined) window.cancelIdleCallback(idleId);
+      if (timeoutId !== undefined) globalThis.clearTimeout(timeoutId);
+    };
+  }, []);
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -28,31 +69,33 @@ export default function Hero() {
 
       {/* в•ђв•ђв•ђв•ђв•ђв•ђв•ђ MOBILE вЂ” Video Background в•ђв•ђв•ђв•ђв•ђв•ђв•ђ */}
       <section className="relative isolate min-h-[94svh] overflow-hidden bg-anthracite-950 md:hidden">
-        {/* Video background */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          poster={HERO_MOBILE_IMAGE_SRC}
-          className="absolute inset-0 h-full w-full object-cover object-center"
-        >
-          <source src="/uploads/hero-b-video-mobile-720x960.mp4" type="video/mp4" />
-          <source src="/uploads/hero-mobile-sb.webm" type="video/webm" />
-        </video>
+        {/* The lightweight poster is the mobile LCP. Video starts only after load/idle. */}
+        <Image
+          src={HERO_MOBILE_IMAGE_SRC}
+          alt=""
+          fill
+          loading="eager"
+          fetchPriority="high"
+          sizes="100vw"
+          className="object-cover object-center"
+        />
 
-        {/* Fallback image (if video fails) */}
-        <noscript>
-          <Image
-            src={HERO_MOBILE_IMAGE_SRC}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-        </noscript>
+        {mobileVideoEnabled && (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="none"
+            aria-hidden="true"
+            onCanPlay={() => setMobileVideoReady(true)}
+            className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-500 ${
+              mobileVideoReady ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <source src="/uploads/hero-b-video-mobile-720x960.mp4" type="video/mp4" />
+          </video>
+        )}
 
         <div className="absolute inset-0 bg-gradient-to-r from-anthracite-950/92 via-anthracite-950/68 to-anthracite-950/22" />
         <div className="absolute inset-0 bg-gradient-to-t from-anthracite-950/90 via-anthracite-950/38 to-anthracite-950/42" />

@@ -6,6 +6,9 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
+    deviceSizes: [384, 640, 750, 828, 1080, 1200, 1920],
+    qualities: [75],
+    minimumCacheTTL: 31536000,
     localPatterns: [
       { pathname: '/uploads/**' },
       { pathname: '/images/**' },
@@ -37,6 +40,14 @@ const nextConfig = {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
           },
+          {
+            key: 'CDN-Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'Expires',
+            value: 'Thu, 31 Dec 2037 23:55:55 GMT',
+          },
         ],
       },
       {
@@ -45,6 +56,14 @@ const nextConfig = {
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'CDN-Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'Expires',
+            value: 'Thu, 31 Dec 2037 23:55:55 GMT',
           },
         ],
       },

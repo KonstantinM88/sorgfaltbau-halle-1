@@ -282,6 +282,14 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Changed the hero location highlight to the logo orange accent token `brand-accent` and added a dark/orange text glow for better mobile video readability.
 - Improved desktop hero readability with a subtle local navy radial backing behind the headline and a lighter text-shadow treatment so the text feels less washed out on bright image areas.
 
+### Mobile Performance Update
+
+- The mobile homepage hero now treats `/uploads/hero-mobile-sb.webp` as the eager high-priority LCP image and keeps the video source out of the initial HTML/network critical path.
+- Mobile hero video starts only after window load plus an idle callback, stays disabled for data-saver or reduced-motion users, and fades in after it can play; preserve this delayed behavior when changing hero media.
+- The homepage gallery uses responsive lazy `next/image` assets instead of eagerly downloading nine full-size WebP files on mobile.
+- Next image optimization uses a `384px` mobile device size and a one-year minimum cache TTL; public `/images` and `/uploads` responses include `Cache-Control`, `CDN-Cache-Control`, and `Expires` fallbacks for Hostinger.
+- After deploying static-cache changes, clear the Hostinger CDN cache before repeating PageSpeed tests so stale edge headers do not mask the new origin configuration.
+
 ### Footer UX Update
 
 - Added a visible sponsored SaaleWeb footer credit linking to `https://saaleweb.de/` with the disclosure text `Werbung · Webentwicklung: SaaleWeb` and `rel="sponsored noopener noreferrer"`.
