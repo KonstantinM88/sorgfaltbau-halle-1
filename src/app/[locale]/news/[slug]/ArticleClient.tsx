@@ -36,6 +36,9 @@ const t = {
     renovationLead: 'Wenn Sie die Umsetzung nicht selbst koordinieren möchten, unterstützt SorgfaltBau Sie bei der',
     renovationAnchor: 'professionellen Wohnungsrenovierung in Halle',
     renovationTail: '– von der Besichtigung bis zur abgestimmten Übergabe.',
+    pavingLead: 'Wenn Sie Einfahrt, Hof oder Wege professionell umsetzen lassen möchten, finden Sie weitere Informationen zu unseren',
+    pavingAnchor: 'Pflasterarbeiten in Halle',
+    pavingTail: '.',
   },
   ru: {
     back: 'Все новости',
@@ -46,6 +49,9 @@ const t = {
     renovationLead: 'Если вы не хотите самостоятельно координировать все этапы, SorgfaltBau выполнит',
     renovationAnchor: 'профессиональный ремонт квартиры в Halle',
     renovationTail: '— от осмотра до согласованной передачи результата.',
+    pavingLead: 'Если вы хотите профессионально выполнить въезд, двор или дорожки, подробнее об услуге читайте на странице',
+    pavingAnchor: 'укладки брусчатки в Halle',
+    pavingTail: '.',
   },
 };
 
@@ -71,11 +77,44 @@ function estimateReadTime(text: string): number {
  *  - * or – or - bullet lists (grouped into <ul>)
  *  - Regular paragraphs with proper spacing
  */
-function renderContent(text: string) {
+type ContextualLink = {
+  afterHeading: string;
+  lead: string;
+  anchor: string;
+  tail: string;
+  href: string;
+};
+
+function renderContent(text: string, contextualLink?: ContextualLink) {
   const lines = text.split('\n');
   const elements: React.ReactNode[] = [];
   let i = 0;
   let key = 0;
+  let contextualLinkRendered = false;
+
+  const renderContextualLink = (heading: string) => {
+    if (
+      contextualLinkRendered ||
+      !contextualLink ||
+      !heading.includes(contextualLink.afterHeading)
+    ) {
+      return;
+    }
+
+    elements.push(
+      <p key={key++} className="mb-5 mt-4 text-anthracite-600 leading-[1.8]">
+        {contextualLink.lead}{' '}
+        <Link
+          href={contextualLink.href}
+          className="font-semibold text-brand-orange underline decoration-brand-orange/30 underline-offset-4 transition-colors hover:text-brand-orange-dark"
+        >
+          {contextualLink.anchor}
+        </Link>
+        {contextualLink.tail}
+      </p>,
+    );
+    contextualLinkRendered = true;
+  };
 
   const isListLine = (line: string) => /^\s*[*\u2013\u2014-]\s/.test(line);
   const isHeading2 = (line: string) => line.startsWith('## ');
@@ -94,22 +133,26 @@ function renderContent(text: string) {
 
     // ### Heading
     if (isHeading3(line)) {
+      const heading = line.slice(4);
       elements.push(
         <h3 key={key++} className="text-lg sm:text-xl font-heading font-bold text-anthracite-900 mt-8 mb-3">
-          {line.slice(4)}
+          {heading}
         </h3>
       );
+      renderContextualLink(heading);
       i++;
       continue;
     }
 
     // ## Heading
     if (isHeading2(line)) {
+      const heading = line.slice(3);
       elements.push(
         <h2 key={key++} className="text-xl sm:text-2xl font-heading font-bold text-anthracite-900 mt-10 mb-4">
-          {line.slice(3)}
+          {heading}
         </h2>
       );
+      renderContextualLink(heading);
       i++;
       continue;
     }
@@ -145,6 +188,7 @@ function renderContent(text: string) {
             {line}
           </h3>
         );
+        renderContextualLink(line);
         i++;
         continue;
       }
@@ -179,6 +223,8 @@ export default function ArticleClient({
   const siteUrl = getSiteUrl();
   const isRenovationGuide =
     slug === 'wohnung-renovieren-in-halle-trockenbau-malerarbeiten-bodenverlegung';
+  const isExteriorGuide =
+    slug === 'fassadensanierung-aussenanlagen-in-halle-fassade-einfahrt-terrasse';
 
   const shareUrl = typeof window !== 'undefined'
     ? window.location.href
@@ -285,7 +331,18 @@ export default function ArticleClient({
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-base sm:text-[17px] leading-relaxed"
         >
-          {renderContent(content)}
+          {renderContent(
+            content,
+            isExteriorGuide
+              ? {
+                  afterHeading: isRu ? 'Въезд во двор:' : 'Einfahrt pflastern:',
+                  lead: tx.pavingLead,
+                  anchor: tx.pavingAnchor,
+                  tail: tx.pavingTail,
+                  href: `/${locale}/services/pflasterarbeiten-halle`,
+                }
+              : undefined,
+          )}
 
           {isRenovationGuide && (
             <p className="mb-5 mt-8 text-anthracite-600 leading-[1.8]">
@@ -299,6 +356,7 @@ export default function ArticleClient({
               {tx.renovationTail}
             </p>
           )}
+
         </motion.div>
 
         {/* Bottom divider */}

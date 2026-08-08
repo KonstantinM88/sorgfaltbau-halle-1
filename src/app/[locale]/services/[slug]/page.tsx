@@ -158,9 +158,14 @@ export default async function ServiceDetailPage({params}: {params: Params}) {
               <h1 className="font-heading text-[2rem] leading-[1.05] sm:text-[3rem] md:text-[3.4rem]">
                 {c.title}
               </h1>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-slate-100/82 sm:text-lg">
-                {c.intro}
-              </p>
+              {(Array.isArray(c.intro) ? c.intro : [c.intro]).map((paragraph) => (
+                <p
+                  key={paragraph}
+                  className="mt-5 max-w-2xl text-base leading-8 text-slate-100/82 sm:text-lg"
+                >
+                  {paragraph}
+                </p>
+              ))}
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a

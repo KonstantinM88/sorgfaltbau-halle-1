@@ -20,7 +20,7 @@ export type ServiceLocaleContent = {
   /** короткая подпись под H1 в каталоге */
   short: string;
   /** вводный абзац */
-  intro: string;
+  intro: string | string[];
   /** что входит в услугу */
   includes: string[];
   /** содержательные блоки */
@@ -1071,68 +1071,167 @@ export const SERVICES: Service[] = [
   {
     slug: 'pflasterarbeiten-halle',
     image: '/images/parking-driveways.webp',
-    serviceType: 'Pflasterarbeiten und Einfahrten',
+    serviceType: 'Pflasterarbeiten für Einfahrt, Hof und Terrasse',
     related: ['rohbau-halle', 'fassadendaemmung-halle', 'dachsanierung-halle'],
     de: {
-      title: 'Pflasterarbeiten und Einfahrten in Halle (Saale)',
-      metaTitle: 'Pflasterarbeiten Halle (Saale) – Einfahrt & Hof | SorgfaltBau',
+      title: 'Pflasterarbeiten in Halle (Saale) – Einfahrt, Hof und Terrasse',
+      metaTitle: 'Pflasterarbeiten Halle | Einfahrt, Hof & Terrasse | SorgfaltBau',
       metaDescription:
-        'Pflasterarbeiten in Halle (Saale): Einfahrten, Parkflächen, Höfe und Wege schlüsselfertig – mit tragfähigem Unterbau, Gefälle und Entwässerung. Jetzt anfragen.',
-      short: 'Einfahrten, Parkflächen und Höfe mit Entwässerung.',
-      intro:
-        'Eine Einfahrt muss tragen, Wasser ableiten und viele Jahre halten. SorgfaltBau übernimmt Pflasterarbeiten in Halle (Saale) und Umgebung schlüsselfertig – vom Rückbau der alten Fläche über tragfähigen Unterbau und Gefälle bis zur fertigen, sauber verlegten Fläche mit durchdachter Entwässerung.',
+        'Pflasterarbeiten in Halle (Saale) für Einfahrt, Hof, Terrasse und Wege: Rückbau, Unterbau, Gefälle und Entwässerung sauber aus einer Hand.',
+      short: 'Einfahrten, Höfe, Terrassen und Wege mit passendem Unterbau und Entwässerung.',
+      intro: [
+        'Ob Einfahrt, Hof, Terrasse oder Gartenweg: Dauerhafte Pflasterarbeiten beginnen nicht beim sichtbaren Stein, sondern mit einem tragfähigen Unterbau, dem richtigen Gefälle und einer funktionierenden Entwässerung. SorgfaltBau übernimmt Pflasterarbeiten in Halle (Saale) und Umgebung – vom Rückbau alter Flächen und den notwendigen Erdarbeiten über Tragschicht und Randeinfassung bis zur sauber verlegten Pflasterfläche.',
+        'Je nach Nutzung planen wir Aufbau und Material unterschiedlich. Eine Pkw-Einfahrt stellt andere Anforderungen an Unterbau und Pflaster als eine Terrasse oder ein Gartenweg.',
+      ],
       includes: [
-        'Einfahrten, Parkflächen und Hofflächen',
-        'Geh- und Gartenwege',
+        'Einfahrten und Garagenzufahrten',
+        'Hofflächen und Flächen vor Garagen',
+        'Terrassen und Hauseingänge',
+        'Stellplätze und Parkflächen',
+        'Geh- und Gartenwege sowie Übergänge',
         'Rückbau alter Pflaster- und Asphaltflächen',
         'Tragfähiger Unterbau und Tragschicht',
         'Verlegen mit Gefälle und Randeinfassung',
         'Entwässerung und Wasserführung',
         'Wassersammelschächte rund, quadratisch oder nach Maß',
-        'Pflasterarten nach Wahl (Beton, Naturstein)',
+        'Betonpflaster und Naturstein nach Projekt',
       ],
       sections: [
         {
-          heading: 'Unterbau und Entwässerung machen den Unterschied',
-          body: 'Eine Einfahrt hält nur so gut wie ihr Unterbau. Wir planen Tragschicht, Gefälle und Wasserführung von Anfang an mit, sodass keine Pfützen stehen bleiben, der Belag stabil liegt und Niederschlag sauber zu den Sammelschächten geführt wird.',
+          heading: 'Welche Flächen pflastern wir in Halle?',
+          body: 'Aufbau und Material richten sich nach Nutzung und Belastung. Eine befahrene Fläche benötigt einen anderen Aufbau als eine ausschließlich zu Fuß genutzte Terrasse oder ein Gartenweg.',
+          points: [
+            'Einfahrten und Garagenzufahrten',
+            'Hofflächen',
+            'Terrassen',
+            'Stellplätze und Parkflächen',
+            'Hauseingänge',
+            'Gehwege',
+            'Gartenwege',
+            'Flächen vor Garagen',
+            'Übergänge zwischen Haus, Hof und Garten',
+          ],
         },
         {
-          heading: 'Von der alten Fläche zur fertigen Einfahrt',
-          body: 'Bei Bedarf bauen wir die alte Pflaster- oder Asphaltfläche zurück, entsorgen das Material, richten den Unterbau neu ein und verlegen das Pflaster sauber mit fester Randeinfassung – auch bei schwieriger Entwässerung oder beengten Verhältnissen.',
+          heading: 'Einfahrt pflastern in Halle – auf den richtigen Aufbau kommt es an',
+          body: [
+            'Eine Einfahrt wird täglich durch Fahrzeuge, Witterung und Feuchtigkeit belastet. Deshalb reicht es nicht, Pflastersteine lediglich auf eine bestehende Fläche zu legen. Entscheidend sind ein ausreichend tragfähiger Untergrund, fachgerecht aufgebaute Tragschichten, eine stabile Randeinfassung sowie ein Gefälle, über das Niederschlagswasser kontrolliert abgeführt werden kann.',
+            'Vor Beginn prüfen wir den vorhandenen Aufbau und klären, ob bestehende Schichten weiter genutzt werden können oder erneuert werden müssen. So wird nicht pauschal mehr zurückgebaut als notwendig.',
+          ],
         },
         {
-          heading: 'Tragfähig für Auto und Alltag',
-          body: 'Eine Pkw-Einfahrt trägt andere Lasten als ein Gartenweg. Wir wählen Aufbau, Pflasterdicke und Verband passend zur Nutzung, damit die Fläche unter dem Gewicht von Fahrzeugen dauerhaft eben und tragfähig bleibt.',
+          heading: 'Hof und Terrasse pflastern',
+          body: [
+            'Bei Hofflächen und Terrassen spielen neben der Tragfähigkeit auch Optik, Übergänge und Wasserführung eine wichtige Rolle. Pflaster, Format und Verlegemuster sollten zum Gebäude und zur Nutzung der Fläche passen.',
+            'Bei Terrassen achten wir besonders auf saubere Anschlüsse an Haus, Garten, Türen oder Stufen und darauf, dass Niederschlagswasser nicht zum Gebäude geführt wird.',
+          ],
         },
         {
-          heading: 'Material und Optik nach Wunsch',
-          body: 'Ob schlichtes Betonpflaster, Naturstein oder eine bestimmte Verlegeart – wir beraten zu Material, Farbe und Muster, das zu Haus und Garten passt. So entsteht eine Fläche, die funktioniert und gut aussieht.',
+          heading: 'Neu pflastern oder bestehende Fläche sanieren?',
+          body: [
+            'Nicht jede unebene oder abgesackte Pflasterfläche muss vollständig neu aufgebaut werden. Entscheidend ist, warum sich die Fläche verändert hat. Liegt das Problem nur in einzelnen Steinen, kann eine begrenzte Reparatur ausreichen. Sind Unterbau, Gefälle oder Entwässerung mangelhaft, ist häufig eine umfassendere Erneuerung sinnvoll.',
+            'Bei der Besichtigung prüfen wir deshalb nicht nur die sichtbare Oberfläche, sondern auch erkennbare Ursachen des Problems und empfehlen einen passenden Umfang.',
+          ],
         },
         {
-          heading: 'Sauber, termintreu, ordentlich übergeben',
-          body: 'Wir arbeiten strukturiert, halten die Baustelle ordentlich und entsorgen Aushub und Altmaterial. Nach Abschluss übergeben wir eine saubere, nutzbare Fläche – mit klarer Absprache zu Ablauf und Termin vorab.',
+          heading: 'Unterbau und Tragschicht machen den Unterschied',
+          body: [
+            'Der Unterbau verteilt die Belastung und bildet die stabile Basis für die Pflasterfläche. Ist er nicht ausreichend tragfähig oder verdichtet, können sich später Spuren, Senken oder Verschiebungen bilden.',
+            'Welche vorhandenen Schichten weiter genutzt werden können und welcher Aufbau sinnvoll ist, hängt von Untergrund, Nutzung und Zustand der Fläche ab. Das klären wir vor Ort, ohne pauschale Aufbauhöhen für jedes Grundstück zu versprechen.',
+          ],
+        },
+        {
+          heading: 'Gefälle und Entwässerung richtig planen',
+          body: [
+            'Regenwasser sollte bereits bei der Planung berücksichtigt werden. Je nach Grundstück und vorhandenen Anschlüssen kann die Lösung über das Gefälle der Fläche, geeignete Abläufe oder Sammelschächte erfolgen.',
+            'Vor Ort prüfen wir vorhandene Höhen, Anschlüsse und Wasserführung und stimmen die Ausführung auf die jeweilige Situation ab. Ob zusätzliche Freigaben oder Vorgaben zu beachten sind, muss projektbezogen geklärt werden.',
+          ],
+        },
+        {
+          heading: 'Betonpflaster oder Naturstein?',
+          body: [
+            'Betonpflaster bietet eine große Auswahl an Formaten, Farben und Oberflächen und eignet sich für viele Einfahrten, Höfe und Wege. Naturstein wirkt individueller und kann besonders bei Terrassen, Eingangsbereichen oder gestalterisch anspruchsvollen Flächen interessant sein.',
+            'Welche Variante sinnvoll ist, hängt von Nutzung, gewünschter Optik und Budget ab.',
+          ],
+        },
+        {
+          heading: 'Was kosten Pflasterarbeiten in Halle?',
+          body: [
+            'Die Kosten für Pflasterarbeiten hängen nicht nur von der Größe der Fläche ab. Entscheidend sind vor allem der vorhandene Untergrund, notwendiger Rückbau und Aushub, die Tragschicht, Randeinfassungen, Entwässerung sowie das gewählte Pflaster.',
+            'Eine vorhandene, tragfähige Fläche mit geringem Vorbereitungsaufwand wird anders kalkuliert als eine Einfahrt, bei der alter Asphalt entfernt, Boden ausgehoben und der komplette Unterbau neu hergestellt werden muss.',
+            'Nach einer Besichtigung können wir den tatsächlichen Aufwand einschätzen und ein nachvollziehbares Angebot erstellen.',
+          ],
+          points: [
+            'Fläche in m²',
+            'Zustand des Untergrunds',
+            'Rückbau und Aushub',
+            'Entsorgung',
+            'Notwendiger Unterbau',
+            'Randeinfassung',
+            'Gefälle und Entwässerung',
+            'Material',
+            'Zugänglichkeit der Baustelle',
+          ],
         },
       ],
+      process: {
+        heading: 'So laufen Pflasterarbeiten mit SorgfaltBau ab',
+        steps: [
+          {title: 'Anfrage und Fotos', body: 'Sie beschreiben Fläche, Nutzung und gewünschten Zustand. Fotos helfen bei der ersten Einschätzung.'},
+          {title: 'Besichtigung', body: 'Wir prüfen Fläche, Untergrund, Höhen, Zufahrt und Wasserführung.'},
+          {title: 'Planung und Angebot', body: 'Wir stimmen Rückbau, Aufbau, Material, Entwässerung und Ablauf ab.'},
+          {title: 'Rückbau und Vorbereitung', body: 'Wenn erforderlich, werden alte Beläge entfernt und der Untergrund vorbereitet.'},
+          {title: 'Unterbau und Pflasterung', body: 'Tragschicht, Gefälle, Randeinfassung und Pflaster werden entsprechend der geplanten Nutzung ausgeführt.'},
+          {title: 'Übergabe', body: 'Nach Abschluss wird die Fläche ordentlich und nutzbar übergeben.'},
+        ],
+      },
+      guide: {
+        heading: 'Ratgeber zu Einfahrt und Außenanlagen',
+        body: 'Mehr zu Unterbau, Entwässerung, Einfahrten, Terrassen und der Planung von Außenflächen lesen Sie in unserem Ratgeber.',
+        anchor: 'Fassade, Einfahrt und Terrasse richtig planen',
+        path: '/news/fassadensanierung-aussenanlagen-in-halle-fassade-einfahrt-terrasse',
+      },
+      trustPoints: [
+        {value: '10+', label: 'Jahre praktische Erfahrung'},
+        {value: '200+', label: 'umgesetzte Aufgaben von Innenarbeiten bis Außenflächen'},
+      ],
+      cta: {
+        title: 'Einfahrt, Hof oder Terrasse in Halle pflastern lassen?',
+        text: 'Beschreiben Sie kurz die Fläche, Nutzung und den aktuellen Zustand oder senden Sie Fotos. Bei größeren Pflasterarbeiten vereinbaren wir eine Besichtigung und klären Untergrund, Wasserführung und gewünschten Aufbau vor Ort.',
+      },
+      faqHeading: 'Häufige Fragen zu Pflasterarbeiten',
       faq: [
         {
+          q: 'Was kosten Pflasterarbeiten in Halle?',
+          a: 'Die Kosten hängen von Fläche, Untergrund, Rückbau, Aufbau, Entwässerung und Material ab. Nach einer Besichtigung lässt sich der tatsächliche Aufwand zuverlässig einschätzen.',
+        },
+        {
+          q: 'Wie lange dauern Pflasterarbeiten?',
+          a: 'Die Dauer richtet sich nach Größe, Zugänglichkeit, notwendigem Rückbau, Unterbau und Material. Nach der Besichtigung können wir ein realistisches Zeitfenster nennen.',
+        },
+        {
+          q: 'Kann eine alte Einfahrt neu gepflastert werden?',
+          a: 'Ja. Vorher prüfen wir, welche Teile des vorhandenen Aufbaus weiter genutzt werden können und wo eine Erneuerung sinnvoll ist.',
+        },
+        {
           q: 'Übernehmen Sie auch die Entwässerung?',
-          a: 'Ja. Gefälle, Wasserführung und Sammelschächte planen und setzen wir mit um – auch bei schwierigen oder wenig geneigten Flächen.',
+          a: 'Ja. Gefälle, Wasserführung und geeignete Abläufe oder Sammelschächte können wir passend zur Situation mit planen und ausführen. Mögliche Vorgaben oder Genehmigungen werden projektbezogen geklärt.',
         },
         {
           q: 'Wie lange hält eine fachgerecht verlegte Fläche?',
-          a: 'Mit tragfähigem Unterbau und richtigem Gefälle viele Jahre. Genau deshalb investieren wir früh in Unterbau und Entwässerung statt nur in die sichtbare Oberfläche.',
+          a: 'Die Haltbarkeit hängt von Untergrund, Aufbau, Nutzung, Material und Wasserführung ab. Deshalb betrachten wir nicht nur den sichtbaren Stein, sondern auch Unterbau, Einfassung und Entwässerung.',
         },
         {
-          q: 'Reißen Sie die alte Fläche selbst ab?',
+          q: 'Übernehmen Sie Rückbau und Entsorgung?',
           a: 'Ja. Rückbau und Entsorgung der alten Pflaster- oder Asphaltfläche gehören zum Leistungsumfang.',
         },
         {
           q: 'Welches Pflaster ist für eine Pkw-Einfahrt geeignet?',
-          a: 'Für Einfahrten wählen wir ausreichend dickes Pflaster und einen tragfähigen Aufbau, der Fahrzeuglasten aufnimmt. Material und Verband stimmen wir auf die Nutzung ab.',
+          a: 'Material, Format, Aufbau und Verlegeart müssen zur geplanten Fahrzeugbelastung passen. Welche Variante geeignet ist, stimmen wir auf Nutzung, Untergrund, Optik und Budget ab.',
         },
         {
-          q: 'Können Sie auch nur einen Hof oder Weg pflastern?',
-          a: 'Ja, vom kleinen Gartenweg über den Hof bis zur kompletten Einfahrt – den Umfang richten wir nach Ihrem Vorhaben.',
+          q: 'Pflastern Sie auch Terrassen und Gartenwege?',
+          a: 'Ja. Neben Einfahrten übernehmen wir je nach Projekt auch Höfe, Terrassen, Stellplätze sowie Geh- und Gartenwege.',
         },
         {
           q: 'Wann ist die beste Zeit für Pflasterarbeiten?',
@@ -1140,70 +1239,169 @@ export const SERVICES: Service[] = [
         },
         {
           q: 'In welchem Gebiet arbeiten Sie?',
-          a: 'Schwerpunkt ist Halle (Saale) und das nahe Umland – darunter Merseburg, Leipzig, Schkeuditz, Landsberg und Kabelsketal.',
+          a: 'Schwerpunkt ist Halle (Saale). Je nach Projektumfang arbeiten wir auch in Merseburg, Landsberg, Kabelsketal, Schkeuditz und weiteren Orten im nahen Umland.',
         },
       ],
     },
     ru: {
-      title: 'Мощение и въезды в Halle (Saale)',
-      metaTitle: 'Мощение Halle – въезды и дворы | SorgfaltBau',
+      title: 'Укладка брусчатки в Halle (Saale) — въезд, двор и терраса',
+      metaTitle: 'Укладка брусчатки Halle | Въезд, двор и терраса | SorgfaltBau',
       metaDescription:
-        'Мощение в Halle (Saale): въезды, парковки, дворы и дорожки под ключ — с несущим основанием, уклоном и водоотводом. Оставьте заявку.',
-      short: 'Въезды, парковки и дворы с водоотводом.',
-      intro:
-        'Въезд должен держать нагрузку, отводить воду и служить годами. SorgfaltBau выполняет мощение в Halle (Saale) и окрестностях под ключ — от демонтажа старого покрытия через несущее основание и уклон до готовой, аккуратно уложенной площадки с продуманным водоотводом.',
+        'Укладка брусчатки в Halle (Saale): въезд, двор, терраса и дорожки — демонтаж, основание, уклон и водоотвод в одном согласованном процессе.',
+      short: 'Въезды, дворы, террасы и дорожки с подходящим основанием и водоотводом.',
+      intro: [
+        'Въезд, двор, терраса или садовая дорожка: качественное мощение начинается не с видимой брусчатки, а с устойчивого основания, правильного уклона и продуманного отвода воды. SorgfaltBau выполняет укладку брусчатки в Halle (Saale) и окрестностях — от демонтажа старого покрытия и земляных работ до несущего слоя, бордюров и аккуратно уложенной поверхности.',
+        'Конструкцию и материал подбираем под использование площадки. Въезд для автомобиля требует другого основания, чем пешеходная терраса или садовая дорожка.',
+      ],
       includes: [
-        'Въезды, парковки и дворовые площадки',
-        'Пешеходные и садовые дорожки',
+        'Въезды и подъезды к гаражу',
+        'Дворы и площадки перед гаражом',
+        'Террасы и входные зоны',
+        'Парковочные места и площадки',
+        'Пешеходные, садовые дорожки и переходы',
         'Демонтаж старой брусчатки и асфальта',
         'Несущее основание и щебёночный слой',
         'Укладка с уклоном и бордюром',
-        'Водоотвод и движение воды',
+        'Уклон и организация отвода воды',
         'Сборные колодцы: круглые, квадратные, по размеру',
-        'Тип брусчатки на выбор (бетон, натуральный камень)',
+        'Бетонная брусчатка и натуральный камень по проекту',
       ],
       sections: [
         {
-          heading: 'Основание и водоотвод решают всё',
-          body: 'Въезд держится ровно настолько, насколько хорошо основание. Планируем щебёночный слой, уклон и движение воды с самого начала, чтобы не стояли лужи, покрытие лежало стабильно, а осадки уходили в сборные колодцы.',
+          heading: 'Какие площадки мы мостим в Halle?',
+          body: 'Основание и материал зависят от назначения и нагрузки. Площадка для автомобиля требует другой подготовки, чем терраса или садовая дорожка, используемая только пешеходами.',
+          points: [
+            'Въезды и подъезды к гаражу',
+            'Дворовые площадки',
+            'Террасы',
+            'Парковочные места',
+            'Входные зоны',
+            'Пешеходные дорожки',
+            'Садовые дорожки',
+            'Площадки перед гаражом',
+            'Переходы между домом, двором и садом',
+          ],
         },
         {
-          heading: 'От старой площадки до готового въезда',
-          body: 'При необходимости демонтируем старую брусчатку или асфальт, вывозим материал, заново формируем основание и аккуратно укладываем покрытие с твёрдым бордюром — в том числе при сложном водоотводе или тесных условиях.',
+          heading: 'Укладка брусчатки на въезде в Halle — главное правильное основание',
+          body: [
+            'Въезд ежедневно испытывает нагрузку от автомобилей, погоды и влаги. Поэтому недостаточно просто уложить новую брусчатку на существующую поверхность. Важны устойчивый грунт, правильно подготовленные несущие слои, стабильный бордюр и уклон для контролируемого отвода дождевой воды.',
+            'Перед началом проверяем существующее основание и определяем, какие слои можно использовать дальше, а какие разумно обновить. Это позволяет не демонтировать больше, чем действительно необходимо.',
+          ],
         },
         {
-          heading: 'Под машину и быт',
-          body: 'Въезд под автомобиль держит иные нагрузки, чем садовая дорожка. Подбираем конструкцию, толщину брусчатки и перевязку под эксплуатацию, чтобы площадка под весом машин оставалась ровной и несущей.',
+          heading: 'Мощение двора и террасы',
+          body: [
+            'Для двора и террасы важны не только несущая способность, но и внешний вид, переходы и направление воды. Формат, рисунок укладки и материал должны соответствовать зданию и использованию площадки.',
+            'На террасах особенно важны аккуратные примыкания к дому, саду, дверям или ступеням и организация уклона так, чтобы вода не направлялась к зданию.',
+          ],
         },
         {
-          heading: 'Материал и вид на выбор',
-          body: 'Простая бетонная брусчатка, натуральный камень или определённый рисунок укладки — советуем материал, цвет и узор под дом и сад. Получается площадка, которая работает и хорошо выглядит.',
+          heading: 'Уложить заново или отремонтировать существующую площадку?',
+          body: [
+            'Не каждую неровную или просевшую площадку нужно полностью перестраивать. Важно понять причину изменений. Если проблема только в отдельных камнях, может быть достаточно ограниченного ремонта. Если недостатки связаны с основанием, уклоном или водоотводом, часто разумнее более полное обновление.',
+            'При осмотре оцениваем не только видимую поверхность, но и доступные признаки причины проблемы, после чего предлагаем подходящий объём.',
+          ],
         },
         {
-          heading: 'Чисто, в срок, сдаём аккуратно',
-          body: 'Работаем структурированно, держим площадку в порядке и вывозим грунт и старый материал. По завершении сдаём чистую, готовую к использованию площадку — с заранее согласованным порядком и сроком.',
+          heading: 'Основание и несущий слой определяют устойчивость',
+          body: [
+            'Основание распределяет нагрузку и служит стабильной базой для брусчатки. Если оно недостаточно устойчиво или уплотнено, со временем могут появиться колеи, просадки и смещения.',
+            'Возможность сохранить существующие слои и необходимый способ подготовки зависят от грунта, нагрузки и состояния площадки. Это определяем на месте без универсальных обещаний по толщине для любого участка.',
+          ],
+        },
+        {
+          heading: 'Как спланировать уклон и отвод воды',
+          body: [
+            'Дождевую воду нужно учитывать уже при планировании. В зависимости от участка и существующих подключений решение может включать уклон поверхности, подходящие водоприёмники или сборные колодцы.',
+            'На месте проверяем высоты, существующие подключения и направление воды, после чего согласуем исполнение для конкретной ситуации. Возможные требования и разрешения уточняются отдельно по проекту.',
+          ],
+        },
+        {
+          heading: 'Бетонная брусчатка или натуральный камень?',
+          body: [
+            'Бетонная брусчатка предлагает большой выбор форматов, цветов и поверхностей и подходит для многих въездов, дворов и дорожек. Натуральный камень выглядит индивидуальнее и может быть интересен для террас, входных зон и более выразительных проектов.',
+            'Подходящий вариант зависит от назначения, желаемого вида и бюджета.',
+          ],
+        },
+        {
+          heading: 'Сколько стоит укладка брусчатки в Галле?',
+          body: [
+            'Стоимость зависит не только от площади. На цену влияют состояние основания, необходимость демонтажа старого покрытия и вывоза грунта, подготовка несущего слоя, бордюры, организация уклона и отвода воды, а также выбранный материал.',
+            'Площадка с устойчивым основанием и небольшим объёмом подготовки рассчитывается иначе, чем въезд, где требуется снять асфальт, выбрать грунт и заново выполнить весь несущий слой.',
+            'После осмотра участка можно определить реальный объём работ и подготовить понятное предложение.',
+          ],
+          points: [
+            'Площадь в м²',
+            'Состояние основания',
+            'Демонтаж и земляные работы',
+            'Вывоз материалов и грунта',
+            'Необходимый несущий слой',
+            'Бордюры и обрамление',
+            'Уклон и водоотвод',
+            'Выбранный материал',
+            'Доступ к строительной площадке',
+          ],
         },
       ],
+      process: {
+        heading: 'Как проходят работы по мощению с SorgfaltBau',
+        steps: [
+          {title: 'Запрос и фотографии', body: 'Вы описываете площадку, её назначение и желаемый результат. Фотографии помогают для первичной оценки.'},
+          {title: 'Осмотр', body: 'Проверяем площадь, грунт, высоты, подъезд и существующее направление воды.'},
+          {title: 'Планирование и предложение', body: 'Согласуем демонтаж, конструкцию основания, материал, водоотвод и порядок работ.'},
+          {title: 'Демонтаж и подготовка', body: 'При необходимости удаляем старое покрытие и подготавливаем грунт.'},
+          {title: 'Основание и укладка', body: 'Несущий слой, уклон, бордюры и брусчатка выполняются с учётом запланированного использования.'},
+          {title: 'Передача', body: 'После завершения площадка передаётся в аккуратном и пригодном для использования состоянии.'},
+        ],
+      },
+      guide: {
+        heading: 'Полезная статья о въезде и наружных площадках',
+        body: 'Подробнее об основании, водоотводе, въездах, террасах и планировании наружных площадок читайте в нашем материале.',
+        anchor: 'Как правильно спланировать фасад, въезд и террасу',
+        path: '/news/fassadensanierung-aussenanlagen-in-halle-fassade-einfahrt-terrasse',
+      },
+      trustPoints: [
+        {value: '10+', label: 'лет практического опыта'},
+        {value: '200+', label: 'выполненных задач от внутренних до наружных работ'},
+      ],
+      cta: {
+        title: 'Нужно вымостить въезд, двор или террасу в Halle?',
+        text: 'Кратко опишите площадку, её назначение и текущее состояние или пришлите фотографии. Для крупных работ согласуем осмотр и на месте уточним грунт, направление воды и желаемую конструкцию.',
+      },
+      faqHeading: 'Частые вопросы об укладке брусчатки',
       faq: [
         {
+          q: 'Сколько стоит укладка брусчатки в Галле?',
+          a: 'Стоимость зависит от площади, грунта, демонтажа, основания, водоотвода и материала. После осмотра можно надёжно оценить фактический объём работ.',
+        },
+        {
+          q: 'Сколько времени занимают работы по мощению?',
+          a: 'Срок зависит от размера, доступности, необходимого демонтажа, подготовки основания и материала. После осмотра мы называем реалистичный временной диапазон.',
+        },
+        {
+          q: 'Можно ли заново вымостить старый въезд?',
+          a: 'Да. Сначала проверяем, какие части существующего основания можно использовать дальше и где обновление действительно необходимо.',
+        },
+        {
           q: 'Делаете ли водоотвод?',
-          a: 'Да. Уклон, движение воды и сборные колодцы планируем и устраиваем — в том числе на сложных и слабонаклонных площадках.',
+          a: 'Да. Уклон, направление воды, подходящие водоприёмники или сборные колодцы можно спланировать и выполнить по ситуации. Возможные требования и разрешения уточняются отдельно для проекта.',
         },
         {
           q: 'Сколько служит правильно уложенная площадка?',
-          a: 'С несущим основанием и верным уклоном — много лет. Именно поэтому вкладываемся в основание и водоотвод, а не только в видимую поверхность.',
+          a: 'Срок службы зависит от грунта, основания, нагрузки, материала и направления воды. Поэтому учитываем не только видимую брусчатку, но и несущий слой, бордюры и водоотвод.',
         },
         {
-          q: 'Сносите ли старое покрытие сами?',
+          q: 'Выполняете демонтаж и вывоз?',
           a: 'Да. Демонтаж и вывоз старой брусчатки или асфальта входят в объём работ.',
         },
         {
           q: 'Какая брусчатка подходит для въезда под машину?',
-          a: 'Для въездов берём достаточно толстую брусчатку и несущую конструкцию под нагрузку автомобилей. Материал и перевязку подбираем под эксплуатацию.',
+          a: 'Материал, формат, основание и рисунок укладки должны соответствовать нагрузке от автомобилей. Подходящий вариант выбираем с учётом использования, грунта, внешнего вида и бюджета.',
         },
         {
-          q: 'Можно ли замостить только двор или дорожку?',
-          a: 'Да, от небольшой садовой дорожки и двора до целого въезда — объём под вашу задачу.',
+          q: 'Мостите ли террасы и садовые дорожки?',
+          a: 'Да. Кроме въездов, в зависимости от проекта выполняем дворы, террасы, парковочные места, пешеходные и садовые дорожки.',
         },
         {
           q: 'Когда лучше делать мощение?',
@@ -1211,7 +1409,7 @@ export const SERVICES: Service[] = [
         },
         {
           q: 'В каком районе работаете?',
-          a: 'Основной район — Halle (Saale) и ближайшие окрестности: Merseburg, Leipzig, Schkeuditz, Landsberg, Kabelsketal.',
+          a: 'Основной район — Halle (Saale). В зависимости от объёма работ принимаем проекты в Merseburg, Landsberg, Kabelsketal, Schkeuditz и ближайших окрестностях.',
         },
       ],
     },

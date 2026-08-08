@@ -11,6 +11,11 @@ Base project was originally adapted from `onebbau.de`; old brand references shou
 - Record important project changes in this `AGENTS.md` file before finishing work that changes architecture, integrations, shared UI systems, public copy/SEO structure, production assets, operational setup, or behavior future work must preserve.
 - Keep the log concise and append new notes to the relevant existing section when possible instead of duplicating the same change in multiple places.
 
+## Publish Handoff Preference
+
+- Push directly to the current `main` branch unless the user explicitly requests a separate branch or PR.
+- After every push, report what improved, what still needs to be done after deployment, and the exact pages (if any) to submit for reindexing in Google Search Console.
+
 ## Stack
 
 - Next.js `16.3.0` App Router
@@ -155,6 +160,7 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Added security overrides for PostCSS, js-yaml, fast-uri, undici and brace-expansion; `scripts/patch-minimatch-brace-expansion.mjs` keeps minimatch 3 compatible with brace-expansion 5 during postinstall/lint.
 - Added ESLint 9 with the Next.js 16 flat config, plus `typecheck`, `prelint`, and Prisma-aware `postinstall` scripts.
 - Updated Nodemailer to `9.0.5`, Sharp to `0.35.3`, and the resolved Prisma toolchain/client to `7.9.1`; `npm audit` reports zero vulnerabilities.
+- Refreshed Browserslist browser data with the official updater: `caniuse-lite` resolves to `1.0.30001809` and `baseline-browser-mapping` to `2.11.13`; target browsers did not change and no direct dependency was added.
 
 ### Dev Stability
 
@@ -204,6 +210,9 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Expanded only `wohnungsrenovierung-halle` in DE/RU to cover both Wohnungsrenovierung and Wohnungssanierung without creating a competing slug; it now includes Neuvermietung, cost factors without invented prices, a five-step process, verified 10+/200+ trust points, localized CTA/FAQ headings, and a guide link.
 - Extended the shared service content model with optional multi-paragraph sections, factor lists, process, guide, trust, CTA, and FAQ-heading fields; service pages without these fields keep their previous rendering.
 - Added reciprocal contextual DE/RU links between `wohnungsrenovierung-halle` and the existing news article `wohnung-renovieren-in-halle-trockenbau-malerarbeiten-bodenverlegung`; the article backlink is rendered only for that exact slug and does not mutate database content.
+- Expanded only `pflasterarbeiten-halle` in DE/RU for the Einfahrt/Hof/Terrasse cluster: surfaces, repair-versus-renewal, underbase, slope/drainage caveats, materials, cost factors without invented prices, a six-step process, verified trust points, CTA, FAQ, and a localized guide link.
+- Service intros can optionally use multiple paragraphs; existing string intros retain their previous rendering.
+- Added reciprocal DE/RU links between `pflasterarbeiten-halle` and `fassadensanierung-aussenanlagen-in-halle-fassade-einfahrt-terrasse`; the article backlink is injected only for that exact slug directly after its existing Einfahrt section heading and does not mutate database content.
 
 ### Why Us Visual And Copy Update
 
