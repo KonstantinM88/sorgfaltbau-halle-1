@@ -105,7 +105,7 @@ export default async function ServiceDetailPage({params}: {params: Params}) {
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
 
   const jsonLd = [
-    ...(slug === 'badsanierung-halle' ? [getLocalBusinessSchema(lang)] : []),
+    getLocalBusinessSchema(lang),
     getServiceSchema({
       name: c.title,
       description: c.metaDescription,

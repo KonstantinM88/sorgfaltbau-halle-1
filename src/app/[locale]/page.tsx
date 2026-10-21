@@ -5,6 +5,7 @@ import Hero from '@/components/Hero';
 import TrustBadges from '@/components/TrustBadges';
 import About from '@/components/About';
 import Services from '@/components/Services';
+import ServiceHighlights from '@/components/ServiceHighlights';
 import WhyUs from '@/components/WhyUs';
 import Testimonials from '@/components/Testimonials';
 import Gallery from '@/components/Gallery';
@@ -67,6 +68,7 @@ export default async function Home({params}: {params: Params}) {
       <main>
         <Hero />
         <TrustBadges />
+        <ServiceHighlights locale={locale} compact />
         <About />
         <Services />
         <WhyUs />

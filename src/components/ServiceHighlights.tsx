@@ -5,6 +5,7 @@ import {SERVICES} from '@/lib/services';
 
 type Props = {
   locale: string;
+  compact?: boolean;
 };
 
 const UI = {
@@ -14,6 +15,8 @@ const UI = {
     intro:
       'Zu den wichtigsten Leistungen gibt es eigene Seiten mit Ablauf, Umfang und Antworten auf häufige Fragen.',
     more: 'Mehr erfahren',
+    homeTitle: 'Renovierung, Innenausbau und Außenarbeiten in Halle',
+    homeIntro: 'Wählen Sie die passende Leistung für Ihr Haus oder Ihre Wohnung. Auf der jeweiligen Seite finden Sie den möglichen Umfang, die Vorbereitung und den nächsten Schritt zur Anfrage.',
   },
   ru: {
     eyebrow: 'Подробно',
@@ -21,10 +24,12 @@ const UI = {
     intro:
       'По основным услугам есть отдельные страницы с порядком работ, объёмом и ответами на частые вопросы.',
     more: 'Подробнее',
+    homeTitle: 'Ремонт, отделка и наружные работы в Halle',
+    homeIntro: 'Выберите нужную услугу для дома или квартиры. На её странице описаны возможный объём, подготовка и следующий шаг для обращения.',
   },
 } as const;
 
-export default function ServiceHighlights({locale}: Props) {
+export default function ServiceHighlights({locale, compact = false}: Props) {
   const lang = locale === 'ru' ? 'ru' : 'de';
   const ui = UI[lang];
 
@@ -36,10 +41,10 @@ export default function ServiceHighlights({locale}: Props) {
             {ui.eyebrow}
           </span>
           <h2 className="mt-5 font-heading text-3xl text-anthracite-950 sm:text-4xl">
-            {ui.title}
+            {compact ? ui.homeTitle : ui.title}
           </h2>
           <p className="mt-4 text-base leading-8 text-anthracite-600 sm:text-lg">
-            {ui.intro}
+            {compact ? ui.homeIntro : ui.intro}
           </p>
         </div>
 
@@ -52,7 +57,7 @@ export default function ServiceHighlights({locale}: Props) {
                 href={`/${locale}/services/${service.slug}`}
                 className="group flex flex-col overflow-hidden rounded-3xl border border-anthracite-100 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/40 hover:shadow-xl"
               >
-                <div className="relative aspect-[16/10] overflow-hidden">
+                {!compact && <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
                     src={service.image}
                     alt={c.title}
@@ -60,7 +65,7 @@ export default function ServiceHighlights({locale}: Props) {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 30vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                </div>
+                </div>}
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className="font-heading text-xl text-anthracite-950">{c.title}</h3>
                   <p className="mt-2 flex-1 text-sm leading-6 text-anthracite-500">{c.short}</p>

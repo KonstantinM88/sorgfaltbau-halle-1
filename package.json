@@ -11,7 +11,11 @@
     "build:turbo": "prisma generate && set NODE_OPTIONS=--max-old-space-size=4096&& next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "gsc:check": "node scripts/gsc-report.mjs check",
+    "gsc:report": "node scripts/gsc-report.mjs report",
+    "gsc:inspect": "node scripts/gsc-report.mjs inspect",
+    "seo:check": "node scripts/check-public-seo.mjs"
   },
   "dependencies": {
     "@prisma/adapter-pg": "7.9.1",

@@ -5,7 +5,8 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown, Phone } from 'lucide-react';
+import {COMPANY_PRIMARY_PHONE} from '@/lib/contact';
 
 const HERO_IMAGE_SRC = '/uploads/hero-sb.webp';
 const HERO_MOBILE_IMAGE_SRC = '/uploads/hero-mobile-sb.webp';
@@ -53,10 +54,6 @@ export default function Hero() {
     };
   }, []);
 
-  const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   const scrollToAbout = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -64,7 +61,7 @@ export default function Hero() {
   return (
     <>
       <h1 className="sr-only">
-        SorgfaltBau - Bau- und Handwerksleistungen {t('titleHighlight')}
+        {t('title').replace(/\n/g, ' ')} {t('titleHighlight')} — SorgfaltBau
       </h1>
 
       {/* в•ђв•ђв•ђв•ђв•ђв•ђв•ђ MOBILE вЂ” Video Background в•ђв•ђв•ђв•ђв•ђв•ђв•ђ */}
@@ -109,8 +106,8 @@ export default function Hero() {
             className="mb-4 font-heading text-[clamp(2.1rem,11vw,3.2rem)] leading-[1.06] text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.72)]"
             aria-hidden="true"
           >
-            <span className="block">SorgfaltBau - Bau- und Handwerks-</span>
-            <span className="block">leistungen</span>
+            <span className="mb-3 block font-body text-sm font-semibold uppercase tracking-[0.2em]">SorgfaltBau</span>
+            <span className="block whitespace-pre-line">{t('title')}</span>
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -130,13 +127,17 @@ export default function Hero() {
             {t('subtitle')}
           </motion.p>
 
+          <p className="mb-6 max-w-xl text-base leading-7 text-white/90">
+            {t('description')}
+          </p>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.9 }}
           >
-            <button
-              onClick={scrollToContact}
+            <a
+              href="#contact"
               className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-brand-orange px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-brand-orange-dark active:scale-95"
             >
               {t('cta')}
@@ -144,7 +145,14 @@ export default function Hero() {
                 size={20}
                 className="transition-transform group-hover:translate-x-1"
               />
-            </button>
+            </a>
+            <a
+              href={`tel:${COMPANY_PRIMARY_PHONE.replace(/\s+/g, '')}`}
+              className="mt-4 flex items-center justify-center gap-2 text-sm font-semibold text-white underline underline-offset-4"
+            >
+              <Phone size={16} />
+              {t('call')}: {COMPANY_PRIMARY_PHONE}
+            </a>
           </motion.div>
         </div>
       </section>
@@ -174,8 +182,8 @@ export default function Hero() {
               className="relative mb-5 rounded-[1.5rem] py-2 font-heading text-[clamp(3rem,5.2vw,5.4rem)] leading-[1.05] text-white drop-shadow-[0_4px_22px_rgba(0,0,0,0.72)] before:absolute before:-inset-x-6 before:-inset-y-4 before:-z-10 before:rounded-[2rem] before:bg-[radial-gradient(ellipse_at_left,rgba(7,31,53,0.46)_0%,rgba(7,31,53,0.28)_46%,transparent_76%)] before:backdrop-blur-[1px]"
               aria-hidden="true"
             >
-              <span className="block">SorgfaltBau - Bau- und Handwerks-</span>
-              <span className="block">leistungen</span>
+              <span className="mb-3 block font-body text-sm font-semibold uppercase tracking-[0.2em]">SorgfaltBau</span>
+              <span className="block whitespace-pre-line">{t('title')}</span>
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -195,13 +203,17 @@ export default function Hero() {
               {t('subtitle')}
             </motion.p>
 
+            <p className="mb-6 max-w-xl text-base leading-7 text-white/90 lg:text-lg">
+              {t('description')}
+            </p>
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.9 }}
             >
-              <button
-                onClick={scrollToContact}
+              <a
+                href="#contact"
                 className="group inline-flex items-center justify-center gap-3 rounded-full bg-brand-orange px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-brand-orange-dark hover:shadow-2xl hover:shadow-brand-orange/30 active:scale-95"
               >
                 {t('cta')}
@@ -209,7 +221,14 @@ export default function Hero() {
                   size={20}
                   className="transition-transform group-hover:translate-x-1"
                 />
-              </button>
+              </a>
+              <a
+                href={`tel:${COMPANY_PRIMARY_PHONE.replace(/\s+/g, '')}`}
+                className="mt-4 flex items-center gap-2 text-sm font-semibold text-white underline underline-offset-4"
+              >
+                <Phone size={16} />
+                {t('call')}: {COMPANY_PRIMARY_PHONE}
+              </a>
             </motion.div>
           </div>
         </div>

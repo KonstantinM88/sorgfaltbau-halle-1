@@ -4,6 +4,10 @@ import {locales} from '@/i18n/config';
 import {getSiteUrl} from '@/lib/site';
 import {SERVICE_SLUGS} from '@/lib/services';
 
+// Refresh published database articles without waiting for another deployment.
+// lastModified still comes only from persisted content dates below.
+export const revalidate = 3600;
+
 const STATIC_PATHS = [
   '',
   '/about',

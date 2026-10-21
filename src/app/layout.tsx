@@ -1,4 +1,5 @@
 import type {Metadata} from 'next';
+import {getLocale} from 'next-intl/server';
 import './globals.css';
 
 const FAVICON_VERSION = '20260223';
@@ -11,9 +12,10 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = await getLocale();
   return (
-    <html lang="de" className="scroll-smooth">
+    <html lang={locale} className="scroll-smooth">
       <body className="antialiased">{children}</body>
     </html>
   );

@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "SorgfaltBau – Bau- und Handwerksleistungen in Halle (Saale)",
-    "description": "SorgfaltBau – Ihr zuverlässiger Partner für Bau-, Renovierungs- und Handwerksarbeiten in Halle (Saale). Qualität, Termintreue und saubere Arbeit."
+    "title": "Renovierung & Innenausbau Halle (Saale) | SorgfaltBau",
+    "description": "Renovierung und Innenausbau in Halle (Saale): Trockenbau, Bäder, Böden und Fassaden. Für Eigentümer und Vermieter. Vorhaben mit SorgfaltBau besprechen."
   },
   "nav": {
     "home": "Startseite",
@@ -15,11 +15,12 @@
     "news": "Neuigkeiten"
   },
   "hero": {
-    "title": "SorgfaltBau – Bau- und Handwerks-\nleistungen",
+    "title": "Renovierung und\nInnenausbau",
     "titleHighlight": "in Halle (Saale)",
     "subtitle": "Zuverlässig. Sauber. Termingerecht.",
-    "description": "SorgfaltBau ist Ihr kompetenter Partner für Bau-, Renovierungs- und Handwerksarbeiten in Halle (Saale) und Umgebung. Wir stehen für saubere Arbeit, Termintreue und faire Preise.",
-    "cta": "Kostenlose Beratung anfragen"
+    "description": "Für Eigentümer und Vermieter: Trockenbau, Badrenovierung, Bodenbeläge und Fassadenarbeiten. Wir klären den Umfang und koordinieren die vereinbarten Schritte.",
+    "cta": "Kostenlose Beratung anfragen",
+    "call": "Direkt anrufen"
   },
   "trust": {
     "reliability": {

@@ -37,10 +37,13 @@ export default function Footer() {
 
   // Услуги в подвале — теперь ссылки на детальные страницы /services/[slug]
   const constructionItems = t.raw('services.construction.items') as string[];
-  const serviceLinks = FOOTER_SERVICE_INDICES.map((i) => ({
+  const serviceLinks = [{
+    label: locale === 'ru' ? 'Ремонт квартиры' : 'Wohnungsrenovierung',
+    href: `/${locale}/services/wohnungsrenovierung-halle`,
+  }, ...FOOTER_SERVICE_INDICES.map((i) => ({
     label: constructionItems[i],
     href: `/${locale}/services/${CONSTRUCTION_CATALOG_SLUGS[i]}`,
-  }));
+  }))];
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

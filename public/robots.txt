@@ -13,6 +13,8 @@ User-agent: Applebot
 User-agent: Applebot-Extended
 User-agent: Bytespider
 Allow: /
+Allow: /api/gallery/media/
+Allow: /api/news/media/
 Disallow: /api
 Disallow: /admin
 
@@ -20,6 +22,8 @@ Disallow: /admin
 
 User-agent: *
 Allow: /
+Allow: /api/gallery/media/
+Allow: /api/news/media/
 Disallow: /api
 Disallow: /admin
 

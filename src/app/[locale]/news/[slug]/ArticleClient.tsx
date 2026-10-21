@@ -42,6 +42,12 @@ const t = {
     bathroomLead: 'Wenn Sie die Arbeiten nicht selbst koordinieren möchten, finden Sie weitere Informationen zu unserer',
     bathroomAnchor: 'Badsanierung in Halle',
     bathroomTail: '.',
+    facadeLead: 'Wenn Sie Putz, Anstrich oder Dämmung umsetzen lassen möchten, finden Sie Leistungsumfang und Anfrage auf unserer Seite zur',
+    facadeAnchor: 'Fassadensanierung in Halle',
+    drywallLead: 'Für die Ausführung von Wänden, Decken und Verkleidungen erfahren Sie mehr über unseren',
+    drywallAnchor: 'Trockenbau in Halle',
+    flooringLead: 'Für die fachgerechte Umsetzung finden Sie weitere Informationen zu',
+    flooringAnchor: 'Bodenbelägen und Bodenverlegung in Halle',
   },
   ru: {
     back: 'Все новости',
@@ -58,6 +64,12 @@ const t = {
     bathroomLead: 'Если вы не хотите самостоятельно координировать все этапы, подробнее об услуге читайте на странице',
     bathroomAnchor: 'ремонта ванной в Halle',
     bathroomTail: '.',
+    facadeLead: 'Если планируете ремонт штукатурки, покраску или утепление, объём работ и способ обращения описаны на странице',
+    facadeAnchor: 'ремонта фасада в Halle',
+    drywallLead: 'Об устройстве стен, потолков и обшивок подробнее читайте на странице',
+    drywallAnchor: 'гипсокартонных работ в Halle',
+    flooringLead: 'Подробнее о подготовке основания и укладке читайте на странице',
+    flooringAnchor: 'напольных покрытий в Halle',
   },
 };
 
@@ -91,23 +103,17 @@ type ContextualLink = {
   href: string;
 };
 
-function renderContent(text: string, contextualLink?: ContextualLink) {
+function renderContent(text: string, contextualLinks: ContextualLink[] = []) {
   const lines = text.split('\n');
   const elements: React.ReactNode[] = [];
   let i = 0;
   let key = 0;
-  let contextualLinkRendered = false;
+  const renderedLinks = new Set<ContextualLink>();
 
   const renderContextualLink = (heading: string) => {
-    if (
-      contextualLinkRendered ||
-      !contextualLink ||
-      !heading.includes(contextualLink.afterHeading)
-    ) {
-      return;
-    }
-
-    elements.push(
+    for (const contextualLink of contextualLinks) {
+      if (renderedLinks.has(contextualLink) || !heading.includes(contextualLink.afterHeading)) continue;
+      elements.push(
       <p key={key++} className="mb-5 mt-4 text-anthracite-600 leading-[1.8]">
         {contextualLink.lead}{' '}
         <Link
@@ -118,8 +124,9 @@ function renderContent(text: string, contextualLink?: ContextualLink) {
         </Link>
         {contextualLink.tail}
       </p>,
-    );
-    contextualLinkRendered = true;
+      );
+      renderedLinks.add(contextualLink);
+    }
   };
 
   const isListLine = (line: string) => /^\s*[*\u2013\u2014-]\s/.test(line);
@@ -234,16 +241,22 @@ export default function ArticleClient({
   const isBathroomGuide =
     slug === 'badsanierung-halle-kosten-ablauf-dauer';
 
-  const contextualLink: ContextualLink | undefined = isExteriorGuide
-    ? {
+  const contextualLinks: ContextualLink[] = isExteriorGuide
+    ? [{
         afterHeading: isRu ? 'Въезд во двор:' : 'Einfahrt pflastern:',
         lead: tx.pavingLead,
         anchor: tx.pavingAnchor,
         tail: tx.pavingTail,
         href: `/${locale}/services/pflasterarbeiten-halle`,
-      }
+      }, {
+        afterHeading: isRu ? 'Ремонт фасада в Halle' : 'Fassadensanierung in Halle:',
+        lead: tx.facadeLead,
+        anchor: tx.facadeAnchor,
+        tail: '.',
+        href: `/${locale}/services/fassadendaemmung-halle`,
+      }]
     : isBathroomGuide
-      ? {
+      ? [{
           afterHeading: isRu
             ? 'Сколько стоит ремонт ванной в Halle?'
             : 'Was kostet eine Badsanierung in Halle?',
@@ -251,8 +264,22 @@ export default function ArticleClient({
           anchor: tx.bathroomAnchor,
           tail: tx.bathroomTail,
           href: `/${locale}/services/badsanierung-halle`,
-        }
-      : undefined;
+        }]
+      : isRenovationGuide
+        ? [{
+            afterHeading: isRu ? 'Гипсокартонные работы в Halle' : 'Trockenbau in Halle:',
+            lead: tx.drywallLead,
+            anchor: tx.drywallAnchor,
+            tail: '.',
+            href: `/${locale}/services/trockenbau-halle`,
+          }, {
+            afterHeading: isRu ? 'Укладка ламината и напольных покрытий' : 'Bodenverlegung und Laminatverlegung',
+            lead: tx.flooringLead,
+            anchor: tx.flooringAnchor,
+            tail: '.',
+            href: `/${locale}/services/bodenbelaege-halle`,
+          }]
+        : [];
 
   const shareUrl = typeof window !== 'undefined'
     ? window.location.href
@@ -359,7 +386,7 @@ export default function ArticleClient({
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-base sm:text-[17px] leading-relaxed"
         >
-          {renderContent(content, contextualLink)}
+          {renderContent(content, contextualLinks)}
 
           {isRenovationGuide && (
             <p className="mb-5 mt-8 text-anthracite-600 leading-[1.8]">

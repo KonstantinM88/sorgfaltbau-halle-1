@@ -100,6 +100,12 @@ export const SERVICES: Service[] = [
           body: 'Nach einer kurzen Beschreibung oder Besichtigung machen wir ein Aufmaß und nennen Material, Aufbau und Termin nachvollziehbar. In der Regel erhalten Sie das Angebot innerhalb von 2 bis 5 Werktagen – bei klaren Arbeiten oft als Festpreis. So wissen Sie vor dem Start, woran Sie sind.',
         },
       ],
+      guide: {
+        heading: 'Trockenbau als Teil der Wohnungsrenovierung',
+        body: 'Unser Ratgeber erklärt, wie Wände, Oberflächen und Bodenverlegung bei einer Renovierung aufeinander abgestimmt werden.',
+        anchor: 'Wohnung renovieren in Halle: Trockenbau, Malerarbeiten und Bodenverlegung',
+        path: '/news/wohnung-renovieren-in-halle-trockenbau-malerarbeiten-bodenverlegung',
+      },
       faq: [
         {
           q: 'Wie lange dauert eine Trockenbauwand?',
@@ -172,6 +178,12 @@ export const SERVICES: Service[] = [
           body: 'После короткого описания или осмотра делаем замер и понятно называем материал, конструкцию и срок. Смету обычно даём за 2–5 рабочих дней, по простым работам — часто фиксированной ценой. Вы знаете условия до старта.',
         },
       ],
+      guide: {
+        heading: 'Гипсокартон как часть ремонта квартиры',
+        body: 'В руководстве объясняем, как согласовать перегородки, отделку поверхностей и укладку пола при ремонте квартиры.',
+        anchor: 'Ремонт квартиры в Галле: гипсокартон, покраска и укладка пола',
+        path: '/news/wohnung-renovieren-in-halle-trockenbau-malerarbeiten-bodenverlegung',
+      },
       faq: [
         {
           q: 'Сколько делается перегородка?',
@@ -360,13 +372,15 @@ export const SERVICES: Service[] = [
     serviceType: 'Fassadenarbeiten und Dämmung',
     related: ['rohbau-halle', 'dachsanierung-halle', 'wohnungsrenovierung-halle'],
     de: {
-      title: 'Fassadenarbeiten und Dämmung in Halle (Saale)',
-      metaTitle: 'Fassadendämmung Halle (Saale) – WDVS, Putz, Anstrich | SorgfaltBau',
+      title: 'Fassadensanierung und Dämmung in Halle (Saale)',
+      metaTitle: 'Fassadensanierung Halle | Putz, Anstrich & WDVS | SorgfaltBau',
       metaDescription:
-        'Fassadenarbeiten und Wärmedämmung (WDVS) in Halle (Saale): Dämmung, Armierung, Ober- und Unterputz, Fassadenanstrich und Risssanierung. Heizkosten senken, Bausubstanz schützen. Jetzt anfragen.',
-      short: 'WDVS, Armierung, Putz und Fassadenanstrich.',
-      intro:
-        'Eine fachgerecht gedämmte Fassade senkt die Heizkosten spürbar, schützt das Mauerwerk vor Witterung und wertet das ganze Gebäude auf. SorgfaltBau übernimmt Fassadenarbeiten in Halle (Saale) und Umgebung – von der Dämmung über Armierung und Putz bis zum fertigen Anstrich, abgestimmt auf den Bestand, ob Einfamilienhaus, Altbau oder Mehrfamilienhaus.',
+        'Fassadensanierung und Fassadenarbeiten in Halle (Saale): Putz ausbessern, Risse prüfen, Fassade streichen oder mit WDVS dämmen. Angebot nach Besichtigung.',
+      short: 'Fassadensanierung: Putz, Anstrich und bei Bedarf WDVS.',
+      intro: [
+        'Risse im Putz, abblätternde Farbe oder eine geplante Dämmung: SorgfaltBau übernimmt Fassadensanierung und Fassadenarbeiten in Halle (Saale). Wir prüfen den Bestand und stimmen Putzreparatur, Armierung, Fassadenanstrich und gegebenenfalls ein Wärmedämm-Verbundsystem auf das Gebäude ab.',
+        'Nicht jede Fassade braucht eine vollständige Dämmung. Nach der Besichtigung besprechen wir, ob einzelne Flächen instand gesetzt, neu beschichtet oder umfassender saniert werden sollten – beim Einfamilienhaus ebenso wie im Altbau oder Mehrfamilienhaus.',
+      ],
       includes: [
         'Wärmedämm-Verbundsystem (WDVS) mit EPS oder Mineralwolle',
         'Armierung mit Gewebeeinbettung',
@@ -392,14 +406,29 @@ export const SERVICES: Service[] = [
         },
         {
           heading: 'Risse, Schäden und Teilflächen',
-          body: 'Nicht jede Fassade braucht gleich ein Komplettsystem. Oft genügt es, Risse zu sanieren, Putz auszubessern oder eine Teilfläche neu zu beschichten. Wir schauen, was tatsächlich nötig ist, und empfehlen die wirtschaftlich sinnvolle Lösung statt der teuersten.',
+          body: 'Eine Fassadensanierung kann auch ohne zusätzliche Dämmung sinnvoll sein. Vor einer Putzreparatur oder einem neuen Anstrich prüfen wir Schäden, Feuchtigkeit und Haftung des Untergrunds. Bei auffälligen Rissen muss zunächst die Ursache geklärt werden; ein Überstreichen allein beseitigt sie nicht. Danach stimmen wir die geeignete Instandsetzung oder Beschichtung ab.',
         },
         {
           heading: 'Material und Kosten vorab nachvollziehbar',
-          body: 'Sie erhalten eine klare Einschätzung zu Dämmstoff, Dämmstärke, Putzart, Gerüst und Terminfenster. Bei den meisten Fassaden ist ein belastbares Angebot nach Besichtigung möglich – ohne versteckte Überraschungen während der Ausführung.',
+          body: 'Was eine Fassadensanierung in Halle kostet, hängt von Fläche, Zustand, Zugang und geplanter Ausführung ab. Eine lokale Putzreparatur wird anders kalkuliert als eine vollständige Fassadenbeschichtung oder ein WDVS. Nach der Besichtigung grenzen wir den Leistungsumfang ab und erstellen ein nachvollziehbares Angebot.',
+          points: ['Fassadenfläche und Gebäudehöhe', 'Zustand von Putz und Untergrund', 'Gerüst, Zugang und Schutzmaßnahmen', 'Reparatur, Anstrich oder Dämmung', 'Materialsystem und Anschlussdetails'],
         },
       ],
+      guide: {
+        heading: 'Fassade und Außenflächen gemeinsam planen',
+        body: 'Unser Ratgeber erklärt, wie Untergrund, Dämmung, Sockel und angrenzende Außenflächen bei der Vorbereitung zusammenhängen.',
+        anchor: 'Ratgeber zu Fassadensanierung und Außenanlagen in Halle',
+        path: '/news/fassadensanierung-aussenanlagen-in-halle-fassade-einfahrt-terrasse',
+      },
       faq: [
+        {
+          q: 'Ist eine Fassadensanierung auch ohne Dämmung möglich?',
+          a: 'Ja, je nach Bestand können Putzreparaturen, die Instandsetzung einzelner Flächen oder ein Fassadenanstrich sinnvoll sein. Ob zusätzliche Dämmung erforderlich oder gewünscht ist, wird gesondert geprüft und abgestimmt.',
+        },
+        {
+          q: 'Was kostet eine Fassadensanierung in Halle?',
+          a: 'Entscheidend sind Fläche, Gebäudehöhe, Schäden, Gerüst und die gewählte Ausführung. Nach der Besichtigung lassen sich Reparatur, Anstrich oder Dämmung passend zum tatsächlichen Umfang kalkulieren.',
+        },
         {
           q: 'Welche Dämmstärke ist sinnvoll?',
           a: 'Das hängt von Wandaufbau, Zielwerten und Budget ab. Üblich sind bei WDVS Stärken im Bereich von etwa 12 bis 18 cm. Wir empfehlen eine praktikable Stärke nach Bestandssituation und erklären die Auswirkungen auf Kosten und Einsparung vor dem Start.',
@@ -431,13 +460,15 @@ export const SERVICES: Service[] = [
       ],
     },
     ru: {
-      title: 'Фасадные работы и утепление в Halle (Saale)',
-      metaTitle: 'Утепление фасада Halle – WDVS, штукатурка, покраска | SorgfaltBau',
+      title: 'Ремонт фасада и утепление в Halle (Saale)',
+      metaTitle: 'Ремонт фасада Halle | Штукатурка, покраска и WDVS | SorgfaltBau',
       metaDescription:
-        'Фасадные работы и утепление (WDVS) в Halle (Saale): утепление, армирование, штукатурка и покраска фасада, ремонт трещин. Меньше расходов на отопление, защита здания. Оставьте заявку.',
-      short: 'WDVS, армирование, штукатурка и покраска фасада.',
-      intro:
-        'Грамотно утеплённый фасад заметно снижает расходы на отопление, защищает кладку от погоды и преображает всё здание. SorgfaltBau выполняет фасадные работы в Halle (Saale) и окрестностях: от утепления, армирования и штукатурки до финишной покраски — с учётом типа здания, будь то частный дом, Altbau или многоквартирный дом.',
+        'Ремонт фасада в Halle (Saale): восстановление штукатурки, проверка трещин, покраска и утепление WDVS. Объём и стоимость определяем после осмотра.',
+      short: 'Ремонт штукатурки, покраска и при необходимости утепление WDVS.',
+      intro: [
+        'Трещины в штукатурке, отслаивающаяся краска или запланированное утепление: SorgfaltBau выполняет ремонт фасадов в Halle (Saale). После проверки основания согласуем восстановление штукатурки, армирование, покраску и при необходимости систему утепления WDVS.',
+        'Не каждому фасаду требуется полное утепление. После осмотра обсуждаем, достаточно ли восстановить отдельные участки, обновить покрытие или нужен более крупный ремонт — для частного дома, старого фонда или многоквартирного здания.',
+      ],
       includes: [
         'Система утепления WDVS (EPS или минвата)',
         'Армирование с утоплением сетки',
@@ -463,14 +494,29 @@ export const SERVICES: Service[] = [
         },
         {
           heading: 'Трещины, повреждения и участки',
-          body: 'Не каждому фасаду нужна полная система. Часто достаточно отремонтировать трещины, подлатать штукатурку или заново покрыть участок. Смотрим, что реально нужно, и советуем разумное по деньгам решение, а не самое дорогое.',
+          body: 'Ремонт фасада возможен и без дополнительного утепления. Перед восстановлением штукатурки или покраской проверяем повреждения, влажность и прочность основания. При заметных трещинах сначала нужно выяснить причину: одна покраска её не устраняет. После этого согласуем подходящий способ восстановления или покрытия.',
         },
         {
           heading: 'Материал и стоимость понятны заранее',
-          body: 'Вы получаете чёткую оценку по утеплителю, толщине, типу штукатурки, лесам и срокам. По большинству фасадов надёжная смета возможна после осмотра — без скрытых сюрпризов в ходе работ.',
+          body: 'Стоимость ремонта фасада в Halle зависит от площади, состояния, доступа и выбранных работ. Локальный ремонт штукатурки рассчитывается иначе, чем полная покраска или утепление WDVS. После осмотра определяем необходимый объём и готовим понятное предложение.',
+          points: ['Площадь фасада и высота здания', 'Состояние штукатурки и основания', 'Леса, доступ и защита соседних поверхностей', 'Ремонт, покраска или утепление', 'Материалы и детали примыканий'],
         },
       ],
+      guide: {
+        heading: 'Как согласовать фасад и наружные работы',
+        body: 'В руководстве разбираем связь основания, утепления, цоколя и прилегающих наружных поверхностей при подготовке работ.',
+        anchor: 'Руководство по ремонту фасада и благоустройству участка в Halle',
+        path: '/news/fassadensanierung-aussenanlagen-in-halle-fassade-einfahrt-terrasse',
+      },
       faq: [
+        {
+          q: 'Можно ли отремонтировать фасад без утепления?',
+          a: 'Да. В зависимости от состояния может быть достаточно восстановить штукатурку, отдельные участки или покрасить фасад. Необходимость и целесообразность дополнительного утепления обсуждаются отдельно.',
+        },
+        {
+          q: 'Сколько стоит ремонт фасада в Halle?',
+          a: 'На стоимость влияют площадь, высота здания, повреждения, леса и выбранные работы. После осмотра можно рассчитать ремонт, покраску или утепление исходя из реального объёма.',
+        },
         {
           q: 'Какая толщина утепления нужна?',
           a: 'Зависит от конструкции стены, целей и бюджета. Для WDVS обычны толщины примерно 12–18 см. Рекомендуем практичную толщину по факту и объясняем влияние на стоимость и экономию до начала.',
