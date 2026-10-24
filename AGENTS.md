@@ -16,6 +16,16 @@ Base project was originally adapted from `onebbau.de`; old brand references shou
 - Push directly to the current `main` branch unless the user explicitly requests a separate branch or PR.
 - After every push, report what improved, what still needs to be done after deployment, and the exact pages (if any) to submit for reindexing in Google Search Console.
 
+## robots.txt Change Handoff Rule (2026-10-22)
+
+- Whenever `robots.txt` changes, explicitly include a robots-specific recommendation in the handoff and any accompanying client report: explain what access changed and whether a manual recrawl is useful. Do not omit this behind generic sitemap or page-indexing advice. Cosmetic/comment-only changes do not require urgent recrawling.
+- First verify that `https://www.sorgfaltbau.de/robots.txt` serves the intended new rules successfully on production, not just in Git/local builds. If Hostinger/CDN still serves the old version, recommend verifying deployment and clearing the relevant cache before asking Google to fetch it.
+- When unblocking important pages/resources or fixing robots fetch/parsing errors, explicitly recommend Search Console's **robots.txt report → file menu (⋮) → Request a recrawl**. In this project that includes opening the public `/api/gallery/media/` and `/api/news/media/` paths. This is not a request to index robots.txt through URL Inspection.
+- After the request, check the report's last fetch time, retrieved contents and errors; record what was actually verified. Do not claim Google received the new rules merely because the request was sent. Requesting a robots recrawl does not guarantee an immediate crawl or indexing of the unblocked resources/pages.
+- Keep three separate actions clear: refreshing Google's robots.txt copy, submitting a sitemap, and requesting indexing of individual pages. None replaces the other two; do not repeatedly resubmit an unchanged sitemap as a substitute.
+- Explain that Google normally refreshes robots.txt automatically, so manual recrawling is a useful acceleration step in the cases above, not a mandatory action after every edit or a guarantee of ranking/traffic gains. Do not attribute low visibility to the absence of a manual request without evidence.
+- If authorized UI access is available, the relevant request may be made and its result reported; otherwise provide the exact steps and state that it has not been submitted. The existing read-only GSC CLI does not perform this action. Reference: https://support.google.com/webmasters/answer/6062598?hl=ru.
+
 ## SEO Follow-up — pending (recorded 2026-10-22)
 
 - Frozen pre-rollout audit: `docs/seo/seo-audit-2026-10-21.md`; versioned machine-readable baseline: `docs/seo/baseline-2026-10-21.json`; repeat-analysis and Search Console queue: `docs/seo/follow-up-2026-10-22.md`. Never overwrite the baseline with new results. Raw exports and credentials remain ignored; the versioned baseline contains only allowlisted SEO data.
@@ -29,12 +39,12 @@ Base project was originally adapted from `onebbau.de`; old brand references shou
 
 ## Stack
 
-- Next.js `16.3.0` App Router
+- Next.js `16.4.3` App Router
 - React `19.2.8`
 - TypeScript
 - next-intl for `de` and `ru`
 - Tailwind CSS
-- Prisma `7.7.0`
+- Prisma `7.10.1`
 - PostgreSQL on Neon
 - Prisma PostgreSQL adapter: `@prisma/adapter-pg`
 
@@ -132,6 +142,17 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 
 ## Completed Work Log
 
+### Full publication handoff (2026-10-24)
+
+- User authorized a full commit/push of pending project changes to the existing `origin/main` only; do not create or push other branches. Includes the verified dependency refresh, compatibility test, security report, reviewed client PDF/source and robots-specific handoff guidance. Temporary PDF files, npm cache, credentials and raw GSC exports remain ignored. Rechecked npm audit: zero vulnerabilities; compatibility checks passed; the previous normal/WASM builds and 40-page regression results remain applicable (no subsequent application changes).
+- Push does not confirm deployment. After Hostinger rebuild, verify version 16.4.3, DE/RU pages, image handling and contact delivery separately, then rerun the remote security scan. No new page-indexing or robots recrawl request is required solely for this dependency update; the existing SEO follow-up and any still-pending earlier robots publication/recrawl tasks remain separate. This entry records the authorized handoff scope; final Git SHA and remote equality are reported after push verification.
+
+### Client-facing SEO report (2026-10-22)
+
+- Created `output/pdf/SorgfaltBau_Otchet_i_plan_prodvizheniya_RU_2026-10-22.pdf`: eight A4 pages in the SaaleWeb pink/purple style with the original brand mark, plain-Russian work summary, pre-rollout Google statistics, indexation findings, recommendations, responsibilities, 7/14-day checkpoints, 30–60-day plan, company material checklist and clickable priority GSC URLs.
+- Source: `scripts/create-client-seo-report.py`; generation needs Python `reportlab`, `pypdf`, `pymupdf` (Pillow is included with ReportLab), project Sharp for rendering the existing SaaleWeb SVG, and Windows Segoe UI fonts. Does not change the website, database or Search Console. Intermediate dependencies/renders remain under `tmp/pdfs/`: the environment rejected the cleanup command, so removal was not retried or claimed successful. Do not include these temporary files in a future push; no application dependencies were added.
+- Reopened the PDF and verified 8 A4 pages, Cyrillic text extraction, 15 links, text bounds, plus visual inspection of every rendered page. The report distinguishes previously completed work from the October 21–22 changes pushed as `aa7d7a0`; fresh public checks still showed the old title, RU root language and robots, so Hostinger publication remains unconfirmed. No new Search Console performance or indexation snapshot was taken for this PDF; the October 21 baseline stays immutable. Fresh speed, leads, GBP, links/manual-actions/security reports are not claimed as verified. The unrelated pre-existing local edit in the audit Markdown was preserved. No commit/push was requested for this document task.
+
 ### Rebrand from Onebbau to SorgfaltBau
 
 - Replaced old text references to `Onebbau`, `onebbau.de`, and related fallbacks.
@@ -165,6 +186,9 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 - Verified DB connectivity with empty counts: contacts/gallery/news were `0`.
 
 ### Dependency Updates
+
+- Security refresh completed locally (2026-10-24): initial audit had 49 affected package entries (1 critical / 46 high / 2 moderate); fresh full and production-only npm audits report zero vulnerabilities. Updated stable Next.js/ESLint config 16.4.3, Sharp 0.35.5, Nodemailer 10.2.1, Prisma CLI/client/PG adapter 7.10.1, ESLint 9.39.5, PostCSS 8.5.31 and targeted overrides (brace-expansion 5.0.12, fast-uri 3.1.9, js-yaml 4.3.2, Browserslist 4.29.4, source-map-js 1.2.2, selector parser 7.1.7, deepmerge-ts 8.0.2, Zod 4.6.7, Undici 6.29.1, Hono server 1.19.17). Retain the existing minimatch compatibility patch; do not upgrade Prisma to the advertised 8 RC or force unnecessary major changes. React/React DOM remain 19.2.8.
+- Security refresh verification: TypeScript passed; ESLint has 0 errors / 9 pre-existing warnings, new compatibility script clean. Both normal and forced `NEXT_TEST_WASM=1` Webpack builds completed 54/54 pages; forced fallback downloaded SWC WASM 16.4.3 and logged WASM bindings. `scripts/check-dependency-compatibility.mjs` passed image resize/decoding, in-memory email construction (no delivery), minimatch/brace-expansion, CSS selector, deepmerge and Zod checks. Local production on 127.0.0.1:3127 passed all 40 sitemap SEO/route checks, actual Next image optimization and admin/contact GET smoke checks. No source/UI/business logic, robots, sitemap, secrets or database writes changed. Prior local report changes preserved; local npm cache/PDF intermediates ignored, not deleted. See `docs/dependency-security-2026-10-24.md` for versions, compatibility caveats and Hostinger handoff. No commit/push/deployment performed; remote security scanners cannot be called green before deployment/rescan.
 
 - Upgraded Next.js to `16.3.0` and React/React DOM to `19.2.8`.
 - Upgraded next-intl to `4.12.0`.

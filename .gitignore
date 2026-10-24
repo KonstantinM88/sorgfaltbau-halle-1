@@ -44,3 +44,7 @@ NUL
 
 # Private Search Console exports (queries, traffic and index inspection)
 /reports/search-console/
+
+# Local dependency cache and document rendering intermediates
+/.npm-cache-security/
+/tmp/pdfs/

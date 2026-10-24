@@ -1,0 +1,2 @@
+# Preserve generated PDF bytes; do not normalize line endings or treat as text.
+*.pdf binary
