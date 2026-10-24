@@ -142,6 +142,12 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 
 ## Completed Work Log
 
+### Keyword-driven Ratgeber articles and article FAQ schema (2026-10-24)
+
+- From the frozen GSC baseline queries, prepared four DE/RU Ratgeber articles for manual publication via `/admin` News (agents must not write to the production DB): Einfahrt pflastern (supports `pflasterarbeiten-halle`, the best page at ~position 5), Risse in der Fassade (largest cluster, links to `fassadendaemmung-halle` without a competing service URL), Entkernung & Baureinigung (matches the registered Gewerbe), Wohnung vor Neuvermietung renovieren. Paste-ready texts, expected slugs and the cluster table live in `docs/seo/articles/`. No prices, cases, reviews or certificates were invented. No new pages for Trockenbau/Wohnungsrenovierung (existing URLs still unknown to Google) or roofing (Anlage A HwO; Handwerksrolle should be checked).
+- `ArticleClient.tsx` now keeps service links in `contextualLinksBySlug` (existing three articles unchanged). Links are inserted after specific headings, so German titles and in-text headings must not be edited. `getArticleFaqSchema` (`src/lib/seo.ts`) adds FAQPage JSON-LD to any article whose content has a `## Häufige Fragen` / `## Частые вопросы` section with `### Question?` items.
+- Pending after publication: verify slugs, request indexing of the DE URLs, then add service → article back-links (not before, to avoid 404 links).
+
 ### Trust/E-E-A-T cleanup and x-default hreflang (2026-10-24)
 
 - Removed the invented `Testimonials` section (Familie Schneider, Herr Krause, Frau Müller, plus the unverified "Viele Aufträge kommen über Empfehlungen" block) from home, about, services, why-us and contact; deleted the component and the `testimonials` dictionary keys. The why-us secondary CTA now links to `/services` instead of `#reviews`. Do not reintroduce reviews, ratings or `Review`/`AggregateRating` schema unless they are real and verifiable (e.g. Google Business Profile with permission).

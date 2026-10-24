@@ -236,50 +236,76 @@ export default function ArticleClient({
   const siteUrl = getSiteUrl();
   const isRenovationGuide =
     slug === 'wohnung-renovieren-in-halle-trockenbau-malerarbeiten-bodenverlegung';
-  const isExteriorGuide =
-    slug === 'fassadensanierung-aussenanlagen-in-halle-fassade-einfahrt-terrasse';
-  const isBathroomGuide =
-    slug === 'badsanierung-halle-kosten-ablauf-dauer';
+  const service = (serviceSlug: string) => `/${locale}/services/${serviceSlug}`;
+  const renovationLink = (afterHeading: string): ContextualLink => ({
+    afterHeading,
+    lead: tx.renovationLead,
+    anchor: tx.renovationAnchor,
+    tail: tx.renovationTail,
+    href: service('wohnungsrenovierung-halle'),
+  });
+  const pavingLink = (afterHeading: string): ContextualLink => ({
+    afterHeading,
+    lead: tx.pavingLead,
+    anchor: tx.pavingAnchor,
+    tail: tx.pavingTail,
+    href: service('pflasterarbeiten-halle'),
+  });
+  const facadeLink = (afterHeading: string): ContextualLink => ({
+    afterHeading,
+    lead: tx.facadeLead,
+    anchor: tx.facadeAnchor,
+    tail: '.',
+    href: service('fassadendaemmung-halle'),
+  });
+  const flooringLink = (afterHeading: string): ContextualLink => ({
+    afterHeading,
+    lead: tx.flooringLead,
+    anchor: tx.flooringAnchor,
+    tail: '.',
+    href: service('bodenbelaege-halle'),
+  });
 
-  const contextualLinks: ContextualLink[] = isExteriorGuide
-    ? [{
-        afterHeading: isRu ? 'Въезд во двор:' : 'Einfahrt pflastern:',
-        lead: tx.pavingLead,
-        anchor: tx.pavingAnchor,
-        tail: tx.pavingTail,
-        href: `/${locale}/services/pflasterarbeiten-halle`,
-      }, {
-        afterHeading: isRu ? 'Ремонт фасада в Halle' : 'Fassadensanierung in Halle:',
-        lead: tx.facadeLead,
-        anchor: tx.facadeAnchor,
+  // Ссылки на услуги по slug статьи; afterHeading должен совпадать с заголовком в тексте из админки.
+  const contextualLinksBySlug: Record<string, ContextualLink[]> = {
+    'fassadensanierung-aussenanlagen-in-halle-fassade-einfahrt-terrasse': [
+      pavingLink(isRu ? 'Въезд во двор:' : 'Einfahrt pflastern:'),
+      facadeLink(isRu ? 'Ремонт фасада в Halle' : 'Fassadensanierung in Halle:'),
+    ],
+    'badsanierung-halle-kosten-ablauf-dauer': [{
+      afterHeading: isRu
+        ? 'Сколько стоит ремонт ванной в Halle?'
+        : 'Was kostet eine Badsanierung in Halle?',
+      lead: tx.bathroomLead,
+      anchor: tx.bathroomAnchor,
+      tail: tx.bathroomTail,
+      href: service('badsanierung-halle'),
+    }],
+    'wohnung-renovieren-in-halle-trockenbau-malerarbeiten-bodenverlegung': [
+      {
+        afterHeading: isRu ? 'Гипсокартонные работы в Halle' : 'Trockenbau in Halle:',
+        lead: tx.drywallLead,
+        anchor: tx.drywallAnchor,
         tail: '.',
-        href: `/${locale}/services/fassadendaemmung-halle`,
-      }]
-    : isBathroomGuide
-      ? [{
-          afterHeading: isRu
-            ? 'Сколько стоит ремонт ванной в Halle?'
-            : 'Was kostet eine Badsanierung in Halle?',
-          lead: tx.bathroomLead,
-          anchor: tx.bathroomAnchor,
-          tail: tx.bathroomTail,
-          href: `/${locale}/services/badsanierung-halle`,
-        }]
-      : isRenovationGuide
-        ? [{
-            afterHeading: isRu ? 'Гипсокартонные работы в Halle' : 'Trockenbau in Halle:',
-            lead: tx.drywallLead,
-            anchor: tx.drywallAnchor,
-            tail: '.',
-            href: `/${locale}/services/trockenbau-halle`,
-          }, {
-            afterHeading: isRu ? 'Укладка ламината и напольных покрытий' : 'Bodenverlegung und Laminatverlegung',
-            lead: tx.flooringLead,
-            anchor: tx.flooringAnchor,
-            tail: '.',
-            href: `/${locale}/services/bodenbelaege-halle`,
-          }]
-        : [];
+        href: service('trockenbau-halle'),
+      },
+      flooringLink(isRu ? 'Укладка ламината и напольных покрытий' : 'Bodenverlegung und Laminatverlegung'),
+    ],
+    'einfahrt-pflastern-in-halle-unterbau-gefaelle-entwaesserung-und-kosten': [
+      pavingLink(isRu ? 'Как мы работаем с въездом в Halle' : 'So gehen wir bei einer Einfahrt in Halle vor'),
+    ],
+    'risse-in-der-fassade-ursachen-dringlichkeit-und-sanierung-in-halle': [
+      facadeLink(isRu ? 'Ремонт фасада в Halle с SorgfaltBau' : 'Fassadensanierung in Halle mit SorgfaltBau'),
+    ],
+    'entkernung-und-baureinigung-in-halle-ablauf-entsorgung-und-kosten': [
+      renovationLink(isRu ? 'Что происходит после демонтажа' : 'Wie es nach der Entkernung weitergeht'),
+    ],
+    'wohnung-vor-neuvermietung-renovieren-in-halle-checkliste-fuer-vermieter': [
+      flooringLink(isRu ? 'Полы' : 'Böden'),
+      renovationLink(isRu ? 'Ремонт между арендаторами под ключ' : 'Renovierung zwischen zwei Mietern koordinieren lassen'),
+    ],
+  };
+  const contextualLinks = contextualLinksBySlug[slug] ?? [];
 
   const shareUrl = typeof window !== 'undefined'
     ? window.location.href

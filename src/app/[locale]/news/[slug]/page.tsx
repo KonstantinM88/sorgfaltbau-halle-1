@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import { COMPANY_POSTAL_CODE, COMPANY_STREET_ADDRESS } from '@/lib/contact';
-import { getBreadcrumbSchema } from '@/lib/seo';
+import { getArticleFaqSchema, getBreadcrumbSchema } from '@/lib/seo';
 import { getAbsoluteUrl, getLocalizedAlternates, getSiteUrl } from '@/lib/site';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -135,7 +135,7 @@ export default async function ArticlePage({ params }: { params: Params }) {
   const excerpt = isRu ? (article.excerptRu || article.excerpt) : article.excerpt;
   const content = isRu ? (article.contentRu || article.content) : article.content;
 
-  const jsonLd = [
+  const jsonLd: Record<string, unknown>[] = [
     {
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
@@ -183,6 +183,8 @@ export default async function ArticlePage({ params }: { params: Params }) {
       {name: title, path: `/${locale}/news/${slug}`},
     ]),
   ];
+  const faqSchema = getArticleFaqSchema(content);
+  if (faqSchema) jsonLd.push(faqSchema);
 
   return (
     <>

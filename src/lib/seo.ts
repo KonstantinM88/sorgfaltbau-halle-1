@@ -132,6 +132,42 @@ export function getBreadcrumbSchema(
   };
 }
 
+const ARTICLE_FAQ_HEADINGS = ['## Häufige Fragen', '## Частые вопросы'];
+
+/**
+ * FAQPage из статьи: раздел «## Häufige Fragen» / «## Частые вопросы»,
+ * внутри «### Вопрос?» и ответ следующими строками до следующего заголовка.
+ * Возвращает null, если в тексте нет хотя бы двух видимых вопросов с ответом.
+ */
+export function getArticleFaqSchema(content: string) {
+  const lines = content.split('\n').map((line) => line.trim());
+  const start = lines.findIndex((line) => ARTICLE_FAQ_HEADINGS.includes(line));
+  if (start === -1) return null;
+
+  const items: Array<{q: string; a: string[]}> = [];
+  for (const line of lines.slice(start + 1)) {
+    if (line.startsWith('## ')) break;
+    if (line.startsWith('### ')) {
+      items.push({q: line.slice(4).trim(), a: []});
+    } else if (line && items.length) {
+      items[items.length - 1].a.push(line.replace(/^[*–—-]\s+/, ''));
+    }
+  }
+
+  const answered = items.filter((item) => item.q && item.a.length);
+  if (answered.length < 2) return null;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: answered.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {'@type': 'Answer', text: item.a.join(' ')},
+    })),
+  };
+}
+
 export function getServiceSchema(params: {
   name: string;
   description: string;
