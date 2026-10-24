@@ -3,6 +3,7 @@ import {prisma} from '@/lib/prisma';
 import {locales} from '@/i18n/config';
 import {getSiteUrl} from '@/lib/site';
 import {SERVICE_SLUGS} from '@/lib/services';
+import {getPublishedStaticArticles, mergeWithStaticArticles} from '@/lib/static-articles';
 
 // Refresh published database articles without waiting for another deployment.
 // lastModified still comes only from persisted content dates below.
@@ -64,7 +65,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   });
 
-  const articleEntries: MetadataRoute.Sitemap = articles.flatMap((article) =>
+  const staticArticles = getPublishedStaticArticles(currentTime).map((article) => ({
+    slug: article.slug,
+    updatedAt: article.updatedAt,
+    publishedAt: article.publishedAt,
+    createdAt: article.publishedAt,
+  }));
+  const allArticles = mergeWithStaticArticles(articles, staticArticles);
+
+  const articleEntries: MetadataRoute.Sitemap = allArticles.flatMap((article) =>
     locales.map((locale) => ({
       url: `${baseUrl}/${locale}/news/${article.slug}`,
       lastModified: article.updatedAt ?? article.publishedAt ?? article.createdAt,

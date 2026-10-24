@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { prisma } from '@/lib/prisma';
 import { COMPANY_POSTAL_CODE, COMPANY_STREET_ADDRESS } from '@/lib/contact';
 import { getAbsoluteUrl, getLocalizedAlternates, getSiteUrl } from '@/lib/site';
+import { getPublishedStaticArticles, mergeWithStaticArticles } from '@/lib/static-articles';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import NewsListClient from './NewsListClient';
@@ -41,8 +42,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 async function getPublishedArticles() {
-  return prisma.newsArticle.findMany({
-    where: { published: true, publishedAt: { lte: new Date() } },
+  const now = new Date();
+  const dbArticles = await prisma.newsArticle.findMany({
+    where: { published: true, publishedAt: { lte: now } },
     orderBy: { publishedAt: 'desc' },
     select: {
       id: true,
@@ -57,6 +59,19 @@ async function getPublishedArticles() {
       publishedAt: true,
     },
   });
+  const staticArticles = getPublishedStaticArticles(now).map((a) => ({
+    id: a.id,
+    slug: a.slug,
+    title: a.title,
+    titleRu: a.titleRu,
+    excerpt: a.excerpt,
+    excerptRu: a.excerptRu,
+    coverUrl: a.coverUrl,
+    coverWidth: a.coverWidth,
+    coverHeight: a.coverHeight,
+    publishedAt: a.publishedAt,
+  }));
+  return mergeWithStaticArticles(dbArticles, staticArticles);
 }
 
 export default async function NewsPage({ params }: { params: Params }) {

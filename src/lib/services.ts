@@ -27,8 +27,14 @@ export type ServiceLocaleContent = {
   sections: {heading: string; body: string | string[]; points?: string[]}[];
   /** пошаговый процесс для услуг, где он полезен */
   process?: {heading: string; steps: {title: string; body: string}[]};
-  /** контекстная ссылка на связанный материал */
-  guide?: {heading: string; body: string; anchor: string; path: string};
+  /** контекстная ссылка на связанный материал; moreLinks — дополнительные ратгеберы */
+  guide?: {
+    heading: string;
+    body: string;
+    anchor: string;
+    path: string;
+    moreLinks?: {anchor: string; path: string}[];
+  };
   /** ссылка на опубликованные примеры работ */
   reference?: {heading: string; body: string; anchor: string; path: string};
   /** только подтверждённые публичные показатели */
@@ -419,6 +425,9 @@ export const SERVICES: Service[] = [
         body: 'Unser Ratgeber erklärt, wie Untergrund, Dämmung, Sockel und angrenzende Außenflächen bei der Vorbereitung zusammenhängen.',
         anchor: 'Ratgeber zu Fassadensanierung und Außenanlagen in Halle',
         path: '/news/fassadensanierung-aussenanlagen-in-halle-fassade-einfahrt-terrasse',
+        moreLinks: [
+          {anchor: 'Risse in der Fassade: Ursachen, Dringlichkeit und Sanierung', path: '/news/risse-in-der-fassade-ursachen-dringlichkeit-und-sanierung-in-halle'},
+        ],
       },
       faq: [
         {
@@ -507,6 +516,9 @@ export const SERVICES: Service[] = [
         body: 'В руководстве разбираем связь основания, утепления, цоколя и прилегающих наружных поверхностей при подготовке работ.',
         anchor: 'Руководство по ремонту фасада и благоустройству участка в Halle',
         path: '/news/fassadensanierung-aussenanlagen-in-halle-fassade-einfahrt-terrasse',
+        moreLinks: [
+          {anchor: 'Трещины на фасаде: причины, срочность и ремонт', path: '/news/risse-in-der-fassade-ursachen-dringlichkeit-und-sanierung-in-halle'},
+        ],
       },
       faq: [
         {
@@ -1164,6 +1176,10 @@ export const SERVICES: Service[] = [
         body: 'Mehr zum Ablauf, zu Trockenbau, Malerarbeiten und Bodenverlegung lesen Sie in unserem Ratgeber zur Wohnungsrenovierung in Halle.',
         anchor: 'Wohnung renovieren in Halle: Trockenbau, Malerarbeiten und Bodenverlegung',
         path: '/news/wohnung-renovieren-in-halle-trockenbau-malerarbeiten-bodenverlegung',
+        moreLinks: [
+          {anchor: 'Wohnung vor Neuvermietung renovieren: Checkliste für Vermieter', path: '/news/wohnung-vor-neuvermietung-renovieren-in-halle-checkliste-fuer-vermieter'},
+          {anchor: 'Entkernung und Baureinigung: Ablauf, Entsorgung und Kosten', path: '/news/entkernung-und-baureinigung-in-halle-ablauf-entsorgung-und-kosten'},
+        ],
       },
       trustPoints: [
         {value: '10+', label: 'Jahre Praxis des Inhabers im Bau'},
@@ -1295,6 +1311,10 @@ export const SERVICES: Service[] = [
         body: 'Подробнее о порядке работ, гипсокартоне, покраске и укладке пола читайте в нашем материале о ремонте квартиры в Halle.',
         anchor: 'Ремонт квартиры в Halle: гипсокартон, малярные работы и укладка пола',
         path: '/news/wohnung-renovieren-in-halle-trockenbau-malerarbeiten-bodenverlegung',
+        moreLinks: [
+          {anchor: 'Ремонт квартиры перед новой сдачей: чек-лист для арендодателя', path: '/news/wohnung-vor-neuvermietung-renovieren-in-halle-checkliste-fuer-vermieter'},
+          {anchor: 'Демонтаж и строительная уборка: порядок, вывоз мусора и стоимость', path: '/news/entkernung-und-baureinigung-in-halle-ablauf-entsorgung-und-kosten'},
+        ],
       },
       trustPoints: [
         {value: '10+', label: 'лет личной практики владельца в строительстве'},
@@ -1468,6 +1488,9 @@ export const SERVICES: Service[] = [
         body: 'Mehr zu Unterbau, Entwässerung, Einfahrten, Terrassen und der Planung von Außenflächen lesen Sie in unserem Ratgeber.',
         anchor: 'Fassade, Einfahrt und Terrasse richtig planen',
         path: '/news/fassadensanierung-aussenanlagen-in-halle-fassade-einfahrt-terrasse',
+        moreLinks: [
+          {anchor: 'Einfahrt pflastern: Unterbau, Gefälle, Entwässerung und Kosten', path: '/news/einfahrt-pflastern-in-halle-unterbau-gefaelle-entwaesserung-und-kosten'},
+        ],
       },
       trustPoints: [
         {value: '10+', label: 'Jahre Praxis des Inhabers im Bau'},
@@ -1638,6 +1661,9 @@ export const SERVICES: Service[] = [
         body: 'Подробнее об основании, водоотводе, въездах, террасах и планировании наружных площадок читайте в нашем материале.',
         anchor: 'Как правильно спланировать фасад, въезд и террасу',
         path: '/news/fassadensanierung-aussenanlagen-in-halle-fassade-einfahrt-terrasse',
+        moreLinks: [
+          {anchor: 'Въезд из брусчатки: основание, уклон, водоотвод и стоимость', path: '/news/einfahrt-pflastern-in-halle-unterbau-gefaelle-entwaesserung-und-kosten'},
+        ],
       },
       trustPoints: [
         {value: '10+', label: 'лет личной практики владельца в строительстве'},

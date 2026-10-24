@@ -324,6 +324,16 @@ export default async function ServiceDetailPage({params}: {params: Params}) {
                 {c.guide.anchor}
                 <ArrowRight size={16} />
               </Link>
+              {c.guide.moreLinks?.map((link) => (
+                <Link
+                  key={link.path}
+                  href={`/${locale}${link.path}`}
+                  className="mt-3 flex w-fit items-center gap-2 font-semibold text-brand-accent transition-colors hover:text-brand-orange-dark"
+                >
+                  {link.anchor}
+                  <ArrowRight size={16} />
+                </Link>
+              ))}
             </div>
           )}
 

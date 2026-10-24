@@ -5,35 +5,45 @@ import { prisma } from '@/lib/prisma';
 import { COMPANY_POSTAL_CODE, COMPANY_STREET_ADDRESS } from '@/lib/contact';
 import { getArticleFaqSchema, getBreadcrumbSchema } from '@/lib/seo';
 import { getAbsoluteUrl, getLocalizedAlternates, getSiteUrl } from '@/lib/site';
+import { getPublishedStaticArticles, getStaticArticle } from '@/lib/static-articles';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ArticleClient from './ArticleClient';
 
 type Params = Promise<{ locale: string; slug: string }>;
 
+const ARTICLE_SELECT = {
+  slug: true,
+  title: true,
+  titleRu: true,
+  excerpt: true,
+  excerptRu: true,
+  content: true,
+  contentRu: true,
+  metaTitle: true,
+  metaTitleRu: true,
+  metaDesc: true,
+  metaDescRu: true,
+  coverUrl: true,
+  coverWidth: true,
+  coverHeight: true,
+  published: true,
+  publishedAt: true,
+  updatedAt: true,
+} as const;
+
+// Статья из БД (админка) имеет приоритет над ратгебером из кода с тем же slug.
+async function getArticle(slug: string) {
+  const article = await prisma.newsArticle.findUnique({ where: { slug }, select: ARTICLE_SELECT });
+  return article ?? getStaticArticle(slug);
+}
+
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale, slug } = await params;
   const isRu = locale === 'ru';
   const siteUrl = getSiteUrl();
 
-  const article = await prisma.newsArticle.findUnique({
-    where: { slug },
-    select: {
-      title: true,
-      titleRu: true,
-      excerpt: true,
-      excerptRu: true,
-      metaTitle: true,
-      metaTitleRu: true,
-      metaDesc: true,
-      metaDescRu: true,
-      coverUrl: true,
-      coverWidth: true,
-      coverHeight: true,
-      published: true,
-      publishedAt: true,
-    },
-  });
+  const article = await getArticle(slug);
 
   if (
     !article ||
@@ -96,7 +106,11 @@ export async function generateStaticParams() {
     where: { published: true, publishedAt: { lte: new Date() } },
     select: { slug: true },
   });
-  return articles.map((a) => ({ slug: a.slug }));
+  const slugs = new Set([
+    ...articles.map((a) => a.slug),
+    ...getPublishedStaticArticles().map((a) => a.slug),
+  ]);
+  return [...slugs].map((slug) => ({ slug }));
 }
 
 export default async function ArticlePage({ params }: { params: Params }) {
@@ -104,24 +118,7 @@ export default async function ArticlePage({ params }: { params: Params }) {
   const isRu = locale === 'ru';
   const siteUrl = getSiteUrl();
 
-  const article = await prisma.newsArticle.findUnique({
-    where: { slug },
-    select: {
-      slug: true,
-      title: true,
-      titleRu: true,
-      excerpt: true,
-      excerptRu: true,
-      content: true,
-      contentRu: true,
-      coverUrl: true,
-      coverWidth: true,
-      coverHeight: true,
-      published: true,
-      publishedAt: true,
-      updatedAt: true,
-    },
-  });
+  const article = await getArticle(slug);
 
   if (
     !article ||

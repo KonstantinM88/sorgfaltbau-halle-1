@@ -15,39 +15,44 @@
 | Pflaster | мало раскрыто | ~5 | Ратгебер «Einfahrt pflastern» усиливает лучшую страницу `pflasterarbeiten-halle` |
 | «Halle» как здание (Veranstaltungshalle, Werkshalle) | ~20 | — | Нецелевой трафик, не оптимизировать |
 
-## Статьи
+## Статьи (опубликованы через код 24.10.2026)
 
-| Файл | Slug | Ссылки на услуги |
+Тексты DE/RU лежат в `src/lib/static-articles.ts` и выходят на сайт с
+деплоем, без записи в production-БД. Список новостей, `generateStaticParams`
+и sitemap объединяют их со статьями из админки; при совпадении slug
+побеждает статья из БД.
+
+| Slug | Ссылки на услуги в тексте | Обратная ссылка со страницы услуги |
 | --- | --- | --- |
-| `2026-10-24-einfahrt-pflastern.md` | `einfahrt-pflastern-in-halle-unterbau-gefaelle-entwaesserung-und-kosten` | pflasterarbeiten-halle |
-| `2026-10-24-risse-in-der-fassade.md` | `risse-in-der-fassade-ursachen-dringlichkeit-und-sanierung-in-halle` | fassadendaemmung-halle |
-| `2026-10-24-entkernung-baureinigung.md` | `entkernung-und-baureinigung-in-halle-ablauf-entsorgung-und-kosten` | wohnungsrenovierung-halle |
-| `2026-10-24-renovierung-vor-neuvermietung.md` | `wohnung-vor-neuvermietung-renovieren-in-halle-checkliste-fuer-vermieter` | bodenbelaege-halle, wohnungsrenovierung-halle |
+| `einfahrt-pflastern-in-halle-unterbau-gefaelle-entwaesserung-und-kosten` | pflasterarbeiten-halle | pflasterarbeiten-halle |
+| `risse-in-der-fassade-ursachen-dringlichkeit-und-sanierung-in-halle` | fassadendaemmung-halle | fassadendaemmung-halle |
+| `entkernung-und-baureinigung-in-halle-ablauf-entsorgung-und-kosten` | wohnungsrenovierung-halle | wohnungsrenovierung-halle |
+| `wohnung-vor-neuvermietung-renovieren-in-halle-checkliste-fuer-vermieter` | bodenbelaege-halle, wohnungsrenovierung-halle | wohnungsrenovierung-halle |
 
 GEO/AIO-структура: короткий ответ «Das Wichtigste in Kürze», вопросы в
 заголовках, списки шагов и факторов, честные ограничения (статика,
 вредные вещества, право), раздел «Häufige Fragen» с `### Вопрос?`.
-Цены, кейсы, отзывы и сертификаты не выдумывались.
+Цены, кейсы, отзывы и сертификаты не выдумывались. Обложек нет: добавлять
+только реальные фото или нейтральные иллюстрации.
 
-## Как опубликовать
+## Правила правки
 
-1. `/admin` → News → новая статья. Вставить DE: Titel, Kurzbeschreibung,
-   Inhalt, Meta-Titel, Meta-Beschreibung. Переключить на RU и вставить RU-поля.
-2. **Немецкий заголовок не менять**: из него создаётся slug, а контекстные
-   ссылки в коде привязаны к этому slug. После сохранения сверить slug с таблицей.
-3. **Заголовки внутри текста не менять**: ссылки на услуги вставляются после
-   конкретных заголовков, FAQPage строится из раздела «Häufige Fragen» /
-   «Частые вопросы».
-4. Обложка: только реальное фото или нейтральная иллюстрация без подачи как
-   выполненного объекта SorgfaltBau.
-5. Публиковать по одной статье в несколько дней, не все сразу.
-6. После публикации: открыть статью DE и RU, проверить ссылку на услугу,
-   затем «Проверка URL» → «Запросить индексирование» для DE-версии.
-7. Сообщить агенту об опубликованных slug: тогда со страниц услуг можно
-   добавить обратные ссылки на статьи (до публикации они вели бы на 404).
+- Немецкие и русские подзаголовки, после которых стоят ссылки
+  (`contextualLinksBySlug` в `ArticleClient.tsx`), и раздел FAQ не менять без
+  синхронной правки кода.
+- Если статью нужно редактировать в админке, создать её там с тем же
+  немецким заголовком: версия из БД заменит версию из кода.
+- Не менять slug: на него ссылаются страницы услуг (`guide.moreLinks`).
+- `publishedAt`/`updatedAt` в коде менять только при реальном изменении
+  содержания; не подставлять дату сборки.
 
-Код: `getArticleFaqSchema` в `src/lib/seo.ts` добавляет FAQPage для любой
-статьи с этим разделом; `contextualLinksBySlug` в `ArticleClient.tsx` хранит
-ссылки на услуги. FAQ-сниппеты Google с 2023 года показывает в основном
-государственным и медицинским сайтам; разметка нужна для машинного понимания
-страницы, а не ради сниппета.
+## После деплоя
+
+1. Открыть `/de/news` и четыре статьи DE/RU, проверить ссылки на услуги.
+2. Проверить `/sitemap.xml`: 8 новых URL (4 × DE/RU).
+3. Search Console → «Проверка URL» → «Запросить индексирование» для четырёх
+   DE-URL, по одному разу.
+
+FAQ-разметку (`getArticleFaqSchema`) Google с 2023 года показывает как сниппет
+в основном государственным и медицинским сайтам; она нужна для машинного
+понимания страницы.
