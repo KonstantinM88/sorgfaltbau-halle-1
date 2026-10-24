@@ -142,6 +142,13 @@ Next.js loads `.env.local` before `.env`. Do not leave an empty `SMTP_PASSWORD` 
 
 ## Completed Work Log
 
+### Trust/E-E-A-T cleanup and x-default hreflang (2026-10-24)
+
+- Removed the invented `Testimonials` section (Familie Schneider, Herr Krause, Frau Müller, plus the unverified "Viele Aufträge kommen über Empfehlungen" block) from home, about, services, why-us and contact; deleted the component and the `testimonials` dictionary keys. The why-us secondary CTA now links to `/services` instead of `#reviews`. Do not reintroduce reviews, ratings or `Review`/`AggregateRating` schema unless they are real and verifiable (e.g. Google Business Profile with permission).
+- `getLocalizedAlternates` now adds `x-default` pointing to the DE URL (DE is the root-redirect target). `scripts/check-public-seo.mjs` asserts `x-default` and the absence of `id="reviews"`.
+- "10+ Jahre" is now worded as the owner's personal practice, and the about page states SorgfaltBau has operated as its own business since 11/2024, matching the Impressum (Gewerbe: Hausmeisterservice, Bauhelfer, since 21.11.2024). The figure itself comes from the owner and is not independently verified. The `200+` task counter is still unverified and should be confirmed or removed. Legacy `messages/*.json` (unused by the app) were left unchanged.
+- Verified: ESLint 0 errors / 9 pre-existing warnings, dictionaries valid JSON, TypeScript showed no errors in the changed files. Full typecheck/build were not possible in the cloud session because the Prisma engine download was blocked; run `npm run build` and `seo:check` locally before deploying.
+
 ### Full publication handoff (2026-10-24)
 
 - User authorized a full commit/push of pending project changes to the existing `origin/main` only; do not create or push other branches. Includes the verified dependency refresh, compatibility test, security report, reviewed client PDF/source and robots-specific handoff guidance. Temporary PDF files, npm cache, credentials and raw GSC exports remain ignored. Rechecked npm audit: zero vulnerabilities; compatibility checks passed; the previous normal/WASM builds and 40-page regression results remain applicable (no subsequent application changes).

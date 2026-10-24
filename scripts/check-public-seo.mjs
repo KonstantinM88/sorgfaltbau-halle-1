@@ -38,6 +38,9 @@ async function worker() {
       const expected = `${canonicalOrigin}/${lang}${path.slice(3)}`;
       assert.ok(html.includes(`hrefLang="${lang}" href="${expected}"`), `${path}: ${lang} hreflang`);
     }
+    const xDefault = `${canonicalOrigin}/de${path.slice(3)}`;
+    assert.ok(html.includes(`hrefLang="x-default" href="${xDefault}"`), `${path}: x-default hreflang`);
+    assert.ok(!html.includes('id="reviews"'), `${path}: unverified testimonials must stay removed`);
     assert.ok(html.match(/<title>[^<]+<\/title>/), `${path}: title`);
     assert.ok(html.match(/<meta name="description" content="[^"]+"/), `${path}: description`);
     assert.ok(!html.match(/<meta name="robots" content="[^"]*noindex/), `${path}: noindex`);
@@ -94,6 +97,6 @@ assert.equal((robots.match(/^Allow: \/api\/news\/media\/$/gm) ?? []).length, 2);
 assert.equal((robots.match(/^Disallow: \/api$/gm) ?? []).length, 2);
 assert.equal((robots.match(/^Disallow: \/admin$/gm) ?? []).length, 2);
 console.log(JSON.stringify({base, checkedUrls: pages.size, passed: true,
-  checks: ['HTTP 200', 'single H1', 'DE/RU html lang', 'canonical', 'reciprocal hreflang',
+  checks: ['HTTP 200', 'single H1', 'DE/RU html lang', 'canonical', 'reciprocal hreflang', 'x-default hreflang', 'no unverified testimonials',
     'metadata', 'JSON-LD', 'service discovery', 'contextual article links', 'deferred mobile video',
     'content-only lastmod', 'narrow public-media crawler access']}, null, 2));

@@ -691,7 +691,7 @@ export const SERVICES: Service[] = [
         path: '/galerie',
       },
       trustPoints: [
-        {value: '10+', label: 'Jahre praktische Erfahrung'},
+        {value: '10+', label: 'Jahre Praxis des Inhabers im Bau'},
         {value: '200+', label: 'umgesetzte Aufgaben von Innenarbeiten bis Außenflächen'},
         {value: 'Direkt', label: 'ein Ansprechpartner für die abgestimmten Arbeitsschritte'},
         {value: 'Halle', label: 'Schwerpunkt Halle (Saale) und Umgebung'},
@@ -877,7 +877,7 @@ export const SERVICES: Service[] = [
         path: '/galerie',
       },
       trustPoints: [
-        {value: '10+', label: 'лет практического опыта'},
+        {value: '10+', label: 'лет личной практики владельца в строительстве'},
         {value: '200+', label: 'выполненных задач от внутренней отделки до наружных работ'},
         {value: 'Напрямую', label: 'один контакт для согласованных этапов работ'},
         {value: 'Halle', label: 'основной регион — Halle (Saale) и окрестности'},
@@ -1166,7 +1166,7 @@ export const SERVICES: Service[] = [
         path: '/news/wohnung-renovieren-in-halle-trockenbau-malerarbeiten-bodenverlegung',
       },
       trustPoints: [
-        {value: '10+', label: 'Jahre praktische Erfahrung'},
+        {value: '10+', label: 'Jahre Praxis des Inhabers im Bau'},
         {value: '200+', label: 'umgesetzte Aufgaben von Innenarbeiten bis Außenflächen'},
       ],
       cta: {
@@ -1297,7 +1297,7 @@ export const SERVICES: Service[] = [
         path: '/news/wohnung-renovieren-in-halle-trockenbau-malerarbeiten-bodenverlegung',
       },
       trustPoints: [
-        {value: '10+', label: 'лет практического опыта'},
+        {value: '10+', label: 'лет личной практики владельца в строительстве'},
         {value: '200+', label: 'выполненных задач от внутренней отделки до наружных работ'},
       ],
       cta: {
@@ -1470,7 +1470,7 @@ export const SERVICES: Service[] = [
         path: '/news/fassadensanierung-aussenanlagen-in-halle-fassade-einfahrt-terrasse',
       },
       trustPoints: [
-        {value: '10+', label: 'Jahre praktische Erfahrung'},
+        {value: '10+', label: 'Jahre Praxis des Inhabers im Bau'},
         {value: '200+', label: 'umgesetzte Aufgaben von Innenarbeiten bis Außenflächen'},
       ],
       cta: {
@@ -1640,7 +1640,7 @@ export const SERVICES: Service[] = [
         path: '/news/fassadensanierung-aussenanlagen-in-halle-fassade-einfahrt-terrasse',
       },
       trustPoints: [
-        {value: '10+', label: 'лет практического опыта'},
+        {value: '10+', label: 'лет личной практики владельца в строительстве'},
         {value: '200+', label: 'выполненных задач от внутренних до наружных работ'},
       ],
       cta: {

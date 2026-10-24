@@ -17,7 +17,6 @@ import {
 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Testimonials from '@/components/Testimonials';
 import Faq from '@/components/Faq';
 import Contact from '@/components/Contact';
 import AnimateOnScroll from '@/components/ui/AnimateOnScroll';
@@ -572,7 +571,6 @@ export default async function ContactPage({ params }: { params: Params }) {
         </section>
 
         <Contact />
-        <Testimonials />
         <Faq />
       </main>
 

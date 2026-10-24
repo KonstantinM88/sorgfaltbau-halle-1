@@ -19,7 +19,6 @@ import {
 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Testimonials from '@/components/Testimonials';
 import Faq from '@/components/Faq';
 import Contact from '@/components/Contact';
 import AnimateOnScroll from '@/components/ui/AnimateOnScroll';
@@ -288,13 +287,13 @@ export default async function WhyUsPage({ params }: { params: Params }) {
                       <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
                     </span>
                   </Link>
-                  <a
-                    href="#reviews"
+                  <Link
+                    href={`/${lang}/services`}
                     className="group relative inline-flex overflow-hidden rounded-full border border-white/16 bg-white/[0.07] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/45 hover:bg-white/[0.12] hover:shadow-xl hover:shadow-brand-accent/10"
                   >
                     <span className="pointer-events-none absolute -left-1/2 top-0 h-full w-1/3 rotate-12 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 blur-lg transition-all duration-700 group-hover:translate-x-[520%] group-hover:opacity-100" />
                     <span className="relative">{t('hero.secondaryCta')}</span>
-                  </a>
+                  </Link>
                 </AnimateOnScroll>
               </div>
 
@@ -587,7 +586,6 @@ export default async function WhyUsPage({ params }: { params: Params }) {
           </div>
         </section>
 
-        <Testimonials />
         <Faq />
         <Contact />
       </main>

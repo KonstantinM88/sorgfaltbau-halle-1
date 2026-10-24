@@ -22,8 +22,12 @@ export function getAbsoluteUrl(path = '') {
 export function getLocalizedAlternates(path = '') {
   const normalizedPath = path ? `/${path.replace(/^\/+/, '')}` : '';
 
+  const de = getAbsoluteUrl(`/de${normalizedPath}`);
+
+  // German is the primary market language and the target of the root redirect.
   return {
-    de: getAbsoluteUrl(`/de${normalizedPath}`),
+    de,
     ru: getAbsoluteUrl(`/ru${normalizedPath}`),
+    'x-default': de,
   };
 }

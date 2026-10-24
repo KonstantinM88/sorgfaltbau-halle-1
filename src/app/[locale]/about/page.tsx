@@ -16,7 +16,6 @@ import {
 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Testimonials from '@/components/Testimonials';
 import Faq from '@/components/Faq';
 import Contact from '@/components/Contact';
 import ServiceAreaLocations from '@/components/ServiceAreaLocations';
@@ -638,7 +637,6 @@ export default async function AboutPage({ params }: { params: Params }) {
           </div>
         </section>
 
-        <Testimonials />
         <Faq />
         <Contact />
       </main>

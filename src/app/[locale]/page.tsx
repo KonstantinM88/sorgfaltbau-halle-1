@@ -7,7 +7,6 @@ import About from '@/components/About';
 import Services from '@/components/Services';
 import ServiceHighlights from '@/components/ServiceHighlights';
 import WhyUs from '@/components/WhyUs';
-import Testimonials from '@/components/Testimonials';
 import Gallery from '@/components/Gallery';
 import Faq from '@/components/Faq';
 import Contact from '@/components/Contact';
@@ -72,7 +71,6 @@ export default async function Home({params}: {params: Params}) {
         <About />
         <Services />
         <WhyUs />
-        <Testimonials />
         <Gallery />
         <Faq />
         <Contact />

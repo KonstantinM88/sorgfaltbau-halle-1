@@ -44,8 +44,8 @@
     "experience": {
       "value": "10+",
       "eyebrow": "Erfahrung, die Vertrauen schafft",
-      "title": "Jahre praktische Arbeit",
-      "subtitle": "im Bau-, Renovierungs-, Ausbau- und Handwerksbereich.",
+      "title": "Jahre Praxis des Inhabers",
+      "subtitle": "persönliche Erfahrung im Bau-, Renovierungs- und Ausbaubereich; SorgfaltBau als eigener Betrieb seit November 2024.",
       "proof1": "Klare Abläufe ohne unnötige Überraschungen",
       "proof2": "Saubere Ausführung mit Verantwortung fürs Ergebnis"
     }
@@ -76,7 +76,7 @@
       "proof": [
         {
           "value": "10+",
-          "label": "Jahre Praxis"
+          "label": "Jahre Praxis des Inhabers"
         },
         {
           "value": "Halle",
@@ -91,7 +91,7 @@
     "stats": [
       {
         "value": "10+",
-        "label": "Jahre praktische Erfahrung in Bau, Renovierung und angrenzenden Arbeiten"
+        "label": "Jahre persönliche Praxis des Inhabers in Bau, Renovierung und angrenzenden Arbeiten – als eigener Betrieb seit 11/2024"
       },
       {
         "value": "200+",
@@ -280,7 +280,7 @@
       "titleEnd": "bei wichtigen Projekten wählen",
       "lead": "Viele Anfragen entstehen dort, wo nicht nur ein Ergebnis zählt, sondern auch der Weg dorthin: bei bewohnten Wohnungen, vor einer Neuvermietung, bei kleineren Umbauten oder bei Außenarbeiten mit engem Zeitfenster. Genau in solchen Situationen werden Zuverlässigkeit, Ordnung und klare Kommunikation besonders wichtig.",
       "primaryCta": "Kontakt aufnehmen",
-      "secondaryCta": "Kundenstimmen ansehen",
+      "secondaryCta": "Leistungen ansehen",
       "imageAlt": "Warum Kunden SorgfaltBau wählen",
       "imageTag": "Arbeitsweise & Vertrauen",
       "imageTitle": "Verlässlichkeit zeigt sich nicht nur am Ende, sondern während des gesamten Projekts",
@@ -500,37 +500,6 @@
       {
         "title": "Persönliche Beratung vor Ort",
         "text": "Wir schauen uns Ihr Projekt in Halle (Saale) und Umgebung an, beantworten Fragen direkt und empfehlen eine Lösung, die zur Situation passt."
-      }
-    ]
-  },
-  "testimonials": {
-    "eyebrow": "Kundenstimmen",
-    "sectionTitle": "Wie unsere Arbeit nach Projektende bewertet wird",
-    "intro": "Unsere Kunden achten nicht nur auf das fertige Ergebnis, sondern auch auf den Weg dorthin: klare Absprachen, verlässliche Termine, Rücksicht auf die Räume und eine ehrliche Kommunikation während der Ausführung.",
-    "highlightKicker": "Aus der Praxis",
-    "highlightTitle": "Viele Aufträge kommen über Empfehlungen",
-    "highlightText": "Viele Empfehlungen entstehen nach Renovierungen in bewohnten Wohnungen, vor Neuvermietungen und bei Außenarbeiten. Kunden schätzen, dass wir den Ablauf vorab erklären, Termine einhalten und den Arbeitsbereich ordentlich übergeben.",
-    "items": [
-      {
-        "name": "Familie Schneider",
-        "location": "Halle-Süd",
-        "service": "Badrenovierung",
-        "scope": "Altbau, 12 Arbeitstage",
-        "text": "Der Ablauf und die Termine wurden vor Beginn klar besprochen. Die Wohnung blieb während der Arbeiten bewohnbar, der Bereich wurde täglich ordentlich hinterlassen und das Ergebnis entsprach genau der Absprache."
-      },
-      {
-        "name": "Herr Krause",
-        "location": "Halle-Trotha",
-        "service": "Trockenbau & Malerarbeiten",
-        "scope": "Mietwohnung vor Neuvermietung",
-        "text": "Die Wohnung musste zügig für die nächste Vermietung vorbereitet werden. Nach der Besichtigung kam ein verständliches Angebot, die Arbeiten liefen ohne unnötige Pausen und kleine Fragen wurden direkt vor Ort geklärt."
-      },
-      {
-        "name": "Frau Müller",
-        "location": "Merseburg",
-        "service": "Terrasse & Zaun",
-        "scope": "Außenbereich am Reihenhaus",
-        "text": "Für Terrasse und Zaun wurden uns mehrere sinnvolle Varianten erklärt. Material und Kosten waren vorab nachvollziehbar, die Termine wurden eingehalten und der Außenbereich wurde sauber übergeben."
       }
     ]
   },
